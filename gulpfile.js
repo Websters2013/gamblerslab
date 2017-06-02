@@ -23,6 +23,20 @@ var paths = {
                 'app/js/jquery.main.js',
                 'app/js/jquery.index.js'
             ]
+        },
+        {
+            dist: 'not-found.min.js',
+            contains: [
+                'app/js/jquery.main.js'
+            ]
+        },
+        {
+            dist: 'contact-us.min.js',
+            contains: [
+                'app/js/jquery.main.js',
+                'app/js/jquery.labels.js',
+                'app/js/jquery.form.validator.js'
+            ]
         }
     ],
     vendorScripts: 'app/js/vendors/**/*.js',

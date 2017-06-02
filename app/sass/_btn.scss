@@ -1,38 +1,50 @@
 .btn {
+  @include inline-flex();
+  @include justify-content(center);
+  @include align-items(center);
+  @include flex-direction();
+  background: #45d1de;
+  padding: 0 26px;
+  height: 40px;
+  @include noto-sans();
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  color: #FFFFFF;
+  letter-spacing: -0.2px;
   border: none;
-  height: 50px;
-  padding: 0 10px;
-  color: $btn-color;
-  display: flex;
-  text-align: left;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  background: $btn-back;
+  border-radius: 3px;
+  -webkit-transition: background 0.3s, color 0.3s, border 0.3s;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2);
 
+  span {
+    width: 100%;
+    text-align: center;
+  }
   &:hover {
-    background: $btn-back-hover;
+    background: #fff;
+    color: #2d4475;
   }
-
   &:active {
-    color: $btn-color-active;
-    background: $btn-back-active;
+    background: #fff;
+    color: #2d4475;
   }
 
-  &_2 {
-    width: 150px;
-    height: 40px;
-    background: $btn-2-back;
 
-    &:hover {
-      background: $btn-2-back-hover;
-    }
+}
 
-    &:active {
-      color: $btn-2-color-active;
-      background: $btn-2-back-active;
-    }
+@media (min-width: $tablet-portrait) {
+
+}
+
+@media (min-width: $desktop) {
+
+  .btn {
+    padding: 0 21px;
+
   }
 
 }
