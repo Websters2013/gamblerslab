@@ -1,0 +1,98 @@
+.search {
+  position: absolute;
+  right: 41px;
+  height: inherit;
+
+  &__btn-open{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 37px;
+    height: inherit;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
+    svg{
+      width: 14px;
+      fill: #fff;
+    }
+
+  }
+
+  &__form{
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+
+    input{
+      width: 245px;
+      height: 40px;
+      padding: 0 10px 1px 33px;
+      color: #fff;
+      @include noto-sans;
+      font-size: 15px;
+      background-color: #36a8b3;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 40px;
+      width: 40px;
+      border: none;
+      background-color: transparent;
+      cursor: default;
+
+      svg{
+        width: 14px;
+        fill: #fff;
+      }
+
+    }
+
+  }
+
+}
+
+@media (min-width: $tablet-portrait) {
+  .search {
+    right: 65px;
+
+    &__btn-open{
+      width: 60px;
+
+      svg{
+        width: 26px;
+      }
+
+    }
+
+  }
+}
+
+@media (min-width: $desktop) {
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    right: 210px;
+
+    &__btn-open{
+      display: none;
+    }
+
+    &__form{
+      position: relative;
+      visibility: visible;
+      opacity: 1;
+    }
+
+  }
+}

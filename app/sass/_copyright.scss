@@ -1,0 +1,10 @@
+.copyright {
+  font-size: 12px;
+  padding: 0 8px;
+}
+
+@media (min-width: $desktop) {
+  .copyright {
+    text-align: center;
+  }
+}

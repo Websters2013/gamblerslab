@@ -1,0 +1,108 @@
+.mobile {
+
+  &-btn{
+    position: relative;
+    width: 51px;
+    height: inherit;
+    margin-right: 15px;
+    border: none;
+    border-right: 1px solid #40bdc9;
+    background: none;
+    -webkit-transition: background-color .3s ease;
+    transition: background-color .3s ease;
+
+    span{
+      display: block;
+      position: relative;
+      width: 15px;
+      height: 2px;
+      margin: 0 auto;
+      background-color: #fff;
+      -webkit-transition: background-color .3s ease;
+      transition: background-color .3s ease;
+
+      &:before,
+      &:after{
+        position: absolute;
+        left: 0;
+        width: inherit;
+        height: inherit;
+        background-color: inherit;
+        content: '';
+        transition: top .3s ease, bottom .3s ease, transform .3s ease, background-color .3s ease;
+        -webkit-transition: top .3s ease, bottom .3s ease, transform .3s ease, background-color .3s ease;
+      }
+
+      &:before{
+        top: 4px;
+      }
+
+      &:after{
+        bottom: 4px;
+      }
+
+    }
+
+    &.close {
+      background-color: #283746;
+
+      span {
+        background-color: transparent;
+
+        &:before {
+          top: 0;
+          background-color: #fff;
+          transform: rotate(-45deg);
+          -webkit-transform: rotate(-45deg);
+        }
+
+        &:after {
+          bottom: 0;
+          background-color: #fff;
+          transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+@media (min-width: $tablet-portrait) {
+  .mobile {
+
+    &-btn{
+      width: 74px;
+      margin-right: 22px;
+
+      span{
+        width: 27px;
+        height: 3px;
+
+        &:before{
+          top: 8px;
+        }
+
+        &:after{
+          bottom: 8px;
+        }
+
+      }
+
+    }
+
+  }
+}
+
+@media (min-width: $desktop) {
+  .mobile {
+
+    &-btn{
+      display: none;
+    }
+
+  }
+}

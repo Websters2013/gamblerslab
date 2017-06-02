@@ -1,0 +1,42 @@
+.site {
+
+  &__header{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    background-color: #45d1de;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14),0 4px 8px 0 rgba(0, 0, 0, 0.28);
+  }
+
+  &__aside{
+    width: 100%;
+    max-width: 339px;
+    background-color: #283747;
+    box-shadow: 2px 0 2px 0 rgba(186, 186, 186, 0.004);
+  }
+
+}
+
+@media (min-width: $tablet-portrait) {
+  .site {
+
+    &__header{
+      height: 75px;
+    }
+
+  }
+}
+
+@media (min-width: $desktop) {
+  .site {
+
+    &__wrap{
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+
+  }
+}
+
