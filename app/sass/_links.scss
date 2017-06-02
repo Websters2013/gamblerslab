@@ -14,6 +14,10 @@
     content: '';
   }
 
+  &:last-child:after{
+    display: none;
+  }
+
   &__title{
     display: flex;
     justify-content: space-between;
@@ -142,7 +146,69 @@
 @media (min-width: $tablet-portrait) {
 
   .links{
-    padding: 0 36px 0 44px;
+    margin-bottom: 24px;
+    padding: 0 43px 13px 44px;
+    font-size: 15px;
+
+    &:after{
+      left: 43px;
+      right: 43px;
+    }
+
+    &_casinos{
+
+      .links__item{
+        font-size: 14px;
+        padding: 9px 43px;
+      }
+
+      .links__title {
+        margin-bottom: 6px;
+      }
+
+    }
+
+    &__title{
+      margin-bottom: 12px;
+
+      &_1{
+        margin-bottom: 14px;
+      }
+
+    }
+
+    &__item{
+      margin: 0 -43px;
+      padding: 12px 43px 13px;
+
+      span{
+        font-size: 12px;
+      }
+
+    }
+
+    &__show-all{
+      width: 252px;
+      height: 31px;
+      margin: 14px auto 9px;
+
+      span{
+        width: 45px;
+      }
+
+    }
+
+    &__show-more{
+      margin-top: 11px;
+      font-size: 15px;
+
+      &:after{
+        width: 6px;
+        height: 6px;
+        margin-left: 11px;
+      }
+
+    }
 
   }
 
@@ -169,6 +235,34 @@
           color: #283746;
         }
 
+      }
+
+    }
+
+    &__show-all{
+      -webkit-transition: color .3s ease;
+      transition: color .3s ease;
+
+      svg{
+        -webkit-transition: fill .3s ease;
+        transition: fill .3s ease;
+      }
+
+      &:hover{
+        color: #283746;
+
+        svg{
+          fill: #283746;
+        }
+
+      }
+
+    }
+
+    &__show-more{
+
+      &:hover{
+        text-decoration: underline;
       }
 
     }

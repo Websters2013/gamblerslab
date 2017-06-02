@@ -10,10 +10,17 @@
   }
 
   &__aside{
+    position: absolute;
     width: 100%;
     max-width: 339px;
     background-color: #283747;
     box-shadow: 2px 0 2px 0 rgba(186, 186, 186, 0.004);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__content{
+    padding: 17px 13px 17px 15px;
   }
 
 }
@@ -23,6 +30,10 @@
 
     &__header{
       height: 75px;
+    }
+
+    &__aside{
+      padding-top: 37px;
     }
 
   }
@@ -35,6 +46,12 @@
       display: flex;
       justify-content: space-between;
       align-items: stretch;
+    }
+
+    &__aside{
+      position: relative;
+      opacity: 1;
+      visibility: visible;
     }
 
   }

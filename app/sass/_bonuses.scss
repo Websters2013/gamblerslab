@@ -1,0 +1,35 @@
+.bonuses {
+  @include noto-sans;
+
+  &__title{
+    font-size: 12px;
+
+    h2{
+      margin-bottom: 7px;
+      font-size: 17px;
+      font-weight: 400;
+    }
+
+    span{
+      color: #0fc2c8;
+    }
+
+  }
+
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .bonuses{
+
+  }
+
+}
+
+@media (min-width: $desktop) {
+
+  .bonuses{
+
+  }
+
+}

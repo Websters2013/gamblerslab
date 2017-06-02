@@ -31,6 +31,10 @@
     font-size: 13px;
     background-color: #fff;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity .3s ease, visibility .3s ease;
+    transition: opacity .3s ease, visibility .3s ease;
 
     &:after {
       bottom: 100%;
@@ -119,6 +123,10 @@
       border-radius: 0;
       box-shadow: none;
       background-color: transparent;
+      opacity: 1;
+      visibility: visible;
+      -webkit-transition: none;
+      transition: none;
 
       &:after{
         display: none;
@@ -135,6 +143,10 @@
       border-radius: 3px;
       background-color: #fff;
       box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+      opacity: 0;
+      visibility: hidden;
+      -webkit-transition: opacity .3s ease, visibility .3s ease;
+      transition: opacity .3s ease, visibility .3s ease;
 
       .info__item{
         padding: 13px 10px 13px;
