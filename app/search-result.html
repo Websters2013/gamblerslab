@@ -10,7 +10,7 @@
     <title>Title</title>
 
     <link rel="stylesheet" href="css/perfect-scrollbar.min.css">
-    <link rel="stylesheet" href="css/contact-us-page.css">
+    <link rel="stylesheet" href="css/search-page.css">
 
 </head>
 <body>
@@ -275,75 +275,33 @@
             </aside>
 
             <div class="site__content">
-                <div class="contact-us">
-                    <h1 class="contact-us__title">Contact Us</h1>
-                    <div class="contact-us__form site__form validation-form">
-                        <p>Leave us a message</p>
 
-                        <form action="#">
-                            <div>
-                                <input type="text" name="name" id="name">
-                                <label for="name">Name</label>
+                <div class="search-results">
 
-                                <span class="contact-us__error">Please enter a valid email address</span>
+                    <a href="#" class="btn btn_2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="266 75 16 16"><path d="M20,11H7.83l5.59-5.59L12,4,4,12l8,8,1.41-1.41L7.83,13H20Z" transform="translate(262 71)"/></svg>
+                        back
+                    </a>
 
+                    <h2 class="search-results__title">Search Results for “<span>Bonus</span>”</h2>
+
+                    <div class="search-results__wrap">
+
+                        <span class="search-results__title-request">Bonus lists (15 results)</span>
+
+                        <a href="#" class="search-results__item">
+                            <h2>All Bonuses</h2>
+
+                            <div class="search-results__footer">
+                                <div>21 Bonuses</div>
+                                <div>8 New Today</div>
                             </div>
-                            <div>
-                                <input type="email" name="email" id="email" data-required="required">
-                                <label for="email">Email</label>
-                                <span class="contact-us__error">
-                                    Please enter a valid email address</span>
-                            </div>
-                            <div class="contact-us__textarea">
-                                <textarea name="message" id="message" cols="30" rows="10" data-required="required"></textarea>
-                                <label for="message">Write your message</label>
-                                <span class="contact-us__error">
-                                    Minimum 80 characters for messages.</span>
-                            </div>
-                            <div class="contact-us__send">
-                                <button type="submit" class="btn"><span>send message</span></button>
-                            </div>
-
-                        </form>
-                    </div>
-                    <div class="contact-us__social">
-                        <p>Get in touch with us!</p>
-
-                        <div>
-                            <a href="mailto:support@gamblerslab.com" class="contact-us__network contact-us__network_mail">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M12,15.36L4,10.36V18H20V10.36L12,15.36M4,8L12,13L20,8V8L12,3L4,8V8M22,8V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V8C2,7.27 2.39,6.64 2.97,6.29L12,0.64L21.03,6.29C21.61,6.64 22,7.27 22,8Z" /></svg>
-                                <span>support@gamblerslab.com</span>
-
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#" class="contact-us__network contact-us__network_facebook">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" /></svg>
-                                <span>Follow us on Facebook</span>
-
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#" class="contact-us__network contact-us__network_twitter">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg>
-                                <span>Follow us on Twitter</span>
-
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#" class="contact-us__network contact-us__network_google">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z" /></svg>
-                                <span>Follow us on Google Plus</span>
-
-                            </a>
-                        </div>
+                        </a>
 
                     </div>
+
                 </div>
+
             </div>
         </div>
     </div>
