@@ -1,0 +1,68 @@
+.not-found {
+  @include noto-sans();
+  font-weight: 700;
+  text-align: center;
+}
+.not-found__page {
+  width: 241px;
+  height: 69px;
+  margin: 0 auto 16px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+}
+.not-found__sorry {
+  display: block;
+  margin: 0 0 61px;
+  font-size: 25px;
+  line-height: 25px;
+  color: #283746;
+  letter-spacing: -0.6px;
+}
+.not-found__text {
+  font-size: 14px;
+  line-height: 21px;
+  color: #323232;
+
+  span {
+    display: block;
+  }
+  a {
+    color: #0fc2c8;
+  }
+
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .not-found__page {
+    width: 483px;
+    height: 138px;
+    margin: 0 auto 31px;
+  }
+  .not-found__sorry {
+    margin: 0 0 11px;
+    font-size: 50px;
+    line-height: 50px;
+    letter-spacing: -1.2px;
+  }
+  .not-found__text {
+    font-size: 21px;
+    line-height: 30px;
+
+    span {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+  }
+
+}
+
+@media (min-width: $desktop) {
+
+
+}
