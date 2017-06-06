@@ -2,7 +2,7 @@
   margin-bottom: 18px;
   @include noto-sans;
 
-  h2{
+  h1{
     margin-bottom: 13px;
     font-size: 20px;
     font-weight: 400;
@@ -47,9 +47,9 @@
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 25px;
+    margin-bottom: 31px;
 
-    h2{
+    h1{
       width: 100%;
       margin-bottom: 18px;
       font-size: 30px;
@@ -80,6 +80,23 @@
 @media (min-width: $desktop) {
 
   .casino-info{
+    margin-bottom: 27px;
+
+    h1{
+      margin-bottom: 19px;
+      margin-left: -5px;
+      font-size: 31px;
+      letter-spacing: -.2px;
+    }
+
+    &__img{
+      margin-top: 0;
+    }
+
+    &__content{
+      width: calc( 100% - 172px );
+      padding-top: 3px;
+    }
 
   }
 

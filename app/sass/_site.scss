@@ -1,4 +1,6 @@
 .site {
+  position: relative;
+  min-height: 100%;
   overflow: hidden;
 
   &__header{
@@ -23,6 +25,7 @@
     visibility: hidden;
     -webkit-transform: translateX( -339px );
     transform: translateX( -339px );
+    z-index: 5;
     -webkit-transition: transform .3s ease, opacity .3s ease, visibility .3s ease;
     transition: transform .3s ease, opacity .3s ease, visibility .3s ease;
 
@@ -81,16 +84,21 @@
     }
 
     &__aside{
-      position: fixed;
       opacity: 1;
       visibility: visible;
       -webkit-transform: translateX( 0 );
       transform: translateX( 0 );
+
+      &.fixed{
+        position: fixed;
+        top: 0;
+      }
+
     }
 
     &__content{
       margin: 0 20px 0 359px;
-      padding: 37px calc( 50% - 640px ) 12px;
+      padding: 34px calc( 50% - 640px ) 12px;
     }
 
   }

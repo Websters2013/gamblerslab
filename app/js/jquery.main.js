@@ -24,126 +24,12 @@
             new AsideMenu ( $( this ) );
         } );
 
+        $.each( $( '.bonuses__filter' ), function() {
+            new Filter ( $( this ) );
+        } );
+
     } );
 
-    var BackToTop = function( obj ) {
-
-        //private properties
-        var _obj = obj,
-            _body = $( 'html, body' ),
-            _window = $( window );
-
-        //private methods
-        var  _onEvent = function() {
-
-                _obj.on (
-                    'click', function () {
-                        _backToTop();
-                    }
-                );
-
-                _window.on (
-                    'scroll', function () {
-                        _checkScroll();
-                    }
-                );
-
-            },
-            _backToTop = function() {
-
-                _body.animate( { scrollTop : 0 }, 500, 'swing' )
-
-            },
-            _checkScroll = function () {
-
-                if ( _window.scrollTop() > _body.height() ){
-                    _showBtn();
-                } else {
-                    _hideBtn();
-                }
-
-            },
-            _showBtn = function() {
-
-                _obj.addClass( 'show' );
-
-            },
-            _hideBtn = function() {
-
-                _obj.removeClass( 'show' );
-
-            },
-            _init = function() {
-                _onEvent();
-                _checkScroll();
-            };
-
-        //public properties
-
-        //public methods
-
-        _init();
-    };
-
-    var InfoPanel = function( obj ) {
-
-        //private properties
-        var _obj = obj,
-            _btnShowInfo = _obj.find( '.info__btn-open' ),
-            _infoFrame = _obj.find( '.info__frame' ),
-            _body = $( 'body, html' ),
-            _window = $( window );
-
-        //private methods
-        var  _onEvent = function() {
-
-                _body.on(
-                    'click', function () {
-                        _hidePanelOnMobile();
-                    }
-                );
-
-                _obj.on(
-                    'click', function ( e ) {
-                        e.stopImmediatePropagation();
-                    }
-                );
-
-                _btnShowInfo.on (
-                    'click', function () {
-
-                        if ( !_infoFrame.hasClass( 'show' ) ) {
-                            _showInfoOnMobile();
-                        } else {
-                            _hidePanelOnMobile();
-                        }
-
-                    }
-                );
-
-                _window.on (
-                    'resize', function () {
-                        _hidePanelOnMobile();
-                    }
-                );
-
-            },
-            _showInfoOnMobile = function () {
-                _infoFrame.addClass( 'show' );
-            },
-            _hidePanelOnMobile = function () {
-                _infoFrame.removeClass( 'show' );
-            },
-            _init = function() {
-                _onEvent();
-            };
-
-        //public properties
-
-        //public methods
-
-        _init();
-    };
 
     var AsideMenu = function( obj ) {
 
@@ -152,10 +38,26 @@
             _mobileBtnOpen = $( '.mobile-btn' ),
             _moreLinksBtn = _obj.find( '.links__show-more' ),
             _body = $( 'html, body' ),
-            _window = $( window );
+            _window = $( window ),
+            _objTopPosition = _obj.offset().top;
 
         //private methods
         var _onEvent = function() {
+
+                _window.on(
+                    'scroll', function () {
+
+                        console.log(_objTopPosition)
+                        console.log(_window.scrollTop())
+
+                        if ( _window.scrollTop() >= _objTopPosition ){
+                            _obj.addClass( 'fixed' );
+                        } else {
+                            _obj.removeClass( 'fixed' );
+                        }
+
+                    }
+                );
 
                 _obj.on(
                     'click', function ( e ) {
@@ -245,6 +147,202 @@
         _init();
     };
 
+    var BackToTop = function( obj ) {
+
+        //private properties
+        var _obj = obj,
+            _body = $( 'html, body' ),
+            _window = $( window );
+
+        //private methods
+        var  _onEvent = function() {
+
+                _obj.on (
+                    'click', function () {
+                        _backToTop();
+                    }
+                );
+
+                _window.on (
+                    'scroll', function () {
+                        _checkScroll();
+                    }
+                );
+
+            },
+            _backToTop = function() {
+
+                _body.animate( { scrollTop : 0 }, 500, 'swing' )
+
+            },
+            _checkScroll = function () {
+
+                if ( _window.scrollTop() > _body.height() ){
+                    _showBtn();
+                } else {
+                    _hideBtn();
+                }
+
+            },
+            _showBtn = function() {
+
+                _obj.addClass( 'show' );
+
+            },
+            _hideBtn = function() {
+
+                _obj.removeClass( 'show' );
+
+            },
+            _init = function() {
+                _onEvent();
+                _checkScroll();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+    };
+
+    var Filter = function( obj ) {
+
+        //private properties
+        var _obj = obj,
+            _filterBtn = _obj.find( '.bonuses__filter-frame-btn' ),
+            _filterPopup = _obj.find( '.bonuses__filter-frame-popup' ),
+            _filterItem = _filterPopup.find( 'label' ),
+            _filterCheckbox = _filterItem.find( 'input' );
+
+        //private methods
+        var  _onEvent = function() {
+
+                _filterBtn.on( 'click', function () {
+
+                    var curElem = $( this );
+
+                    if ( !curElem.hasClass( 'close' ) ){
+                        _showPopup();
+                    } else {
+                        _hidePopup();
+                    }
+
+                    return false;
+
+                } );
+
+                _filterCheckbox.on( 'click', function () {
+                    _illuminationItem();
+                } );
+
+            },
+            _showPopup = function() {
+
+                _filterBtn.addClass( 'close' );
+                _filterPopup.addClass( 'show' );
+
+            },
+            _hidePopup = function() {
+
+                _filterBtn.removeClass( 'close' );
+                _filterPopup.removeClass( 'show' );
+
+            },
+            _illuminationItem = function() {
+
+                _filterItem.each( function () {
+
+                    var curElem = $( this ),
+                        curCheckbox = curElem.find( 'input' );
+
+                    if ( curCheckbox.is(":checked") ){
+                        curElem.addClass( 'illumination' );
+                    } else {
+                        curElem.removeClass( 'illumination' );
+                    }
+
+                } );
+
+                if ( _filterItem.first().hasClass( 'illumination' ) ) {
+                    _filterPopup.addClass( 'gray' );
+                } else {
+                    _filterPopup.removeClass( 'gray' );
+                }
+
+            },
+            _init = function() {
+                _illuminationItem();
+                _onEvent();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+    };
+
+    var InfoPanel = function( obj ) {
+
+        //private properties
+        var _obj = obj,
+            _btnShowInfo = _obj.find( '.info__btn-open' ),
+            _infoFrame = _obj.find( '.info__frame' ),
+            _body = $( 'body, html' ),
+            _window = $( window );
+
+        //private methods
+        var  _onEvent = function() {
+
+                _body.on(
+                    'click', function () {
+                        _hidePanelOnMobile();
+                    }
+                );
+
+                _obj.on(
+                    'click', function ( e ) {
+                        e.stopImmediatePropagation();
+                    }
+                );
+
+                _btnShowInfo.on (
+                    'click', function () {
+
+                        if ( !_infoFrame.hasClass( 'show' ) ) {
+                            _showInfoOnMobile();
+                        } else {
+                            _hidePanelOnMobile();
+                        }
+
+                    }
+                );
+
+                _window.on (
+                    'resize', function () {
+                        _hidePanelOnMobile();
+                    }
+                );
+
+            },
+            _showInfoOnMobile = function () {
+                _infoFrame.addClass( 'show' );
+            },
+            _hidePanelOnMobile = function () {
+                _infoFrame.removeClass( 'show' );
+            },
+            _init = function() {
+                _onEvent();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+    };
+
     var Preload = function( obj ) {
 
         //private properties
@@ -319,7 +417,11 @@
 
                 _window.on (
                     'resize', function () {
-                        _hidePanelOnMobile();
+
+                        if ( _body.width() < 1200 ){
+                            _hidePanelOnMobile();
+                        }
+
                     }
                 );
 

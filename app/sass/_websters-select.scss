@@ -18,12 +18,12 @@
 
   &__arrow{
     position: absolute;
-    top: 45%;
+    top: 42%;
     right: 17px;
-    width: 6px;
-    height: 6px;
-    border-right: 1px solid #283746;
-    border-bottom: 1px solid #283746;
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid #283746;
+    border-bottom: 1.5px solid #283746;
     -webkit-transform: translateY(-50%) rotate(45deg);
     transform: translateY(-50%) rotate(45deg);
     transform-origin: center;
@@ -33,7 +33,9 @@
 
   &__item {
     display: block;
-    padding: 8px 25px 0 17px;
+    position: absolute;
+    top: 50%;
+    padding: 0 25px 0 17px;
     overflow: hidden;
     color: #283746;
     @include noto-sans;
@@ -43,6 +45,8 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     text-transform: uppercase;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
     text-align: left;
   }
 
@@ -95,6 +99,49 @@
         background: $websters-select-popup-item-active-back !important;
       }
 
+    }
+
+  }
+
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .websters-select {
+    height: 40px;
+
+    &__arrow{
+      top: 46%;
+      right: 6px;
+    }
+
+    &__item {
+      padding: 0 25px 1px 14px;
+      font-size: 14px;
+      font-weight: 400;
+      text-transform: none;
+
+      &:first-letter{
+        text-transform: uppercase;
+      }
+
+    }
+
+  }
+
+}
+
+@media (min-width: $desktop) {
+
+  .websters-select {
+    margin: 0 -11px 0 25px;
+
+    &__item{
+
+    }
+
+    &__arrow {
+      right: 10px;
     }
 
   }
