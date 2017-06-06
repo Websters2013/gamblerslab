@@ -12,8 +12,8 @@
   line-height: 12px;
   color: #FFFFFF;
   letter-spacing: -0.2px;
-  border: none;
   border-radius: 3px;
+  border: 2px solid transparent;
   -webkit-transition: background 0.3s, color 0.3s, border 0.3s;
   transition: background 0.3s, color 0.3s, border 0.3s;
   text-align: center;
@@ -25,18 +25,52 @@
     text-align: center;
   }
   &:hover {
+    border-color: #45d1de;
     background: #fff;
-    color: #2d4475;
+    color: #45d1de;
   }
   &:active {
+    border-color: #45d1de;
     background: #fff;
-    color: #2d4475;
+    color: #45d1de;
   }
 
+  &_2 {
+    padding: 0 15px;
+    color: #45d1de;
+    background: transparent;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
+
+    svg {
+      margin: 0 10px 0 0;
+      width: 12px;
+      height: 12px;
+      fill: #02bfc5;
+      -webkit-transition: fill 0.3s;
+      transition: fill 0.3s;
+    }
+
+    &:hover {
+      border-color: transparent;
+      background: #45d1de;
+      color: #fff;
+
+      svg {
+        fill: #fff;
+      }
+
+    }
+
+  }
 
 }
 
 @media (min-width: $tablet-portrait) {
+
+  .btn {
+    padding: 0 21px;
+
+  }
 
 }
 

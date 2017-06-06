@@ -1,5 +1,6 @@
 .site {
   overflow: hidden;
+  @include noto-sans();
 
   &__header{
     display: flex;

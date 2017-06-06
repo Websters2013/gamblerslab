@@ -5,7 +5,7 @@
     $( function(){
 
         $.each( $( '.site' ), function() {
-            new Page ( $( this ) );
+            //new Page ( $( this ) );
         } );
 
     } );

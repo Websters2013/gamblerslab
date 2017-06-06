@@ -1,0 +1,27 @@
+.search-results {
+
+
+  &__title {
+    margin: 0 0 10px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #283746;
+    font-weight: 400;
+
+    span {
+      color: #02bfc5;
+    }
+
+  }
+}
+
+@media (min-width: $tablet-portrait) {
+
+
+
+}
+
+@media (min-width: $desktop) {
+
+
+}

@@ -4,11 +4,6 @@
   font-size: 14px;
   line-height: 17px;
 
-
-
-  padding: 0 15px; //???????????????????????????
-
-
   p {
     margin: 0 0 25px 0;
   }
@@ -104,6 +99,8 @@
     font-size: 15px;
     line-height: 15px;
     color: #83868a;
+    -webkit-transition: top 0.3s ease, left 0.3s ease;
+    transition: top 0.3s ease, left 0.3s ease;
   }
   div {
     position: relative;
@@ -265,6 +262,8 @@
   color: #d40000;
   font-size: 12px;
   line-height: 12px;
+  -webkit-transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
 @media (min-width: $tablet-portrait) {
@@ -274,7 +273,7 @@
     line-height: 21px;
 
     p {
-      margin: 0 0 39px 0;
+      margin: 0 0 37px 0;
     }
 
   }
@@ -307,24 +306,33 @@
     textarea {
       padding: 26px 14px;
       height: 150px;
+
+      +label {
+        top: 45px;
+        left: 14px;
+      }
+
+      &:focus {
+
+        +label {
+          top: 28px;
+        }
+
+      }
+
+
     }
 
     div {
       display: inline-block;
       vertical-align: top;
-      width: 38%;
+      width: 38.5%;
       position: relative;
       margin: 0 34px 27px 0;
 
       &.contact-us__textarea {
-        width: 81.3%;
+        width: 82.2%;
         margin: 0 0 37px;
-
-        label {
-          top: 28px;
-          left: 16px;
-        }
-
       }
       &.contact-us__send {
         width: 100%;
@@ -347,9 +355,14 @@
 
         &.contact-us__textarea {
 
-          label {
-            top: 28px;
-            left: 16px;
+          textarea {
+            padding: 26px 14px;
+            height: 150px;
+
+            +label {
+              top: 28px !important;
+            }
+
           }
 
         }
@@ -371,7 +384,9 @@
     .contact-us__network  {
 
       svg {
-        margin: 0 18px 0 0;
+        margin: 0 21px 0 0;
+        -webkit-transition: fill 0.3s, background 0.3s;
+        transition: fill 0.3s, background 0.3s;
       }
       span {
         width: calc( 100% - 80px );
@@ -391,7 +406,7 @@
     @include justify-content(space-between);
     @include align-items();
     @include flex-wrap(wrap);
-    max-width: 980px;
+    max-width: 950px;
     margin: 0 auto;
 
     >div {
