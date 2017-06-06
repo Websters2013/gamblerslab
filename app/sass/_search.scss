@@ -21,40 +21,91 @@
   }
 
   &__form{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     position: absolute;
+    top: 0;
+    width: 0;
     visibility: hidden;
     opacity: 0;
+    padding: 7px 0 7px 10px;
+    overflow: hidden;
+    background-color: #45d1de;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
 
     input{
-      width: 245px;
-      height: 40px;
-      padding: 0 10px 1px 33px;
+      width: calc( 100% - 40px );
+      height: 35px;
+      padding: 0 10px 1px 32px;
       color: #fff;
       @include noto-sans;
-      font-size: 15px;
+      font-size: 14px;
       background-color: #36a8b3;
       border: none;
       border-radius: 5px;
     }
 
-    button{
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    &.show{
+      visibility: visible;
+      opacity: 1;
+      z-index: 2;
+    }
+
+  }
+
+  &__btn-find{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    height: 35px;
+    width: 35px;
+    border: none;
+    background-color: transparent;
+    cursor: default;
+
+    svg{
+      width: 11px;
+      fill: #fff;
+    }
+
+  }
+
+  &__btn-cancel{
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 35px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
+    &:before,
+    &:after{
       position: absolute;
-      left: 0;
-      top: 0;
-      height: 40px;
-      width: 40px;
-      border: none;
-      background-color: transparent;
-      cursor: default;
+      left: 12px;
+      width: 17px;
+      height: 2px;
+      background-color: #fff;
+      content: '';
+    }
 
-      svg{
-        width: 14px;
-        fill: #fff;
-      }
+    &:before{
+      top: 17px;
+      background-color: #fff;
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
 
+    &:after{
+      bottom: 16px;
+      background-color: #fff;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
     }
 
   }
@@ -74,6 +125,44 @@
 
     }
 
+    &__form{
+      padding: 18px 0 17px 20px;
+
+      input{
+        width: calc( 100% - 60px);
+        height: 40px;
+        padding-left: 51px;
+        font-size: 15px;
+      }
+
+    }
+
+    &__btn-find{
+      left: 24px;
+      top: 18px;
+      height: 40px;
+      width: 40px;
+    }
+
+    &__btn-cancel{
+
+      &:before,
+      &:after{
+        left: 20px;
+        width: 23px;
+        height: 3px;
+      }
+
+      &:before{
+        top: 15px;
+      }
+
+      &:after {
+        bottom: 17px;
+      }
+
+    }
+
   }
 }
 
@@ -88,10 +177,32 @@
       display: none;
     }
 
+    &__btn-find {
+      top: 0;
+      left: 0;
+
+      svg{
+        width: 14px;
+      }
+
+    }
+
+    &__btn-cancel{
+      display: none;
+    }
+
     &__form{
       position: relative;
+      width: 245px;
+      padding: 0;
       visibility: visible;
       opacity: 1;
+
+      input{
+        width: 245px;
+        padding-left: 33px;
+      }
+
     }
 
   }

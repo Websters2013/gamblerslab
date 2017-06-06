@@ -2,6 +2,7 @@
   @include noto-sans;
 
   &__title{
+    margin-bottom: 12px;
     font-size: 12px;
 
     h2{
@@ -12,6 +13,88 @@
 
     span{
       color: #0fc2c8;
+    }
+
+  }
+
+  &__filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 21px;
+
+    &-name{
+      display: none;
+    }
+
+    &-display{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      a{
+        margin-left: 7px;
+      }
+
+      .active svg{
+        fill: #45d1de;
+      }
+
+      svg{
+        width: 30px;
+        fill: #cbd0d7;
+      }
+
+    }
+
+    &-frame{
+      position: relative;
+      width: 34%;
+
+      &-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 30px;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        background-color: #45d1de;
+        text-align: center;
+        white-space: nowrap;
+        text-transform: uppercase;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+        svg{
+          fill: #fff;
+          width: 10px;
+          height: 10px;
+          margin-left: 5px;
+        }
+
+      }
+
+      &-popup{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 163px;
+        border-radius: 3px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+        img{
+          width: 25px;
+        }
+
+      }
+
+    }
+
+    .websters-select{
+      width: 34%;
     }
 
   }
@@ -32,6 +115,18 @@
 
     }
 
+    &__filter{
+
+      &-frame{
+
+        &-btn{
+          display: none;
+        }
+
+      }
+
+    }
+
   }
 
 }
@@ -39,6 +134,20 @@
 @media (min-width: $desktop) {
 
   .bonuses{
+
+    &__filter{
+
+      &-name{
+        display: block;
+        color: #a0a3a8;
+        font-size: 15px;
+      }
+
+      &-frame{
+
+      }
+
+    }
 
   }
 

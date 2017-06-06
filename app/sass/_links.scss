@@ -1,21 +1,25 @@
 .links {
   position: relative;
-  margin-bottom: 8px;
-  padding: 19px 14px 16px;
+  padding: 27px 14px 16px;
   @include noto-sans;
   font-size: 14px;
 
-  &:after{
+  &:before{
     position: absolute;
+    top: 0;
     right: 0;
-    bottom: 0;
     left: 0;
     border-bottom: 1px solid #3e566e;
     content: '';
   }
 
-  &:last-child:after{
-    display: none;
+  &:first-child{
+    padding-top: 19px;
+
+    &:before{
+      display: none;
+    }
+
   }
 
   &__title{
@@ -53,6 +57,8 @@
     margin: 0 -14px;
     padding: 13px 14px 13px 14px;
     color: #fff;
+    -webkit-transition: background-color .3s ease, color .3s ease;
+    transition: background-color .3s ease, color .3s ease;
 
     i{
       font-style: normal;
@@ -61,6 +67,19 @@
     span{
       color: #45d1de;
       font-size: 11px;
+    }
+
+    &.active{
+      background-color: #45d1dd;
+      color: #283746;
+      cursor: text;
+
+      span{
+        color: #283746;
+        -webkit-transition: color .3s ease;
+        transition: color .3s ease;
+      }
+
     }
 
   }
@@ -146,11 +165,14 @@
 @media (min-width: $tablet-portrait) {
 
   .links{
-    margin-bottom: 24px;
-    padding: 0 43px 13px 44px;
+    padding: 26px 43px 11px 44px;
     font-size: 15px;
 
-    &:after{
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:before{
       left: 43px;
       right: 43px;
     }
@@ -219,13 +241,6 @@
   .links{
 
     &__item{
-      -webkit-transition: background-color .3s ease, color .3s ease;
-      transition: background-color .3s ease, color .3s ease;
-
-      span{
-        -webkit-transition: color .3s ease;
-        transition: color .3s ease;
-      }
 
       &:hover{
         background-color: #45d1dd;

@@ -4,9 +4,9 @@
   vertical-align: top;
   box-sizing: border-box;
   position: relative;
-  width: 200px;
-  height: 22px;
-  border: 1px solid $websters-select-border;
+  height: 30px;
+  border: 1px solid #dce0db;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 
   &_opened {
 
@@ -18,47 +18,31 @@
 
   &__arrow{
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 20px;
+    top: 45%;
+    right: 17px;
+    width: 6px;
+    height: 6px;
+    border-right: 1px solid #283746;
+    border-bottom: 1px solid #283746;
+    -webkit-transform: translateY(-50%) rotate(45deg);
+    transform: translateY(-50%) rotate(45deg);
     transform-origin: center;
     -webkit-transition: -webkit-transform 200ms ease-in-out;
     transition: transform 200ms ease-in-out;
-
-    &:after,
-    &:before {
-      position: absolute;
-      top: 9px;
-      width: 10px;
-      height: 2px;
-      border-radius: 2px;
-      background: $websters-select-border;
-      content: '';
-    }
-
-    &:after {
-      left: 4px;
-      transform: rotate(70deg);
-
-    }
-
-    &:before {
-      right: 3px;
-      transform: rotate(-70deg);
-
-    }
   }
 
   &__item {
+    display: block;
+    padding: 8px 25px 0 17px;
     overflow: hidden;
-    @include absoluteCenterY();
-    right: 20px;
-    left: 5px;
-    padding: 1px 5px 0;
+    color: #283746;
+    @include noto-sans;
+    font-size: 12px;
+    font-weight: 600;
     box-sizing: border-box;
     white-space: nowrap;
     text-overflow: ellipsis;
+    text-transform: uppercase;
     text-align: left;
   }
 
@@ -88,6 +72,7 @@
     position: absolute;
     z-index: 10;
     box-sizing: border-box;
+    @include noto-sans;
     border: 1px solid $websters-select-border;
     background: $websters-select-popup-back;
 

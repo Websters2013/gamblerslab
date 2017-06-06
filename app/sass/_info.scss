@@ -50,6 +50,11 @@
       border-width: 4px;
     }
 
+    &.show{
+      opacity: 1;
+      visibility: visible;
+    }
+
   }
 
   &__sub-frame{
@@ -106,10 +111,16 @@
     right: 22px;
 
     &__btn-open{
+      order: 2;
       width: 60px;
 
       svg {
         width: 24px;
+      }
+
+      &:hover + .info__frame > .info__sub-frame{
+        opacity: 1;
+        visibility: visible;
       }
 
     }
@@ -127,6 +138,7 @@
       visibility: visible;
       -webkit-transition: none;
       transition: none;
+      order: 1;
 
       &:after{
         display: none;
@@ -164,6 +176,15 @@
 
       }
 
+      &:before{
+        position: absolute;
+        top: -15px;
+        right: 0;
+        bottom: 100%;
+        left: 0;
+        content: '';
+      }
+
       &:after {
         bottom: 100%;
         right: 7px;
@@ -176,6 +197,11 @@
         border-color: rgba(255, 255, 255, 0);
         border-bottom-color: #fff;
         border-width: 4px;
+      }
+
+      &:hover{
+        opacity: 1;
+        visibility: visible;
       }
 
     }

@@ -4,331 +4,353 @@
 
     $( function(){
 
-        $.each( $( '.site' ), function() {
-            new Page ( $( this ) );
+        $.each( $( '.preload' ), function() {
+            new Preload ( $( this ) );
+        } );
+
+        $.each( $( '.back-to-top' ), function() {
+            new BackToTop ( $( this ) );
+        } );
+
+        $.each( $( '.search' ), function() {
+            new SearchPanel ( $( this ) );
+        } );
+
+        $.each( $( '.info' ), function() {
+            new InfoPanel ( $( this ) );
+        } );
+
+        $.each( $( '.site__aside' ), function() {
+            new AsideMenu ( $( this ) );
         } );
 
     } );
 
-    var Page = function( obj ) {
+    var BackToTop = function( obj ) {
 
         //private properties
         var _obj = obj,
-            _self = this,
-            _head = $( '.site__header' ),
-            _hero = $( '.site-first-scene' ),
-            _scrollIcon = _hero.find( '.hero__footnote' ),
-            _promo = _obj.find( '.promo' ),
-            _promoItem = _obj.find( '.promo__item' ),
-            _promoPagination = _obj.find( '.promo__pagination' ),
-            _promoSkip = _obj.find( '.promo__skip' ),
-            _window = $( window ),
-            _canScroll = false,
-            _headerHammer = null,
-            _action = false,
-            _promoFlag = false,
-            _firstPromoFlag = true,
-            _promoActive = true,
-            _indicator, _indicator1,_lastPos, _lastPosH,
-            _menu = new Menu( $('.menu') );
+            _body = $( 'html, body' ),
+            _window = $( window );
 
         //private methods
-        var _onEvent = function(){
-                _window.on( {
-                    'keydown': function ( e ) {
-                        switch( e.which ) {
+        var  _onEvent = function() {
 
-                            case 32:
-                                _checkScroll( 1 );
-                                break;
-                            case 33:
-                                _checkScroll( -1 );
-                                break;
-                            case 34 :
-                                _checkScroll( 1 );
-                                break;
-                            case 35 :
-                                _checkScroll( 1 );
-                                break;
-                            case 36 :
-                                _checkScroll( -1 );
-                                break;
-                            case 38:
-                                _checkScroll( -1 );
-                                break;
-                            case 40:
-                                _checkScroll( 1 );
-                                break;
-
-                            default:
-                                return;
-                        }
-                    },
-                    'touchmove': function ( e ) {
-
-                        var currentPos = e.originalEvent.touches[0].clientY;
-
-                        if ( currentPos < _lastPosH && !_menu.opened && ( _obj.scrollTop() == 0 ) ) {
-                            _showHero();
-                        }
-                        _lastPos = currentPos;
-
+                _obj.on (
+                    'click', function () {
+                        _backToTop();
                     }
-                });
-                _hero.on( {
-                    'touchmove': function ( e ) {
+                );
 
-                        var currentPos = e.originalEvent.touches[0].clientY;
-
-                        if ( currentPos > _lastPosH ) {
-                            _hideHero();
-                        }
-                        _lastPosH = currentPos;
-
+                _window.on (
+                    'scroll', function () {
+                        _checkScroll();
                     }
-                } );
-                _scrollIcon.on({
-                    click: function () {
-                        _checkScroll(1);
-                        _indicator1.turnOn();
-                    }
-                });
-                _obj.on({
-                    'scroll': function () {
-
-                        if ( _obj.scrollTop() == 0 && _promoActive ){
-                            _indicator1.turnOn();
-                        } else {
-
-                            setTimeout( function () {
-                                _promoActive = true;
-                                return false;
-                            }, 500 )
-
-                        }
-
-                    }
-                });
-                _promoSkip.on( {
-                    click: function() {
-
-                        $( '.site' ).animate( {
-                            scrollTop: _promo.outerHeight()
-                        }, 600);
-
-                        if ( _promoItem.filter( '.active' ).index() == 0 ) {
-                            _firstPromoFlag = true;
-                            _promoFlag = false;
-                            _canScroll = false;
-                        }
-
-                        _indicator1.turnOff();
-                        return false;
-                    }
-                } );
-                _promoPagination.find( 'span' ).on( {
-                    click: function () {
-
-                        $( '.site' ).animate( {
-                            scrollTop: 0
-                        }, 600);
-                        _indicator1.turnOn();
-
-                        var curPoint = $( this ).index();
-
-                        _promoItem.removeClass( 'active' );
-                        _promoItem.eq( curPoint ).addClass( 'active' );
-                        _promoItem.eq( curPoint ).removeClass( 'prev' );
-                        _promoItem.filter( '.active' ).prevAll( '.promo__item' ).addClass( 'prev' );
-                        _promoItem.filter( '.active' ).nextAll( '.promo__item' ).removeClass( 'prev' );
-
-                        _pagination();
-
-                        if ( _promoItem.filter( '.active' ).index() == 0 ) {
-                            _firstPromoFlag = true;
-                            _promoFlag = false;
-                        } else {
-                            _firstPromoFlag = false;
-                            _promoFlag = false;
-                        }
-
-                    }
-                } );
-
-                _indicator = new WheelIndicator({
-                    elem: document.querySelector( '.element' ),
-                    callback: function( e ){
-
-                        var directionY = ( e.direction == 'up' ) ? -1 : 1;
-
-                        console.log( directionY )
-
-                        if( !_action ){
-                            _checkScroll( directionY );
-                        }
-
-                        if( _action || !_canScroll ){
-                            return false;
-                        }
-
-                    }
-                });
-                _indicator.getOption( 'preventMouse' );
-
-                _indicator1 = new WheelIndicator({
-                    elem: document.querySelector( '.element1' ),
-                    callback: function( e ){
-
-                        var directionY = ( e.direction == 'up' ) ? -1 : 1;
-
-                        if( !_action ){
-                            _checkScroll( directionY );
-                        }
-
-                        if( _action || !_canScroll ){
-                            return false;
-                        }
-
-                    }
-                });
-                _indicator1.getOption( 'preventMouse' );
-                _indicator1.turnOff();
+                );
 
             },
-            _initPromo = function () {
+            _backToTop = function() {
 
-                _promoItem.each( function () {
-                    _promoPagination.append( '<span></span>' )
-                } );
-
-                _pagination();
+                _body.animate( { scrollTop : 0 }, 500, 'swing' )
 
             },
-            _pagination  = function () {
+            _checkScroll = function () {
 
-                var curPoint = _promoItem.filter( '.active' ).index(),
-                    span = _promoPagination.find( 'span' );
-
-                span.removeClass( 'active' );
-                span.eq( curPoint ).addClass( 'active' );
-
-            },
-            _checkScroll = function( direction ){
-                if ( direction > 0 && !_canScroll && !_menu.opened && !_promoFlag ){
-                    _hideHero();
-                    _indicator.turnOff();
-                    _indicator1.turnOn();
-                }
-                else if ( direction > 0 && !_canScroll && !_menu.opened && _promoFlag ){
-                    _checkPromoDown();
-                }
-                else if ( direction < 0 && !_canScroll && !_menu.opened && _firstPromoFlag ) {
-                    _showHero();
-                    _indicator.turnOn();
-                    _indicator1.turnOff();
-                    _canScroll = false;
-                }
-                else if ( direction < 0 && ( _obj.scrollTop() == 0 ) && !_menu.opened ) {
-                    _checkPromoUp();
-                }
-            },
-            _checkPromoDown = function () {
-
-                var curElem = _promoItem.filter( '.active' ),
-                    lengthItems = _promoItem.length;
-
-                if ( ( lengthItems - 2 ) >= curElem.index() ) {
-
-                    curElem.each( function () {
-
-                        $( this ).next( '.promo__item' ).addClass( 'active' );
-                        $( this ).addClass( 'prev' );
-                        $( this ).removeClass( 'active' );
-
-                        _firstPromoFlag = false;
-                    } );
-
+                if ( _window.scrollTop() > _body.height() ){
+                    _showBtn();
                 } else {
-                    _canScroll = true;
-                    _promoActive = false;
-                    _indicator1.turnOff();
-                }
-
-                _pagination();
-
-            },
-            _checkPromoUp = function () {
-
-                _canScroll = false;
-
-                var curElem = _promoItem.filter( '.active' );
-
-                if ( curElem.index() >= 1 ) {
-
-                    curElem.each( function () {
-                        $( this ).prev( '.promo__item' ).removeClass( 'prev' );
-                        $( this ).prev( '.promo__item' ).addClass( 'active' );
-                        $( this ).removeClass( 'active' );
-                    } );
-
-                    if ( curElem.index() == 1 ) {
-                        _firstPromoFlag = true;
-                        _promoFlag = false;
-                    }
-
-                }
-
-                _pagination();
-
-            },
-            _hideHero = function(){
-
-                if(!_action){
-                    _action = true;
-
-                    _hero.addClass('hide');
-                    _self.hide = true;
-                    _head.addClass('site__header-hide');
-                    $( '.menu' )[0].obj.destroy();
-
-                    //for css animation
-                    setTimeout(function(){
-                        _action = false;
-                        _promoFlag = true;
-                    }, 500);
-
+                    _hideBtn();
                 }
 
             },
-            _showHero = function(){
+            _showBtn = function() {
 
-                if(!_action){
-                    _action = true;
-
-                    _hero.removeClass('hide');
-                    _head.removeClass('site__header-hide');
-
-                    //for css animation
-                    setTimeout(function(){
-                        _action = false;
-                    }, 300);
-                }
-
-                _promoFlag = false;
+                _obj.addClass( 'show' );
 
             },
-            _construct = function() {
-                _initPromo();
+            _hideBtn = function() {
+
+                _obj.removeClass( 'show' );
+
+            },
+            _init = function() {
                 _onEvent();
-                _obj[ 0 ].obj = _self;
+                _checkScroll();
             };
 
         //public properties
-        _self.hide = false;
 
         //public methods
 
-        _construct();
+        _init();
+    };
+
+    var InfoPanel = function( obj ) {
+
+        //private properties
+        var _obj = obj,
+            _btnShowInfo = _obj.find( '.info__btn-open' ),
+            _infoFrame = _obj.find( '.info__frame' ),
+            _body = $( 'body, html' ),
+            _window = $( window );
+
+        //private methods
+        var  _onEvent = function() {
+
+                _body.on(
+                    'click', function () {
+                        _hidePanelOnMobile();
+                    }
+                );
+
+                _obj.on(
+                    'click', function ( e ) {
+                        e.stopImmediatePropagation();
+                    }
+                );
+
+                _btnShowInfo.on (
+                    'click', function () {
+
+                        if ( !_infoFrame.hasClass( 'show' ) ) {
+                            _showInfoOnMobile();
+                        } else {
+                            _hidePanelOnMobile();
+                        }
+
+                    }
+                );
+
+                _window.on (
+                    'resize', function () {
+                        _hidePanelOnMobile();
+                    }
+                );
+
+            },
+            _showInfoOnMobile = function () {
+                _infoFrame.addClass( 'show' );
+            },
+            _hidePanelOnMobile = function () {
+                _infoFrame.removeClass( 'show' );
+            },
+            _init = function() {
+                _onEvent();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+    };
+
+    var AsideMenu = function( obj ) {
+
+        //private properties
+        var _obj = obj,
+            _mobileBtnOpen = $( '.mobile-btn' ),
+            _moreLinksBtn = _obj.find( '.links__show-more' ),
+            _body = $( 'html, body' ),
+            _window = $( window );
+
+        //private methods
+        var _onEvent = function() {
+
+                _obj.on(
+                    'click', function ( e ) {
+                        e.stopImmediatePropagation();
+                    }
+                );
+
+                _mobileBtnOpen.on (
+                    'click', function ( e ) {
+                        e.stopImmediatePropagation();
+
+                        var curElem = $( this );
+
+                        if ( !curElem.hasClass( 'close' ) ) {
+                            _showMobileAside();
+                        } else {
+                            _hideMobileAside();
+                        }
+
+                    }
+                );
+
+                _body.on(
+                    'click', function () {
+                        _hideMobileAside();
+                    }
+                );
+
+                _moreLinksBtn.on(
+                    'click', function ( e ) {
+
+                        console.log( e )
+                        //
+                        // var curElement = $( this );
+                        //
+                        // if ( !curElement.hasClass( 'hideLinks' ) ) {
+                        //     _showMoreLinks( curElement );
+                        // } else {
+                        //     _showLessLinks( curElement );
+                        // }
+
+                    }
+                );
+
+            },
+            _showMoreLinks = function ( o ) {
+
+                var curElement = o,
+                    curLinksWrap = curElement.prev( '.links__wrap' ),
+                    numberViewLinks = curLinksWrap.data( 'show' );
+
+            },
+            _showLessLinks = function ( o ) {
+
+                var curElement = o,
+                    curLinksWrap = curElement.prev( '.links__wrap' ),
+                    numberViewLinks = curLinksWrap.data( 'show' );
+
+            },
+            _initScroll = function () {
+
+                _obj.perfectScrollbar();
+
+            },
+            _showMobileAside = function() {
+
+                _mobileBtnOpen.addClass( 'close' );
+                _obj.addClass( 'show' );
+
+            },
+            _hideMobileAside = function() {
+
+                _mobileBtnOpen.removeClass( 'close' );
+                _obj.removeClass( 'show' );
+
+            },
+            _init = function() {
+                // _showLessLinks();
+                _initScroll();
+                _onEvent();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+    };
+
+    var Preload = function( obj ) {
+
+        //private properties
+        var _obj = obj;
+
+        //private methods
+        var  _onEvent = function() {
+
+            },
+            _showSite = function() {
+
+                _obj.addClass( 'hide' );
+
+                setTimeout(function() {
+                    _obj.remove();
+                }, 750);
+
+            },
+            _init = function() {
+                _onEvent();
+                _showSite();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+    };
+
+    var SearchPanel = function( obj ) {
+
+        //private properties
+        var _obj = obj,
+            _btnShowMobile = _obj.find( '.search__btn-open' ),
+            _btnCancel = _obj.find( '.search__btn-cancel' ),
+            _searchForm = _obj.find( '.search__form' ),
+            _body = $( 'html, body' ),
+            _window = $( window );
+
+        //private methods
+        var  _onEvent = function() {
+
+                _obj.on(
+                    'click', function ( e ) {
+                        e.stopImmediatePropagation();
+                    }
+                );
+
+                _body.on(
+                    'click', function () {
+
+                        if ( _body.width() < 1200 ){
+                            _hidePanelOnMobile();
+                        }
+
+                    }
+                );
+
+                _btnShowMobile.on (
+                    'click', function () {
+                        _showPanelOnMobile();
+                    }
+                );
+
+                _btnCancel.on (
+                    'click', function () {
+                        _hidePanelOnMobile();
+                        return false;
+                    }
+                );
+
+                _window.on (
+                    'resize', function () {
+                        _hidePanelOnMobile();
+                    }
+                );
+
+            },
+            _showPanelOnMobile = function () {
+
+                _searchForm.addClass( 'show' );
+                _searchForm.css( {
+                    'left': _btnShowMobile.offset().left * -1,
+                    'width': _body.width()
+                } );
+
+            },
+            _hidePanelOnMobile = function () {
+
+                _searchForm.css( {
+                    'left': 0,
+                    'width': 0
+                } );
+                _searchForm.removeClass( 'show' );
+
+            },
+            _init = function() {
+                _onEvent();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
     };
 
 } )();
