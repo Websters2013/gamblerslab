@@ -38,6 +38,13 @@ var paths = {
                 'app/js/jquery.labels.js',
                 'app/js/jquery.form.validator.js'
             ]
+        },
+        {
+            dist: 'search-results.min.js',
+            contains: [
+                'app/js/jquery.main.js',
+                'app/js/jquery.search-load.js'
+            ]
         }
     ],
     vendorScripts: 'app/js/vendors/**/*.js',
@@ -130,6 +137,7 @@ gulp.task('watch', function() {
     gulp.watch(paths.images,    ['images',  browserSync.reload]);
     gulp.watch(paths.pictures,    ['pictures',  browserSync.reload]);
     gulp.watch(paths.fonts,    ['fonts']);
+    gulp.watch(paths.php,    ['php']);
     gulp.watch(paths.styles,    ['styles', browserSync.reload]);
     gulp.watch(paths.vendorStyles,    [ 'vendorStyles' ]);
     gulp.watch(paths.views,     ['views',   browserSync.reload]);

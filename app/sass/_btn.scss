@@ -12,7 +12,7 @@
   line-height: 12px;
   color: #FFFFFF;
   letter-spacing: -0.2px;
-  border-radius: 3px;
+  border-radius: 2px;
   border: 2px solid transparent;
   -webkit-transition: background 0.3s, color 0.3s, border 0.3s;
   transition: background 0.3s, color 0.3s, border 0.3s;
@@ -36,7 +36,7 @@
   }
 
   &_2 {
-    padding: 0 15px;
+    padding: 0 12px;
     color: #45d1de;
     background: transparent;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
@@ -70,6 +70,10 @@
   .btn {
     padding: 0 21px;
 
+    &_2 {
+      padding: 0 27px;
+    }
+
   }
 
 }
@@ -78,6 +82,10 @@
 
   .btn {
     padding: 0 21px;
+
+    &_2 {
+      padding: 0 27px;
+    }
 
   }
 
