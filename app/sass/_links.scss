@@ -160,6 +160,25 @@
 
   }
 
+  &_casinos{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    background-color: inherit;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    z-index: 1;
+
+    .links__wrap{
+
+    }
+
+    &.active{
+
+    }
+
+  }
+
 }
 
 @media (min-width: $tablet-portrait) {

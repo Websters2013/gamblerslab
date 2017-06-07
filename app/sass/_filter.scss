@@ -20,7 +20,7 @@
   &__wrap{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 21px;
 
     .websters-select{
@@ -197,12 +197,12 @@
     }
 
     &__wrap{
-      align-items: flex-start;
       margin-bottom: 17px;
     }
 
     &__frame{
       width: calc( 100% - 295px );
+      margin-right: 10px;
 
       &-btn{
         display: none;
