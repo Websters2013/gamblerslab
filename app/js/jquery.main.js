@@ -30,13 +30,17 @@
 
     } );
 
-
     var AsideMenu = function( obj ) {
 
         //private properties
         var _obj = obj,
+            _links = _obj.find( 'a' ),
+            _bonusSearch = _obj.find( '.links__show-all' ),
+            _bonusCasinos = _obj.find( '.links_casinos' ),
+            _header = $( '.site__header' ),
             _mobileBtnOpen = $( '.mobile-btn' ),
-            _moreLinksBtn = _obj.find( '.links__show-more' ),
+            _lessLinksBox = _obj.find( '.links_less' ),
+            _moreLinksBtn = _lessLinksBox.find( '.links__show-more' ),
             _body = $( 'html, body' ),
             _window = $( window ),
             _objTopPosition = _obj.offset().top;
@@ -44,26 +48,26 @@
         //private methods
         var _onEvent = function() {
 
-                _window.on(
-                    'scroll', function () {
+                _window.on( {
+                    'scroll': function () {
 
-                        console.log(_objTopPosition)
-                        console.log(_window.scrollTop())
+                        if (_window.scrollTop() >= _objTopPosition && _window.width() >= 1200) {
+                            _fixedDesktopAside();
+                        } else if (_window.scrollTop() < _objTopPosition && _window.width() >= 1200) {
+                            _unfixedDesktopAside();
+                        }
 
-                        if ( _window.scrollTop() >= _objTopPosition ){
-                            _obj.addClass( 'fixed' );
-                        } else {
-                            _obj.removeClass( 'fixed' );
+                    },
+                    'resize': function () {
+
+                        if (_window.scrollTop() >= _objTopPosition && _window.width() >= 1200) {
+                            _fixedDesktopAside();
+                        } else if (_window.scrollTop() < _objTopPosition && _window.width() >= 1200) {
+                            _unfixedDesktopAside();
                         }
 
                     }
-                );
-
-                _obj.on(
-                    'click', function ( e ) {
-                        e.stopImmediatePropagation();
-                    }
-                );
+                } );
 
                 _mobileBtnOpen.on (
                     'click', function ( e ) {
@@ -81,62 +85,135 @@
                 );
 
                 _body.on(
-                    'click', function () {
-                        _hideMobileAside();
+                    'click', function ( e ) {
+
+                        if ( $( e.target ).closest( _obj ).length == 0 ){
+                            _hideMobileAside();
+                        }
+
                     }
                 );
 
                 _moreLinksBtn.on(
-                    'click', function ( e ) {
+                    'click', function () {
 
-                        console.log( e )
-                        //
-                        // var curElement = $( this );
-                        //
-                        // if ( !curElement.hasClass( 'hideLinks' ) ) {
-                        //     _showMoreLinks( curElement );
-                        // } else {
-                        //     _showLessLinks( curElement );
-                        // }
+                        var curElement = $( this );
+
+                        if ( !curElement.hasClass( 'hide-links' ) ) {
+                            _showMoreLinks( curElement );
+                        } else {
+                            _showLessLinks( curElement );
+                        }
 
                     }
                 );
+
+                _bonusSearch.on(
+                    'click', function () {
+
+                        _obj.css( 'height', _body.height() - _header.height() );
+                        _obj.perfectScrollbar( 'destroy' );
+
+                        _bonusCasinos.addClass( 'active' );
+
+                    }
+                );
+
+                _links.on(
+                    'click', function () {
+                        _obj.perfectScrollbar( 'update' );
+                    }
+                )
 
             },
             _showMoreLinks = function ( o ) {
 
                 var curElement = o,
                     curLinksWrap = curElement.prev( '.links__wrap' ),
-                    numberViewLinks = curLinksWrap.data( 'show' );
+                    curBoxLinks = curLinksWrap.find( '.links__item' );
+
+                curBoxLinks.show();
+                curElement.addClass( 'hide-links' );
+                curElement.html( 'Show Less' );
+
+                _obj.perfectScrollbar( 'update' );
 
             },
             _showLessLinks = function ( o ) {
 
-                var curElement = o,
-                    curLinksWrap = curElement.prev( '.links__wrap' ),
-                    numberViewLinks = curLinksWrap.data( 'show' );
+                if ( o.length > 0 ){
 
+
+                    var curElement = o;
+
+                    _lessLinksBox = o.parents( '.links_less' );
+
+                    curElement.removeClass( 'hide-links' );
+                    curElement.html( 'Show More' );
+
+                }
+
+                _lessLinksBox.each( function () {
+
+                    var curBox = $( this ),
+                        curWrap = curBox.find( '.links__wrap' ),
+                        viewNum = curWrap.data( 'show' ),
+                        curBoxLinks = curBox.find( '.links__item' );
+
+                    for ( var i = viewNum; i <= curBoxLinks.length; i++ ){
+                        curBoxLinks.eq( i ).hide();
+                    }
+
+                } );
+
+                _obj.perfectScrollbar( 'update' );
+
+            },
+            _fixedDesktopAside = function () {
+                _obj.addClass( 'fixed' );
+                _obj.css( 'height', _body.height() );
+                _obj.perfectScrollbar( 'update' );
+            },
+            _unfixedDesktopAside = function () {
+                _obj.removeClass( 'fixed' );
+                _obj.css( 'height', _body.height() - _header.height() );
+                _obj.perfectScrollbar( 'update' );
+            },
+            _showMobileAside = function() {
+
+                _mobileBtnOpen.addClass( 'close' );
+                _obj.addClass( 'show' );
+                _body.css( 'overflow-y', 'hidden' );
+
+                _uploadAsideHeight();
+
+            },
+            _hideMobileAside = function() {
+
+                _mobileBtnOpen.removeClass( 'close' );
+
+                _obj.removeClass( 'show' );
+
+                _body.css( 'overflow-y', 'visible' );
+
+            },
+            _uploadAsideHeight = function () {
+                _obj.css( 'height', _body.height() - _header.height() );
+                _initScroll();
             },
             _initScroll = function () {
 
                 _obj.perfectScrollbar();
 
             },
-            _showMobileAside = function() {
-
-                _mobileBtnOpen.addClass( 'close' );
-                _obj.addClass( 'show' );
-
-            },
-            _hideMobileAside = function() {
-
-                _mobileBtnOpen.removeClass( 'close' );
-                _obj.removeClass( 'show' );
-
-            },
             _init = function() {
-                // _showLessLinks();
-                _initScroll();
+                _showLessLinks( 0 );
+                _uploadAsideHeight();
+
+                if ( _window.scrollTop() >= _objTopPosition && _window.width() >= 1200 ){
+                    _fixedDesktopAside();
+                }
+
                 _onEvent();
             };
 
@@ -216,7 +293,7 @@
             _filterCheckbox = _filterItem.find( 'input' );
 
         //private methods
-        var  _onEvent = function() {
+        var _onEvent = function() {
 
                 _filterBtn.on( 'click', function () {
 

@@ -10,7 +10,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 12px;
-  color: #FFFFFF;
+  color: #fff;
   letter-spacing: -0.2px;
   border-radius: 2px;
   border: 2px solid transparent;
@@ -24,15 +24,23 @@
     width: 100%;
     text-align: center;
   }
+
   &:hover {
     border-color: #45d1de;
     background: #fff;
     color: #45d1de;
   }
+
   &:active {
     border-color: #45d1de;
     background: #fff;
     color: #45d1de;
+  }
+
+  &_1{
+    width: 119px;
+    height: 30px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   }
 
   &_2 {
@@ -69,6 +77,10 @@
 
   .btn {
     padding: 0 21px;
+
+    &_1{
+      width: 111px;
+    }
 
     &_2 {
       padding: 0 27px;

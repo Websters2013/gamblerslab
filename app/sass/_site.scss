@@ -8,15 +8,16 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    position: relative;
     height: 50px;
     background-color: #45d1de;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14),0 4px 8px 0 rgba(0, 0, 0, 0.28);
+    z-index: 2;
   }
 
   &__aside{
     position: absolute;
     top: 50px;
-    bottom: 0;
     left: 0;
     width: 100%;
     max-width: 339px;
@@ -29,6 +30,7 @@
     z-index: 5;
     -webkit-transition: transform .3s ease, opacity .3s ease, visibility .3s ease;
     transition: transform .3s ease, opacity .3s ease, visibility .3s ease;
+    overflow: hidden;
 
     &.show{
       opacity: 1;
@@ -38,12 +40,14 @@
     }
 
     .ps-scrollbar-y-rail{
-      width: 10px;
+      width: 5px;
       background-color: #445669!important;
       opacity: 1!important;
+      z-index: 2;
     }
 
     .ps-scrollbar-y{
+      width: 5px!important;
       background-color: #45b8c7!important;
       cursor: pointer;
     }
@@ -66,6 +70,15 @@
     &__aside{
       top: 75px;
       padding-top: 37px;
+
+      .ps-scrollbar-y-rail {
+        width: 10px;
+      }
+
+      .ps-scrollbar-y {
+        width: 10px !important;
+      }
+
     }
 
     &__content{
@@ -81,6 +94,17 @@
       display: flex;
       justify-content: space-between;
       align-items: stretch;
+
+      &:before{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 339px;
+        background-color: #283747;
+        content: '';
+      }
+
     }
 
     &__aside{
