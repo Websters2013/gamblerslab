@@ -39,6 +39,7 @@
             _bonusSearch = _obj.find( '.links__show-all' ),
             _bonusCasinos = _obj.find( '.links_casinos' ),
             _hideSearch = _obj.find( '.links__back' ),
+            _searchInput = _obj.find( '.links__search-input' ),
             _header = $( '.site__header' ),
             _mobileBtnOpen = $( '.mobile-btn' ),
             _lessLinksBox = _obj.find( '.links_less' ),
@@ -129,14 +130,33 @@
                     'click', function () {
                         _obj.perfectScrollbar();
                     }
+                );
+
+                _searchInput.on(
+                    'keyup', function( e ) {
+                        if( e.keyCode == 27 ){
+
+                        } else if( e.keyCode == 40 ){
+
+                        } else if( e.keyCode == 38 ){
+
+                        } else if ( e.keyCode == 13 ) {
+
+                        } else {
+                            _ajaxRequest();
+                        }
+                    }
                 )
 
             },
             _ajaxRequest = function(){
 
-                _request = $.ajax({
+                _request = $.ajax( {
                     url: _obj.data( 'link' ),
-                    // data: ,
+                    data: {
+                        value: _searchInput.val(),
+                        loadedCount: _searchInput.val().length
+                    },
                     dataType: 'json',
                     type: 'GET',
                     success: function ( data ) {
@@ -149,7 +169,7 @@
                             console.log( 'err' );
                         }
                     }
-                });
+                } );
 
             },
             _showMoreLinks = function ( o ) {
@@ -168,7 +188,6 @@
             _showLessLinks = function ( o ) {
 
                 if ( o.length > 0 ){
-
 
                     var curElement = o;
 
@@ -271,9 +290,19 @@
             },
             _loadData = function ( data ) {
 
-                var arr = data;
+                var arr = data.items;
 
+                for ( var i = 0; i < arr.length; i++ ){
 
+                    var curLinksWrap = _bonusCasinos.children( '.links__wrap' );
+
+                    if ( i == 0 ){
+                        curLinksWrap.html( '<a href="'+ arr[i].href +'" class="links__item"><i>'+ arr[i].title +'</i><span>'+ arr[i].countBonuses +'</span></a>' );
+                    } else {
+                        curLinksWrap.append( '<a href="'+ arr[i].href +'" class="links__item"><i>'+ arr[i].title +'</i><span>'+ arr[i].countBonuses +'</span></a>' );
+                    }
+
+                }
 
             },
             _init = function() {

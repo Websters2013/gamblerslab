@@ -228,7 +228,7 @@
 
     .links__wrap{
       position: relative;
-      height: 320px;
+      max-height: 320px;
     }
 
     &.active{
@@ -242,6 +242,7 @@
 
       .links__wrap{
         height: calc( 100% - 90px );
+        max-height: none;
       }
 
       .links__search{
