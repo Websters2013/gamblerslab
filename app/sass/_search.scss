@@ -110,6 +110,12 @@
 
   }
 
+  &__popup{
+    position: absolute;
+    opacity: 1;
+    visibility: hidden;
+  }
+
 }
 
 @media (min-width: $tablet-portrait) {

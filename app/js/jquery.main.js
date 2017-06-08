@@ -35,15 +35,18 @@
         //private properties
         var _obj = obj,
             _links = _obj.find( 'a' ),
+            _linksWraps = _obj.find( '.links' ),
             _bonusSearch = _obj.find( '.links__show-all' ),
             _bonusCasinos = _obj.find( '.links_casinos' ),
+            _hideSearch = _obj.find( '.links__back' ),
             _header = $( '.site__header' ),
             _mobileBtnOpen = $( '.mobile-btn' ),
             _lessLinksBox = _obj.find( '.links_less' ),
             _moreLinksBtn = _lessLinksBox.find( '.links__show-more' ),
             _body = $( 'html, body' ),
             _window = $( window ),
-            _objTopPosition = _obj.offset().top;
+            _objTopPosition = _obj.offset().top,
+            _request = new XMLHttpRequest();
 
         //private methods
         var _onEvent = function() {
@@ -110,20 +113,43 @@
 
                 _bonusSearch.on(
                     'click', function () {
+                        _showBonusSearch();
+                        return false;
+                    }
+                );
 
-                        _obj.css( 'height', _body.height() - _header.height() );
-                        _obj.perfectScrollbar( 'destroy' );
-
-                        _bonusCasinos.addClass( 'active' );
-
+                _hideSearch.on(
+                    'click', function () {
+                        _hideBonusSearch();
+                        return false;
                     }
                 );
 
                 _links.on(
                     'click', function () {
-                        _obj.perfectScrollbar( 'update' );
+                        _obj.perfectScrollbar();
                     }
                 )
+
+            },
+            _ajaxRequest = function(){
+
+                _request = $.ajax({
+                    url: _obj.data( 'link' ),
+                    // data: ,
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function ( data ) {
+
+                        _loadData( data );
+
+                    },
+                    error: function ( XMLHttpRequest ) {
+                        if ( XMLHttpRequest.statusText != "abort" ) {
+                            console.log( 'err' );
+                        }
+                    }
+                });
 
             },
             _showMoreLinks = function ( o ) {
@@ -169,6 +195,43 @@
                 _obj.perfectScrollbar( 'update' );
 
             },
+            _showBonusSearch = function () {
+
+                if ( _obj.hasClass( 'fixed' ) ){
+                    _obj.css( 'height', _body.height() );
+                } else {
+                    _obj.css( 'height', _body.height() - _header.height() );
+                }
+
+                _obj.perfectScrollbar( 'destroy' );
+
+                _linksWraps.addClass( 'hide' );
+
+                _bonusCasinos.addClass( 'active' );
+
+                setTimeout( function () {
+                    _linksWraps.find( '.links__wrap' ).perfectScrollbar();
+                }, 500 );
+
+            },
+            _hideBonusSearch = function () {
+
+                _linksWraps.find( '.links__wrap' ).perfectScrollbar( 'destroy' );
+
+                _linksWraps.removeClass( 'hide' );
+                _bonusCasinos.removeClass( 'active' );
+
+                if ( _obj.hasClass( 'fixed' ) ){
+                    _obj.css( 'height', _body.height() );
+                } else {
+                    _obj.css( 'height', _body.height() - _header.height() );
+                }
+
+                setTimeout( function () {
+                    _initScroll();
+                }, 500 );
+
+            },
             _fixedDesktopAside = function () {
                 _obj.addClass( 'fixed' );
                 _obj.css( 'height', _body.height() );
@@ -206,9 +269,18 @@
                 _obj.perfectScrollbar();
 
             },
+            _loadData = function ( data ) {
+
+                var arr = data;
+
+
+
+            },
             _init = function() {
                 _showLessLinks( 0 );
                 _uploadAsideHeight();
+
+                _ajaxRequest();
 
                 if ( _window.scrollTop() >= _objTopPosition && _window.width() >= 1200 ){
                     _fixedDesktopAside();
