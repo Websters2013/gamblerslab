@@ -56,6 +56,16 @@
 
   &__content{
     padding: 17px 13px 17px 15px;
+
+    &_404 {
+      @include inline-flex();
+      @include flex-direction();
+      @include justify-content(center);
+      @include align-items(center);
+      width: 100%;
+      min-height: calc(100vh - 50px);
+    }
+
   }
 
 }
@@ -83,6 +93,11 @@
 
     &__content{
       padding: 37px 20px 12px;
+
+      &_404 {
+        min-height: calc(100vh - 75px);
+      }
+
     }
 
   }
