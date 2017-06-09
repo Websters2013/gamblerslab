@@ -4,7 +4,7 @@
 
     $( function(){
 
-        $.each( $( '.search-results__wrap' ), function() {
+        $.each( $( '.casino-bonuses' ), function() {
 
             new AjaxLoadContent ( $( this ) );
 
@@ -18,9 +18,9 @@
         //private properties
         var _self = this,
             _obj = obj,
-            _btnMore = _obj.find( '.search-results__more' ),
+            _btnMore = _obj.find( '.casino-bonuses__more' ),
             _objAction = _obj.data( 'path' ),
-            _wrapper = _obj.find( '.search-results__items' ),
+            _wrapper = _obj.find( '.casino-bonuses__items' ),
             _request = new XMLHttpRequest();
 
         //private methods
@@ -43,9 +43,9 @@
                 $.each( msg.items, function() {
 
                     var newBlock = $( '<div>\
-                                        <a href="'+ this.href +'" class="search-results__item hidden">\
-                                            <h2 class="search-results__item-title">'+ this.title +'</h2>\
-                                            <div class="search-results__footer">\
+                                        <a href="'+ this.href +'" class="casino-bonuses__item hidden">\
+                                            <h2 class="casino-bonuses__item-title">'+ this.title +'</h2>\
+                                            <div class="casino-bonuses__footer">\
                                                 <div>'+ this.countBonuses +'</div>\
                                                 <div>'+ this.countToday +'</div>\
                                             </div>\
@@ -83,7 +83,7 @@
             },
             _ajaxRequest = function() {
 
-                var items = _obj.find( '.search-results__items>div' );
+                var items = _obj.find( '.casino-bonuses__items>div' );
                 _request.abort();
                 _request = $.ajax( {
                     url: _objAction,
