@@ -75,7 +75,6 @@
 
                 _mobileBtnOpen.on (
                     'click', function ( e ) {
-                        e.stopImmediatePropagation();
 
                         var curElem = $( this );
 
@@ -90,6 +89,10 @@
 
                 _body.on(
                     'click', function ( e ) {
+
+                        if ( $( e.target ).closest( _mobileBtnOpen ).length != 0  ){
+                            return false;
+                        }
 
                         if ( $( e.target ).closest( _obj ).length == 0 ){
                             _hideMobileAside();
@@ -290,9 +293,14 @@
             },
             _loadData = function ( data ) {
 
-                var arr = data.items;
+                var arr = data.items,
+                    num = 5;
 
-                for ( var i = 0; i < arr.length; i++ ){
+                if ( _searchInput.val() != '' ){
+                    num = arr.length;
+                }
+
+                for ( var i = 0; i < num; i++ ){
 
                     var curLinksWrap = _bonusCasinos.children( '.links__wrap' );
 
@@ -474,14 +482,12 @@
         var  _onEvent = function() {
 
                 _body.on(
-                    'click', function () {
-                        _hidePanelOnMobile();
-                    }
-                );
-
-                _obj.on(
                     'click', function ( e ) {
-                        e.stopImmediatePropagation();
+
+                        if ( $( e.target ).closest( _obj ).length == 0 ){
+                            _hidePanelOnMobile();
+                        }
+
                     }
                 );
 
@@ -558,23 +564,22 @@
             _btnShowMobile = _obj.find( '.search__btn-open' ),
             _btnCancel = _obj.find( '.search__btn-cancel' ),
             _searchForm = _obj.find( '.search__form' ),
+            _searchInput = _obj.find( 'input' ),
+            _searchPopup = _obj.find( '.search__popup' ),
             _body = $( 'html, body' ),
-            _window = $( window );
+            _window = $( window ),
+            _request = new XMLHttpRequest();
 
         //private methods
-        var  _onEvent = function() {
-
-                _obj.on(
-                    'click', function ( e ) {
-                        e.stopImmediatePropagation();
-                    }
-                );
+        var _onEvent = function() {
 
                 _body.on(
-                    'click', function () {
+                    'click', function ( e ) {
 
-                        if ( _body.width() < 1200 ){
+                        if ( $( e.target ).closest( _obj ).length == 0 && _body.width() < 1200 ){
                             _hidePanelOnMobile();
+                        } else if ( $( e.target ).closest( _obj ).length == 0 && _body.width() >= 1200 ){
+                            _reduceSearch();
                         }
 
                     }
@@ -588,8 +593,25 @@
 
                 _btnCancel.on (
                     'click', function () {
-                        _hidePanelOnMobile();
+
+                        if ( _body.width() < 1200 ) {
+                            _hidePanelOnMobile();
+                        } else if ( _body.width() >= 1200 ) {
+                            _reduceSearch();
+                        }
                         return false;
+                    }
+                );
+
+                _searchInput.on (
+                    'focus', function () {
+
+                        if ( _body.width() < 1200 ) {
+                            _showPopup();
+                        } else if ( _body.width() >= 1200 ) {
+                            _increaseSearch();
+                        }
+
                     }
                 );
 
@@ -602,6 +624,62 @@
 
                     }
                 );
+
+            },
+            _ajaxRequest = function(){
+
+                _request = $.ajax( {
+                    url: _obj.data( 'link' ),
+                    data: {
+                        value: _searchInput.val(),
+                        loadedCount: _searchInput.val().length
+                    },
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function ( data ) {
+
+                        _loadData( data );
+
+                    },
+                    error: function ( XMLHttpRequest ) {
+                        if ( XMLHttpRequest.statusText != "abort" ) {
+                            console.log( 'err' );
+                        }
+                    }
+                } );
+
+            },
+            _increaseSearch = function () {
+
+                _searchForm.addClass( 'increase' );
+
+                setTimeout( function () {
+                    _searchPopup.addClass( 'show' );
+                }, 300 );
+
+            },
+            _reduceSearch = function () {
+
+                _searchPopup.removeClass( 'show' );
+
+                setTimeout( function () {
+                    _searchForm.removeClass( 'increase' );
+                }, 300 );
+
+            },
+            _showPopup = function () {
+
+                _searchPopup.addClass( 'show' );
+
+                _searchPopup.css( {
+                    'left': _btnShowMobile.offset().left * -1 + 10,
+                    'width': _body.width() - 20
+                } );
+
+            },
+            _hidePopup = function () {
+
+                _searchPopup.removeClass( 'show' );
 
             },
             _showPanelOnMobile = function () {
@@ -621,8 +699,14 @@
                 } );
                 _searchForm.removeClass( 'show' );
 
+                _hidePopup();
+
+            },
+            _loadData = function () {
+
             },
             _init = function() {
+                _ajaxRequest();
                 _onEvent();
             };
 

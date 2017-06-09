@@ -80,7 +80,7 @@
 @media (min-width: $desktop) {
 
   .casino-info{
-    margin-bottom: 27px;
+    margin-bottom: 29px;
 
     h1{
       margin-bottom: 19px;
@@ -95,6 +95,7 @@
 
     &__content{
       width: calc( 100% - 172px );
+      margin-top: -4px;
     }
 
   }

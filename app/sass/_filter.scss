@@ -259,6 +259,10 @@
 
   .filter{
 
+    &__title{
+      margin-bottom: 14px;
+    }
+
     &__frame{
       width: calc( 100% - 447px);
     }

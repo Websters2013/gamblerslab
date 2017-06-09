@@ -365,7 +365,7 @@ if ( $loadedCount == 0 ){
         "items":[
             {
                 "title": "10Bet Casino",
-                "countBonuses": "3m",
+                "countTime": "3m",
                 "href": "#"
             },
             {
@@ -422,7 +422,7 @@ if ( $loadedCount == 0 ){
         "items":[
             {
                 "title": "10Bet Casino",
-                "countBonuses": "3m",
+                "countTime": "3m",
                 "href": "#"
             }
         ]
