@@ -1,0 +1,57 @@
+.single-bonus {
+
+  &__back {
+    margin: 0 0 21px;
+    padding: 0 26px;
+  }
+
+  .contact-us {
+    margin-bottom: 35px;
+    border-bottom: 1px solid #dce0db;
+
+    &__form {
+      margin: 0 0 30px;
+    }
+
+  }
+
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .single-bonus{
+
+    .contact-us {
+      margin-top: 54px;
+      border-bottom: none;
+
+      &.hidden {
+        opacity: 1;
+        visibility: visible;
+        height: auto;
+      }
+
+      &__form {
+        margin: 0 0 19px;
+      }
+
+    }
+
+  }
+
+}
+@media (min-width: $desktop) {
+
+  .single-bonus {
+
+    .contact-us {
+
+      &__form {
+        margin: 0 0 10px;
+      }
+
+    }
+
+  }
+
+}

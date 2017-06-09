@@ -45,6 +45,15 @@ var paths = {
                 'app/js/jquery.main.js',
                 'app/js/jquery.search-load.js'
             ]
+        },
+        {
+            dist: 'single-bonus.min.js',
+            contains: [
+                'app/js/jquery.main.js',
+                'app/js/jquery.labels.js',
+                'app/js/jquery.form.validator.js',
+                'app/js/jquery.comments.js'
+            ]
         }
     ],
     vendorScripts: 'app/js/vendors/**/*.js',
