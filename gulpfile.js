@@ -40,6 +40,12 @@ var paths = {
             ]
         },
         {
+            dist: 'content.min.js',
+            contains: [
+                'app/js/jquery.main.js'
+            ]
+        },
+        {
             dist: 'search-results.min.js',
             contains: [
                 'app/js/jquery.main.js',

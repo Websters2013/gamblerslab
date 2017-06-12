@@ -9,12 +9,16 @@
 
     <title>Title</title>
 
+    <link rel="stylesheet" href="css/preloader.css">
     <link rel="stylesheet" href="css/perfect-scrollbar.min.css">
     <link rel="stylesheet" href="css/search-page.css">
 
 </head>
 <body>
 
+    <div class="preload">
+        <div class="preload__element"></div>
+    </div>
     <div class="site">
 
         <header class="site__header">
@@ -23,7 +27,7 @@
                 <span></span>
             </button>
 
-            <h1 class="logo">
+            <a href="#" class="logo">
                 <svg viewBox="0 0 594.61 41.51">
                     <title>Gamblers lab</title>
                     <g>
@@ -42,9 +46,9 @@
                         </g>
                     </g>
                 </svg>
-            </h1>
+            </a>
 
-            <div class="search">
+            <div class="search" data-link="php/header-search.php">
 
                 <button type="submit" class="search__btn-open">
                     <svg viewBox="156 113 17.49 17.49">
@@ -61,11 +65,76 @@
                         </svg>
                     </button>
 
+                    <button type="submit" class="search__btn-cancel"></button>
+
                 </form>
+
+                <div class="search__popup">
+
+                    <div class="search__popup-title">
+                        <h2>Bonus lists (25 results)</h2>
+                        <button class="search__popup-update">Updated</button>
+                    </div>
+
+                    <div class="search__popup-wrap search__popup_lists">
+                        <a href="#" class="search__popup-item">
+                            <i>All Bonuses</i>
+                            <span>3m</span>
+                        </a>
+                        <a href="#" class="search__popup-item">
+                            <i>No Deposit Bonuses</i>
+                            <span>5m</span>
+                        </a>
+                        <a href="#" class="search__popup-item">
+                            <i>Free Spins</i>
+                            <span>2h</span>
+                        </a>
+                        <a href="#" class="search__popup-item">
+                            <i>First Deposit Bonuses</i>
+                            <span>6d</span>
+                        </a>
+                        <a href="#" class="search__popup-item">
+                            <i>Tourament Bonuses</i>
+                            <span>Mar 27, 2017</span>
+                        </a>
+                    </div>
+
+                    <div class="search__popup-title">
+                        <h2>Bonus offers (15 results)</h2>
+                    </div>
+
+                    <div class="search__popup-wrap search__popup_offers">
+                        <a href="#" class="search__popup-item">
+                            <i>15- 100 Free Spins at Casino Extra & Lucky 31 Casino</i>
+                            <span>3m</span>
+                        </a>
+                        <a href="#" class="search__popup-item">
+                            <i>100 Free Spins at Casino Room</i>
+                            <span>5m</span>
+                        </a>
+                        <a href="#" class="search__popup-item">
+                            <i>30 Free Spins at VIP Stakes Casino</i>
+                            <span>2h</span>
+                        </a>
+                        <a href="#" class="search__popup-item">
+                            <i>25$ No Deposit at Cool Cat Casino</i>
+                            <span>6d</span>
+                        </a>
+                        <a href="#" class="search__popup-item">
+                            <i>€10 No Deposit Bonus at VIPSpel Casino</i>
+                            <span>Mar 27, 2017</span>
+                        </a>
+                    </div>
+
+                </div>
 
             </div>
 
             <div class="info">
+
+                <button class="info__btn-open">
+                    <svg viewBox="78 111 20 20"><path d="M11,17h2V11H11ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.011,8.011,0,0,1,12,20ZM11,9h2V7H11Z" transform="translate(76 109)"/></svg>
+                </button>
 
                 <div class="info__frame">
 
@@ -94,17 +163,13 @@
 
                 </div>
 
-                <button class="info__btn-open">
-                    <svg viewBox="78 111 20 20"><path d="M11,17h2V11H11ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.011,8.011,0,0,1,12,20ZM11,9h2V7H11Z" transform="translate(76 109)"/></svg>
-                </button>
-
             </div>
 
         </header>
 
         <div class="site__wrap">
 
-            <aside class="site__aside">
+            <aside class="site__aside" data-link="php/links.php">
 
                 <div class="links">
 
@@ -114,7 +179,7 @@
                     </div>
 
                     <div class="links__wrap">
-                        <a href="#" class="links__item">
+                        <a href="#" class="links__item active">
                             <i>All Bonuses</i>
                             <span>2m</span>
                         </a>
@@ -144,52 +209,27 @@
 
                 <div class="links links_casinos">
 
+                    <a href="" class="links__back">
+                        <svg viewBox="266 75 16 16">
+                            <path d="M20,11H7.83l5.59-5.59L12,4,4,12l8,8,1.41-1.41L7.83,13H20Z" transform="translate(262 71)"/>
+                        </svg>
+                        Back
+                    </a>
+
                     <div class="links__title">
                         <h2>Bonus by Casino</h2>
                     </div>
 
-                    <div class="links__wrap">
-                        <a href="#" class="links__item">
-                            <i>10Bet Casino</i>
-                            <span>3m</span>
-                        </a>
-                        <a href="#" class="links__item">
-                            <i>188Bet Casino</i>
-                            <span>5m</span>
-                        </a>
-                        <a href="#" class="links__item">
-                            <i>21 Casino</i>
-                            <span>1h</span>
-                        </a>
-                        <a href="#" class="links__item">
-                            <i>21 Dukes Casino</i>
-                            <span>11h</span>
-                        </a>
-                        <a href="#" class="links__item">
-                            <i>Very Vegas Mobile Casino</i>
-                            <span>1d</span>
-                        </a>
-                        <a href="#" class="links__item">
-                            <i>King Billy Casino</i>
-                            <span>2d</span>
-                        </a>
-                        <a href="#" class="links__item">
-                            <i>SlotsMobile Casino</i>
-                            <span>2d</span>
-                        </a>
-                        <a href="#" class="links__item">
-                            <i>YoYo Casino</i>
-                            <span>4d</span>
-                        </a>
-                        <a href="#" class="links__item">
-                            <i>Wixstars Caino</i>
-                            <span>6d</span>
-                        </a>
-                        <a href="#" class="links__item">
-                            <i>Buran Casino</i>
-                            <span>Mar 27, 2017</span>
-                        </a>
-                    </div>
+                    <form class="links__search">
+                        <button>
+                            <svg viewBox="156 113 17.49 17.49">
+                                <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"></path>
+                            </svg>
+                        </button>
+                        <input type="text" name="" class="links__search-input" placeholder="Search bonus by casino"/>
+                    </form>
+
+                    <div class="links__wrap"></div>
 
                     <button class="links__show-all">
                         <i>show all casinos</i>
@@ -202,13 +242,53 @@
 
                 </div>
 
-                <div class="links">
+                <div class="links links_less">
 
                     <div class="links__title">
                         <h2>Bonus by Software</h2>
                     </div>
 
                     <div class="links__wrap" data-show="5">
+                        <a href="#" class="links__item">
+                            <i>MicroGaming</i>
+                            <span>2m</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Cryptologic</i>
+                            <span>30m</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>BetOnSoft</i>
+                            <span>1h</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Play’n’GO</i>
+                            <span>1d</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>TopGame</i>
+                            <span>Mar 27, 2017</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>MicroGaming</i>
+                            <span>2m</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Cryptologic</i>
+                            <span>30m</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>BetOnSoft</i>
+                            <span>1h</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Play’n’GO</i>
+                            <span>1d</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>TopGame</i>
+                            <span>Mar 27, 2017</span>
+                        </a>
                         <a href="#" class="links__item">
                             <i>MicroGaming</i>
                             <span>2m</span>
@@ -237,13 +317,53 @@
 
                 </div>
 
-                <div class="links">
+                <div class="links links_less">
 
                     <div class="links__title">
                         <h2>Bonus by Game Type</h2>
                     </div>
 
                     <div class="links__wrap" data-show="5">
+                        <a href="#" class="links__item">
+                            <i>Video Slots</i>
+                            <span>2m</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Blackjack</i>
+                            <span>30m</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Video Poker</i>
+                            <span>1h</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Bingo</i>
+                            <span>1d</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Roulette</i>
+                            <span>Mar 27, 2017</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Video Slots</i>
+                            <span>2m</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Blackjack</i>
+                            <span>30m</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Video Poker</i>
+                            <span>1h</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Bingo</i>
+                            <span>1d</span>
+                        </a>
+                        <a href="#" class="links__item">
+                            <i>Roulette</i>
+                            <span>Mar 27, 2017</span>
+                        </a>
                         <a href="#" class="links__item">
                             <i>Video Slots</i>
                             <span>2m</span>
@@ -350,6 +470,11 @@
 
             </div>
         </div>
+
+        <a href="#" class="back-to-top">
+            <span>back to top</span>
+        </a>
+
     </div>
 
     <script src="js/vendors/jquery-3.2.1.min.js"></script>
