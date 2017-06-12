@@ -69,10 +69,10 @@ if ( $loadedCount == 0 ){
         ]
     }';
 
-} else {
+} else if ( $loadedCount >= 1 && $loadedCount < 5 ) {
 
     $json_data = '{
-        "lists_results": 25, 
+        "lists_results": 15,  
         "lists":[
             {
                 "title": "All Bonuses",
@@ -100,7 +100,7 @@ if ( $loadedCount == 0 ){
                 "href": "#"
             }
         ],
-        "offers_results": 15, 
+        "offers_results": 10, 
         "offers":[
             {
                "title": "30 Free Spins at VIP Stakes Casino",
@@ -130,7 +130,15 @@ if ( $loadedCount == 0 ){
         ]
     }';
 
+} else if ( $loadedCount >= 5 ) {
+
+    $json_data = '{
+        "lists_results": 0,
+        "offers_results": 0
+    }';
+
 };
+
 echo $json_data;
 exit;
 ?>

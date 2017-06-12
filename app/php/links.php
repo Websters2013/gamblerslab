@@ -267,7 +267,7 @@ if ( $loadedCount == 0 ){
         ]
     }';
 
-} else if ( $loadedCount == 2 ) {
+} else if ( $loadedCount >= 1 && $loadedCount < 5 ) {
 
     $json_data = '{
         "items":[
@@ -335,96 +335,15 @@ if ( $loadedCount == 0 ){
                 "title": "King Billy Casino",
                 "countBonuses": "2d",
                 "href": "#"
-            },
-            {
-                "title": "SlotsMobile Casino",
-                "countBonuses": "2d",
-                "href": "#"
-            },
-            {
-                "title": "YoYo Casino",
-                "countBonuses": "4d",
-                "href": "#"
-            },
-            {
-                "title": "Wixstars Caino",
-                "countBonuses": "6d",
-                "href": "#"
-            },
-            {
-                "title": "Buran Casino",
-                "countBonuses": "Mar 27, 2017",
-                "href": "#"
             }
         ]
     }';
 
-} else if ($loadedCount == 3){
+} else if ($loadedCount >= 5){
 
     $json_data = '{
         "items":[
-            {
-                "title": "10Bet Casino",
-                "countTime": "3m",
-                "href": "#"
-            },
-            {
-                "title": "188Bet Casino",
-                "countBonuses": "5m",
-                "href": "#"
-            },
-            {
-               "title": "21 Casino",
-                "countBonuses": "1h",
-                "href": "#"
-            },
-            {
-                "title": "21 Dukes Casino",
-                "countBonuses": "1h",
-                "href": "#"
-            },
-            {
-                "title": "Very Vegas Mobile Casino",
-                "countBonuses": "1d",
-                "href": "#"
-            },
-            {
-                "title": "King Billy Casino",
-                "countBonuses": "2d",
-                "href": "#"
-            },
-            {
-                "title": "SlotsMobile Casino",
-                "countBonuses": "2d",
-                "href": "#"
-            },
-            {
-                "title": "YoYo Casino",
-                "countBonuses": "4d",
-                "href": "#"
-            },
-            {
-                "title": "Wixstars Caino",
-                "countBonuses": "6d",
-                "href": "#"
-            },
-            {
-                "title": "Buran Casino",
-                "countBonuses": "Mar 27, 2017",
-                "href": "#"
-            }
-        ]
-    }';
-
-} else if ($loadedCount > 3){
-
-    $json_data = '{
-        "items":[
-            {
-                "title": "10Bet Casino",
-                "countTime": "3m",
-                "href": "#"
-            }
+       
         ]
     }';
 

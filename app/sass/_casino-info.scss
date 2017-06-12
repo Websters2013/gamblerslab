@@ -96,6 +96,17 @@
     &__content{
       width: calc( 100% - 172px );
       margin-top: -4px;
+
+      a{
+        -webkit-transition: color .3s ease;
+        transition: color .3s ease;
+
+        &:hover{
+          color: #283746;
+        }
+
+      }
+
     }
 
   }

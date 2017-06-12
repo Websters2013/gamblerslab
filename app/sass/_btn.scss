@@ -14,8 +14,6 @@
   letter-spacing: -0.2px;
   border-radius: 2px;
   border: 2px solid transparent;
-  -webkit-transition: background 0.3s, color 0.3s, border 0.3s;
-  transition: background 0.3s, color 0.3s, border 0.3s;
   text-align: center;
   text-transform: uppercase;
   box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2);
@@ -23,12 +21,6 @@
   span {
     width: 100%;
     text-align: center;
-  }
-
-  &:hover {
-    border-color: #45d1de;
-    background: #fff;
-    color: #45d1de;
   }
 
   &:active {
@@ -58,17 +50,13 @@
       transition: fill 0.3s;
     }
 
-    &:hover {
-      border-color: transparent;
-      background: #45d1de;
-      color: #fff;
+  }
 
-      svg {
-        fill: #fff;
-      }
-
-    }
-
+  &_3{
+    width: 119px;
+    height: 30px;
+    background-color: #9e9e9e;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   }
 
 }
@@ -78,12 +66,21 @@
   .btn {
     padding: 0 21px;
 
-    &_1{
+    &_1, &_3{
       width: 111px;
     }
 
     &_2 {
       padding: 0 27px;
+    }
+
+    &_4{
+      width: 152px;
+      height: 30px;
+      margin-top: 14px;
+      background-color: #fff;
+      color: #0fc2c8;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     }
 
   }
@@ -94,6 +91,13 @@
 
   .btn {
     padding: 0 21px;
+    -webkit-transition: box-shadow .3s ease;
+    transition: box-shadow .3s ease;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    }
 
     &_2 {
       padding: 0 27px;

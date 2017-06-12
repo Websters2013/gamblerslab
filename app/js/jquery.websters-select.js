@@ -18,7 +18,6 @@
             _optionType = params.optionType || 0,
             _showType = params.showType || 0,
             _visible = params.visible || 5,
-            _device = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent ),
             _text = $( '<span class="websters-select__item"></span>' ),
             _wrap = $( '<div class="websters-select"></div>' ),
             _window = $( window ),
@@ -28,7 +27,7 @@
 
         //private methods
         var _addWrap = function(){
-                var curText = '';
+                var curText = 'Sort by';
 
                 _obj.css( {
                     opacity: 0
@@ -46,7 +45,7 @@
                     }
                 } );
 
-                if( curText == '' ){
+                if( curText == '' && _window >= 1200 ){
                     curText =  _obj.find( 'option').eq( 0 ).text();
                 }
                 _text.text( curText );
@@ -83,10 +82,9 @@
                     _text.text( $( this ).find( 'option:selected' ).text() );
                 } );
 
-                if( _optionType == 1 && !_device ){
+                if( _optionType == 1 ){
                     _wrap.on( {
-                        'click': function( e ){
-                            e.stopPropagation();
+                        'click': function( ){
 
                             if( _opened ){
                                 _hidePopup();
@@ -97,18 +95,24 @@
                         }
                     } );
 
-                    _window.on( {
-                        'click': function(){
-                            if( _opened ){
+                    _body.on( {
+                        'click': function( e ){
+
+                            if ( $( e.target ).closest( _wrap ).length != 0  ){
+                                return false;
+                            }
+
+                            if ( $( e.target ).closest( $( '.websters-select__popup' ) ).length == 0 ){
                                 _hidePopup();
                             }
+
                         }
                     } );
                 }
             },
             _selectViewType = function(){
 
-                if( !_optionType || _device ){
+                if( !_optionType ){
                     _setMobileView();
                 } else if( _optionType == 1 ){
                     _setCustom1();
@@ -119,6 +123,18 @@
             },
             _setMobileView = function(){
                 _wrap.addClass( 'websters-select_mobile' );
+            },
+            _illuminationItem = function() {
+
+                var sortPopup = $( '.websters-select__popup' ),
+                    sortItem = _obj.find( 'option' );
+
+                if ( sortItem.eq( 0 ).is(":selected") ){
+                    sortPopup.addClass( 'gray' );
+                } else {
+                    sortPopup.removeClass( 'gray' );
+                }
+
             },
             _showPopup = function(){
                 var selects = $( 'select' ),
@@ -145,7 +161,7 @@
                 _obj.find( 'option' ).each( function( i ){
                     var curItem = $( this );
 
-                    if( i == curIndex ){
+                    if ( i == curIndex ){
                         list.append( '<li class="active">' + curItem.text() + '</li>' );
                     } else {
                         list.append( '<li>' + curItem.text() + '</li>' );
@@ -158,9 +174,8 @@
                 _wrap.addClass( 'websters-select_opened' );
 
                 _popup.css( {
-                    width: _wrap.outerWidth(),
-                    left: offset.left,
-                    top: offset.top + _wrap.outerHeight()
+                    top: offset.top + _wrap.outerHeight(),
+                    left: offset.left - 40
                 } );
 
                 maxHeight = _popup.outerHeight();
@@ -187,13 +202,13 @@
                     'click': function( e ){
                         var index = $( this ).index();
 
-                        e.stopPropagation();
-
                         _obj.val( _obj.find( 'option' ).eq( index ).attr( 'value' ) );
                         _obj.trigger( 'change' );
                         _hidePopup();
                     }
                 } );
+
+                _illuminationItem();
 
             };
 

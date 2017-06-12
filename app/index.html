@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="css/preloader.css">
 
+    <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/perfect-scrollbar.min.css">
     <link rel="stylesheet" href="css/index.css">
 
@@ -58,7 +59,7 @@
                     </svg>
                 </button>
 
-                <form class="search__form">
+                <form class="search__form" action="search-result.html">
 
                     <input type="search" placeholder="Search"/>
                     <button type="submit" class="search__btn-find">
@@ -71,61 +72,27 @@
 
                 </form>
 
-                <div class="search__popup">
+                <div class="search__popup load">
 
                     <div class="search__popup-title">
-                        <h2>Bonus lists (25 results)</h2>
+                        <h2>Bonus lists (<span class="search__lists-results"></span> results)</h2>
                         <button class="search__popup-update">Updated</button>
                     </div>
 
-                    <div class="search__popup-wrap search__popup_lists">
-                        <a href="#" class="search__popup-item">
-                            <i>All Bonuses</i>
-                            <span>3m</span>
-                        </a>
-                        <a href="#" class="search__popup-item">
-                            <i>No Deposit Bonuses</i>
-                            <span>5m</span>
-                        </a>
-                        <a href="#" class="search__popup-item">
-                            <i>Free Spins</i>
-                            <span>2h</span>
-                        </a>
-                        <a href="#" class="search__popup-item">
-                            <i>First Deposit Bonuses</i>
-                            <span>6d</span>
-                        </a>
-                        <a href="#" class="search__popup-item">
-                            <i>Tourament Bonuses</i>
-                            <span>Mar 27, 2017</span>
-                        </a>
-                    </div>
+                    <div class="search__popup-wrap search__popup_lists"></div>
 
                     <div class="search__popup-title">
-                        <h2>Bonus offers (15 results)</h2>
+                        <h2>Bonus offers (<span class="search__offers-results"></span> results)</h2>
                     </div>
 
-                    <div class="search__popup-wrap search__popup_offers">
-                        <a href="#" class="search__popup-item">
-                            <i>15- 100 Free Spins at Casino Extra & Lucky 31 Casino</i>
-                            <span>3m</span>
-                        </a>
-                        <a href="#" class="search__popup-item">
-                            <i>100 Free Spins at Casino Room</i>
-                            <span>5m</span>
-                        </a>
-                        <a href="#" class="search__popup-item">
-                            <i>30 Free Spins at VIP Stakes Casino</i>
-                            <span>2h</span>
-                        </a>
-                        <a href="#" class="search__popup-item">
-                            <i>25$ No Deposit at Cool Cat Casino</i>
-                            <span>6d</span>
-                        </a>
-                        <a href="#" class="search__popup-item">
-                            <i>€10 No Deposit Bonus at VIPSpel Casino</i>
-                            <span>Mar 27, 2017</span>
-                        </a>
+                    <div class="search__popup-wrap search__popup_offers"></div>
+
+                    <p class="search__popup-no-results">Sorry, there are no results for your query.</p>
+
+                    <a href="#" class="search__popup-links">Show all results for "<span></span>"</a>
+
+                    <div class="search__preload">
+                        <div class="search__preload-element"></div>
                     </div>
 
                 </div>
@@ -209,7 +176,7 @@
 
                 </div>
 
-                <div class="links links_casinos">
+                <div class="links links_casinos load">
 
                     <a href="" class="links__back">
                         <svg viewBox="266 75 16 16">
@@ -231,6 +198,8 @@
                         <input type="text" name="" class="links__search-input" placeholder="Search bonus by casino"/>
                     </form>
 
+                    <p class="links__no-results">No results found.</p>
+
                     <div class="links__wrap"></div>
 
                     <button class="links__show-all">
@@ -241,6 +210,10 @@
                             </svg>
                         </span>
                     </button>
+
+                    <div class="links__preload">
+                        <div class="links__preload-element"></div>
+                    </div>
 
                 </div>
 
@@ -450,11 +423,14 @@
 
                             </div>
 
+                            <span class="filter__frame-selected">
+                                <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
+                            </span>
+
                         </div>
 
                         <select name="sort">
-                            <option value="0">sort by</option>
-                            <option value="Newest">Newest</option>
+                            <option value="Newest1">Newest</option>
                             <option value="Newest2">Newest</option>
                         </select>
 
@@ -535,10 +511,126 @@
 
                                 </div>
 
-                                <div class="bonus__comments-add">
+                                <a href="#" class="bonus__comments-add">
                                     <svg viewBox="0 0 24 24"><path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" /></svg>
                                     Be the first to comment
+                                </a>
+
+                                <div class="bonus__casinos">
+
+                                    <div class="bonus__casinos-item">
+
+                                        <div class="bonus__casinos-img">
+                                            <img src="pic/img-002.jpg" alt="img"/>
+                                        </div>
+
+                                        <a class="btn btn_1">visit</a>
+
+                                    </div>
+
                                 </div>
+
+                            </div>
+
+                            <div class="bonus__content">
+
+                                <div class="bonus__characteristic">
+
+                                    <dl>
+                                        <dt>Wagering</dt>
+                                        <dd>70 x B</dd>
+                                    </dl>
+
+                                    <dl>
+                                        <dt>Max cash out</dt>
+                                        <dd>$/€/£50</dd>
+                                    </dl>
+
+                                    <dl>
+                                        <dt>Min deposit</dt>
+                                        <dd>$10</dd>
+                                    </dl>
+
+                                    <dl>
+                                        <dt>Availability</dt>
+                                        <dd>All players</dd>
+                                    </dl>
+
+                                </div>
+
+                                <p>The free spins can be played on Warlords Crystals of Power</p>
+                                <p>Bonus is valid for players from: Australia, Austria, Finland, Germany, New Zealand, Norway, Sweden, Switzerland</p>
+                                <p>Several free spins bonuses in a row are prohibited, as well as several multiple accounts. Hence, if your recent transaction included a free bonus, you must make a deposit before using this free spins offer.</p>
+                                <p>Best of luck!</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="bonus__item">
+
+                        <div class="bonus__header">
+
+                            <h3>15 - 100 Free Spins at Casino Extra & Lucky31 Casino</h3>
+
+                            <div class="bonus__header-info">
+
+                                <div class="bonus__country">
+                                    <img src="img/flag-001.jpg" alt="flag"/>
+
+                                    <span class="bonus__status">
+                                <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
+                            </span>
+
+                                </div>
+
+                                <time class="bonus__count" datetime="T0:2:0">
+                                    <svg viewBox="118 111 18 20"><path d="M9,11H7v2H9Zm4,0H11v2h2Zm4,0H15v2h2Zm2-7H18V2H16V4H8V2H6V4H5A1.991,1.991,0,0,0,3.01,6L3,20a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,19,4Zm0,16H5V9H19Z" transform="translate(115 109)"/></svg>
+                                    2 Minutes Ago
+                                </time>
+
+                                <span class="bonus__expires">Expires in 360 days</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="bonus__wrap">
+
+                            <div class="bonus__frame">
+
+                                <div class="bonus__code">
+                                    MARSPEL28TBFCL
+                                </div>
+
+                                <div class="bonus__marks">
+
+                                    <a href="#">
+
+                                    <span class="bonus__marks-icons">
+                                        <svg viewBox="0 0 24 24"><path d="M14,20H10V11L6.5,14.5L4.08,12.08L12,4.16L19.92,12.08L17.5,14.5L14,11V20Z" /></svg>
+                                    </span>
+
+                                        <span class="bonus__marks-num">121</span>
+                                    </a>
+
+                                    <a href="#">
+
+                                    <span class="bonus__marks-icons">
+                                        <svg viewBox="0 0 24 24"><path d="M10,4H14V13L17.5,9.5L19.92,11.92L12,19.84L4.08,11.92L6.5,9.5L10,13V4Z" /></svg>
+                                    </span>
+
+                                        <span class="bonus__marks-num">16</span>
+
+                                    </a>
+
+                                </div>
+
+                                <a href="#"  class="bonus__comments-add">
+                                    <svg viewBox="0 0 24 24"><path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" /></svg>
+                                    5 comments
+                                </a>
 
                                 <div class="bonus__casinos">
 
@@ -587,6 +679,313 @@
 
                                     <dl>
                                         <dt>Availability</dt>
+                                        <dd>
+                                            <p>New players</p>
+                                            <p>Existing players</p>
+                                        </dd>
+                                    </dl>
+
+                                </div>
+
+                                <p>The free spins can be played on Warlords Crystals of Power</p>
+                                <p>Bonus is valid for players from: Australia, Austria, Finland, Germany, New Zealand, Norway, Sweden, Switzerland</p>
+                                <p>Several free spins bonuses in a row are prohibited, as well as several multiple accounts. Hence, if your recent transaction included a free bonus, you must make a deposit before using this free spins offer.</p>
+                                <p>Best of luck!</p>
+                            </div>
+
+                            <div class="bonus__slider">
+
+                                <div class="bonus__swiper swiper-container">
+
+                                    <div class="swiper-wrapper">
+
+                                        <div class="bonus__slide swiper-slide">
+
+                                            <div class="bonus__slide-content">
+
+                                                <p class="bonus__slide-title">Play this bonus on</p>
+
+                                                <p class="bonus__slide-name">Alladins Lot</p>
+
+                                                <p><span>Powered by</span> NYX Interactive</p>
+
+                                                <a href="#" class="btn btn_4">Play for fun</a>
+
+                                            </div>
+
+                                            <div class="bonus__slide-img">
+                                                <img src="pic/game.jpg" alt="img"/>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="bonus__slide swiper-slide">
+
+                                            <div class="bonus__slide-content">
+
+                                                <p class="bonus__slide-title">Play this bonus on</p>
+
+                                                <p class="bonus__slide-name">Alladins Lot</p>
+
+                                                <p><span>Powered by</span> NYX Interactive</p>
+
+                                                <a href="#" class="btn btn_4">Play for fun</a>
+
+                                            </div>
+
+                                            <div class="bonus__slide-img">
+                                                <img src="pic/game.jpg" alt="img"/>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="bonus__slide swiper-slide">
+
+                                            <div class="bonus__slide-content">
+
+                                                <p class="bonus__slide-title">Play this bonus on</p>
+
+                                                <p class="bonus__slide-name">Alladins Lot</p>
+
+                                                <p><span>Powered by</span> NYX Interactive</p>
+
+                                                <a href="#" class="btn btn_4">Play for fun</a>
+
+                                            </div>
+
+                                            <div class="bonus__slide-img">
+                                                <img src="pic/game.jpg" alt="img"/>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="bonus__item">
+
+                        <div class="bonus__header">
+
+                            <h3>15 - 100 Free Spins at Casino Extra & Lucky31 Casino</h3>
+
+                            <div class="bonus__header-info">
+
+                                <div class="bonus__country">
+                                    <img src="img/flag-001.jpg" alt="flag"/>
+
+                                    <span class="bonus__status">
+                                <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
+                            </span>
+
+                                </div>
+
+                                <time class="bonus__count" datetime="T0:2:0">
+                                    <svg viewBox="118 111 18 20"><path d="M9,11H7v2H9Zm4,0H11v2h2Zm4,0H15v2h2Zm2-7H18V2H16V4H8V2H6V4H5A1.991,1.991,0,0,0,3.01,6L3,20a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,19,4Zm0,16H5V9H19Z" transform="translate(115 109)"/></svg>
+                                    2 Minutes Ago
+                                </time>
+
+                                <span class="bonus__expires">Expires in 360 days</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="bonus__wrap">
+
+                            <div class="bonus__frame">
+
+                                <div class="bonus__code">
+                                    MARSPEL28TBFCL, MARSPEL28TBFCL
+                                </div>
+
+                                <div class="bonus__marks">
+
+                                    <a href="#">
+
+                                    <span class="bonus__marks-icons">
+                                        <svg viewBox="0 0 24 24"><path d="M14,20H10V11L6.5,14.5L4.08,12.08L12,4.16L19.92,12.08L17.5,14.5L14,11V20Z" /></svg>
+                                    </span>
+
+                                        <span class="bonus__marks-num">121</span>
+                                    </a>
+
+                                    <a href="#">
+
+                                    <span class="bonus__marks-icons">
+                                        <svg viewBox="0 0 24 24"><path d="M10,4H14V13L17.5,9.5L19.92,11.92L12,19.84L4.08,11.92L6.5,9.5L10,13V4Z" /></svg>
+                                    </span>
+
+                                        <span class="bonus__marks-num">16</span>
+
+                                    </a>
+
+                                </div>
+
+                                <a href="#" class="bonus__comments-add">
+                                    <svg viewBox="0 0 24 24"><path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" /></svg>
+                                    Be the first to comment
+                                </a>
+
+                                <div class="bonus__casinos">
+
+                                    <div class="bonus__casinos-item">
+
+                                        <div class="bonus__casinos-img">
+                                            <img src="pic/img-002.jpg" alt="img"/>
+                                        </div>
+
+                                        <a class="btn btn_1">visit</a>
+
+                                    </div>
+
+                                    <div class="bonus__casinos-item">
+
+                                        <div class="bonus__casinos-img">
+                                            <img src="pic/img-003.jpg" alt="img"/>
+                                        </div>
+
+                                        <a class="btn btn_1">visit</a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="bonus__content">
+
+                                <div class="bonus__characteristic">
+
+                                    <dl>
+                                        <dt>Wagering</dt>
+                                        <dd>70 x B</dd>
+                                    </dl>
+
+                                    <dl>
+                                        <dt>Max cash out</dt>
+                                        <dd>$/€/£50</dd>
+                                    </dl>
+
+                                </div>
+
+                                <p>The free spins can be played on Warlords Crystals of Power</p>
+                                <p>Bonus is valid for players from: Australia, Austria.</p>
+                                <p>Several free spins bonuses in a row are prohibited.</p>
+                                <p>Best of luck!</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="bonus__item">
+
+                        <div class="bonus__header">
+
+                            <h3>15 - 100 Free Spins at Casino Extra & Lucky31 Casino</h3>
+
+                            <div class="bonus__header-info">
+
+                                <div class="bonus__country">
+                                    <img src="img/flag-001.jpg" alt="flag"/>
+
+                                    <span class="bonus__status">
+                                <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
+                            </span>
+
+                                </div>
+
+                                <time class="bonus__count" datetime="T0:2:0">
+                                    <svg viewBox="118 111 18 20"><path d="M9,11H7v2H9Zm4,0H11v2h2Zm4,0H15v2h2Zm2-7H18V2H16V4H8V2H6V4H5A1.991,1.991,0,0,0,3.01,6L3,20a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,19,4Zm0,16H5V9H19Z" transform="translate(115 109)"/></svg>
+                                    2 Minutes Ago
+                                </time>
+
+                                <span class="bonus__expires finished">Expired</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="bonus__wrap">
+
+                            <div class="bonus__frame">
+
+                                <div class="bonus__code">
+                                    MARSPEL28TBFCL
+                                </div>
+
+                                <div class="bonus__marks">
+
+                                    <a href="#">
+
+                                    <span class="bonus__marks-icons">
+                                        <svg viewBox="0 0 24 24"><path d="M14,20H10V11L6.5,14.5L4.08,12.08L12,4.16L19.92,12.08L17.5,14.5L14,11V20Z" /></svg>
+                                    </span>
+
+                                        <span class="bonus__marks-num">121</span>
+                                    </a>
+
+                                    <a href="#">
+
+                                    <span class="bonus__marks-icons">
+                                        <svg viewBox="0 0 24 24"><path d="M10,4H14V13L17.5,9.5L19.92,11.92L12,19.84L4.08,11.92L6.5,9.5L10,13V4Z" /></svg>
+                                    </span>
+
+                                        <span class="bonus__marks-num">16</span>
+
+                                    </a>
+
+                                </div>
+
+                                <div class="bonus__comments-add">
+                                    <svg viewBox="0 0 24 24"><path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" /></svg>
+                                    Be the first to comment
+                                </div>
+
+                                <div class="bonus__casinos">
+
+                                    <div class="bonus__casinos-item">
+
+                                        <div class="bonus__casinos-img">
+                                            <img src="pic/img-002.jpg" alt="img"/>
+                                        </div>
+
+                                        <a class="btn btn_3">Restricted</a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="bonus__content">
+
+                                <div class="bonus__characteristic">
+
+                                    <dl>
+                                        <dt>Wagering</dt>
+                                        <dd>70 x B</dd>
+                                    </dl>
+
+                                    <dl>
+                                        <dt>Max cash out</dt>
+                                        <dd>$/€/£50</dd>
+                                    </dl>
+
+                                    <dl>
+                                        <dt>Min deposit</dt>
+                                        <dd>$10</dd>
+                                    </dl>
+
+                                    <dl>
+                                        <dt>Availability</dt>
                                         <dd>All players</dd>
                                     </dl>
 
@@ -597,6 +996,38 @@
                                 <p>Bonus is valid for players from: Australia, Austria, Finland, Germany, New Zealand, Norway, Sweden, Switzerland</p>
                                 <p>Several free spins bonuses in a row are prohibited, as well as several multiple accounts. Hence, if your recent transaction included a free bonus, you must make a deposit before using this free spins offer.</p>
                                 <p>Best of luck!</p>
+                            </div>
+
+                        </div>
+
+                        <div class="bonus__slider">
+
+                            <div class="bonus__swiper swiper-container">
+
+                                <div class="swiper-wrapper">
+
+                                    <div class="bonus__slide swiper-slide">
+
+                                        <div class="bonus__slide-content">
+
+                                            <p class="bonus__slide-title">Play this bonus on</p>
+
+                                            <p class="bonus__slide-name">Alladins Lot</p>
+
+                                            <p><span>Powered by</span> NYX Interactive</p>
+
+                                            <a href="#" class="btn btn_4">Play for fun</a>
+
+                                        </div>
+
+                                        <div class="bonus__slide-img">
+                                            <img src="pic/game.jpg" alt="img"/>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
                             </div>
 
                         </div>
@@ -689,112 +1120,25 @@
 
                                     </div>
 
-                                </div>
+                                    <div class="bonus__casinos-item">
 
-                            </div>
+                                        <div class="bonus__casinos-img">
+                                            <img src="pic/img-002.jpg" alt="img"/>
+                                        </div>
 
-                            <div class="bonus__content">
+                                        <a class="btn btn_1">visit</a>
 
-                                <div class="bonus__characteristic">
+                                    </div>
 
-                                    <dl>
-                                        <dt>Wagering</dt>
-                                        <dd>70 x B</dd>
-                                    </dl>
+                                    <div class="bonus__casinos-item">
 
-                                    <dl>
-                                        <dt>Max cash out</dt>
-                                        <dd>$/€/£50</dd>
-                                    </dl>
+                                        <div class="bonus__casinos-img">
+                                            <img src="pic/img-003.jpg" alt="img"/>
+                                        </div>
 
-                                    <dl>
-                                        <dt>Min deposit</dt>
-                                        <dd>$10</dd>
-                                    </dl>
+                                        <a class="btn btn_1">visit</a>
 
-                                    <dl>
-                                        <dt>Availability</dt>
-                                        <dd>All players</dd>
-                                    </dl>
-
-                                </div>
-
-                                <h3>Bonus notes</h3>
-                                <p>The free spins can be played on Warlords Crystals of Power</p>
-                                <p>Bonus is valid for players from: Australia, Austria, Finland, Germany, New Zealand, Norway, Sweden, Switzerland</p>
-                                <p>Several free spins bonuses in a row are prohibited, as well as several multiple accounts. Hence, if your recent transaction included a free bonus, you must make a deposit before using this free spins offer.</p>
-                                <p>Best of luck!</p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="bonus__item">
-
-                        <div class="bonus__header">
-
-                            <h3>15 - 100 Free Spins at Casino Extra & Lucky31 Casino</h3>
-
-                            <div class="bonus__header-info">
-
-                                <div class="bonus__country">
-                                    <img src="img/flag-001.jpg" alt="flag"/>
-
-                                    <span class="bonus__status">
-                                <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
-                            </span>
-
-                                </div>
-
-                                <time class="bonus__count" datetime="T0:2:0">
-                                    <svg viewBox="118 111 18 20"><path d="M9,11H7v2H9Zm4,0H11v2h2Zm4,0H15v2h2Zm2-7H18V2H16V4H8V2H6V4H5A1.991,1.991,0,0,0,3.01,6L3,20a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,19,4Zm0,16H5V9H19Z" transform="translate(115 109)"/></svg>
-                                    2 Minutes Ago
-                                </time>
-
-                                <span class="bonus__expires">Expires in 360 days</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="bonus__wrap">
-
-                            <div class="bonus__frame">
-
-                                <div class="bonus__code">
-                                    MARSPEL28TBFCL
-                                </div>
-
-                                <div class="bonus__marks">
-
-                                    <a href="#">
-
-                                    <span class="bonus__marks-icons">
-                                        <svg viewBox="0 0 24 24"><path d="M14,20H10V11L6.5,14.5L4.08,12.08L12,4.16L19.92,12.08L17.5,14.5L14,11V20Z" /></svg>
-                                    </span>
-
-                                        <span class="bonus__marks-num">121</span>
-                                    </a>
-
-                                    <a href="#">
-
-                                    <span class="bonus__marks-icons">
-                                        <svg viewBox="0 0 24 24"><path d="M10,4H14V13L17.5,9.5L19.92,11.92L12,19.84L4.08,11.92L6.5,9.5L10,13V4Z" /></svg>
-                                    </span>
-
-                                        <span class="bonus__marks-num">16</span>
-
-                                    </a>
-
-                                </div>
-
-                                <div class="bonus__comments-add">
-                                    <svg viewBox="0 0 24 24"><path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" /></svg>
-                                    Be the first to comment
-                                </div>
-
-                                <div class="bonus__casinos">
+                                    </div>
 
                                     <div class="bonus__casinos-item">
 
@@ -818,258 +1162,8 @@
 
                                 </div>
 
-                            </div>
-
-                            <div class="bonus__content">
-
-                                <div class="bonus__characteristic">
-
-                                    <dl>
-                                        <dt>Wagering</dt>
-                                        <dd>70 x B</dd>
-                                    </dl>
-
-                                    <dl>
-                                        <dt>Max cash out</dt>
-                                        <dd>$/€/£50</dd>
-                                    </dl>
-
-                                    <dl>
-                                        <dt>Min deposit</dt>
-                                        <dd>$10</dd>
-                                    </dl>
-
-                                    <dl>
-                                        <dt>Availability</dt>
-                                        <dd>All players</dd>
-                                    </dl>
-
-                                </div>
-
-                                <h3>Bonus notes</h3>
-                                <p>The free spins can be played on Warlords Crystals of Power</p>
-                                <p>Bonus is valid for players from: Australia, Austria, Finland, Germany, New Zealand, Norway, Sweden, Switzerland</p>
-                                <p>Several free spins bonuses in a row are prohibited, as well as several multiple accounts. Hence, if your recent transaction included a free bonus, you must make a deposit before using this free spins offer.</p>
-                                <p>Best of luck!</p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="bonus__item">
-
-                        <div class="bonus__header">
-
-                            <h3>15 - 100 Free Spins at Casino Extra & Lucky31 Casino</h3>
-
-                            <div class="bonus__header-info">
-
-                                <div class="bonus__country">
-                                    <img src="img/flag-001.jpg" alt="flag"/>
-
-                                    <span class="bonus__status">
-                                <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
-                            </span>
-
-                                </div>
-
-                                <time class="bonus__count" datetime="T0:2:0">
-                                    <svg viewBox="118 111 18 20"><path d="M9,11H7v2H9Zm4,0H11v2h2Zm4,0H15v2h2Zm2-7H18V2H16V4H8V2H6V4H5A1.991,1.991,0,0,0,3.01,6L3,20a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,19,4Zm0,16H5V9H19Z" transform="translate(115 109)"/></svg>
-                                    2 Minutes Ago
-                                </time>
-
-                                <span class="bonus__expires">Expires in 360 days</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="bonus__wrap">
-
-                            <div class="bonus__frame">
-
-                                <div class="bonus__code">
-                                    MARSPEL28TBFCL
-                                </div>
-
-                                <div class="bonus__marks">
-
-                                    <a href="#">
-
-                                    <span class="bonus__marks-icons">
-                                        <svg viewBox="0 0 24 24"><path d="M14,20H10V11L6.5,14.5L4.08,12.08L12,4.16L19.92,12.08L17.5,14.5L14,11V20Z" /></svg>
-                                    </span>
-
-                                        <span class="bonus__marks-num">121</span>
-                                    </a>
-
-                                    <a href="#">
-
-                                    <span class="bonus__marks-icons">
-                                        <svg viewBox="0 0 24 24"><path d="M10,4H14V13L17.5,9.5L19.92,11.92L12,19.84L4.08,11.92L6.5,9.5L10,13V4Z" /></svg>
-                                    </span>
-
-                                        <span class="bonus__marks-num">16</span>
-
-                                    </a>
-
-                                </div>
-
-                                <div class="bonus__comments-add">
-                                    <svg viewBox="0 0 24 24"><path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" /></svg>
-                                    Be the first to comment
-                                </div>
-
-                                <div class="bonus__casinos">
-
-                                    <div class="bonus__casinos-item">
-
-                                        <div class="bonus__casinos-img">
-                                            <img src="pic/img-002.jpg" alt="img"/>
-                                        </div>
-
-                                        <a class="btn btn_1">visit</a>
-
-                                    </div>
-
-                                    <div class="bonus__casinos-item">
-
-                                        <div class="bonus__casinos-img">
-                                            <img src="pic/img-003.jpg" alt="img"/>
-                                        </div>
-
-                                        <a class="btn btn_1">visit</a>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="bonus__content">
-
-                                <div class="bonus__characteristic">
-
-                                    <dl>
-                                        <dt>Wagering</dt>
-                                        <dd>70 x B</dd>
-                                    </dl>
-
-                                    <dl>
-                                        <dt>Max cash out</dt>
-                                        <dd>$/€/£50</dd>
-                                    </dl>
-
-                                    <dl>
-                                        <dt>Min deposit</dt>
-                                        <dd>$10</dd>
-                                    </dl>
-
-                                    <dl>
-                                        <dt>Availability</dt>
-                                        <dd>All players</dd>
-                                    </dl>
-
-                                </div>
-
-                                <h3>Bonus notes</h3>
-                                <p>The free spins can be played on Warlords Crystals of Power</p>
-                                <p>Bonus is valid for players from: Australia, Austria, Finland, Germany, New Zealand, Norway, Sweden, Switzerland</p>
-                                <p>Several free spins bonuses in a row are prohibited, as well as several multiple accounts. Hence, if your recent transaction included a free bonus, you must make a deposit before using this free spins offer.</p>
-                                <p>Best of luck!</p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="bonus__item">
-
-                        <div class="bonus__header">
-
-                            <h3>15 - 100 Free Spins at Casino Extra & Lucky31 Casino</h3>
-
-                            <div class="bonus__header-info">
-
-                                <div class="bonus__country">
-                                    <img src="img/flag-001.jpg" alt="flag"/>
-
-                                    <span class="bonus__status">
-                                <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
-                            </span>
-
-                                </div>
-
-                                <time class="bonus__count" datetime="T0:2:0">
-                                    <svg viewBox="118 111 18 20"><path d="M9,11H7v2H9Zm4,0H11v2h2Zm4,0H15v2h2Zm2-7H18V2H16V4H8V2H6V4H5A1.991,1.991,0,0,0,3.01,6L3,20a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,19,4Zm0,16H5V9H19Z" transform="translate(115 109)"/></svg>
-                                    2 Minutes Ago
-                                </time>
-
-                                <span class="bonus__expires">Expires in 360 days</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="bonus__wrap">
-
-                            <div class="bonus__frame">
-
-                                <div class="bonus__code">
-                                    MARSPEL28TBFCL
-                                </div>
-
-                                <div class="bonus__marks">
-
-                                    <a href="#">
-
-                                    <span class="bonus__marks-icons">
-                                        <svg viewBox="0 0 24 24"><path d="M14,20H10V11L6.5,14.5L4.08,12.08L12,4.16L19.92,12.08L17.5,14.5L14,11V20Z" /></svg>
-                                    </span>
-
-                                        <span class="bonus__marks-num">121</span>
-                                    </a>
-
-                                    <a href="#">
-
-                                    <span class="bonus__marks-icons">
-                                        <svg viewBox="0 0 24 24"><path d="M10,4H14V13L17.5,9.5L19.92,11.92L12,19.84L4.08,11.92L6.5,9.5L10,13V4Z" /></svg>
-                                    </span>
-
-                                        <span class="bonus__marks-num">16</span>
-
-                                    </a>
-
-                                </div>
-
-                                <div class="bonus__comments-add">
-                                    <svg viewBox="0 0 24 24"><path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" /></svg>
-                                    Be the first to comment
-                                </div>
-
-                                <div class="bonus__casinos">
-
-                                    <div class="bonus__casinos-item">
-
-                                        <div class="bonus__casinos-img">
-                                            <img src="pic/img-002.jpg" alt="img"/>
-                                        </div>
-
-                                        <a class="btn btn_1">visit</a>
-
-                                    </div>
-
-                                    <div class="bonus__casinos-item">
-
-                                        <div class="bonus__casinos-img">
-                                            <img src="pic/img-003.jpg" alt="img"/>
-                                        </div>
-
-                                        <a class="btn btn_1">visit</a>
-
-                                    </div>
-
+                                <div class="bonus__casinos-more">
+                                    <span>Be the first to comment</span>
                                 </div>
 
                             </div>
@@ -1251,6 +1345,7 @@
     </div>
 
     <script src="js/vendors/jquery-3.2.1.min.js"></script>
+    <script src="js/vendors/swiper.jquery.min.js"></script>
     <script src="js/vendors/perfect-scrollbar.jquery.min.js"></script>
     <script src="js/index.min.js"></script>
 </body>

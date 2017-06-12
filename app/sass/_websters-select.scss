@@ -11,7 +11,9 @@
   &_opened {
 
     .websters-select__arrow {
-      transform: rotate(180deg);
+      top: 42%;
+      -webkit-transform: rotate(-135deg);
+      transform: rotate(-135deg);
     }
 
   }
@@ -72,31 +74,83 @@
   }
 
   &__popup {
-    overflow: hidden;
     position: absolute;
-    z-index: 10;
-    box-sizing: border-box;
+    width: 163px;
+    margin-top: 8px;
+    border: 1px solid #dce0db;
+    border-radius: 3px;
     @include noto-sans;
-    border: 1px solid $websters-select-border;
-    background: $websters-select-popup-back;
+    font-size: 13px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    opacity: 0;
+    z-index: 1;
+    -webkit-transition: opacity .3s ease, visibility .3s ease;
+    transition: opacity .3s ease, visibility .3s ease;
 
     ul {
       z-index: 1;
     }
 
     li {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      padding: 9px 10px 10px;
+      border-bottom: 1px solid #e0e5e4;
       white-space: nowrap;
+      text-overflow: ellipsis;
       overflow: hidden;
-      cursor: pointer;
-
-      &:hover {
-        color: $websters-select-popup-item-active-color;
-        background: $websters-select-popup-item-active-back;
-      }
+      -webkit-transition: background-color .3s ease;
+      transition: background-color .3s ease;
 
       &.active {
-        color: $websters-select-popup-item-active-color !important;
-        background: $websters-select-popup-item-active-back !important;
+        color: #283746;
+        background-color: #f2f2f2;
+      }
+
+      &:first-letter{
+        text-transform: uppercase;
+      }
+
+      &:last-child{
+        border-bottom: 0;
+      }
+
+    }
+
+    &:after,
+    &:before {
+      bottom: 100%;
+      left: 72%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:after {
+      border-color: rgba(255, 255, 255, 0);
+      border-bottom-color: #fff;
+      border-width: 5px;
+      margin-left: -5px;
+      -webkit-transition: border-bottom-color .3s ease;
+      transition: border-bottom-color .3s ease;
+    }
+
+    &:before {
+      border-color: rgba(220, 224, 219, 0);
+      border-bottom-color: #dce0db;
+      border-width: 6px;
+      margin-left: -6px;
+    }
+
+    &.gray{
+
+      &:after{
+        border-bottom-color: #f2f2f2;
       }
 
     }
@@ -127,6 +181,16 @@
 
     }
 
+    &__popup{
+      margin-left: 40px;
+
+      &:after,
+      &:before {
+        left: 91%;
+      }
+
+    }
+
   }
 
 }
@@ -142,6 +206,7 @@
 
     &__arrow {
       right: 10px;
+      cursor: pointer;
     }
 
   }
