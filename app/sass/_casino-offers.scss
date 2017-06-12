@@ -1,0 +1,67 @@
+.casino-offers {
+
+  .btn {
+    width: 100%;
+  }
+
+  &__title {
+    display: block;
+    margin: 0 0 12px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: #83868a;
+
+    &_2 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      line-height: 22px;
+      color: #283746;
+      letter-spacing: -0.5px;
+    }
+
+  }
+
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .casino-offers {
+    text-align: center;
+
+    .btn {
+      max-width: 290px;
+    }
+
+    &__title {
+      margin: 0 0 18px;
+      font-size: 16px;
+      line-height: 21px;
+      text-align: left;
+
+      &_2 {
+        margin-bottom: 19px;
+        font-size: 26px;
+        line-height: 30px;
+        letter-spacing: -0.6px;
+      }
+
+    }
+  }
+
+}
+@media (min-width: $desktop) {
+
+  .casino-offers {
+
+    &__item {
+
+      &-title {
+        padding: 26px 19px 31px;
+      }
+
+    }
+
+  }
+
+}
