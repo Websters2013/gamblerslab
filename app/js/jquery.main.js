@@ -806,7 +806,7 @@
                 _initSlider();
                 _initPopups();
 
-                _ajaxRequest();
+                // _ajaxRequest();
                 _onEvent();
             };
 
