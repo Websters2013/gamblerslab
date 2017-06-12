@@ -434,9 +434,11 @@
             _bonusItem = _obj.find( '.bonus__item' ),
             _bonusPopup = _obj.find( '.popup' ),
             _bonusPopupClose = _obj.find( '.popup__close' ),
+            _bonusMinimize = _obj.find( '.bonus__item-minimize' ),
             _position = 0,
             _body = $( 'body, html' ),
-            _window = $( window );
+            _window = $( window ),
+            _request = new XMLHttpRequest();
 
         //private methods
         var _onEvent = function() {
@@ -461,6 +463,52 @@
                         return false;
                     }
                 );
+
+                _bonusMinimize.on(
+                    'click', function ( ) {
+
+                        var curBtn = $( this ),
+                            curParent = curBtn.parents( '.bonus__item' );
+
+                        if ( !curParent.hasClass( 'show' ) ) {
+
+                            _bonusItem.removeClass( 'show' );
+                            curParent.addClass( 'show' );
+
+                        } else {
+
+                            curParent.removeClass( 'show' );
+
+                        }
+
+                        return false;
+
+                    }
+                );
+
+            },
+            _ajaxRequest = function(){
+
+                _obj.addClass( 'load' );
+
+                _request = $.ajax( {
+                    url: _obj.data( 'link' ),
+                    data: {
+                        loadedCount: 5
+                    },
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function ( data ) {
+
+                        _loadData( data );
+
+                    },
+                    error: function ( XMLHttpRequest ) {
+                        if ( XMLHttpRequest.statusText != "abort" ) {
+                            console.log( 'err' );
+                        }
+                    }
+                } );
 
             },
             _initSlider = function() {
@@ -692,9 +740,73 @@
                 _bonusPopup.removeClass( 'show' );
 
             },
+            _loadData = function ( data ) {
+
+                var arr = data.items,
+                    item = $( '<div class="bonus__item"></div>' ),
+                    header = $( '<div class="bonus__header"></div>' ),
+                    headerInfo = $( '<div class="bonus__header-info"></div>' ),
+                    headerCountry = $( '<div class="bonus__country"></div>' ),
+                    headerExpires = $( '<span class="bonus__expires"></span>' ),
+                    wrap = $( '<div class="bonus__wrap"></div>' ),
+                    frame = $( '<div class="bonus__frame"></div>' ),
+                    content = $( '<div class="bonus__content"></div>' ),
+                    characteristic = $( '<div class="bonus__characteristic"></div>' ),
+                    marks = $( '<div class="bonus__marks"></div>' ),
+                    wrapCasinos = $( '<div class="bonus__casinos"></div>' );
+
+                for ( var i = 0; i < arr.length; i++ ){
+
+                    headerCountry.append( '<img src="'+ arr[i].country_flag +'" alt="flag"/>' );
+
+                    if ( arr[i].country_status ){
+                        headerCountry.append( '<span class="bonus__status"><svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg></span>' );
+                    } else {
+                        headerCountry.append( '<span class="bonus__status negative"><svg viewBox="123 76 14 14"><path d="M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z" transform="translate(118 71)"/></svg></span>' );
+                    }
+
+                    headerExpires.html( arr[i].expires );
+
+                    headerInfo.append( headerCountry );
+
+                    headerInfo.append( '<time class="bonus__count"><svg viewBox="118 111 18 20"><path d="M9,11H7v2H9Zm4,0H11v2h2Zm4,0H15v2h2Zm2-7H18V2H16V4H8V2H6V4H5A1.991,1.991,0,0,0,3.01,6L3,20a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,19,4Zm0,16H5V9H19Z" transform="translate(115 109)"/></svg>'+ arr[i].time +'</time>' )
+
+                    headerInfo.append( headerExpires );
+
+                    header.append( '<h3>'+ arr[i].title +'</h3>' );
+                    header.append( headerInfo );
+
+                    frame.append( '<div class="bonus__code">'+ arr[i].code +'</div>' );
+                    frame.append( marks );
+
+                    wrap.append( frame );
+                    wrap.append( content );
+
+                    item.append( header );
+                    item.append( wrap );
+
+                    _obj.append( item );
+
+                }
+
+                if ( data == undefined || data.items == undefined || data.items.length == 0 ) {
+
+                    // _linksNoResults.show();
+
+                } else {
+
+                    // _linksNoResults.hide();
+
+                };
+
+                // _bonusCasinos.removeClass( 'load' );
+
+            },
             _init = function() {
                 _initSlider();
                 _initPopups();
+
+                _ajaxRequest();
                 _onEvent();
             };
 
