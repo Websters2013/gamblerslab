@@ -431,10 +431,36 @@
 
         //private properties
         var _obj = obj,
-            _bonusItem = _obj.find( '.bonus__item' );
+            _bonusItem = _obj.find( '.bonus__item' ),
+            _bonusPopup = _obj.find( '.popup' ),
+            _bonusPopupClose = _obj.find( '.popup__close' ),
+            _position = 0,
+            _body = $( 'body, html' ),
+            _window = $( window );
 
         //private methods
         var _onEvent = function() {
+
+                _body.on(
+                    'click', function ( e ) {
+
+                        if ( $( e.target ).closest( _bonusItem.find( '.bonus__casinos-img' ) ).length != 0  ){
+                            return false;
+                        }
+
+                        if ( $( e.target ).closest( _bonusPopup ).length == 0 ){
+                            _hidePopup();
+                        }
+
+                    }
+                );
+
+                _bonusPopupClose.on(
+                    'click', function ( ) {
+                        _hidePopup();
+                        return false;
+                    }
+                );
 
             },
             _initSlider = function() {
@@ -472,8 +498,203 @@
                 } );
 
             },
+            _initPopups = function() {
+
+                var items = _obj.find( '.bonus__item' ),
+                    bonusCasinoGame = items.find( '.btn[data-type=game]' ),
+                    bonusCasinoWarning = items.find( '.btn[data-type=warning]' ),
+                    bonusComments = items.find( '.bonus__comments-add' ),
+                    bonusCasinoBtn = items.find( '.bonus__casinos-img' ),
+                    bonusTabsBtn = items.find( '.popup__tabs-links a' );
+
+                bonusCasinoBtn.on( {
+                    'click': function () {
+
+                        var curBtn = $( this ),
+                            curBtnLink = curBtn.data( 'link' ),
+                            curItem = curBtn.parents( '.bonus__item' ),
+                            bonusPopup = curItem.find( '.popup' ).filter( "[data-type=bonus]" ),
+                            curPopup = bonusPopup.filter( "[data-link="+ curBtnLink +"]" ).addClass( 'show' ),
+                            popupTabsLink = curPopup.find( '.popup__tabs-links a' ),
+                            popupTabsContent = curPopup.find( '.popup__tabs-content' ),
+                            popupTabsContentItem = curPopup.find( '.popup__tabs-content div' );
+
+                        popupTabsLink.removeClass( 'active' );
+                        popupTabsContentItem.removeClass( 'active' );
+
+                        popupTabsLink.eq( 0 ).addClass( 'active' );
+                        popupTabsContentItem.eq( 0 ).addClass( 'active' );
+                        popupTabsContent.css( 'height', popupTabsContentItem.filter( '.active' ).height() );
+
+                        if ( _window.width() < 768 ){
+
+                            var _position = _window.scrollTop();
+
+                            _body.css( 'overflow-y', 'hidden' );
+
+                        } else if  ( _window.width() >= 768 ) {
+
+                            bonusPopup.css ( {
+                                'top' : curBtn.offset().top - curBtn.height() - bonusPopup.height() - 20,
+                                'left': _obj.offset().left
+                            } );
+
+                        }
+
+                        return false;
+
+                    }
+
+                } );
+
+                bonusTabsBtn.on( {
+                    'click': function () {
+
+                        var curBtn = $( this ),
+                            tabs = curBtn.parents( '.popup__tabs' ),
+                            tabsLinks = tabs.find( '.popup__tabs-links a' ),
+                            tabsContent = tabs.find( '.popup__tabs-content > div' ),
+                            popupTabsContent = tabs.find( '.popup__tabs-content' ),
+                            bonusSwiper = tabs.find( '.popup__swiper' ),
+                            swiperNextButton = tabs.find( '.popup__button-next' ),
+                            swiperPrevButton = tabs.find( '.popup__button-prev' ),
+                            popupSwiper;
+
+                        tabsContent.removeClass( 'active' );
+                        tabsLinks.removeClass( 'active' );
+
+                        popupSwiper = new Swiper ( bonusSwiper, {
+                            autoplay: false,
+                            speed: 500,
+                            effect: 'slide',
+                            slidesPerView: 2,
+                            spaceBetween: 8,
+                            loop: false,
+                            nextButton: swiperNextButton,
+                            prevButton: swiperPrevButton,
+                            breakpoints: {
+                                768: {
+                                    slidesPerView: 1,
+                                    spaceBetween: 0
+                                },
+                            }
+                        } );
+
+                        curBtn.addClass( 'active' );
+                        tabsContent.eq( curBtn.index() ).addClass( 'active' );
+                        popupTabsContent.css( 'height', tabsContent.filter( '.active' ).height() );
+
+                        return false;
+
+                    }
+                } );
+
+                bonusCasinoGame.on( {
+                    'click': function () {
+
+                        var curBtn = $( this ),
+                            curBtnLink = curBtn.data( 'link' ),
+                            curItem = curBtn.parents( '.bonus__item' ),
+                            bonusPopup = curItem.find( '.popup' ).filter( "[data-type=game]" ),
+                            curPopup = bonusPopup.filter( "[data-link="+ curBtnLink +"]" ).addClass( 'show' );
+
+                        if ( _window.width() < 768 ){
+
+                            var _position = _window.scrollTop();
+
+                            _body.css( 'overflow-y', 'hidden' );
+
+                        } else if  ( _window.width() >= 768 ) {
+
+                            bonusPopup.css ( {
+                                'top' : _window.height() / 2 - bonusPopup.height() / 2,
+                                'left': _window.width() / 2 - bonusPopup.width() / 2
+                            } );
+
+                        }
+
+                        return false;
+
+                    }
+
+                } );
+
+                bonusComments.on( {
+                    'click': function () {
+
+                        var curBtn = $( this ),
+                            curBtnLink = curBtn.data( 'link' ),
+                            curItem = curBtn.parents( '.bonus__item' ),
+                            bonusPopup = curItem.find( '.popup' ).filter( "[data-type=comments]" ),
+                            curPopup = bonusPopup.filter( "[data-link="+ curBtnLink +"]" ).addClass( 'show' );
+
+                        if ( _window.width() < 768 ){
+
+                            var position = _window.scrollTop();
+
+                            _body.css( 'overflow-y', 'hidden' );
+
+                        } else if  ( _window.width() >= 768 ) {
+
+                            bonusPopup.css ( {
+                                'top' : curBtn.offset().top - curBtn.height() - bonusPopup.height() + 10,
+                                'left': _obj.offset().left
+                            } );
+
+                        }
+
+                        return false;
+
+                    }
+
+                } );
+
+                bonusCasinoWarning.on( {
+                    'click': function () {
+
+                        var curBtn = $( this ),
+                            curBtnLink = curBtn.data( 'link' ),
+                            curItem = curBtn.parents( '.bonus__item' ),
+                            bonusPopup = curItem.find( '.popup' ).filter( "[data-type=warning]" ),
+                            curPopup = bonusPopup.filter( "[data-link="+ curBtnLink +"]" ).addClass( 'show' );
+
+                        if ( _window.width() < 768 ){
+
+                            var _position = _window.scrollTop();
+
+                            _body.css( 'overflow-y', 'hidden' );
+
+                        } else if  ( _window.width() >= 768 ) {
+
+                            bonusPopup.css ( {
+                                'top' : curBtn.offset().top - curBtn.height() - bonusPopup.height() - 20,
+                                'left': _obj.offset().left
+                            } );
+
+                        }
+
+                        return false;
+
+                    }
+
+                } );
+
+            },
+            _hidePopup = function () {
+
+                if ( _window.width() < 768 ){
+
+                    _body.css( 'overflow-y', 'auto' );
+                    _window.scrollTop( position );
+
+                }
+
+                _bonusPopup.removeClass( 'show' );
+
+            },
             _init = function() {
                 _initSlider();
+                _initPopups();
                 _onEvent();
             };
 

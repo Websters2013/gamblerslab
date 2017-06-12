@@ -9,7 +9,6 @@
     border-radius: 5px;
     @include noto-sans;
     font-size: 12px;
-    overflow: hidden;
   }
 
   &__header{
@@ -326,6 +325,43 @@
 
   }
 
+  &_minimize{
+
+    .bonus__wrap, .bonus__slider{
+      display: none;
+    }
+
+    .bonus__item{
+      position: relative;
+    }
+
+    .bonus__item-minimize{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 50%;
+      bottom: -20px;
+      background-color: #505c68;
+      width: 40px;
+      height: 40px;
+      border-radius: 50px;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+
+      svg{
+        width: 15px;
+        fill: #75ced6;
+      }
+
+    }
+
+  }
+
+  &__item-minimize{
+    display: none;
+  }
+
 }
 
 @media (min-width: $tablet-portrait) {
@@ -579,6 +615,26 @@
 
       &:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+      }
+
+    }
+
+    &_minimize{
+
+      .bonus__item-minimize{
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: opacity .3s ease, visibility .3s ease;
+        transition: opacity .3s ease, visibility .3s ease;
+      }
+
+      .bonus__item:hover{
+
+        .bonus__item-minimize{
+          opacity: 1;
+          visibility: visible;
+        }
+
       }
 
     }

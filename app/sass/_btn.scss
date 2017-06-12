@@ -23,12 +23,6 @@
     text-align: center;
   }
 
-  &:active {
-    border-color: #45d1de;
-    background: #fff;
-    color: #45d1de;
-  }
-
   &_1{
     width: 119px;
     height: 30px;
@@ -59,6 +53,25 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   }
 
+  &_5{
+    background-color: #fff;
+    color: #45d1de;
+  }
+
+  &_7{
+    width: 119px;
+    height: 30px;
+    background-color: #d40000;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  }
+
+  &_8{
+    width: 119px;
+    height: 30px;
+    background-color: #000;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  }
+
 }
 
 @media (min-width: $tablet-portrait) {
@@ -66,8 +79,9 @@
   .btn {
     padding: 0 21px;
 
-    &_1, &_3{
-      width: 111px;
+    &_1, &_3, &_7, &_8{
+      min-width: 111px;
+      white-space: nowrap;
     }
 
     &_2 {

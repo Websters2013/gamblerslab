@@ -1,86 +1,599 @@
 .popup {
-  display: block;
-  opacity: 0;
-  overflow-y: scroll;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 0;
-  height: 0;
-  z-index: 10000;
-  padding-top: 40px;
-  background: $popup-back;
-  text-align: center;
-  transition: opacity 500ms ease-in-out;
+  width: 100%;
+  padding: 31px 15px;
+  background-color: #fff;
+  @include noto-sans;
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+  overflow-y: auto;
+  -webkit-transition: opacity .3s ease, visibility .3s ease, bottom .3s ease;
+  transition: opacity .3s ease, visibility .3s ease, bottom .3s ease;
 
-  &_opened {
+  &.show{
+    visibility: visible;
     opacity: 1;
-    width: 100%;
-    height: 100%;
+    z-index: 10;
   }
 
-  &_hide {
-    opacity: 0;
-    width: 100%;
-    height: 100%;
+  .positive{
+    color: #2ea921;
   }
 
-  &__wrap {
-    position: relative;
-    z-index: 2;
-    width: 527px;
-    margin: 0 auto;
-    padding-bottom: 40px;
-  }
-
-  &__content {
-    display: none;
-    text-align: left;
-    padding: 20px 0;
-  }
-
-  &__close {
+  &__close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    top: 17px;
+    top: 10px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+    svg{
+      width: 10px;
+      fill: #12c2c8;
+    }
+
+  }
+
+  &__title{
+    margin: 0 -15px;
+    padding: 12px 15px 11px;
+    border-top: 1px solid #dce0db;
+    border-bottom: 1px solid #dce0db;
+    font-weight: 600;
+    font-size: 17px;
+    background-color: #f2f2f2;
+
+    svg{
+      width: 13px;
+      margin-right: 3px;
+      fill: #0fc2c8;
+    }
+
+  }
+
+  &__note{
+    margin-bottom: 40px;
+  }
+
+  &__img{
+    width: 100%;
+    margin-bottom: 15px;
+
+    img{
+      display: block;
+      width: 100%;
+    }
+
+  }
+
+  &__info{
+
+    .btn{
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+  }
+
+  &__content{
+
+  }
+
+  &__casino-img{
+    margin: 40px auto 32px;
+
+    img{
+      display: block;
+      margin: 0 auto;
+    }
+
+  }
+
+  &__tabs{
+
+    &-links{
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-align: center;
+
+      a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 25px;
+        border-bottom: 1px solid #dce0db;
+        color: #abb1b9;
+
+        &.active{
+          border-bottom: 2px solid #45d1de;
+          color: #283746;
+        }
+
+      }
+
+    }
+
+    &-content{
+      position: relative;
+      -webkit-transition: height .3s ease;
+      transition: height .3s ease;
+
+      > div{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        font-size: 13px;
+        line-height: 20px;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: opacity .3s ease, visibility .3s ease;
+        transition: opacity .3s ease, visibility .3s ease;
+
+        &.active{
+          opacity: 1;
+          visibility: visible;
+        }
+
+      }
+
+    }
+
+  }
+
+  &__country {
+    display: inline-block;
+    position: relative;
+    width: 22px;
+    margin-right: 12px;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+  }
+
+  &__status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #eceeeb;
+    border-radius: 20px;
+    background-color: #fff;
+
+    svg {
+      width: 7px;
+      fill: #2ea921;
+    }
+
+  }
+
+  &__mark {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -2px;
     width: 15px;
     height: 15px;
-    right: 18px;
-    text-indent: -5000px;
-    cursor: pointer;
+    border-radius: 50px;
+    background-color: #2ea921;
 
-    &:after,
-    &:before {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: $popup-close-back;
-      transform-origin: center;
-      content: '';
-    }
-    &:after{
-      transform: translateY( 50% ) rotate( 45deg );
-    }
-    &:before {
-      transform: translateY( 50% ) rotate( -45deg );
+    svg {
+      width: 7px;
+      fill: #fff;
     }
 
-    &:hover {
-      opacity: 0.8;
+    &_negative{
+      background-color: #d40000;
     }
 
-    &:active {
-      background-position: 0 bottom;
-    }
   }
 
-  &__scrollbar-measure {
-    overflow: scroll;
+  &__overview{
+
+    dl{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    dt{
+      width: 88px;
+      color: #323232;
+    }
+
+    dd{
+      width: calc( 100% - 88px );
+      color: #83868a;
+    }
+
+  }
+
+  &__swiper{
+    width: 237px;
+    margin: 0 auto;
+  }
+
+  &__welcome{
+
+    &-slide {
+      width: 237px;
+      padding: 25px 13px 1px;
+      border: 1px solid #dce0db;
+      background-color: #f8f8f8;
+      color: #83868a;
+      font-size: 12px;
+      line-height: 20px;
+
+      h2 {
+        margin-bottom: 25px;
+        color: #283746;
+        font-size: 18px;
+        text-align: center;
+      }
+
+      p{
+        margin: 0 0 10px 10px;
+      }
+
+      b{
+        color: #283746;
+      }
+
+      a{
+        color: #0fc2c8;
+      }
+
+    }
+
+    &-code{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 75px;
+      margin-bottom: 20px;
+      text-align: center;
+      border: 1px solid #dce0db;
+      background-color: #fff;
+      color: #283746;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 600;
+    }
+
+  }
+
+  &__button-next,
+  &__button-prev{
+    display: block;
     position: absolute;
-    top: -9999px;
-    width: 100px;
-    height: 100px;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: -8px;
+    border-radius: 50px;
+    background-color: #45d1de;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    &:before{
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid #fff;
+      border-bottom: 1.5px solid #fff;
+      transform: translateY(-50%) rotate(45deg);
+      transform-origin: center;
+    }
+
+    &.swiper-button-disabled{
+      background-color: #abb1b9;
+    }
+
+  }
+
+  &__button-next{
+    right: -10px;
+
+    &:before{
+      left: 49%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+  }
+
+  &__button-prev{
+    left: -10px;
+
+    &:before{
+      left: 56%;
+      transform: translate(-50%, -50%) rotate(135deg);
+    }
+
+  }
+
+  &__game{
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+
+    img{
+      display: block;
+      width: 100%;
+    }
+
+  }
+
+  &__game-note{
+    margin-bottom: 10px;
+    color: #d40000;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  &__reset{
+    display: none;
+  }
+
+  &__warning{
+
+    &-content{
+      color: #83868a;
+      font-size: 14px;
+      line-height: 20px;
+
+      p{
+        margin-bottom: 20px;
+      }
+
+    }
+
+    &-img{
+      margin: 0 auto 20px;
+
+      img{
+        display: block;
+      }
+
+    }
+
+  }
+
+  .comments{
+    margin-bottom: 0;
+  }
+
+  .contact-us__form{
+    margin-bottom: 0;
+  }
+
+  .contact-us__send{
+    margin-bottom: 0;
+  }
+
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .popup {
+    top: auto;
+    max-width: 729px;
+    left: 20px;
+    padding: 0 20px 18px;
+    border: 1px solid #dce0db;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.14);
+    overflow-y: visible;
+
+    &:after {
+      top: 100%;
+      left: 44px;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(136, 183, 213, 0);
+      border-top-color: #fff;
+      border-width: 7px;
+    }
+
+    &__note{
+      margin-bottom: 30px;
+    }
+
+    &__close{
+      display: none;
+    }
+
+    &__title{
+      position: relative;
+      margin: 0 -20px 20px;
+      border-radius: 5px 5px 0 0;
+    }
+
+    &__casino-img{
+      width: 237px;
+      margin: 0;
+    }
+
+    &__info{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 35px;
+
+      .btn{
+        width: 205px;
+      }
+
+    }
+
+    &__img{
+      width: 237px;
+    }
+
+    &__content{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    &__tabs{
+      width: 432px;
+
+      &-links{
+
+        a{
+          align-items: flex-start;
+          height: 27px;
+        }
+
+      }
+
+    }
+
+    &__swiper{
+      width: 363px;
+    }
+
+    &__welcome{
+
+      &-slide{
+        line-height: 17px;
+
+        h2{
+          font-size: 14px;
+        }
+
+      }
+
+      &-code{
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+    }
+
+    &__reset{
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+
+      svg{
+        width: 13px;
+        fill: #83868a
+      }
+
+    }
+
+    &__back{
+      position: absolute;
+      top: -10000%;
+      left: -10000%;
+      right: -10000%;
+      bottom: -10000%;
+      background-color: rgba(0,0,0,.5);
+      z-index: -1;
+      content: '';
+    }
+
+    &[data-type="game"]{
+      position: fixed;
+
+      &:after{
+        display: none;
+      }
+
+    }
+
+    &[data-type="warning"]{
+
+      &:after{
+        left: 243px;
+      }
+
+    }
+
+    &[data-type="comments"]{
+
+      &:after{
+        left: 156px;
+      }
+
+    }
+
+    &__game{
+      max-width: 860px;
+    }
+
+    &__wrap{
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+
+    &__warning{
+
+      &-content{
+        width: calc( 100% - 205px );
+      }
+
+      &-img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 160px;
+        margin: 0 45px 0 0;
+
+        img{
+          display: block;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+@media (min-width: $desktop) {
+
+  .popup {
+    left: 0;
   }
 
 }

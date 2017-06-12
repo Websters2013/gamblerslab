@@ -102,7 +102,7 @@
                                 return false;
                             }
 
-                            if ( $( e.target ).closest( $( '.websters-select__popup' ) ).length == 0 ){
+                            if ( $( '.websters-select__popup' ).length > 0 && $( e.target ).closest( $( '.websters-select__popup' ) ).length == 0 ){
                                 _hidePopup();
                             }
 
