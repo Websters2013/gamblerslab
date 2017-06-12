@@ -1,4 +1,5 @@
 .search-results {
+  padding-bottom: 50px;
 
   &__back {
     margin: 0 0 14px;
@@ -36,12 +37,16 @@
     }
 
   }
+  .bonus {
+    margin-bottom: 28px;
+  }
 
 }
 
 @media (min-width: $tablet-portrait) {
 
   .search-results {
+    padding-bottom: 70px;
 
     &__back {
       margin: 0 0 23px;
@@ -68,12 +73,19 @@
 
     }
 
+    .bonus {
+      margin-bottom: 48px;
+    }
+
   }
 
 }
 @media (min-width: $desktop) {
 
   .search-results {
+    .bonus {
+      margin-bottom: 39px;
+    }
 
     &__title {
       margin: 0 0 30px;
