@@ -753,6 +753,7 @@
                     content = $( '<div class="bonus__content"></div>' ),
                     characteristic = $( '<div class="bonus__characteristic"></div>' ),
                     marks = $( '<div class="bonus__marks"></div>' ),
+                    wrapCasinos = $( '<div class="bonus__casinos"></div>' ),
                     wrapCasinos = $( '<div class="bonus__casinos"></div>' );
 
                 for ( var i = 0; i < arr.length; i++ ){
@@ -776,8 +777,20 @@
                     header.append( '<h3>'+ arr[i].title +'</h3>' );
                     header.append( headerInfo );
 
+                    marks.append( '<a href="#"><span class="bonus__marks-icons"><svg viewBox="0 0 24 24"><path d="M14,20H10V11L6.5,14.5L4.08,12.08L12,4.16L19.92,12.08L17.5,14.5L14,11V20Z" /></svg></span><span class="bonus__marks-num">'+ arr[i].likes +'</span></a>' );
+                    marks.append( '<a href="#"><span class="bonus__marks-icons"><svg viewBox="0 0 24 24"><path d="M10,4H14V13L17.5,9.5L19.92,11.92L12,19.84L4.08,11.92L6.5,9.5L10,13V4Z" /></svg></span><span class="bonus__marks-num">'+ arr[i].dislike +'</span></a>' );
+
+                    for ( var n = 0; n < arr[i].comments_item.length; n++ ){
+
+                        var comment = arr[i].comments_item[ n ];
+
+                        wrapCasinos.append(  );
+
+                    }
+
                     frame.append( '<div class="bonus__code">'+ arr[i].code +'</div>' );
                     frame.append( marks );
+                    frame.append( wrapCasinos );
 
                     wrap.append( frame );
                     wrap.append( content );
@@ -806,7 +819,7 @@
                 _initSlider();
                 _initPopups();
 
-                // _ajaxRequest();
+                _ajaxRequest();
                 _onEvent();
             };
 
