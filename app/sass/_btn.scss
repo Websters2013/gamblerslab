@@ -105,11 +105,13 @@
 
   .btn {
     padding: 0 21px;
-    -webkit-transition: box-shadow .3s ease;
-    transition: box-shadow .3s ease;
     cursor: pointer;
+    -webkit-transition: box-shadow .3s ease, transform .3s ease;
+    transition: box-shadow .3s ease, transform .3s ease;
 
     &:hover {
+      -webkit-transform: translate3d(0,-2px,0);
+      transform: translate3d(0,-2px,0);
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
     }
 

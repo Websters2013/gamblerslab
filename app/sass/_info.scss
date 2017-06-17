@@ -1,5 +1,6 @@
 .info {
   position: absolute;
+  top: 0;
   right: 5px;
   height: inherit;
   @include noto-sans;
@@ -17,6 +18,12 @@
     svg{
       fill: #fff;
       width: 16px;
+      -webkit-transition: fill .3s ease;
+      transition: fill .3s ease;
+    }
+
+    &.checker svg{
+      fill: #313251;
     }
 
   }
@@ -118,9 +125,12 @@
         width: 24px;
       }
 
-      &:hover + .info__frame > .info__sub-frame{
-        opacity: 1;
-        visibility: visible;
+      &:hover{
+
+        svg{
+          fill: #313251;
+        }
+
       }
 
     }
@@ -200,6 +210,11 @@
       }
 
       &:hover{
+        opacity: 1;
+        visibility: visible;
+      }
+
+      &.show{
         opacity: 1;
         visibility: visible;
       }

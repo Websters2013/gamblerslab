@@ -1,7 +1,8 @@
 .popup {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
   width: 100%;
   padding: 31px 15px;
   background-color: #fff;
@@ -44,7 +45,7 @@
   }
 
   &__title{
-    margin: 0 -15px;
+    margin: 0 -15px 25px;
     padding: 12px 15px 11px;
     border-top: 1px solid #dce0db;
     border-bottom: 1px solid #dce0db;
@@ -54,6 +55,7 @@
 
     svg{
       width: 13px;
+      height: 13px;
       margin-right: 3px;
       fill: #0fc2c8;
     }
@@ -404,8 +406,11 @@
 @media (min-width: $tablet-portrait) {
 
   .popup {
+    position: absolute;
     top: auto;
+    bottom: auto;
     max-width: 729px;
+    min-height: 0;
     left: 20px;
     padding: 0 20px 18px;
     border: 1px solid #dce0db;

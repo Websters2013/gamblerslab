@@ -1,5 +1,6 @@
 .search {
   position: absolute;
+  top: 0;
   right: 41px;
   height: inherit;
 
@@ -113,6 +114,7 @@
   &__popup{
     position: absolute;
     top: 100%;
+    left: 0;
     margin-top: 10px;
     padding: 29px 0 19px;
     border-radius: 3px;
@@ -185,7 +187,7 @@
     }
 
     &-links{
-      display: none;
+      display: block;
       margin-top: 18px;
       padding: 18px 14px 4px;
       border-top: 1px solid #dce0db;
@@ -193,15 +195,9 @@
       font-size: 14px;
       letter-spacing: -0.9px;
       text-transform: uppercase;
-
-      &.show{
-        display: block;
-      }
-
     }
 
     &-no-results{
-      display: none;
       color: #283746;
       font-size: 13px;
       padding: 0 14px;
@@ -350,11 +346,6 @@
     &__btn-find {
       top: 0;
       left: 0;
-
-      svg{
-        width: 14px;
-      }
-
     }
 
     &__btn-cancel{
@@ -405,11 +396,20 @@
 
         }
 
+        input{
+          padding-left: 54px;
+        }
+
       }
 
       input{
         width: 100%!important;
-        padding: 1px 40px 0 54px;
+        padding: 1px 40px 0 33px;
+
+        &:focus{
+          padding-left: 54px;
+        }
+
       }
 
     }

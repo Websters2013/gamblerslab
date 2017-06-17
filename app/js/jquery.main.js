@@ -4,6 +4,18 @@
 
     $( function(){
 
+        $.each( $( '.validation-form' ), function() {
+
+            new FormValidator ( $( this ) );
+
+        } );
+
+        $.each( $( '.comments' ), function() {
+
+            new AddComments ( $( this ) );
+
+        } );
+
         $.each( $( '.preload' ), function() {
             new Preload ( $( this ) );
         } );
@@ -32,21 +44,28 @@
             new Bonus ( $( this ) );
         } );
 
+        $.each( $('.site__form'), function () {
+
+            new LabelForm( $(this) );
+
+        } );
+
     } );
 
     var AsideMenu = function( obj ) {
 
         //private properties
         var _obj = obj,
-            _links = _obj.find( 'a' ),
             _linksWraps = _obj.find( '.links' ),
-            _bonusSearch = _obj.find( '.links__show-all' ),
-            _bonusCasinos = _obj.find( '.links_casinos' ),
-            _curLinksWrap = _bonusCasinos.find( '.links__wrap' ),
-            _linksNoResults = _bonusCasinos.find( '.links__no-results' ),
-            _hideSearch = _bonusCasinos.find( '.links__back' ),
+            _bonusShowAll = _obj.find( '.links__show-all' ),
+            _linkWrapBonus = _obj.find( '.links_casinos-search' ),
+            _curLinksWrap = _linkWrapBonus.find( '.links__wrap' ),
+            _linksNoResults = _linkWrapBonus.find( '.links__no-results' ),
+            _hideSearch = _linkWrapBonus.find( '.links__back' ),
+            _formSearch = _linkWrapBonus.find( '.links__search' ),
+            _btnCancel = _linkWrapBonus.find( '.links__search-cancel' ),
             _searchInput = _obj.find( '.links__search-input' ),
-            _header = $( '.site__header' ),
+            _siteHeader = $( '.site__header' ),
             _mobileBtnOpen = $( '.mobile-btn' ),
             _lessLinksBox = _obj.find( '.links_less' ),
             _moreLinksBtn = _lessLinksBox.find( '.links__show-more' ),
@@ -74,6 +93,9 @@
                             _fixedDesktopAside();
                         } else if (_window.scrollTop() < _objTopPosition && _window.width() >= 1200) {
                             _unfixedDesktopAside();
+                        } else if ( _window.width() < 1200 ) {
+                            _hideBonusSearch();
+                            _hideMobileAside();
                         }
 
                     }
@@ -100,7 +122,7 @@
                             return false;
                         }
 
-                        if ( $( e.target ).closest( _obj ).length == 0 ){
+                        if ( $( e.target ).closest( _obj ).length == 0 && _window.width() <= 1200 ){
                             _hideMobileAside();
                         }
 
@@ -123,23 +145,15 @@
                     }
                 );
 
-                _bonusSearch.on(
+                _bonusShowAll.on(
                     'click', function () {
                         _showBonusSearch();
-                        return false;
                     }
                 );
 
                 _hideSearch.on(
                     'click', function () {
                         _hideBonusSearch();
-                        return false;
-                    }
-                );
-
-                _links.on(
-                    'click', function () {
-                        _obj.perfectScrollbar();
                     }
                 );
 
@@ -157,12 +171,28 @@
                             _ajaxRequest( 1 );
                         }
                     }
+                );
+
+                _btnCancel.on(
+                    'click', function() {
+
+                        _formSearch[0].reset();
+
+                        _ajaxRequest();
+
+                        setTimeout( function () {
+                            _curLinksWrap.getNiceScroll().resize();
+                        }, 300 )
+
+                        return false;
+
+                    }
                 )
 
             },
-            _ajaxRequest = function( num ){
+            _ajaxRequest = function( ){
 
-                _bonusCasinos.addClass( 'load' );
+                _linkWrapBonus.addClass( 'load' );
 
                 _request = $.ajax( {
                     url: _obj.data( 'link' ),
@@ -174,7 +204,7 @@
                     type: 'GET',
                     success: function ( data ) {
 
-                        _loadData( data, num );
+                        _loadData( data );
 
                     },
                     error: function ( XMLHttpRequest ) {
@@ -191,11 +221,13 @@
                     curLinksWrap = curElement.prev( '.links__wrap' ),
                     curBoxLinks = curLinksWrap.find( '.links__item' );
 
-                curBoxLinks.show();
                 curElement.addClass( 'hide-links' );
                 curElement.html( 'Show Less' );
+                curLinksWrap.css( 'height', curBoxLinks.outerHeight() * curBoxLinks.length );
 
-                _obj.perfectScrollbar( 'update' );
+                setTimeout( function () {
+                    _obj.getNiceScroll().resize();
+                }, 500 );
 
             },
             _showLessLinks = function ( o ) {
@@ -218,13 +250,13 @@
                         viewNum = curWrap.data( 'show' ),
                         curBoxLinks = curBox.find( '.links__item' );
 
-                    for ( var i = viewNum; i <= curBoxLinks.length; i++ ){
-                        curBoxLinks.eq( i ).hide();
-                    }
+                    curWrap.css( 'height', curBoxLinks.outerHeight() * viewNum );
 
                 } );
 
-                _obj.perfectScrollbar( 'update' );
+                setTimeout( function () {
+                    _obj.getNiceScroll().resize();
+                }, 500 );
 
             },
             _showBonusSearch = function () {
@@ -232,59 +264,76 @@
                 if ( _obj.hasClass( 'fixed' ) ){
                     _obj.css( 'height', _body.height() );
                 } else {
-                    _obj.css( 'height', _body.height() - _header.height() );
+                    _obj.css( 'height', _body.height() - _siteHeader.height() );
                 }
 
-                _obj.perfectScrollbar( 'destroy' );
+                _obj.animate( { scrollTop: 0 }, 200);
+                _obj.getNiceScroll().remove();
 
-                _linksWraps.addClass( 'hide' );
+                _linkWrapBonus.addClass( 'active' );
 
-                _bonusCasinos.addClass( 'active' );
+                if ( _window.width() >= 768 ){
 
-                setTimeout( function () {
-                    _linksWraps.find( '.links__wrap' ).perfectScrollbar();
-                }, 500 );
+                    _curLinksWrap.niceScroll( {
+                        cursorcolor: "#45b8c7",
+                        cursorwidth: "10",
+                        cursorborder: "none",
+                        cursorborderradius: "0",
+                        autohidemode: false,
+                        background: "#445669"
+                    } );
 
-                _ajaxRequest( 1 );
+                } else {
+
+                    _curLinksWrap.niceScroll( {
+                        cursorcolor: "#45b8c7",
+                        cursorwidth: "5",
+                        cursorborder: "none",
+                        cursorborderradius: "0",
+                        autohidemode: false,
+                        background: "#445669"
+                    } );
+
+                }
+
+                _ajaxRequest();
 
             },
             _hideBonusSearch = function () {
 
                 $( '.links__search' )[0].reset();
 
-                _linksWraps.find( '.links__wrap' ).perfectScrollbar( 'destroy' );
-
-                _linksWraps.removeClass( 'hide' );
-                _bonusCasinos.removeClass( 'active' );
+                _curLinksWrap.getNiceScroll().remove();
+                _linkWrapBonus.removeClass( 'active' );
 
                 if ( _obj.hasClass( 'fixed' ) ){
                     _obj.css( 'height', _body.height() );
                 } else {
-                    _obj.css( 'height', _body.height() - _header.height() );
+                    _obj.css( 'height', _body.height() - _siteHeader.height() );
                 }
 
-                setTimeout( function () {
-                    _initScroll();
-                }, 500 );
-
-                _ajaxRequest( 0 );
+                _initScroll();
 
             },
             _fixedDesktopAside = function () {
                 _obj.addClass( 'fixed' );
                 _obj.css( 'height', _body.height() );
-                _obj.perfectScrollbar( 'update' );
+                _obj.getNiceScroll().resize();
             },
             _unfixedDesktopAside = function () {
                 _obj.removeClass( 'fixed' );
-                _obj.css( 'height', _body.height() - _header.height() );
-                _obj.perfectScrollbar( 'update' );
+                _obj.css( 'height', _body.height() - _siteHeader.height() );
+                _obj.getNiceScroll().resize();
             },
             _showMobileAside = function() {
 
                 _mobileBtnOpen.addClass( 'close' );
                 _obj.addClass( 'show' );
                 _body.css( 'overflow-y', 'hidden' );
+
+                setTimeout( function () {
+                    _initScroll();
+                }, 300 )
 
                 _uploadAsideHeight();
 
@@ -297,31 +346,54 @@
 
                 _body.css( 'overflow-y', 'visible' );
 
+                _obj.getNiceScroll().remove();
+
             },
             _uploadAsideHeight = function () {
-                _obj.css( 'height', _body.height() - _header.height() );
-                _initScroll();
+
+                _obj.css( 'height', _body.height() - _siteHeader.height() );
+
+                if ( _window.scrollTop() >= _objTopPosition && _window.width() >= 1200 ){
+                    _fixedDesktopAside();
+                    _initScroll();
+                } else if ( _window.width() >= 1200 ) {
+                    _initScroll();
+                }
+
             },
             _initScroll = function () {
 
-                _obj.perfectScrollbar();
+                if ( _window.width() >= 768 ){
+
+                    _obj.niceScroll( {
+                        cursorcolor: "#45b8c7",
+                        cursorwidth: "10",
+                        cursorborder: "none",
+                        cursorborderradius: "0",
+                        autohidemode: false,
+                        background: "#445669"
+                    } );
+
+                } else {
+
+                    _obj.niceScroll( {
+                        cursorcolor: "#45b8c7",
+                        cursorwidth: "5",
+                        cursorborder: "none",
+                        cursorborderradius: "0",
+                        autohidemode: false,
+                        background: "#445669"
+                    } );
+
+                }
 
             },
             _loadData = function ( data, num ) {
 
                 _curLinksWrap.empty();
 
-                var arr = data.items;
-
-                if ( num == 0 ){
-
-                    var number = 5;
-
-                } else if ( num == 1 ) {
-
-                    var number = arr.length;
-
-                }
+                var arr = data.items,
+                    number = arr.length;
 
                 for ( var i = 0; i < number; i++ ){
 
@@ -335,28 +407,22 @@
 
                 if ( data == undefined || data.items == undefined || data.items.length == 0 ) {
 
-                    _curLinksWrap.find( '.search__popup-title' ).hide();
-                    _linksNoResults.show();
+                    _curLinksWrap.find( '.search__popup-title' ).hide( 300 );
+                    _linksNoResults.show( 300 );
 
                 } else {
 
-                    _curLinksWrap.find( '.search__popup-title' ).show();
-                    _linksNoResults.hide();
+                    _curLinksWrap.find( '.search__popup-title' ).show( 300 );
+                    _linksNoResults.hide( 300 );
 
                 };
 
-                _bonusCasinos.removeClass( 'load' );
+                _linkWrapBonus.removeClass( 'load' );
 
             },
             _init = function() {
                 _showLessLinks( 0 );
                 _uploadAsideHeight();
-
-                _ajaxRequest( 0 );
-
-                if ( _window.scrollTop() >= _objTopPosition && _window.width() >= 1200 ){
-                    _fixedDesktopAside();
-                }
 
                 _onEvent();
             };
@@ -366,6 +432,66 @@
         //public methods
 
         _init();
+    };
+
+    var AddComments = function (obj) {
+
+        //private properties
+        var _self = this,
+            _obj = obj,
+            _add = _obj.find('.comments__add'),
+            _write = _obj.find('.comments__write'),
+            _dom = $( 'html, body'),
+            _commentBlock = _obj.find('.contact-us');
+
+        //private methods
+        var _constructor = function () {
+                _onEvents();
+                _obj[0].obj = _self;
+            },
+            _onEvents = function () {
+
+                _write.on( {
+                    click: function() {
+
+                        var curItem = $(this);
+
+                        curItem.addClass('hidden');
+                        _openComments();
+
+                        return false;
+
+                    }
+                } );
+
+                _add.on( {
+                    click: function() {
+
+                        _openComments();
+
+                        _dom.stop( true, false );
+                        _dom.animate( {
+                            scrollTop: _commentBlock.offset().top - 20
+
+                        });
+
+                        return false;
+
+                    }
+                } );
+
+            },
+            _openComments = function () {
+
+                _commentBlock.removeClass('hidden');
+
+            };
+
+        //public properties
+
+        //public methods
+
+        _constructor();
     };
 
     var BackToTop = function( obj ) {
@@ -398,7 +524,7 @@
             },
             _checkScroll = function () {
 
-                if ( _window.scrollTop() > _body.height() ){
+                if ( _window.scrollTop() > 75 ){
                     _showBtn();
                 } else {
                     _hideBtn();
@@ -432,52 +558,70 @@
         //private properties
         var _obj = obj,
             _bonusItem = _obj.find( '.bonus__item' ),
-            _bonusPopup = _obj.find( '.popup' ),
-            _bonusPopupClose = _obj.find( '.popup__close' ),
-            _bonusMinimize = _obj.find( '.bonus__item-minimize' ),
-            _position = 0,
+            _bonusMinimizeItem = _obj.find( '.bonus__item-minimize' ),
+            _bonusNotResult = _obj.find( '.bonus__not-result' ),
+            _positionMobileWindow = 0,
             _body = $( 'body, html' ),
             _window = $( window ),
+            _loadFlag = true,
             _request = new XMLHttpRequest();
 
         //private methods
         var _onEvent = function() {
 
+                _window.on( {
+                    scroll: function() {
+
+                        if ( _obj.hasClass( 'bonus_auto-load' ) && _window.scrollTop() + _window.height() >= _obj.offset().top + _obj.height() - 10 ) {
+
+                            if ( _loadFlag ){
+                                _ajaxRequest();
+                            }
+
+                        }
+
+                    }
+                } );
+
                 _body.on(
                     'click', function ( e ) {
 
-                        if ( $( e.target ).closest( _bonusItem.find( '.bonus__casinos-img' ) ).length != 0  ){
-                            return false;
-                        }
+                        var bonusPopup = _obj.find( '.popup' ),
+                            openPopup = _obj.find( '.popup__open' );
 
-                        if ( $( e.target ).closest( _bonusPopup ).length == 0 ){
+                        if ( $( e.target ).closest( bonusPopup ).length == 0 ){
                             _hidePopup();
                         }
 
                     }
                 );
 
-                _bonusPopupClose.on(
-                    'click', function ( ) {
-                        _hidePopup();
-                        return false;
-                    }
-                );
-
-                _bonusMinimize.on(
+                _bonusMinimizeItem.on(
                     'click', function ( ) {
 
                         var curBtn = $( this ),
                             curParent = curBtn.parents( '.bonus__item' );
 
-                        if ( !curParent.hasClass( 'show' ) ) {
+                        if ( !curParent.hasClass( 'hide' ) ) {
 
-                            _bonusItem.removeClass( 'show' );
-                            curParent.addClass( 'show' );
+                            var curHead = curParent.find( '.bonus__header' );
+
+                            curParent.addClass( 'hide' );
+                            curParent.css( 'height', curHead.outerHeight() );
 
                         } else {
 
-                            curParent.removeClass( 'show' );
+                            curParent.removeClass( 'hide' );
+                            curParent.css( 'height', curParent.attr( 'data-height' ) );
+
+                            setTimeout( function () {
+
+                                var centerCurParent = curParent.offset().top + curParent.outerHeight() / 2,
+                                    centerBody = _window.height() / 2;
+
+                                _body.animate( { scrollTop : centerCurParent - centerBody }, 500, 'swing' )
+
+                            }, 300 )
 
                         }
 
@@ -490,17 +634,46 @@
             _ajaxRequest = function(){
 
                 _obj.addClass( 'load' );
+                _loadFlag = false;
 
                 _request = $.ajax( {
                     url: _obj.data( 'link' ),
                     data: {
                         loadedCount: 5
                     },
-                    dataType: 'json',
+                    dataType: 'html',
                     type: 'GET',
                     success: function ( data ) {
 
                         _loadData( data );
+
+                    },
+                    error: function ( XMLHttpRequest ) {
+                        if ( XMLHttpRequest.statusText != "abort" ) {
+                            console.log( 'err' );
+                        }
+                    }
+                } );
+
+            },
+            _ajaxPopupRequest = function( element ){
+
+                var curElemetn = element,
+                    curParentElemetn = curElemetn.parents( '.bonus__item' ),
+                    curElemtnType = curElemetn.attr( 'data-type' ),
+                    curElemtnLink = curElemetn.attr( 'data-link' );
+
+                _request = $.ajax( {
+                    url: 'php/popups.php',
+                    data: {
+                        loadedType: curElemtnType,
+                        loadedLink: curElemtnLink
+                    },
+                    dataType: 'html',
+                    type: 'GET',
+                    success: function ( data ) {
+
+                        _loadPopup( curParentElemetn, curElemetn, data );
 
                     },
                     error: function ( XMLHttpRequest ) {
@@ -549,276 +722,235 @@
             _initPopups = function() {
 
                 var items = _obj.find( '.bonus__item' ),
-                    bonusCasinoGame = items.find( '.btn[data-type=game]' ),
-                    bonusCasinoWarning = items.find( '.btn[data-type=warning]' ),
-                    bonusComments = items.find( '.bonus__comments-add' ),
-                    bonusCasinoBtn = items.find( '.bonus__casinos-img' ),
-                    bonusTabsBtn = items.find( '.popup__tabs-links a' );
+                    popupBtn = items.find( '.popup__open' );
 
-                bonusCasinoBtn.on( {
-                    'click': function () {
+                popupBtn.on( 'click', function () {
 
-                        var curBtn = $( this ),
-                            curBtnLink = curBtn.data( 'link' ),
-                            curItem = curBtn.parents( '.bonus__item' ),
-                            bonusPopup = curItem.find( '.popup' ).filter( "[data-type=bonus]" ),
-                            curPopup = bonusPopup.filter( "[data-link="+ curBtnLink +"]" ).addClass( 'show' ),
-                            popupTabsLink = curPopup.find( '.popup__tabs-links a' ),
-                            popupTabsContent = curPopup.find( '.popup__tabs-content' ),
-                            popupTabsContentItem = curPopup.find( '.popup__tabs-content div' );
+                    _hidePopup();
 
-                        popupTabsLink.removeClass( 'active' );
-                        popupTabsContentItem.removeClass( 'active' );
+                    var curBtn = $( this );
 
-                        popupTabsLink.eq( 0 ).addClass( 'active' );
-                        popupTabsContentItem.eq( 0 ).addClass( 'active' );
-                        popupTabsContent.css( 'height', popupTabsContentItem.filter( '.active' ).height() );
-
-                        if ( _window.width() < 768 ){
-
-                            var _position = _window.scrollTop();
-
-                            _body.css( 'overflow-y', 'hidden' );
-
-                        } else if  ( _window.width() >= 768 ) {
-
-                            bonusPopup.css ( {
-                                'top' : curBtn.offset().top - curBtn.height() - bonusPopup.height() - 20,
-                                'left': _obj.offset().left
-                            } );
-
-                        }
-
-                        return false;
-
-                    }
-
-                } );
-
-                bonusTabsBtn.on( {
-                    'click': function () {
-
-                        var curBtn = $( this ),
-                            tabs = curBtn.parents( '.popup__tabs' ),
-                            tabsLinks = tabs.find( '.popup__tabs-links a' ),
-                            tabsContent = tabs.find( '.popup__tabs-content > div' ),
-                            popupTabsContent = tabs.find( '.popup__tabs-content' ),
-                            bonusSwiper = tabs.find( '.popup__swiper' ),
-                            swiperNextButton = tabs.find( '.popup__button-next' ),
-                            swiperPrevButton = tabs.find( '.popup__button-prev' ),
-                            popupSwiper;
-
-                        tabsContent.removeClass( 'active' );
-                        tabsLinks.removeClass( 'active' );
-
-                        popupSwiper = new Swiper ( bonusSwiper, {
-                            autoplay: false,
-                            speed: 500,
-                            effect: 'slide',
-                            slidesPerView: 2,
-                            spaceBetween: 8,
-                            loop: false,
-                            nextButton: swiperNextButton,
-                            prevButton: swiperPrevButton,
-                            breakpoints: {
-                                768: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 0
-                                },
-                            }
-                        } );
-
-                        curBtn.addClass( 'active' );
-                        tabsContent.eq( curBtn.index() ).addClass( 'active' );
-                        popupTabsContent.css( 'height', tabsContent.filter( '.active' ).height() );
-
-                        return false;
-
-                    }
-                } );
-
-                bonusCasinoGame.on( {
-                    'click': function () {
-
-                        var curBtn = $( this ),
-                            curBtnLink = curBtn.data( 'link' ),
-                            curItem = curBtn.parents( '.bonus__item' ),
-                            bonusPopup = curItem.find( '.popup' ).filter( "[data-type=game]" ),
-                            curPopup = bonusPopup.filter( "[data-link="+ curBtnLink +"]" ).addClass( 'show' );
-
-                        if ( _window.width() < 768 ){
-
-                            var _position = _window.scrollTop();
-
-                            _body.css( 'overflow-y', 'hidden' );
-
-                        } else if  ( _window.width() >= 768 ) {
-
-                            bonusPopup.css ( {
-                                'top' : _window.height() / 2 - bonusPopup.height() / 2,
-                                'left': _window.width() / 2 - bonusPopup.width() / 2
-                            } );
-
-                        }
-
-                        return false;
-
-                    }
-
-                } );
-
-                bonusComments.on( {
-                    'click': function () {
-
-                        var curBtn = $( this ),
-                            curBtnLink = curBtn.data( 'link' ),
-                            curItem = curBtn.parents( '.bonus__item' ),
-                            bonusPopup = curItem.find( '.popup' ).filter( "[data-type=comments]" ),
-                            curPopup = bonusPopup.filter( "[data-link="+ curBtnLink +"]" ).addClass( 'show' );
-
-                        if ( _window.width() < 768 ){
-
-                            var position = _window.scrollTop();
-
-                            _body.css( 'overflow-y', 'hidden' );
-
-                        } else if  ( _window.width() >= 768 ) {
-
-                            bonusPopup.css ( {
-                                'top' : curBtn.offset().top - curBtn.height() - bonusPopup.height() + 10,
-                                'left': _obj.offset().left
-                            } );
-
-                        }
-
-                        return false;
-
-                    }
-
-                } );
-
-                bonusCasinoWarning.on( {
-                    'click': function () {
-
-                        var curBtn = $( this ),
-                            curBtnLink = curBtn.data( 'link' ),
-                            curItem = curBtn.parents( '.bonus__item' ),
-                            bonusPopup = curItem.find( '.popup' ).filter( "[data-type=warning]" ),
-                            curPopup = bonusPopup.filter( "[data-link="+ curBtnLink +"]" ).addClass( 'show' );
-
-                        if ( _window.width() < 768 ){
-
-                            var _position = _window.scrollTop();
-
-                            _body.css( 'overflow-y', 'hidden' );
-
-                        } else if  ( _window.width() >= 768 ) {
-
-                            bonusPopup.css ( {
-                                'top' : curBtn.offset().top - curBtn.height() - bonusPopup.height() - 20,
-                                'left': _obj.offset().left
-                            } );
-
-                        }
-
-                        return false;
-
-                    }
+                    _ajaxPopupRequest( curBtn );
+                    return false;
 
                 } );
 
             },
+            _loadPopup = function ( box, btn, data ) {
+
+                var curBox = box,
+                    curBtn = btn,
+                    arr = data;
+
+                curBox.append( arr );
+
+                var curPopup = curBox.find( '.popup' ),
+                    bonusPopupClose = curPopup.find( '.popup__close' );
+
+                if ( curPopup.attr( 'data-type' ) == 'bonus' ){
+
+                    curPopup.addClass( 'show' );
+
+                    var popupTabsLink = curPopup.find( '.popup__tabs-links a' ),
+                        popupTabsContent = curPopup.find( '.popup__tabs-content' ),
+                        popupTabsContentItem = curPopup.find( '.popup__tabs-content div' );
+
+                    popupTabsLink.removeClass( 'active' );
+                    popupTabsContentItem.removeClass( 'active' );
+
+                    popupTabsLink.eq( 0 ).addClass( 'active' );
+                    popupTabsContentItem.eq( 0 ).addClass( 'active' );
+                    popupTabsContent.css( 'height', popupTabsContentItem.filter( '.active' ).height() );
+
+                    if ( _window.width() < 768 ){
+
+                        _positionMobileWindow = _window.scrollTop();
+
+                        _body.css( 'overflow-y', 'hidden' );
+
+                    } else if  ( _window.width() >= 768 ) {
+
+                        curPopup.css ( {
+                            'top' : curBtn.offset().top - curBtn.height() - curPopup.height() - 20,
+                            'left': _obj.offset().left
+                        } );
+
+                    }
+
+                    popupTabsLink.on( {
+                        'click': function () {
+
+                            var curBtn = $( this ),
+                                tabs = curBtn.parents( '.popup__tabs' ),
+                                tabsLinks = tabs.find( '.popup__tabs-links a' ),
+                                tabsContent = tabs.find( '.popup__tabs-content > div' ),
+                                popupTabsContent = tabs.find( '.popup__tabs-content' ),
+                                bonusSwiper = tabs.find( '.popup__swiper' ),
+                                swiperNextButton = tabs.find( '.popup__button-next' ),
+                                swiperPrevButton = tabs.find( '.popup__button-prev' ),
+                                popupSwiper;
+
+                            tabsContent.removeClass( 'active' );
+                            tabsLinks.removeClass( 'active' );
+
+                            popupSwiper = new Swiper ( bonusSwiper, {
+                                autoplay: false,
+                                speed: 500,
+                                effect: 'slide',
+                                slidesPerView: 2,
+                                spaceBetween: 8,
+                                loop: false,
+                                nextButton: swiperNextButton,
+                                prevButton: swiperPrevButton,
+                                breakpoints: {
+                                    768: {
+                                        slidesPerView: 1,
+                                        spaceBetween: 0
+                                    },
+                                }
+                            } );
+
+                            curBtn.addClass( 'active' );
+                            tabsContent.eq( curBtn.index() ).addClass( 'active' );
+                            popupTabsContent.css( 'height', tabsContent.filter( '.active' ).height() );
+
+                            return false;
+
+                        }
+                    } );
+
+                }
+                else if ( curPopup.attr( 'data-type' ) == 'warning' ) {
+
+                    curPopup.addClass( 'show' );
+
+                    if ( _window.width() < 768 ){
+
+                        _positionMobileWindow = _window.scrollTop();
+
+                        _body.css( 'overflow-y', 'hidden' );
+
+                    } else if  ( _window.width() >= 768 ) {
+
+                        curPopup.css ( {
+                            'top' : curBtn.offset().top - curBtn.height() - curPopup.height() - 20,
+                            'left': _obj.offset().left
+                        } );
+
+                    }
+
+                }
+                else if ( curPopup.attr( 'data-type' ) == 'game' ) {
+
+                    curPopup.addClass( 'show' );
+
+                    if ( _window.width() < 768 ){
+
+                        _positionMobileWindow = _window.scrollTop();
+
+                        _body.css( 'overflow-y', 'hidden' );
+
+                    } else if  ( _window.width() >= 768 ) {
+
+                        curPopup.css ( {
+                            'top' : _window.height() / 2 - curPopup.height() / 2,
+                            'left': _window.width() / 2 - curPopup.width() / 2
+                        } );
+
+                    }
+
+                }
+                else if ( curPopup.attr( 'data-type' ) == 'comments' ) {
+
+                    curPopup.addClass( 'show' );
+
+                    if ( _window.width() < 768 ){
+
+                        _positionMobileWindow = _window.scrollTop();
+
+                        _body.css( 'overflow-y', 'hidden' );
+
+                    } else if  ( _window.width() >= 768 ) {
+
+                        curPopup.css ( {
+                            'top' : curBtn.offset().top - curBtn.height() - curPopup.height() + 10,
+                            'left': _obj.offset().left
+                        } );
+
+                    }
+
+                }
+
+                bonusPopupClose.on(
+                    'click', function ( ) {
+                        _hidePopup();
+                        return false;
+                    }
+                );
+
+            },
             _hidePopup = function () {
+
+                var _bonusPopup = _obj.find( '.popup' );
 
                 if ( _window.width() < 768 ){
 
                     _body.css( 'overflow-y', 'auto' );
-                    _window.scrollTop( position );
+                    _body.scrollTop( _positionMobileWindow );
 
                 }
 
                 _bonusPopup.removeClass( 'show' );
 
+                setTimeout( function () {
+                    _bonusPopup.remove();
+                }, 300 );
+
             },
             _loadData = function ( data ) {
 
-                var arr = data.items,
-                    item = $( '<div class="bonus__item"></div>' ),
-                    header = $( '<div class="bonus__header"></div>' ),
-                    headerInfo = $( '<div class="bonus__header-info"></div>' ),
-                    headerCountry = $( '<div class="bonus__country"></div>' ),
-                    headerExpires = $( '<span class="bonus__expires"></span>' ),
-                    wrap = $( '<div class="bonus__wrap"></div>' ),
-                    frame = $( '<div class="bonus__frame"></div>' ),
-                    content = $( '<div class="bonus__content"></div>' ),
-                    characteristic = $( '<div class="bonus__characteristic"></div>' ),
-                    marks = $( '<div class="bonus__marks"></div>' ),
-                    wrapCasinos = $( '<div class="bonus__casinos"></div>' ),
-                    wrapCasinos = $( '<div class="bonus__casinos"></div>' );
+                var arr = data;
 
-                for ( var i = 0; i < arr.length; i++ ){
+                _obj.prepend( data );
+                _obj.removeClass( 'load' );
 
-                    headerCountry.append( '<img src="'+ arr[i].country_flag +'" alt="flag"/>' );
-
-                    if ( arr[i].country_status ){
-                        headerCountry.append( '<span class="bonus__status"><svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg></span>' );
-                    } else {
-                        headerCountry.append( '<span class="bonus__status negative"><svg viewBox="123 76 14 14"><path d="M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z" transform="translate(118 71)"/></svg></span>' );
-                    }
-
-                    headerExpires.html( arr[i].expires );
-
-                    headerInfo.append( headerCountry );
-
-                    headerInfo.append( '<time class="bonus__count"><svg viewBox="118 111 18 20"><path d="M9,11H7v2H9Zm4,0H11v2h2Zm4,0H15v2h2Zm2-7H18V2H16V4H8V2H6V4H5A1.991,1.991,0,0,0,3.01,6L3,20a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,19,4Zm0,16H5V9H19Z" transform="translate(115 109)"/></svg>'+ arr[i].time +'</time>' )
-
-                    headerInfo.append( headerExpires );
-
-                    header.append( '<h3>'+ arr[i].title +'</h3>' );
-                    header.append( headerInfo );
-
-                    marks.append( '<a href="#"><span class="bonus__marks-icons"><svg viewBox="0 0 24 24"><path d="M14,20H10V11L6.5,14.5L4.08,12.08L12,4.16L19.92,12.08L17.5,14.5L14,11V20Z" /></svg></span><span class="bonus__marks-num">'+ arr[i].likes +'</span></a>' );
-                    marks.append( '<a href="#"><span class="bonus__marks-icons"><svg viewBox="0 0 24 24"><path d="M10,4H14V13L17.5,9.5L19.92,11.92L12,19.84L4.08,11.92L6.5,9.5L10,13V4Z" /></svg></span><span class="bonus__marks-num">'+ arr[i].dislike +'</span></a>' );
-
-                    for ( var n = 0; n < arr[i].comments_item.length; n++ ){
-
-                        var comment = arr[i].comments_item[ n ];
-
-                        wrapCasinos.append(  );
-
-                    }
-
-                    frame.append( '<div class="bonus__code">'+ arr[i].code +'</div>' );
-                    frame.append( marks );
-                    frame.append( wrapCasinos );
-
-                    wrap.append( frame );
-                    wrap.append( content );
-
-                    item.append( header );
-                    item.append( wrap );
-
-                    _obj.append( item );
-
+                if ( arr == 0 || arr == null ){
+                    _bonusNotResult.show( 300 );
+                    return false;
                 }
 
-                if ( data == undefined || data.items == undefined || data.items.length == 0 ) {
+                _initSlider();
+                _initPopups();
+                _minimizeAllItems();
 
-                    // _linksNoResults.show();
+                _loadFlag = true;
 
-                } else {
+            },
+            _minimizeAllItems = function () {
 
-                    // _linksNoResults.hide();
+                if ( !_obj.hasClass( 'bonus_minimize' ) ){
+                    return false;
+                }
 
-                };
+                _bonusItem.each( function () {
 
-                // _bonusCasinos.removeClass( 'load' );
+                    var curElem = $( this ),
+                        curHead = curElem.find( '.bonus__header' );
+
+                    curElem.addClass( 'hide' );
+
+                    if ( _window < 768 ) {
+                        curElem.attr( 'data-height', curElem.outerHeight() + 10 );
+                    } else {
+                        curElem.attr( 'data-height', curElem.outerHeight() + 20 );
+                    }
+
+                    curElem.css( 'height', curHead.outerHeight() );
+
+                } );
 
             },
             _init = function() {
-                _initSlider();
-                _initPopups();
-
                 _ajaxRequest();
                 _onEvent();
             };
@@ -839,7 +971,13 @@
             _filterPopup = _obj.find( '.filter__popup' ),
             _filterItem = _filterPopup.find( 'label' ),
             _filterCheckbox = _filterItem.find( 'input' ),
-            _body = $( 'html, body' );
+            _filterSort = _obj.find( '.filter__sort' ),
+            _filterSortBtn = _filterSort.find( '.filter__sort-select' ),
+            _filterSortPopup = _filterSort.find( '.filter__sort-popup' ),
+            _filterSortItem = _filterSort.find( 'label' ),
+            _filterSortRadio = _filterSortItem.find( 'input' ),
+            _body = $( 'html, body' ),
+            _window = $( window );
 
         //private methods
         var _onEvent = function() {
@@ -848,11 +986,16 @@
                     'click', function ( e ) {
 
                         if ( $( e.target ).closest( _filterBtn ).length != 0  ){
+                            _hideSortPopup();
                             return false;
                         }
 
                         if ( $( e.target ).closest( _filterPopup ).length == 0 ){
-                            _hidePopup();
+                            _hideFilterPopup();
+                        }
+
+                        if ( $( e.target ).closest( _filterSort ).length == 0 ){
+                            _hideSortPopup();
                         }
 
                     }
@@ -863,25 +1006,52 @@
                     var curElem = $( this );
 
                     if ( !curElem.hasClass( 'close' ) ){
-                        _showPopup();
+                        _showFilterPopup();
                     } else {
-                        _hidePopup();
+                        _hideFilterPopup();
+                    }
+
+                } );
+
+                _filterSortBtn.on( 'click', function () {
+
+                    if ( _filterSort.hasClass( 'show' ) ){
+                        _hideSortPopup();
+                    } else {
+                        _showSortPopup();
                     }
 
                 } );
 
                 _filterCheckbox.on( 'click', function () {
+
                     _illuminationItem();
+
+                } );
+
+                _filterSortRadio.on( 'change', function () {
+                    _illuminationFilterItem();
+
                 } );
 
             },
-            _showPopup = function() {
+            _showSortPopup = function() {
+
+                _filterSort.addClass( 'show' );
+
+            },
+            _hideSortPopup = function() {
+
+                _filterSort.removeClass( 'show' );
+
+            },
+            _showFilterPopup = function() {
 
                 _filterBtn.addClass( 'close' );
                 _filterPopup.addClass( 'show' );
 
             },
-            _hidePopup = function() {
+            _hideFilterPopup = function() {
 
                 _filterBtn.removeClass( 'close' );
                 _filterPopup.removeClass( 'show' );
@@ -917,8 +1087,40 @@
                 };
 
             },
+            _illuminationFilterItem = function() {
+
+                _filterSortItem.each( function () {
+
+                    var curElem = $( this ),
+                        curCheckbox = curElem.find( 'input' );
+
+                    if ( curCheckbox.is(" :checked ") ){
+                        curElem.addClass( 'illumination' );
+
+                        _filterSortBtn.html( curElem.text() )
+
+                        /*if ( _window.width() >= 1200 ){
+                            _filterSortBtn.html( curElem.text() )
+                        }*/
+
+                    } else {
+                        curElem.removeClass( 'illumination' );
+                    }
+
+                } );
+
+                if ( _filterSortItem.first().hasClass( 'illumination' ) ) {
+                    _filterSortPopup.addClass( 'gray' );
+                } else {
+                    _filterSortPopup.removeClass( 'gray' );
+                }
+
+                var illumination = _filterSortPopup.find( '.illumination' );
+
+            },
             _init = function() {
                 _illuminationItem();
+                _illuminationFilterItem();
                 _onEvent();
             };
 
@@ -929,17 +1131,147 @@
         _init();
     };
 
+    var FormValidator = function (obj) {
+
+        //private properties
+        var _self = this,
+            _obj = obj,
+            _fields = _obj.find( '[data-required]' );
+
+        //private methods
+        var _constructor = function () {
+                _onEvents();
+                _obj[0].obj = _self;
+            },
+            _addNotTouchedClass = function () {
+
+                _fields.each( function() {
+
+                    var curItem = $(this);
+
+                    if( curItem.val() === '' ){
+
+                        curItem.addClass( 'not-touched' );
+
+                        _validateField( curItem );
+
+                    }
+
+                } );
+
+            },
+            _onEvents = function () {
+                _fields.on( {
+                    focus: function() {
+
+                        $( this ).removeClass( 'not-touched' );
+
+                    },
+                    keyup: function() {
+
+                        var curItem = $(this);
+
+                        _validateField( curItem );
+
+                    }
+                } );
+                _obj.on( {
+                    submit: function() {
+
+                        _addNotTouchedClass();
+
+                        if( _fields.hasClass('not-touched') || _fields.hasClass('not-valid') ) {
+
+                            _obj.find('.not-touched:first').focus();
+                            _obj.find('.not-valid:first').focus();
+                            return false;
+
+                        } else {
+
+                            return true;
+
+                        }
+                    }
+                } );
+
+            },
+            _makeNotValid = function ( field ) {
+                field.addClass( 'not-valid' );
+                field.removeClass( 'valid' );
+            },
+            _makeValid = function ( field ) {
+                field.removeClass( 'not-valid' );
+                field.addClass( 'valid' );
+            },
+            _validateEmail = function ( email ) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            },
+            _validateField = function ( field ) {
+                var type = field.attr( 'type'),
+                    tagName = field[0].tagName;
+
+                if( type === 'email' || type === 'text' ){
+
+                    if( field.val() === '' ){
+                        _makeNotValid( field );
+                        return false;
+                    }
+
+                }
+
+                if( type === 'email' ){
+                    if( !_validateEmail( field.val() ) ){
+                        _makeNotValid( field );
+                        return false;
+                    }
+                }
+
+
+                if( tagName.toLocaleLowerCase() == 'textarea' ){
+
+                    if( field.val() === '' || field.val().length < 80 ){
+                        _makeNotValid( field );
+                        return false;
+                    }
+
+                }
+
+                _makeValid( field );
+            };
+
+        //public properties
+
+        //public methods
+        _self.checkValid = function () {
+            var valid = true;
+
+            _fields.each( function () {
+                $( this ).removeClass( 'not-touched' );
+                if( $( this ).hasClass( 'not-valid' ) ){
+                    valid = false;
+
+                }
+            } );
+
+            return valid;
+        };
+
+        _constructor();
+    };
+
     var InfoPanel = function( obj ) {
 
         //private properties
         var _obj = obj,
             _btnShowInfo = _obj.find( '.info__btn-open' ),
             _infoFrame = _obj.find( '.info__frame' ),
+            _infoSubFrame = _obj.find( '.info__sub-frame' ),
             _body = $( 'body, html' ),
             _window = $( window );
 
         //private methods
-        var  _onEvent = function() {
+        var _onEvent = function() {
 
                 _body.on(
                     'click', function ( e ) {
@@ -971,10 +1303,14 @@
 
             },
             _showInfoOnMobile = function () {
+                _btnShowInfo.addClass( 'checker' );
                 _infoFrame.addClass( 'show' );
+                _infoSubFrame.addClass( 'show' );
             },
             _hidePanelOnMobile = function () {
+                _btnShowInfo.removeClass( 'checker' );
                 _infoFrame.removeClass( 'show' );
+                _infoSubFrame.removeClass( 'show' );
             },
             _init = function() {
                 _onEvent();
@@ -983,6 +1319,72 @@
         //public properties
 
         //public methods
+
+        _init();
+    };
+
+    var LabelForm = function ( obj ) {
+
+        var _self = this,
+            _obj = obj,
+            _input = _obj.find('input:not([readonly]), textarea');
+
+        var _addEvents = function () {
+
+                _input.on( {
+                    focusin: function() {
+
+                        _addClassOnFocus( $(this) );
+
+                    },
+                    focusout: function() {
+
+                        _removeClassOnFocusOut( $(this) );
+                        _checkOnEmpty( $(this) );
+
+                    }
+                } );
+
+            },
+            _addClassOnFocus = function( input ) {
+
+                var field = input,
+                    inputParent = field.parent();
+
+                inputParent.addClass('field_fill');
+
+            },
+            _removeClassOnFocusOut = function( input ) {
+
+                var field = input,
+                    inputParent = field.parent();
+
+                inputParent.removeClass('field_fill');
+
+            },
+            _checkOnEmpty = function ( input ) {
+
+                var field = input,
+                    inputParent = field.parent();
+
+                if( !( field.val() == '' ) ) {
+
+                    inputParent.addClass('field_fill');
+
+                }
+
+            },
+            _init = function() {
+                _obj[0].obj = _self;
+                _addEvents();
+
+                _input.each( function() {
+
+                    _checkOnEmpty( $(this) );
+
+                } );
+
+            };
 
         _init();
     };
@@ -1024,17 +1426,10 @@
             _btnShowMobile = _obj.find( '.search__btn-open' ),
             _searchForm = _obj.find( '.search__form' ),
             _searchInput = _obj.find( 'input' ),
-            _searchPopup = _obj.find( '.search__popup' ),
             _btnCancel = _obj.find( '.search__btn-cancel' ),
-            _searchPopupLists = _searchPopup.find( '.search__popup_lists' ),
-            _searchListsResults = _searchPopup.find( '.search__lists-results' ),
-            _searchPopupOffers = _searchPopup.find( '.search__popup_offers' ),
-            _searchOffersResults = _searchPopup.find( '.search__offers-results' ),
-            _searchLinksResults = _searchPopup.find( '.search__popup-links' ),
-            _searchNoResults = _searchPopup.find( '.search__popup-no-results' ),
-            _searchUpdate = _searchPopup.find( '.search__popup-update' ),
             _body = $( 'html, body' ),
             _window = $( window ),
+            _loadNewContent = true,
             _request = new XMLHttpRequest();
 
         //private methods
@@ -1086,11 +1481,7 @@
                 _searchInput.on ( {
                     'focus': function () {
 
-                        if (_body.width() < 1200) {
-                            _showPopup();
-                        } else if (_body.width() >= 1200) {
-                            _increaseSearch();
-                        }
+                        _ajaxRequest();
 
                     },
                     'keyup': function( e ) {
@@ -1104,23 +1495,12 @@
 
                         } else {
 
-                            _searchPopup.addClass( 'load' );
-
+                            var searchPopup = _obj.find( '.search__popup' );
+                            searchPopup.addClass( 'load' );
                             _ajaxRequest();
                         }
                     }
                 } );
-
-                _searchUpdate.on (
-                    'click', function () {
-
-                        _searchForm[0].reset();
-                        _ajaxRequest();
-
-                        return false;
-
-                    }
-                )
 
             },
             _ajaxRequest = function(){
@@ -1131,7 +1511,7 @@
                         value: _searchInput.val(),
                         loadedCount: _searchInput.val().length
                     },
-                    dataType: 'json',
+                    dataType: 'html',
                     type: 'GET',
                     success: function ( data ) {
 
@@ -1148,16 +1528,19 @@
             },
             _increaseSearch = function () {
 
+                var searchPopup = _obj.find( '.search__popup' );
+
                 _searchForm.addClass( 'increase' );
 
-                setTimeout( function () {
-                    _searchPopup.addClass( 'show' );
-                }, 300 );
+                searchPopup.addClass( 'show' );
+                searchPopup.removeClass( 'load' );
 
             },
             _reduceSearch = function () {
 
-                _searchPopup.removeClass( 'show' );
+                var searchPopup = _obj.find( '.search__popup' );
+
+                searchPopup.removeClass( 'show' );
 
                 setTimeout( function () {
                     _searchForm.removeClass( 'increase' );
@@ -1166,17 +1549,35 @@
             },
             _showPopup = function () {
 
-                _searchPopup.addClass( 'show' );
+                var searchPopup = _obj.find( '.search__popup' );
 
-                _searchPopup.css( {
+                searchPopup.addClass( 'show' );
+
+                searchPopup.css( {
                     'left': _btnShowMobile.offset().left * -1 + 10,
-                    'width': _body.width() - 20
+                    'width': _body.width() - 35
                 } );
+
+                searchPopup.removeClass( 'load' );
 
             },
             _hidePopup = function () {
 
-                _searchPopup.removeClass( 'show' );
+                var searchPopup = _obj.find( '.search__popup' );
+
+                searchPopup.remove( );
+
+                _loadNewContent = true;
+
+            },
+            _searchMoreLink = function () {
+
+                var searchPopup = _obj.find( '.search__popup' ),
+                    searchLinksResults =  searchPopup.find( '.search__popup-links' );
+
+                if ( _searchInput.val().length > 0 ) {
+                    searchLinksResults.find( 'span' ).html( _searchInput.val() );
+                };
 
             },
             _showPanelOnMobile = function () {
@@ -1184,7 +1585,7 @@
                 _searchForm.addClass( 'show' );
                 _searchForm.css( {
                     'left': _btnShowMobile.offset().left * -1,
-                    'width': _body.width()
+                    'width': _body.outerWidth()
                 } );
 
             },
@@ -1201,77 +1602,49 @@
             },
             _loadData = function ( data ) {
 
-                var arr = data;
+                if ( _loadNewContent ){
 
-                if ( _searchInput.val().length > 0 ) {
-                    _searchLinksResults.addClass( 'show' );
+                    _obj.append( '<div class="search__popup load"><div class="search__preload"><div class="search__preload-element"></div></div></div>' )
 
-                    _searchLinksResults.find( 'span' ).html( _searchInput.val() );
+                }
 
-                } else {
-                    _searchLinksResults.removeClass( 'show' );
-                };
+                var searchPopup = _obj.find( '.search__popup' ),
+                    arr = data;
 
-                _searchPopupOffers.empty();
-                _searchPopupLists.empty();
+                if ( _loadNewContent ){
 
-                _searchListsResults.html( arr.lists_results );
-                _searchOffersResults.html( arr.offers_results );
-
-                if ( arr.lists != undefined ) {
-
-                    for (var i = 0; i < arr.lists.length; i++) {
-
-                        if (i == 0) {
-                            _searchPopupLists.html('<a href="' + arr.lists[i].href + '" class="search__popup-item"><i>' + arr.lists[i].title + '</i><span>' + arr.lists[i].countBonuses + '</span></a>');
-                        } else {
-                            _searchPopupLists.append('<a href="' + arr.lists[i].href + '" class="search__popup-item"><i>' + arr.lists[i].title + '</i><span>' + arr.lists[i].countBonuses + '</span></a>');
-                        }
-
-                    }
-
-                };
-
-                if ( arr.offers != undefined ) {
-
-                    for (var i = 0; i < arr.offers.length; i++) {
-
-                        if (i == 0) {
-                            _searchPopupOffers.html('<a href="' + arr.offers[i].href + '" class="search__popup-item"><i>' + arr.offers[i].title + '</i><span>' + arr.offers[i].countBonuses + '</span></a>');
-                        } else {
-                            _searchPopupOffers.append('<a href="' + arr.offers[i].href + '" class="search__popup-item"><i>' + arr.offers[i].title + '</i><span>' + arr.offers[i].countBonuses + '</span></a>');
-                        }
-
-                    }
-
-                };
-
-                if ( arr.lists == undefined && arr.offers == undefined ) {
-
-                    _searchPopup.find( '.search__popup-title' ).hide();
-                    _searchPopup.find( '.search__popup-wrap' ).hide();
-
-                    _searchNoResults.show();
-
-                } else if ( arr.lists.length == 0 && arr.offers.length == 0 ) {
-
-                    _searchPopup.find( '.search__popup-title' ).hide();
-                    _searchPopup.find( '.search__popup-wrap' ).hide();
-
-                    _searchNoResults.show();
+                    searchPopup.prepend( data );
+                    _loadNewContent = false;
 
                 } else {
 
-                    _searchPopup.find( '.search__popup-title' ).show();
-                    _searchPopup.find( '.search__popup-wrap' ).show();
+                    searchPopup.empty();
+                    searchPopup.append( '<div class="search__preload"><div class="search__preload-element"></div></div>' );
+                    searchPopup.prepend( data );
 
-                    _searchNoResults.hide();
+                }
 
-                };
-
-                _searchPopup.removeClass( 'load' );
+                var searchUpdate = searchPopup.find( '.search__popup-update' );
 
                 _illumination();
+                _searchMoreLink();
+
+                if (_body.width() < 1200) {
+                    _showPopup();
+                } else if (_body.width() >= 1200) {
+                    _increaseSearch();
+                }
+
+                searchUpdate.on (
+                    'click', function () {
+
+                        _searchForm[0].reset();
+                        _ajaxRequest();
+
+                        return false;
+
+                    }
+                );
 
             },
             _illumination = function () {
@@ -1288,7 +1661,6 @@
 
             },
             _init = function() {
-                _ajaxRequest();
                 _onEvent();
             };
 

@@ -20,9 +20,7 @@ var paths = {
         {
             dist: 'index.min.js',
             contains: [
-                'app/js/jquery.main.js',
-                'app/js/jquery.index.js',
-                'app/js/jquery.websters-select.js'
+                'app/js/jquery.main.js'
             ]
         },
         {
@@ -34,9 +32,7 @@ var paths = {
         {
             dist: 'contact-us.min.js',
             contains: [
-                'app/js/jquery.main.js',
-                'app/js/jquery.labels.js',
-                'app/js/jquery.form.validator.js'
+                'app/js/jquery.main.js'
             ]
         },
         {
@@ -56,8 +52,6 @@ var paths = {
             dist: 'single-bonus.min.js',
             contains: [
                 'app/js/jquery.main.js',
-                'app/js/jquery.labels.js',
-                'app/js/jquery.form.validator.js',
                 'app/js/jquery.comments.js'
             ]
         }
