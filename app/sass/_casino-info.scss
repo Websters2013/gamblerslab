@@ -38,15 +38,19 @@
 
   }
 
+  &__hide-text{
+    display: none;
+  }
+
 }
 
 @media (min-width: $tablet-portrait) {
 
   .casino-info{
-    display: flex;
+    /*display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;*/
     margin-bottom: 31px;
 
     h1{
@@ -56,13 +60,14 @@
     }
 
     &__img{
+      float: left;
       width: 149px;
       height: 98px;
       margin: 8px 20px 0 0;
     }
 
     &__content{
-      width: calc( 100% - 169px );
+      //width: calc( 100% - 169px );
       font-size: 15px;
       line-height: 22px;
       letter-spacing: -.1px;
@@ -94,8 +99,8 @@
     }
 
     &__content{
-      width: calc( 100% - 172px );
-      margin-top: -4px;
+      //width: calc( 100% - 172px );
+      padding-top: 3px;
 
       a{
         -webkit-transition: color .3s ease;

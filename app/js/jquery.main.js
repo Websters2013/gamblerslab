@@ -50,13 +50,18 @@
 
         } );
 
+        $.each( $('.casino-info__content'), function () {
+
+            new CasinoInfo( $(this) );
+
+        } );
+
     } );
 
     var AsideMenu = function( obj ) {
 
         //private properties
         var _obj = obj,
-            _linksWraps = _obj.find( '.links' ),
             _bonusShowAll = _obj.find( '.links__show-all' ),
             _linkWrapBonus = _obj.find( '.links_casinos-search' ),
             _curLinksWrap = _linkWrapBonus.find( '.links__wrap' ),
@@ -93,16 +98,20 @@
                             _fixedDesktopAside();
                         } else if (_window.scrollTop() < _objTopPosition && _window.width() >= 1200) {
                             _unfixedDesktopAside();
-                        } else if ( _window.width() < 1200 ) {
-                            _hideBonusSearch();
+                        } else if ( _linkWrapBonus.hasClass( 'active' ) && _window.width() < 1200 ) {
+                            _uploadAsideHeight();
+                            _curLinksWrap.getNiceScroll().resize();
+                            console.log( '_hideBonusSearch' );
+                        } else if ( _obj.hasClass( 'show' ) && _window.width() < 1200 ) {
                             _hideMobileAside();
+                            console.log( '_hideMobileAside' );
                         }
 
                     }
                 } );
 
                 _mobileBtnOpen.on (
-                    'click', function ( e ) {
+                    'click', function () {
 
                         var curElem = $( this );
 
@@ -118,12 +127,13 @@
                 _body.on(
                     'click', function ( e ) {
 
-                        if ( $( e.target ).closest( _mobileBtnOpen ).length != 0  ){
+                        if ( _obj.hasClass( 'show' ) && $( e.target ).closest( _mobileBtnOpen ).length != 0  ){
                             return false;
                         }
 
-                        if ( $( e.target ).closest( _obj ).length == 0 && _window.width() <= 1200 ){
+                        if ( _obj.hasClass( 'show' ) && $( e.target ).closest( _obj ).length == 0 && _window.width() <= 1200 ){
                             _hideMobileAside();
+                            console.log( '_hideMobileAside' );
                         }
 
                     }
@@ -344,7 +354,9 @@
 
                 _obj.removeClass( 'show' );
 
-                _body.css( 'overflow-y', 'visible' );
+                _body.css( 'overflow-y', 'auto' );
+
+                _hideBonusSearch();
 
                 _obj.getNiceScroll().remove();
 
@@ -557,8 +569,7 @@
 
         //private properties
         var _obj = obj,
-            _bonusItem = _obj.find( '.bonus__item' ),
-            _bonusMinimizeItem = _obj.find( '.bonus__item-minimize' ),
+            _bonusInsert = _obj.find( '.bonus__insert' ),
             _bonusNotResult = _obj.find( '.bonus__not-result' ),
             _positionMobileWindow = 0,
             _body = $( 'body, html' ),
@@ -586,46 +597,12 @@
                 _body.on(
                     'click', function ( e ) {
 
-                        var bonusPopup = _obj.find( '.popup' ),
-                            openPopup = _obj.find( '.popup__open' );
+                        var bonusPopup = _obj.find( '.popup' );
 
-                        if ( $( e.target ).closest( bonusPopup ).length == 0 ){
+                        if ( bonusPopup.length > 0 && $( e.target ).closest( bonusPopup ).length == 0 ){
                             _hidePopup();
+                            console.log( '_hidePopup' );
                         }
-
-                    }
-                );
-
-                _bonusMinimizeItem.on(
-                    'click', function ( ) {
-
-                        var curBtn = $( this ),
-                            curParent = curBtn.parents( '.bonus__item' );
-
-                        if ( !curParent.hasClass( 'hide' ) ) {
-
-                            var curHead = curParent.find( '.bonus__header' );
-
-                            curParent.addClass( 'hide' );
-                            curParent.css( 'height', curHead.outerHeight() );
-
-                        } else {
-
-                            curParent.removeClass( 'hide' );
-                            curParent.css( 'height', curParent.attr( 'data-height' ) );
-
-                            setTimeout( function () {
-
-                                var centerCurParent = curParent.offset().top + curParent.outerHeight() / 2,
-                                    centerBody = _window.height() / 2;
-
-                                _body.animate( { scrollTop : centerCurParent - centerBody }, 500, 'swing' )
-
-                            }, 300 )
-
-                        }
-
-                        return false;
 
                     }
                 );
@@ -686,22 +663,28 @@
             },
             _initSlider = function() {
 
-                _bonusItem.each( function () {
+                var bonusBox = _obj.find( '.bonus__item' ).filter( '.new' ),
+                    bonusSlider = bonusBox.find( '.bonus__slider' );
+
+                bonusSlider.each( function () {
 
                     var curItem = $( this ),
-                        bonusSlider = curItem.find( '.bonus__slider' ),
-                        bonusSwiper = curItem.find( '.bonus__swiper' ),
                         bonusItem = curItem.find( '.bonus__slide' ),
-                        swiperPagination = $( '<div class="bonus__pagination"></div>' ),
-                        swiperNextButton = $( '<div class="bonus__button-next"></div>' ),
-                        swiperPrevButton = $( '<div class="bonus__button-prev"></div>' ),
-                        bonus;
+                        curParents = curItem.parents( '.bonus__item' );
+
+                    curParents.removeClass( 'new' );
 
                     if ( bonusItem.length > 1 ){
 
-                        bonusSlider.append( swiperPagination );
-                        bonusSlider.append( swiperNextButton );
-                        bonusSlider.append( swiperPrevButton );
+                        var bonusSwiper = curItem.find( '.bonus__swiper' ),
+                            swiperPagination = $( '<div class="bonus__pagination"></div>' ),
+                            swiperNextButton = $( '<div class="bonus__button-next"></div>' ),
+                            swiperPrevButton = $( '<div class="bonus__button-prev"></div>' ),
+                            bonus;
+
+                        curItem.append( swiperPagination );
+                        curItem.append( swiperNextButton );
+                        curItem.append( swiperPrevButton );
 
                         bonus = new Swiper ( bonusSwiper, {
                             autoplay: false,
@@ -729,7 +712,6 @@
                     _hidePopup();
 
                     var curBtn = $( this );
-
                     _ajaxPopupRequest( curBtn );
                     return false;
 
@@ -740,16 +722,18 @@
 
                 var curBox = box,
                     curBtn = btn,
-                    arr = data;
+                    arr = data,
+                    curElemtnType = curBtn.attr( 'data-type' ),
+                    curElemtnLink = curBtn.attr( 'data-link' );
 
                 curBox.append( arr );
 
-                var curPopup = curBox.find( '.popup' ),
+                var curPopup = curBox.find( '.popup' ).filter( "[data-type="+ curElemtnType +"]" ).filter( "[data-link="+ curElemtnLink +"]" ),
                     bonusPopupClose = curPopup.find( '.popup__close' );
 
                 if ( curPopup.attr( 'data-type' ) == 'bonus' ){
 
-                    curPopup.addClass( 'show' );
+                    _positionPopup( curPopup, curBtn );
 
                     var popupTabsLink = curPopup.find( '.popup__tabs-links a' ),
                         popupTabsContent = curPopup.find( '.popup__tabs-content' ),
@@ -762,26 +746,11 @@
                     popupTabsContentItem.eq( 0 ).addClass( 'active' );
                     popupTabsContent.css( 'height', popupTabsContentItem.filter( '.active' ).height() );
 
-                    if ( _window.width() < 768 ){
-
-                        _positionMobileWindow = _window.scrollTop();
-
-                        _body.css( 'overflow-y', 'hidden' );
-
-                    } else if  ( _window.width() >= 768 ) {
-
-                        curPopup.css ( {
-                            'top' : curBtn.offset().top - curBtn.height() - curPopup.height() - 20,
-                            'left': _obj.offset().left
-                        } );
-
-                    }
-
                     popupTabsLink.on( {
                         'click': function () {
 
-                            var curBtn = $( this ),
-                                tabs = curBtn.parents( '.popup__tabs' ),
+                            var curTab = $( this ),
+                                tabs = curTab.parents( '.popup__tabs' ),
                                 tabsLinks = tabs.find( '.popup__tabs-links a' ),
                                 tabsContent = tabs.find( '.popup__tabs-content > div' ),
                                 popupTabsContent = tabs.find( '.popup__tabs-content' ),
@@ -810,9 +779,13 @@
                                 }
                             } );
 
-                            curBtn.addClass( 'active' );
-                            tabsContent.eq( curBtn.index() ).addClass( 'active' );
+                            curTab.addClass( 'active' );
+                            tabsContent.eq( curTab.index() ).addClass( 'active' );
                             popupTabsContent.css( 'height', tabsContent.filter( '.active' ).height() );
+
+                            if  ( _window.width() >= 768 ) {
+                                _positionPopup( curPopup, curBtn );
+                            }
 
                             return false;
 
@@ -820,64 +793,53 @@
                     } );
 
                 }
-                else if ( curPopup.attr( 'data-type' ) == 'warning' ) {
+                else if ( curPopup.attr( 'data-type' ) == 'comments' ) {
 
-                    curPopup.addClass( 'show' );
+                    _positionPopup( curPopup, curBtn );
 
-                    if ( _window.width() < 768 ){
+                    curPopup.find( '.comments' ).each( function() {
+                        new AddComments ( $( this ) );
+                        new LabelForm( $(this) );
+                    } );
 
-                        _positionMobileWindow = _window.scrollTop();
-
-                        _body.css( 'overflow-y', 'hidden' );
-
-                    } else if  ( _window.width() >= 768 ) {
-
-                        curPopup.css ( {
-                            'top' : curBtn.offset().top - curBtn.height() - curPopup.height() - 20,
-                            'left': _obj.offset().left
-                        } );
-
-                    }
+                    curPopup.find( '.validation-form' ).each( function() {
+                        new FormValidator ( $( this ) );
+                    } );
 
                 }
                 else if ( curPopup.attr( 'data-type' ) == 'game' ) {
 
-                    curPopup.addClass( 'show' );
-
                     if ( _window.width() < 768 ){
 
                         _positionMobileWindow = _window.scrollTop();
-
                         _body.css( 'overflow-y', 'hidden' );
+
+                        curPopup.addClass( 'show' );
 
                     } else if  ( _window.width() >= 768 ) {
 
-                        curPopup.css ( {
-                            'top' : _window.height() / 2 - curPopup.height() / 2,
-                            'left': _window.width() / 2 - curPopup.width() / 2
-                        } );
+                        setTimeout( function () {
+
+                            curPopup.css ( {
+                                'top' : curBtn.offset().top - curPopup.outerHeight() - 10,
+                                'left': _obj.offset().left + ( _obj.outerWidth() - curPopup.outerWidth() ) / 2
+                            } );
+
+                            var centerCurParent = curPopup.offset().top + curPopup.outerHeight() / 2,
+                                centerBody = _window.height() / 2;
+
+                            _body.animate( { scrollTop : centerCurParent - centerBody }, 500, 'swing' );
+
+                            curPopup.addClass( 'show' );
+
+                        }, 300 );
 
                     }
 
                 }
-                else if ( curPopup.attr( 'data-type' ) == 'comments' ) {
+                else if ( curPopup.attr( 'data-type' ) == 'warning' ) {
 
-                    curPopup.addClass( 'show' );
-
-                    if ( _window.width() < 768 ){
-
-                        _positionMobileWindow = _window.scrollTop();
-
-                        _body.css( 'overflow-y', 'hidden' );
-
-                    } else if  ( _window.width() >= 768 ) {
-
-                        curPopup.css ( {
-                            'top' : curBtn.offset().top - curBtn.height() - curPopup.height() + 10,
-                            'left': _obj.offset().left
-                        } );
-
-                    }
+                    _positionPopup( curPopup, curBtn );
 
                 }
 
@@ -889,21 +851,57 @@
                 );
 
             },
-            _hidePopup = function () {
+            _positionPopup = function ( box, btn ) {
 
-                var _bonusPopup = _obj.find( '.popup' );
+                var curPopup = box,
+                    curBtn = btn;
 
                 if ( _window.width() < 768 ){
 
-                    _body.css( 'overflow-y', 'auto' );
-                    _body.scrollTop( _positionMobileWindow );
+                    _positionMobileWindow = _window.scrollTop();
+                    _body.css( 'overflow-y', 'hidden' );
+
+                    curPopup.addClass( 'show' );
+
+                } else if  ( _window.width() >= 768 ) {
+
+                    setTimeout( function () {
+
+                        curPopup.css ( {
+                            'top' : curBtn.offset().top - curPopup.outerHeight() - 10,
+                            'left': _obj.offset().left
+                        } );
+
+                        var centerCurParent = curPopup.offset().top + curPopup.outerHeight() / 2,
+                            centerBody = _window.height() / 2;
+
+                        _body.animate( { scrollTop : centerCurParent - centerBody }, 500, 'swing' );
+
+                        curPopup.addClass( 'show' );
+
+                    }, 300 );
 
                 }
 
-                _bonusPopup.removeClass( 'show' );
+            },
+            _hidePopup = function () {
+
+                var bonusItem = _obj.find( '.bonus__item' ),
+                    bonusPopup = bonusItem.find( '.popup' );
+
+                if ( bonusPopup.length < 1 ){
+                    return false;
+                }
+
+                if ( _window.width() < 768 ){
+                    _body.css( 'overflow-y', 'auto' );
+                    _body.scrollTop( _positionMobileWindow );
+                }
+
+                bonusPopup.removeClass( 'show' );
 
                 setTimeout( function () {
-                    _bonusPopup.remove();
+                    bonusPopup.remove();
                 }, 300 );
 
             },
@@ -911,7 +909,7 @@
 
                 var arr = data;
 
-                _obj.prepend( data );
+                _bonusInsert.append( data );
                 _obj.removeClass( 'load' );
 
                 if ( arr == 0 || arr == null ){
@@ -932,26 +930,112 @@
                     return false;
                 }
 
-                _bonusItem.each( function () {
+                var bonusItem = _obj.find( '.bonus__item' ).filter( '.new' ),
+                    bonusMinimizeItem = bonusItem.find( '.bonus__item-minimize' );
+
+                bonusItem.each( function () {
 
                     var curElem = $( this ),
+                        bonusItemBody = curElem.find( '.bonus__body' ),
                         curHead = curElem.find( '.bonus__header' );
 
+                    bonusItemBody.attr( 'data-height', bonusItemBody.outerHeight() );
+
+                    curElem.removeClass( 'new' );
                     curElem.addClass( 'hide' );
 
-                    if ( _window < 768 ) {
-                        curElem.attr( 'data-height', curElem.outerHeight() + 10 );
-                    } else {
-                        curElem.attr( 'data-height', curElem.outerHeight() + 20 );
-                    }
-
-                    curElem.css( 'height', curHead.outerHeight() );
+                    bonusItemBody.css( 'height', 0 );
 
                 } );
+
+                bonusMinimizeItem.on(
+                    'click', function ( ) {
+
+                        var curBtn = $( this );
+
+                        _minimizeEvent( curBtn );
+                        return false;
+
+                    }
+                );
+
+            },
+            _minimizeEvent = function ( e ) {
+
+                var curBtn = e,
+                    curParent = curBtn.parents( '.bonus__item' ),
+                    bonusItemBody = curParent.find( '.bonus__body' );
+
+                if ( !curParent.hasClass( 'hide' ) ) {
+
+                    curParent.addClass( 'hide' );
+                    curParent.removeClass( 'show' );
+                    bonusItemBody.css( 'height', 0 );
+
+                } else {
+
+                    curParent.removeClass( 'hide' );
+                    curParent.addClass( 'show' );
+                    bonusItemBody.css( 'height', bonusItemBody.attr( 'data-height' ) );
+
+                    setTimeout( function () {
+
+                        var centerCurParent = curParent.offset().top + curParent.outerHeight() / 2,
+                            centerBody = _window.height() / 2;
+
+                        _body.animate( { scrollTop : centerCurParent - centerBody }, 500, 'swing' )
+
+                    }, 300 )
+
+                }
 
             },
             _init = function() {
                 _ajaxRequest();
+                _onEvent();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+    };
+
+    var CasinoInfo = function( obj ) {
+
+        //private properties
+        var _obj = obj,
+            _content = _obj.find( '.casino-info__hide-text' ),
+            _readMore = _obj.find( 'a' );
+
+        //private methods
+        var _onEvent = function() {
+
+                _readMore.on( 'click', function () {
+
+                    if ( _content.css( 'display' ) == 'block' ) {
+                        _hideContent();
+                    } else {
+                        _showContent();
+                    }
+
+                    return false;
+
+                } )
+
+            },
+            _showContent = function() {
+
+                _content.slideDown( 300 );
+
+            },
+            _hideContent = function() {
+
+                _content.slideUp( 300 );
+
+            },
+            _init = function() {
                 _onEvent();
             };
 
@@ -982,20 +1066,31 @@
         //private methods
         var _onEvent = function() {
 
-                _body.on(
-                    'click', function ( e ) {
+                _window.on(
+                    'resize', function ( e ) {
 
-                        if ( $( e.target ).closest( _filterBtn ).length != 0  ){
-                            _hideSortPopup();
-                            return false;
-                        }
-
-                        if ( $( e.target ).closest( _filterPopup ).length == 0 ){
+                        if ( _filterPopup.hasClass( 'show' ) ){
                             _hideFilterPopup();
                         }
 
-                        if ( $( e.target ).closest( _filterSort ).length == 0 ){
+                        if ( _filterSort.hasClass( 'show' ) ){
                             _hideSortPopup();
+                        }
+
+                    }
+                );
+
+                _body.on(
+                    'click', function ( e ) {
+
+                        if ( _filterPopup.hasClass( 'show' ) && $( e.target ).closest( _filterFrame ).length == 0 ){
+                            _hideFilterPopup();
+                            console.log( '_hideFilterPopup' );
+                        }
+
+                        if ( _filterSort.hasClass( 'show' )&& $( e.target ).closest( _filterSort ).length == 0 ){
+                            _hideSortPopup();
+                            console.log( '_hideSortPopup' );
                         }
 
                     }
@@ -1276,8 +1371,9 @@
                 _body.on(
                     'click', function ( e ) {
 
-                        if ( $( e.target ).closest( _obj ).length == 0 ){
-                            _hidePanelOnMobile();
+                        if ( _infoFrame.hasClass( 'show' ) && $( e.target ).closest( _obj ).length == 0 ){
+                            _hidePanel();
+                            console.log( '_hidePanel' );
                         }
 
                     }
@@ -1287,9 +1383,9 @@
                     'click', function () {
 
                         if ( !_infoFrame.hasClass( 'show' ) ) {
-                            _showInfoOnMobile();
+                            _showInfo();
                         } else {
-                            _hidePanelOnMobile();
+                            _hidePanel();
                         }
 
                     }
@@ -1297,17 +1393,21 @@
 
                 _window.on (
                     'resize', function () {
-                        _hidePanelOnMobile();
+
+                        if ( _infoFrame.hasClass( 'show' ) ) {
+                            _hidePanelOnMobile();
+                        }
+
                     }
                 );
 
             },
-            _showInfoOnMobile = function () {
+            _showInfo = function () {
                 _btnShowInfo.addClass( 'checker' );
                 _infoFrame.addClass( 'show' );
                 _infoSubFrame.addClass( 'show' );
             },
-            _hidePanelOnMobile = function () {
+            _hidePanel = function () {
                 _btnShowInfo.removeClass( 'checker' );
                 _infoFrame.removeClass( 'show' );
                 _infoSubFrame.removeClass( 'show' );
@@ -1439,7 +1539,14 @@
                     'resize', function () {
 
                         if ( _body.width() < 1200 ){
-                            _hidePanelOnMobile();
+
+                            var searchPopup = _obj.find( '.search__popup' );
+
+                            searchPopup.css( {
+                                'left': _btnShowMobile.offset().left * -1 + 10,
+                                'width': _body.outerWidth() - 20
+                            } );
+
                         }
 
                     }
@@ -1448,10 +1555,14 @@
                 _body.on(
                     'click', function ( e ) {
 
-                        if ( $( e.target ).closest( _obj ).length == 0 && _body.width() < 1200 ){
+                        if ( _searchForm.hasClass( 'show' ) && $( e.target ).closest( _obj ).length == 0 && _body.width() < 1200 ){
                             _hidePanelOnMobile();
-                        } else if ( $( e.target ).closest( _obj ).length == 0 && _body.width() >= 1200 ){
+                            _searchForm[0].reset();
+                            console.log('_hidePanelOnMobile');
+                        } else if ( $( '.search__popup' ).hasClass( 'show' ) && $( e.target ).closest( _obj ).length == 0 && _body.width() >= 1200 ){
                             _reduceSearch();
+                            _searchForm[0].reset();
+                            console.log('_reduceSearch');
                         }
 
                     }
@@ -1555,7 +1666,7 @@
 
                 searchPopup.css( {
                     'left': _btnShowMobile.offset().left * -1 + 10,
-                    'width': _body.width() - 35
+                    'width': _body.outerWidth() - 20
                 } );
 
                 searchPopup.removeClass( 'load' );

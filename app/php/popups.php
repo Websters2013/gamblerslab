@@ -182,6 +182,185 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     </div>
     ";
 
+} else if ( $loadedType == "bonus" && $loadedLink == "002" ){
+
+    echo "
+    <div class=\"popup\" data-type=\"bonus\" data-link=\"002\">
+
+        <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
+
+        <div class=\"popup__title\">About Casino Room</div>
+
+        <div class=\"popup__info\">
+
+            <div class=\"popup__casino-img\">
+                <img src=\"pic/img-002.jpg\" alt=\"img\"/>
+            </div>
+
+            <a href=\"#\" class=\"btn btn_5\">view all bonuses (131)</a>
+
+            <a href=\"#\" class=\"btn\">visit casino</a>
+
+        </div>
+
+        <div class=\"popup__content\">
+
+            <div class=\"popup__img\">
+                <img src=\"pic/game-001.jpg\" alt=\"img\"/>
+            </div>
+
+            <div class=\"popup__tabs\">
+
+                <div class=\"popup__tabs-links\">
+                    <a href=\"#\">Overview</a>
+                    <a href=\"#\">Welcome package</a>
+                </div>
+
+                <div class=\"popup__tabs-content\">
+
+                    <div class=\"popup__overview\">
+
+                        <dl>
+                            <dt>Country:</dt>
+                            <dd>
+                                <div class=\"popup__country\">
+                                    <img src=\"img/flag-001.jpg\" alt=\"flag\">
+                                    <span class=\"popup__status\">
+                                                            <svg viewBox=\"80 76 17.6 13.4\"><path d=\"M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z\" transform=\"translate(76.6 70.4)\"></path></svg>
+                                                        </span>
+                                </div>
+                                Romania accepted
+                            </dd>
+                        </dl>
+
+                        <dl>
+                            <dt>Currency:</dt>
+                            <dd>
+                                                    <span class=\"popup__mark popup__mark_negative\">
+                                                        <svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg>
+                                                    </span>
+                                GBP
+                            </dd>
+                        </dl>
+
+                        <dl>
+                            <dt>Language:</dt>
+                            <dd>
+                                                    <span class=\"popup__mark\">
+                                                        <svg viewBox=\"80 76 17.6 13.4\"><path d=\"M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z\" transform=\"translate(76.6 70.4)\"></path></svg>
+                                                    </span>
+                                English
+                            </dd>
+                        </dl>
+
+                        <dl>
+                            <dt>Software:</dt>
+                            <dd>NetEnt, Aristocrat, BetSoft, ELK Studios, Evolution Gaming, MicroGaming, NextGen Gaming, NYX Interactive, Play n GO, Thunderkick, Yggdrasil Gaming</dd>
+                        </dl>
+
+                        <dl>
+                            <dt>Established:</dt>
+                            <dd>May 23, 2005</dd>
+                        </dl>
+
+                    </div>
+
+                    <div class=\"popup__welcome\">
+
+                        <div class=\"popup__swiper swiper-container\">
+
+                            <div class=\"swiper-wrapper\">
+
+                                <div class=\"popup__welcome-slide swiper-slide\">
+
+                                    <h2>20 Free Spins</h2>
+
+                                    <div class=\"popup__welcome-code\">
+                                        APRVP27TBFCL, APRVP27TBFCLM
+                                    </div>
+
+                                    <p><b>Availability:</b> Upon signup</p>
+
+                                    <p><b>Min Deposit:</b> <span class=\"positive\">Free</span></p>
+
+                                    <p><b>Wagering:</b> 45xB</p>
+
+                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... <a href=\"#\">More</a></p>
+
+                                </div>
+
+                                <div class=\"popup__welcome-slide swiper-slide\">
+
+                                    <h2>20 Free Spins</h2>
+
+                                    <div class=\"popup__welcome-code\">
+                                        APRVP27TBFCL, APRVP27TBFCLM
+                                    </div>
+
+                                    <p><b>Availability:</b> Upon signup</p>
+
+                                    <p><b>Min Deposit:</b> <span class=\"positive\">Free</span></p>
+
+                                    <p><b>Wagering:</b> 45xB</p>
+
+                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... <a href=\"#\">More</a></p>
+
+                                </div>
+
+                                <div class=\"popup__welcome-slide swiper-slide\">
+
+                                    <h2>20 Free Spins</h2>
+
+                                    <div class=\"popup__welcome-code\">
+                                        APRVP27TBFCL, APRVP27TBFCLM
+                                    </div>
+
+                                    <p><b>Availability:</b> Upon signup</p>
+
+                                    <p><b>Min Deposit:</b> <span class=\"positive\">Free</span></p>
+
+                                    <p><b>Wagering:</b> 45xB</p>
+
+                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... <a href=\"#\">More</a></p>
+
+                                </div>
+
+                                <div class=\"popup__welcome-slide swiper-slide\">
+
+                                    <h2>20 Free Spins</h2>
+
+                                    <div class=\"popup__welcome-code\">
+                                        APRVP27TBFCL, APRVP27TBFCLM
+                                    </div>
+
+                                    <p><b>Availability:</b> Upon signup</p>
+
+                                    <p><b>Min Deposit:</b> <span class=\"positive\">Free</span></p>
+
+                                    <p><b>Wagering:</b> 45xB</p>
+
+                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... <a href=\"#\">More</a></p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class=\"popup__button-next\"></div>
+                        <div class=\"popup__button-prev\"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    ";
+
 } else if ( $loadedType == "game" && $loadedLink == "002" ) {
 
     echo "
@@ -369,8 +548,6 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
         <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
 
         <div class=\"popup__title\">About Casino Room</div>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
 
         <img src=\"pic/game.jpg\" alt=\"img\"/>
 

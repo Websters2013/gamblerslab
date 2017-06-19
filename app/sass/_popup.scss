@@ -301,7 +301,6 @@
     background-color: #45d1de;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    cursor: pointer;
 
     &:before{
       content: '';
@@ -599,6 +598,17 @@
 
   .popup {
     left: 0;
+
+    &__button-next,
+    &__button-prev{
+      cursor: pointer;
+
+      &.swiper-button-disabled{
+        cursor: default;
+      }
+
+    }
+
   }
 
 }
