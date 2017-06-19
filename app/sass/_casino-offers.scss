@@ -1,7 +1,11 @@
 .casino-offers {
 
-  .btn {
+  &__more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    margin: 0 auto;
   }
 
   &__title {
@@ -50,6 +54,7 @@
   }
 
 }
+
 @media (min-width: $desktop) {
 
   .casino-offers {

@@ -16,15 +16,53 @@
     line-height: 20px;
 
     &-title {
-      padding: 14px 10px 14px 52px;
-      background: url("../img/note.png") no-repeat #45d1de 15px 10px;
-      background-size: 31px 31px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: #45d1de;
+      padding: 10px 10px 10px 14px;
       font-size: 20px;
       line-height: 24px;
       font-weight: 400;
+
+      i{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 31px;
+        height: 31px;
+        margin-right: 8px;
+        border-radius: 50px;
+        background-color: #283746;
+
+        img{
+          display: block;
+          width: 14px;
+        }
+
+      }
+
     }
     &-content {
-      padding: 10px 15px 7px;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 10px 15px;
+      vertical-align: text-bottom;
+
+      p{
+        width: 100%;
+      }
+
+      .bonus__country{
+        top: 0;
+      }
+
+      .bonus__country + p{
+        width: calc( 100% - 55px );
+      }
+
     }
 
   }
@@ -38,6 +76,7 @@
     }
 
   }
+
   .bonus {
     margin-bottom: 27px;
   }
@@ -51,12 +90,6 @@
     .contact-us {
       margin-top: 54px;
       border-bottom: none;
-
-      &.hidden {
-        opacity: 1;
-        visibility: visible;
-        height: auto;
-      }
 
       &__form {
         margin: 0 0 19px;
@@ -83,17 +116,29 @@
       line-height: 22px;
 
       &-title {
+        flex-flow: column wrap;
+        justify-content: center;
         width: 138px;
-        padding: 86px 15px 27px;
-        background: url("../img/note.png") no-repeat #45d1de center 33px;
-        background-size: 48px 48px;
+        padding: 10px 12px 8px;
         font-size: 24px;
         line-height: 28px;
         text-align: center;
+
+        i{
+          width: 48px;
+          height: 48px;
+          margin: 0 auto 10px;
+
+          img{
+            width: 20px;
+          }
+
+        }
+
       }
       &-content {
         width: calc(100% - 138px);
-        padding: 17px 20px 7px;
+        padding: 17px 20px;
       }
 
     }
@@ -115,13 +160,6 @@
         &:first-of-type {
           width: 66.6%;
         }
-      }
-
-    }
-    &__note {
-
-      &-content {
-        padding: 17px 20px 7px;
       }
 
     }

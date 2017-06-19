@@ -93,7 +93,7 @@
       padding: 28px 11px;
       height: 152px;
       border: 1px solid #83868a;
-      border-radius: 1px;
+      border-radius: 2px;
       line-height: 23px;
 
       &:focus {
@@ -126,7 +126,7 @@
         margin: 0 0 36px;
 
         label {
-          top: 44px;
+          top: 26px;
           left: 12px;
         }
 
@@ -217,6 +217,7 @@
         display: inline-block;
         vertical-align: middle;
         width: calc( 100% - 79px );
+        white-space: nowrap;
       }
 
       &_mail {
@@ -281,6 +282,21 @@
     transition: opacity 0.3s, visibility 0.3s;
   }
 
+  &__textarea{
+    position: relative;
+
+    &:before{
+      position: absolute;
+      top: 13px;
+      left: 2px;
+      right: 2px;
+      height: 30px;
+      background-color: #fff;
+      content: '';
+    }
+
+  }
+
 }
 
 @media (min-width: $tablet-portrait) {
@@ -288,6 +304,12 @@
   .contact-us {
     font-size: 19px;
     line-height: 21px;
+
+    &.hidden {
+      opacity: 1;
+      visibility: visible;
+      height: auto;
+    }
 
     p {
       margin: 0 0 37px 0;
@@ -355,6 +377,11 @@
         &.contact-us__textarea {
           width: 82.2%;
           margin: 0 0 37px;
+
+          label {
+            top: 44px;
+          }
+
         }
         &.contact-us__send {
           width: 100%;
@@ -419,9 +446,19 @@
 
     }
 
+    &__textarea {
+      position: relative;
+
+      &:before {
+        top: 14px;
+      }
+
+    }
+
   }
 
 }
+
 @media (min-width: $desktop) {
 
   .contact-us {

@@ -20,7 +20,7 @@
     -webkit-transition: border-bottom-color .3s ease;
     transition: border-bottom-color .3s ease;
 
-    h3{
+    h2{
       margin-bottom: 13px;
       color: #0fc2c8;
       font-size: 15px;
@@ -30,8 +30,9 @@
 
     &-info{
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
+      position: relative;
       padding-right: 4px;
     }
 
@@ -79,8 +80,9 @@
   }
 
   &__expires{
-    position: relative;
+    position: absolute;
     top: 1px;
+    right: 0;
     color: #2ea921;
 
     &.finished{
@@ -204,6 +206,11 @@
         width: 13px;
         margin-right: 3px;
         fill: #0fc2c8;
+      }
+
+      span{
+        width: 100%;
+        text-align: center;
       }
 
     }
@@ -363,7 +370,6 @@
 
   &__body{
     overflow: hidden;
-    margin-bottom: -10px;
     -webkit-transition: height .3s ease;
     transition: height .3s ease;
   }
@@ -374,6 +380,10 @@
       position: static;
       -webkit-transition: height .3s ease;
       transition: height .3s ease;
+
+      .bonus__body{
+        margin-bottom: -10px;
+      }
 
       &.hide{
         position: relative;
@@ -444,14 +454,11 @@
   }
 
   &__preload {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-bottom: -82px;
     padding: 25px 0;
     opacity: 0;
     visibility: hidden;
@@ -647,6 +654,7 @@
 
         .btn{
           display: flex;
+          padding: 0;
         }
 
       }

@@ -124,6 +124,10 @@
 
   }
 
+  &__wrap{
+    margin-bottom: 30px;
+  }
+
 }
 
 @media (min-width: $tablet-portrait) {
@@ -170,6 +174,10 @@
     }
     &__add {
       padding: 0 30px;
+    }
+
+    &__wrap{
+      padding-right: 15px;
     }
 
   }
