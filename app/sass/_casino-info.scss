@@ -1,4 +1,4 @@
-.casino-info {
+#casino-info {
   margin-bottom: 18px;
   @include noto-sans;
 
@@ -46,11 +46,11 @@
 
 @media (min-width: $tablet-portrait) {
 
-  .casino-info{
-    /*display: flex;
+  #casino-info{
+    display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    align-items: center;*/
+    align-items: flex-start;
     margin-bottom: 31px;
 
     h1{
@@ -60,14 +60,13 @@
     }
 
     &__img{
-      float: left;
       width: 149px;
       height: 98px;
       margin: 8px 20px 0 0;
     }
 
     &__content{
-      //width: calc( 100% - 169px );
+      width: calc( 100% - 169px );
       font-size: 15px;
       line-height: 22px;
       letter-spacing: -.1px;
@@ -84,7 +83,7 @@
 
 @media (min-width: $desktop) {
 
-  .casino-info{
+  #casino-info{
     margin-bottom: 29px;
 
     h1{

@@ -74,7 +74,7 @@
                             <img src="pic/img-002.jpg" alt="img"/>
                         </button>
 
-                        <button class="btn btn_1 popup__open" data-type="warning" data-link="001"><span>visit</span></button>
+                        <button class="btn btn_1"><span>visit</span></button>
 
                     </div>
 
@@ -132,12 +132,12 @@
 
         <div class="bonus__header-info">
 
-            <div class="bonus__country negative">
+            <div class="bonus__country">
                 <img src="img/flag-001.jpg" alt="flag"/>
 
                 <span class="bonus__status">
-                                        <svg viewBox="123 76 14 14"><path d="M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z" transform="translate(118 71)"/></svg>
-                                    </span>
+                                <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
+                            </span>
 
             </div>
 
@@ -196,7 +196,7 @@
 
                     <div class="bonus__casinos-item">
 
-                        <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="002">
+                        <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
                             <img src="pic/img-002.jpg" alt="img"/>
                         </button>
 
@@ -206,7 +206,7 @@
 
                     <div class="bonus__casinos-item">
 
-                        <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="003">
+                        <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
                             <img src="pic/img-003.jpg" alt="img"/>
                         </button>
 
@@ -377,7 +377,7 @@
 
             </div>
 
-            <button class="bonus__comments-add">
+            <button class="bonus__comments-add popup__open" data-type="comments" data-link="001">
                 <span>
                     <svg viewBox="0 0 24 24"><path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" /></svg>
                     Be the first to comment
@@ -392,17 +392,17 @@
                         <img src="pic/img-002.jpg" alt="img"/>
                     </button>
 
-                    <button class="btn btn_1 popup__open" data-type="comments" data-link="001"><span>visit</span></button>
+                    <button class="btn btn_1"><span>visit</span></button>
 
                 </div>
 
                 <div class="bonus__casinos-item">
 
-                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="002">
+                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
                         <img src="pic/img-003.jpg" alt="img"/>
                     </button>
 
-                    <button class="btn btn_1 popup__open" data-type="comments" data-link="001"><span>visit</span></button>
+                    <button class="btn btn_1"><span>visit</span></button>
 
                 </div>
 
@@ -450,12 +450,12 @@
 
         <div class="bonus__header-info">
 
-            <div class="bonus__country">
+            <div class="bonus__country negative">
                 <img src="img/flag-001.jpg" alt="flag"/>
 
                 <span class="bonus__status">
-                                <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
-                            </span>
+                                        <svg viewBox="123 76 14 14"><path d="M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z" transform="translate(118 71)"/></svg>
+                                    </span>
 
             </div>
 
@@ -503,7 +503,7 @@
 
                 </div>
 
-                <button class="bonus__comments-add popup__open" data-type="comments" data-link="001">
+                <button class="bonus__comments-add popup__open" data-type="comments" data-link="002">
                     <span>
                         <svg viewBox="0 0 24 24"><path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" /></svg>
                          5 comments
@@ -514,7 +514,7 @@
 
                     <div class="bonus__casinos-item">
 
-                        <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
+                        <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="002">
                             <img src="pic/img-002.jpg" alt="img"/>
                         </button>
 
@@ -677,13 +677,13 @@
                         <img src="pic/img-002.jpg" alt="img"/>
                     </button>
 
-                    <button class="btn btn_3 popup__open" data-type="warning" data-link="002"><span>Restricted</span></button>
+                    <button class="btn btn_3 popup__open" data-type="warning" data-link="001"><span>Restricted</span></button>
 
                 </div>
 
                 <div class="bonus__casinos-item">
 
-                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="002">
+                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="003">
                         <img src="pic/img-003.jpg" alt="img"/>
                     </button>
 
@@ -693,17 +693,17 @@
 
                 <div class="bonus__casinos-item">
 
-                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="003">
+                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="004">
                         <img src="pic/img-002.jpg" alt="img"/>
                     </button>
 
-                    <button class="btn btn_8 popup__open"  data-type="warning" data-link="003"><span>Blacklisted</span></button>
+                    <button class="btn btn_8 popup__open" data-type="warning" data-link="003"><span>Blacklisted</span></button>
 
                 </div>
 
                 <div class="bonus__casinos-item">
 
-                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="004">
+                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
                         <img src="pic/img-003.jpg" alt="img"/>
                     </button>
 
@@ -834,17 +834,17 @@
                         <img src="pic/img-002.jpg" alt="img"/>
                     </button>
 
-                    <button class="btn btn_1 popup__open"><span>visit</span></button>
+                    <a href="#" class="btn btn_1"><span>visit</span></a>
 
                 </div>
 
                 <div class="bonus__casinos-item">
 
-                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="002">
+                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
                         <img src="pic/img-003.jpg" alt="img"/>
                     </button>
 
-                    <a href="#" class="btn btn_1 popup__open">visit</a>
+                    <a href="#" class="btn btn_1">visit</a>
 
                 </div>
 

@@ -1,66 +1,177 @@
 ( function(){
-
     "use strict";
 
     $( function(){
 
-        $.each( $( '.anchor' ), function() {
-            new Anchor( $( this ) );
-        } );
+        new Preload ( $( '#preload' ) );
 
-        $.each( $( '.validation-form' ), function() {
+        new BackToTop ( $( '#back-to-top' ) );
 
-            new FormValidator ( $( this ) );
+        new AsideMenu ( $( '#site__aside' ) );
 
-        } );
+        new SearchPanel ( $( '#search' ) );
 
-        $.each( $( '.comments' ), function() {
+        new InfoPanel ( $( '#info' ) );
 
-            new AddComments ( $( this ) );
+        if ( $( '#anchor' ).length == 1 ){
+            new Anchor( $( '#anchor' ) );
+        };
 
-        } );
+        if ( $( '#filter' ).length == 1 ){
+            new Filter( $( '#filter' ) );
+        };
 
-        $.each( $( '.preload' ), function() {
-            new Preload ( $( this ) );
-        } );
+        if ( $( '.validation-form' ).length == 1 ){
+            new FormValidator( $( '.validation-form' ) );
+        };
 
-        $.each( $( '.back-to-top' ), function() {
-            new BackToTop ( $( this ) );
-        } );
+        if ( $( '#casino-info__content' ).length == 1 ){
+            new CasinoInfo( $( '#casino-info__content' ) );
+        };
 
-        $.each( $( '.search' ), function() {
-            new SearchPanel ( $( this ) );
-        } );
+        if ( $( '#comments' ).length == 1 ){
+            new AddComments( $( '#comments' ) );
+        };
 
-        $.each( $( '.info' ), function() {
-            new InfoPanel ( $( this ) );
-        } );
+        if ( $( '.site__form' ).length == 1 ){
+            new LabelForm( $( '.site__form' ) );
+        };
 
-        $.each( $( '.site__aside' ), function() {
-            new AsideMenu ( $( this ) );
-        } );
+        if ( $( '#casino-bonuses' ).length == 1 ){
+            new AjaxLoadContent( $( '#casino-bonuses' ) );
+        };
 
-        $.each( $( '.filter' ), function() {
-            new Filter ( $( this ) );
-        } );
+        if ( $( '#bonus_minimize' ).length == 1 ){
+            new BonusMinimize( $( '.bonus_minimize' ) );
+        };
 
-        $.each( $( '.bonus' ), function() {
-            new Bonus ( $( this ) );
-        } );
-
-        $.each( $('.site__form'), function () {
-
-            new LabelForm( $(this) );
-
-        } );
-
-        $.each( $('.casino-info__content'), function () {
-
-            new CasinoInfo( $(this) );
-
+        $( '.bonus' ).each( function () {
+            new Bonus( $( this ) );
         } );
 
     } );
+
+    var AjaxLoadContent = function( obj ) {
+
+        //private properties
+        var _self = this,
+            _obj = obj,
+            _btnMore = _obj.find( '#casino-bonuses__more' ),
+            _wrapper = _obj.find( '#casino-bonuses__items' ),
+            _request = new XMLHttpRequest();
+
+        //private methods
+        var _addEvents = function() {
+
+                _btnMore.on( {
+
+                    click: function() {
+                        _ajaxRequest();
+                        return false;
+                    }
+
+                } );
+
+            },
+            _addNewsContent = function( msg ){
+
+                var hasItems = msg.has_items;
+
+                $.each( msg.items, function() {
+
+                    var newBlock = $( '<div>\
+                                        <a href="'+ this.href +'" class="casino-bonuses__item hidden">\
+                                            <h2 class="casino-bonuses__item-title">'+ this.title +'</h2>\
+                                            <div class="casino-bonuses__footer">\
+                                                <div>'+ this.countBonuses +'</div>\
+                                                <div>'+ this.countToday +'</div>\
+                                            </div>\
+                                        </a>\
+                                    </div>' );
+
+                    _wrapper.append( newBlock );
+
+                } );
+
+                var newItems = _obj.find( '.hidden' );
+
+                setTimeout( function() {
+                    _heightAnimation( hasItems, newItems );
+                }, 50 );
+
+            },
+            _heightAnimation = function( hasItems, newItems ){
+
+                newItems.each( function( i ){
+                    _showNewItems( $( this ),i );
+                } );
+
+                if ( hasItems == 0 ){
+                    _removeBtnMore();
+                }
+
+            },
+            _showNewItems = function( item, index ){
+
+                setTimeout( function() {
+                    item.removeClass( 'hidden' );
+                }, index * 100 );
+
+            },
+            _ajaxRequest = function() {
+
+                var items = _obj.find( '#casino-bonuses__items>div' );
+                _request.abort();
+                _request = $.ajax( {
+                    url: 'php/search-results.php',
+                    data: {
+                        loadedCount: items.length
+                    },
+                    dataType: 'json',
+                    timeout: 20000,
+                    type: 'GET',
+                    success: function ( msg ) {
+
+                        _addNewsContent( msg );
+
+                    },
+                    error: function ( XMLHttpRequest ) {
+                        if( XMLHttpRequest.statusText != 'abort' ) {
+                            alert( 'Error!' );
+                        }
+                    }
+                });
+
+            },
+            _removeBtnMore = function() {
+
+                _btnMore.css( 'opacity', 0 );
+
+                setTimeout( function() {
+
+                    _btnMore.css( 'padding', 0 );
+
+                    _btnMore.animate( {
+                        height: 0
+                    }, {
+                        duration: 500,
+                        complete: function() {
+                            _btnMore.remove();
+                        }
+                    } );
+
+                }, 300 );
+
+            },
+            _init = function() {
+
+                _addEvents();
+                _obj[ 0 ].obj = _self;
+
+            };
+
+        _init();
+    };
 
     var Anchor = function ( obj ) {
         var _obj = obj,
@@ -91,21 +202,23 @@
 
         //private properties
         var _obj = obj,
-            _bonusShowAll = _obj.find( '.links__show-all' ),
+            _bonusShowAll = _obj.find( '#links__show-all' ),
             _linkWrapBonus = _obj.find( '.links_casinos-search' ),
             _curLinksWrap = _linkWrapBonus.find( '.links__wrap' ),
-            _linksNoResults = _linkWrapBonus.find( '.links__no-results' ),
-            _hideSearch = _linkWrapBonus.find( '.links__back' ),
-            _formSearch = _linkWrapBonus.find( '.links__search' ),
-            _btnCancel = _linkWrapBonus.find( '.links__search-cancel' ),
-            _searchInput = _obj.find( '.links__search-input' ),
-            _siteHeader = $( '.site__header' ),
-            _mobileBtnOpen = $( '.mobile-btn' ),
+            _linksNoResults = _linkWrapBonus.find( '#links__no-results' ),
+            _hideSearch = _linkWrapBonus.find( '#links__back' ),
+            _formSearch = _linkWrapBonus.find( '#links__search' ),
+            _btnCancel = _linkWrapBonus.find( '#links__search-cancel' ),
+            _searchInput = _obj.find( '#links__search-input' ),
+            _siteHeader = $( '#site__header' ),
+            _mobileBtnOpen = $( '#mobile-btn' ),
             _lessLinksBox = _obj.find( '.links_less' ),
             _moreLinksBtn = _lessLinksBox.find( '.links__show-more' ),
             _body = $( 'body' ),
             _html = $( 'html' ),
+            _site = $( '#site' ),
             _window = $( window ),
+            _fixedFlag = true,
             _objTopPosition = _obj.offset().top,
             _request = new XMLHttpRequest();
 
@@ -115,7 +228,7 @@
                 _window.on( {
                     'scroll': function () {
 
-                        if (_window.scrollTop() >= _objTopPosition && _window.width() >= 1200) {
+                        if (_window.scrollTop() >= _objTopPosition && _window.width() >= 1200 ) {
                             _fixedDesktopAside();
                         } else if (_window.scrollTop() < _objTopPosition && _window.width() >= 1200) {
                             _unfixedDesktopAside();
@@ -131,10 +244,8 @@
                         } else if ( _linkWrapBonus.hasClass( 'active' ) && _window.width() < 1200 ) {
                             _uploadAsideHeight();
                             _curLinksWrap.getNiceScroll().resize();
-                            console.log( '_hideBonusSearch' );
                         } else if ( _obj.hasClass( 'show' ) && _window.width() < 1200 ) {
                             _hideMobileAside();
-                            console.log( '_hideMobileAside' );
                         }
 
                     }
@@ -154,7 +265,7 @@
                     }
                 );
 
-                _body.on(
+                _site.on(
                     'click', function ( e ) {
 
                         if ( _obj.hasClass( 'show' ) && $( e.target ).closest( _mobileBtnOpen ).length != 0  ){
@@ -163,19 +274,16 @@
 
                         if ( _linkWrapBonus.hasClass( 'active' ) && $( e.target ).closest( _obj ).length == 0 ){
                             _hideBonusSearch();
-                            console.log( '_hideBonusSearch' );
                         }
 
                         if ( _obj.hasClass( 'show' ) && $( e.target ).closest( _obj ).length == 0 && _window.width() <= 1200 ){
                             _hideMobileAside();
-                            console.log( '_hideMobileAside' );
                         }
 
                         if ( _moreLinksBtn.hasClass( 'hide-links' ) && $( e.target ).closest( _lessLinksBox ).length == 0 ){
                             _showLessLinks( 0 );
                             _moreLinksBtn.removeClass( 'hide-links' );
                             _moreLinksBtn.html( 'Show More' );
-                            console.log( '_showLessLinks' );
                         }
 
                     }
@@ -207,6 +315,7 @@
                 _hideSearch.on(
                     'click', function () {
                         _hideBonusSearch();
+                        return false;
                     }
                 );
 
@@ -248,7 +357,7 @@
                 _linkWrapBonus.addClass( 'load' );
 
                 _request = $.ajax( {
-                    url: _obj.data( 'link' ),
+                    url: 'php/links.php',
                     data: {
                         value: _searchInput.val(),
                         loadedCount: _searchInput.val().length
@@ -362,7 +471,7 @@
             },
             _hideBonusSearch = function () {
 
-                $( '.links__search' )[0].reset();
+                $( '#links__search' )[0].reset();
 
                 _curLinksWrap.getNiceScroll().remove();
                 _linkWrapBonus.removeClass( 'active' );
@@ -502,10 +611,10 @@
         //private properties
         var _self = this,
             _obj = obj,
-            _add = _obj.find('.comments__add'),
-            _write = _obj.find('.comments__write'),
+            _add = _obj.find('#comments__add'),
+            _write = _obj.find('#comments__write'),
             _dom = $( 'html, body'),
-            _commentBlock = _obj.find('.contact-us');
+            _commentBlock = _obj.find( '#contact-us' );
 
         //private methods
         var _constructor = function () {
@@ -562,10 +671,11 @@
         //private properties
         var _obj = obj,
             _body = $( 'html, body' ),
-            _window = $( window );
+            _window = $( window ),
+            _lastPos;
 
         //private methods
-        var  _onEvent = function() {
+        var _onEvent = function() {
 
                 _obj.on (
                     'click', function () {
@@ -573,11 +683,63 @@
                     }
                 );
 
-                _window.on (
-                    'scroll', function () {
+                _window.on ( {
+                    'scroll': function () {
                         _checkScroll();
+                    },
+                    'DOMMouseScroll': function ( e ) {
+                        var delta = e.originalEvent.detail;
+                        if ( delta ) {
+                            var direction = ( delta > 0 ) ? 1 : -1;
+                            _checkScroll( direction );
+                        }
+                    },
+                    'mousewheel': function ( e ) {
+                        var delta = e.originalEvent.wheelDelta;
+                        if ( delta ) {
+                            var direction = ( delta > 0 ) ? -1 : 1;
+                            _checkScroll( direction );
+                        }
+                    },
+                    'touchmove': function ( e ) {
+                        var currentPos = e.originalEvent.touches[0].clientY;
+                        if ( currentPos > _lastPos ) {
+                            _checkScroll( -1 );
+                        } else if ( currentPos < _lastPos ) {
+                            _checkScroll( 1 );
+                        }
+                        _lastPos = currentPos;
+                    },
+                    'keydown': function ( e ) {
+                        switch( e.which ) {
+
+                            case 32:
+                                _checkScroll( 1 );
+                                break;
+                            case 33:
+                                _checkScroll( -1 );
+                                break;
+                            case 34 :
+                                _checkScroll( 1 );
+                                break;
+                            case 35 :
+                                _checkScroll( 1 );
+                                break;
+                            case 36 :
+                                _checkScroll( -1 );
+                                break;
+                            case 38:
+                                _checkScroll( -1 );
+                                break;
+                            case 40:
+                                _checkScroll( 1 );
+                                break;
+
+                            default:
+                                return;
+                        }
                     }
-                );
+                } );
 
             },
             _backToTop = function() {
@@ -585,12 +747,13 @@
                 _body.animate( { scrollTop : 0 }, 500, 'swing' )
 
             },
-            _checkScroll = function () {
+            _checkScroll = function ( direction ) {
 
-                if ( _window.scrollTop() > 75 ){
-                    _showBtn();
-                } else {
+                if( direction > 0 || _window.scrollTop() < 75 ) {
                     _hideBtn();
+                }
+                if( direction < 0 && _window.scrollTop() > 75 ) {
+                    _showBtn();
                 }
 
             },
@@ -620,12 +783,13 @@
 
         //private properties
         var _obj = obj,
-            _bonusInsert = _obj.find( '.bonus__insert' ),
-            _bonusNotResult = _obj.find( '.bonus__not-result' ),
-            _btnLoadMore = _obj.find( '.casino-offers__more' ),
+            _bonusInsert = _obj.find( '#bonus__insert' ),
+            _bonusNotResult = _obj.find( '#bonus__not-result' ),
+            _btnLoadMore = _obj.find( '#casino-offers__more' ),
             _positionMobileWindow = 0,
             _body = $( 'body' ),
             _html = $( 'html' ),
+            _site = $( '#site' ),
             _window = $( window ),
             _loadFlag = true,
             _request = new XMLHttpRequest();
@@ -647,32 +811,25 @@
                     }
                 } );
 
-                _body.on(
+                _site.on(
                     'click', function ( e ) {
 
                         var bonusPopup = _obj.find( '.popup' ),
-                            popupMoreInfoPopup = bonusPopup.find( '.popup__welcome-more-popup' ),
+                            popupMoreInfoPopup = bonusPopup.find( '.popup__more-popup' ),
                             innerPopup = _obj.find( '.popup_inner' );
 
                         if ( bonusPopup.length > 0 && $( e.target ).closest( bonusPopup ).length == 0 ){
                             _hidePopup();
-                            console.log( '_hidePopup' );
                         }
 
                         if ( innerPopup.length > 0 && $( e.target ).closest( innerPopup ).length == 0 ){
                             innerPopup.removeClass( 'show' );
-                            console.log( '_hidePopup' );
                         }
 
                         if ( popupMoreInfoPopup.hasClass( 'show' ) && $( e.target ).closest( popupMoreInfoPopup ).length == 0 ){
 
                             popupMoreInfoPopup.removeClass( 'show' );
 
-                            setTimeout( function () {
-                                popupMoreInfoPopup.remove();
-                            }, 300 );
-
-                            console.log( 'popupMoreInfoPopup' );
                         }
 
                     }
@@ -694,7 +851,7 @@
                 _loadFlag = false;
 
                 _request = $.ajax( {
-                    url: _obj.data( 'link' ),
+                    url: 'php/bonuses.php',
                     data: {
                         loadedCount: 5
                     },
@@ -815,8 +972,6 @@
 
                     if ( _window.width() < 768 ){
 
-                        console.log(popupMobileBtn)
-
                         _ajaxPopupRequest( curBtn, 0 );
 
                     }
@@ -846,71 +1001,75 @@
 
                 if ( curPopup.attr( 'data-type' ) == 'bonus' ){
 
+                    var bonusSwiper = curPopup.find( '#popup__swiper' ),
+                        swiperNextButton = curPopup.find( '#popup__button-next' ),
+                        swiperPrevButton = curPopup.find( '#popup__button-prev' ),
+                        popupSwiper;
+
+                    popupSwiper = new Swiper ( bonusSwiper, {
+                        autoplay: false,
+                        speed: 500,
+                        effect: 'slide',
+                        slidesPerView: 2,
+                        spaceBetween: 8,
+                        loop: false,
+                        nextButton: swiperNextButton,
+                        prevButton: swiperPrevButton,
+                        breakpoints: {
+                            768: {
+                                slidesPerView: 1,
+                                spaceBetween: 0
+                            }
+                        }
+                    } );
+
                     _positionPopup( curPopup, curBtn );
 
-                    var popupTabsLink = curPopup.find( '.popup__tabs-links a' ),
-                        popupTabsContent = curPopup.find( '.popup__tabs-content' ),
-                        popupTabsContentItem = curPopup.find( '.popup__tabs-content div' ),
-                        popupMoreInfoBtn = curPopup.find( '.popup__welcome-more' );
+                    var popupTabsLink = curPopup.find( '#popup__tabs-links a' ),
+                        popupTabsContent = curPopup.find( '#popup__tabs-content' ),
+                        popupTabsContentItem = curPopup.find( '#popup__tabs-content > div' ),
+                        popupMoreInfoBtn = curPopup.find( '.popup__more-btn' ),
+                        arrHeight = [];
 
                     popupTabsLink.removeClass( 'active' );
                     popupTabsContentItem.removeClass( 'active' );
 
                     popupTabsLink.eq( 0 ).addClass( 'active' );
                     popupTabsContentItem.eq( 0 ).addClass( 'active' );
-                    popupTabsContent.css( 'height', popupTabsContentItem.filter( '.active' ).height() );
+
+                    popupTabsContentItem.each( function () {
+
+                        var curTab = $( this );
+
+                        arrHeight.push( curTab.outerHeight() );
+
+                    } );
+
+                    popupTabsContent.css( 'height', Math.max.apply( Math, arrHeight ) );
 
                     popupTabsLink.on( 'click', function () {
 
                             var curTab = $( this ),
-                                tabs = curTab.parents( '.popup__tabs' ),
-                                tabsLinks = tabs.find( '.popup__tabs-links a' ),
-                                tabsContent = tabs.find( '.popup__tabs-content > div' ),
-                                popupTabsContent = tabs.find( '.popup__tabs-content' ),
-                                bonusSwiper = tabs.find( '.popup__swiper' ),
-                                swiperNextButton = tabs.find( '.popup__button-next' ),
-                                swiperPrevButton = tabs.find( '.popup__button-prev' ),
-                                popupSwiper;
+                                tabs = curTab.parents( '#popup__tabs' ),
+                                tabsLinks = tabs.find( '#popup__tabs-links a' ),
+                                tabsContent = tabs.find( '#popup__tabs-content > div' );
 
                             tabsContent.removeClass( 'active' );
                             tabsLinks.removeClass( 'active' );
 
-                            popupSwiper = new Swiper ( bonusSwiper, {
-                                autoplay: false,
-                                speed: 500,
-                                effect: 'slide',
-                                slidesPerView: 2,
-                                spaceBetween: 8,
-                                loop: false,
-                                nextButton: swiperNextButton,
-                                prevButton: swiperPrevButton,
-                                breakpoints: {
-                                    768: {
-                                        slidesPerView: 1,
-                                        spaceBetween: 0
-                                    },
-                                }
-                            } );
-
                             curTab.addClass( 'active' );
                             tabsContent.eq( curTab.index() ).addClass( 'active' );
-                            popupTabsContent.css( 'height', tabsContent.filter( '.active' ).height() );
-
-                            if  ( _window.width() >= 768 ) {
-                                _positionPopup( curPopup, curBtn );
-                            }
 
                             return false;
 
-                        }
-                    );
+                        } );
 
                     popupMoreInfoBtn.on( 'click', function () {
 
                         var curBtn = $( this ),
                             curBtnId = curBtn.data( 'id' ),
-                            curParent = curBtn.parents( '.popup__welcome' ),
-                            popupMoreInfoPopup = curParent.find( '.popup__welcome-more-popup' ),
+                            curParent = curBtn.parents( '#popup__tabs-content > div' ),
+                            popupMoreInfoPopup = curParent.find( '.popup__more-popup' ),
                             curPopupMoreInfoPopup = popupMoreInfoPopup.filter( '[data-id='+ curBtnId +']' );
 
                         if ( !curPopupMoreInfoPopup.hasClass( 'show' ) ) {
@@ -931,7 +1090,7 @@
 
                         return false;
 
-                    } )
+                    } );
 
                     var popupBtn = curPopup.find( '.popup__open' );
 
@@ -948,7 +1107,7 @@
 
                     _positionPopup( curPopup, curBtn );
 
-                    curPopup.find( '.comments' ).each( function() {
+                    curPopup.find( '#comments' ).each( function() {
                         new AddComments ( $( this ) );
                         new LabelForm( $(this) );
                     } );
@@ -959,7 +1118,7 @@
 
                     if ( _window.width() >= 768 ) {
 
-                        var commentsWrap = curBox.find( '.comments__wrap' ),
+                        var commentsWrap = curBox.find( '#comments__wrap' ),
                             commentsItem = commentsWrap.find( '.comments__item' );
 
                         commentsWrap.css( 'height', commentsItem.eq( 0 ).outerHeight() + commentsItem.eq( 2 ).outerHeight() + 21 )
@@ -983,7 +1142,7 @@
                         _positionMobileWindow = _window.scrollTop();
                         _html.css( 'overflow-y', 'hidden' );
 
-                        curBox.append( '<div class="popup__back"></div>' );
+                        curBox.append( '<div id="popup__back"></div>' );
                         curPopup.addClass( 'show' );
 
                     } else if  ( _window.width() >= 768 ) {
@@ -1000,7 +1159,7 @@
                             var centerCurParent = curPopup.offset().top + curPopup.outerHeight() / 2,
                                 centerBody = _window.height() / 2;
 
-                            curBox.append( '<div class="popup__back"></div>' );
+                            curBox.append( '<div id="popup__back"></div>' );
                             curPopup.addClass( 'show' );
 
                         }, 300 );
@@ -1066,7 +1225,7 @@
 
                 var bonusItem = _obj.find( '.bonus__item' ),
                     busyBtn = bonusItem.find( '.busy' ),
-                    busyBack = bonusItem.find( '.popup__back' ),
+                    busyBack = bonusItem.find( '#popup__back' ),
                     bonusPopup = bonusItem.find( '.popup' );
 
                 busyBtn.removeClass( 'busy' );
@@ -1102,16 +1261,44 @@
                     return false;
                 }
 
+                if ( _obj.hasClass( 'bonus_minimize' ) ){
+                    new BonusMinimize( $( '.bonus_minimize' ) );
+                };
+
                 _initSlider();
                 _initPopups();
-                _minimizeAllItems();
 
                 _loadFlag = true;
+
+            },
+            _init = function() {
+                _ajaxRequest();
+                _onEvent();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+    };
+
+    var BonusMinimize = function( obj ) {
+
+        //private properties
+        var _obj = obj,
+            _body = $( 'body' ),
+            _window = $( window );
+
+        //private methods
+        var _onEvent = function() {
+
 
             },
             _minimizeAllItems = function () {
 
                 if ( !_obj.hasClass( 'bonus_minimize' ) ){
+                    _unMinimizeAllItems();
                     return false;
                 }
 
@@ -1149,6 +1336,16 @@
                 );
 
             },
+            _unMinimizeAllItems = function () {
+
+                var bonusItem = _obj.find( '.bonus__item' ),
+                    bonusItemBody = bonusItem.find( '.bonus__body' );
+
+                bonusItem.addClass( 'new' );
+                bonusItem.removeClass( 'hide' );
+                bonusItemBody.css( 'height', bonusItemBody.attr( 'data-height' ) );
+
+            },
             _minimizeEvent = function ( e ) {
 
                 var curBtn = e,
@@ -1180,7 +1377,7 @@
 
             },
             _init = function() {
-                _ajaxRequest();
+                _minimizeAllItems();
                 _onEvent();
             };
 
@@ -1195,7 +1392,7 @@
 
         //private properties
         var _obj = obj,
-            _content = _obj.find( '.casino-info__hide-text' ),
+            _content = _obj.find( '#casino-info__hide-text' ),
             _readMore = _obj.find( 'a' );
 
         //private methods
@@ -1217,11 +1414,13 @@
             _showContent = function() {
 
                 _content.slideDown( 300 );
+                _readMore.html( 'Show Less' );
 
             },
             _hideContent = function() {
 
                 _content.slideUp( 300 );
+                _readMore.html( 'Read More' );
 
             },
             _init = function() {
@@ -1239,17 +1438,22 @@
 
         //private properties
         var _obj = obj,
-            _filterFrame = _obj.find( '.filter__frame' ),
-            _filterBtn = _obj.find( '.filter__frame-btn' ),
-            _filterPopup = _obj.find( '.filter__popup' ),
+            _filterInput = _obj.find( 'input' ),
+            _filterFrame = _obj.find( '#filter__frame' ),
+            _filterBtn = _obj.find( '#filter__frame-btn' ),
+            _filterPopup = _obj.find( '#filter__popup' ),
             _filterItem = _filterPopup.find( 'label' ),
             _filterCheckbox = _filterItem.find( 'input' ),
-            _filterSort = _obj.find( '.filter__sort' ),
-            _filterSortBtn = _filterSort.find( '.filter__sort-select' ),
-            _filterSortPopup = _filterSort.find( '.filter__sort-popup' ),
+            _filterSort = _obj.find( '#filter__sort' ),
+            _filterSortBtn = _filterSort.find( '#filter__sort-select' ),
+            _filterSortPopup = _filterSort.find( '#filter__sort-popup' ),
             _filterSortItem = _filterSort.find( 'label' ),
             _filterSortRadio = _filterSortItem.find( 'input' ),
+            _bonusWrap = $( '.bonus' ),
+            _displayBonusCell = _obj.find( '#filter__display-cell' ),
+            _displayBonusMinimize = _obj.find( '#filter__display-minimize' ),
             _body = $( 'html, body' ),
+            _site = $( '#site' ),
             _window = $( window );
 
         //private methods
@@ -1269,18 +1473,23 @@
                     }
                 );
 
-                _body.on(
+                _site.on(
                     'click', function ( e ) {
 
                         if ( _filterPopup.hasClass( 'show' ) && $( e.target ).closest( _filterFrame ).length == 0 ){
                             _hideFilterPopup();
-                            console.log( '_hideFilterPopup' );
                         }
 
                         if ( _filterSort.hasClass( 'show' )&& $( e.target ).closest( _filterSort ).length == 0 ){
                             _hideSortPopup();
-                            console.log( '_hideSortPopup' );
                         }
+
+                    }
+                );
+
+                _filterInput.on(
+                    'change', function ( ) {
+
 
                     }
                 );
@@ -1312,6 +1521,34 @@
                     _illuminationItem();
 
                 } );
+
+                _displayBonusCell.on( 'click', function () {
+
+                    _unMinimizeBonus();
+
+                } );
+
+                _displayBonusMinimize.on( 'click', function () {
+
+                    _minimizeBonus();
+
+                } );
+
+            },
+            _minimizeBonus = function () {
+
+                _displayBonusMinimize.addClass( 'active' );
+                _displayBonusCell.removeClass( 'active' );
+                _bonusWrap.addClass( 'bonus_minimize' );
+                new BonusMinimize( $( '.bonus_minimize' ) );
+
+            },
+            _unMinimizeBonus = function () {
+
+                _displayBonusCell.addClass( 'active' );
+                _displayBonusMinimize.removeClass( 'active' );
+                _bonusWrap.removeClass( 'bonus_minimize' );
+                new BonusMinimize( $( '.bonus' ) );
 
             },
             _showSortPopup = function() {
@@ -1384,17 +1621,13 @@
         var _self = this,
             _obj = obj,
             _valueFlag = false,
+            _inputs = _obj.find( 'input, textarea' ),
             _fields = _obj.find( '[data-required]' );
 
         //private methods
         var _constructor = function () {
                 _onEvents();
                 _obj[0].obj = _self;
-
-                if ( _fields.val().left > 0 ){
-                    _valueFlag = true;
-                }
-
             },
             _addNotTouchedClass = function () {
 
@@ -1424,17 +1657,27 @@
 
                         var curItem = $(this);
 
-                        if ( _fields.val().length > 0 ){
-                            _valueFlag = true;
-                        } else {
-                            _fields.removeClass( 'not-valid' );
-                            _valueFlag = false;
-                        }
+                        _validateField( curItem );
 
-                        console.log(_valueFlag);
+                    }
+                } );
+                _inputs.on( {
+                    focusout: function() {
 
-                        if ( _valueFlag ){
-                            _validateField( curItem );
+                        var letterCounter = 0;
+
+                        _inputs.each( function () {
+
+                            var curItem = $(this);
+
+                            if ( curItem.val().length > 0 ){
+                                letterCounter = letterCounter + 1
+                            }
+
+                        } );
+
+                        if ( letterCounter == 0 ){
+                            _inputs.removeClass( 'not-valid' );
                         }
 
                     }
@@ -1457,7 +1700,6 @@
                         }
                     }
                 } );
-
             },
             _makeNotValid = function ( field ) {
                 field.addClass( 'not-valid' );
@@ -1528,21 +1770,21 @@
 
         //private properties
         var _obj = obj,
-            _btnShowInfo = _obj.find( '.info__btn-open' ),
-            _infoFrame = _obj.find( '.info__frame' ),
-            _infoSubFrame = _obj.find( '.info__sub-frame' ),
+            _btnShowInfo = _obj.find( '#info__btn-open' ),
+            _infoFrame = _obj.find( '#info__frame' ),
+            _infoSubFrame = _obj.find( '#info__sub-frame' ),
             _body = $( 'body, html' ),
+            _site = $( '#site' ),
             _window = $( window );
 
         //private methods
         var _onEvent = function() {
 
-                _body.on(
+                _site.on(
                     'click', function ( e ) {
 
                         if ( _infoFrame.hasClass( 'show' ) && $( e.target ).closest( _obj ).length == 0 ){
                             _hidePanel();
-                            console.log( '_hidePanel' );
                         }
 
                     }
@@ -1692,11 +1934,12 @@
 
         //private properties
         var _obj = obj,
-            _btnShowMobile = _obj.find( '.search__btn-open' ),
-            _searchForm = _obj.find( '.search__form' ),
+            _btnShowMobile = _obj.find( '#search__btn-open' ),
+            _searchForm = _obj.find( '#search__form' ),
             _searchInput = _obj.find( 'input' ),
-            _btnCancel = _obj.find( '.search__btn-cancel' ),
+            _btnCancel = _obj.find( '#search__btn-cancel' ),
             _body = $( 'html, body' ),
+            _site = $( '#site' ),
             _window = $( window ),
             _loadNewContent = true,
             _request = new XMLHttpRequest();
@@ -1709,7 +1952,7 @@
 
                         if ( _body.width() < 1200 ){
 
-                            var searchPopup = _obj.find( '.search__popup' );
+                            var searchPopup = _obj.find( '#search__popup' );
 
                             searchPopup.css( {
                                 'left': _btnShowMobile.offset().left * -1 + 10,
@@ -1721,17 +1964,15 @@
                     }
                 );
 
-                _body.on(
+                _site.on(
                     'click', function ( e ) {
 
                         if ( _searchForm.hasClass( 'show' ) && $( e.target ).closest( _obj ).length == 0 && _body.width() < 1200 ){
                             _hidePanelOnMobile();
                             _searchForm[0].reset();
-                            console.log('_hidePanelOnMobile');
-                        } else if ( $( '.search__popup' ).hasClass( 'show' ) && $( e.target ).closest( _obj ).length == 0 && _body.width() >= 1200 ){
+                        } else if ( $( '#search__popup' ).hasClass( 'show' ) && $( e.target ).closest( _obj ).length == 0 && _body.width() >= 1200 ){
                             _reduceSearch();
                             _searchForm[0].reset();
-                            console.log('_reduceSearch');
                         }
 
                     }
@@ -1775,7 +2016,7 @@
 
                         } else {
 
-                            var searchPopup = _obj.find( '.search__popup' );
+                            var searchPopup = _obj.find( '#search__popup' );
                             searchPopup.addClass( 'load' );
                             _ajaxRequest();
                         }
@@ -1786,7 +2027,7 @@
             _ajaxRequest = function(){
 
                 _request = $.ajax( {
-                    url: _obj.data( 'link' ),
+                    url: 'php/header-search.php',
                     data: {
                         value: _searchInput.val(),
                         loadedCount: _searchInput.val().length
@@ -1808,7 +2049,7 @@
             },
             _increaseSearch = function () {
 
-                var searchPopup = _obj.find( '.search__popup' );
+                var searchPopup = _obj.find( '#search__popup' );
 
                 _searchForm.addClass( 'increase' );
 
@@ -1818,7 +2059,7 @@
             },
             _reduceSearch = function () {
 
-                var searchPopup = _obj.find( '.search__popup' );
+                var searchPopup = _obj.find( '#search__popup' );
 
                 searchPopup.removeClass( 'show' );
 
@@ -1829,7 +2070,7 @@
             },
             _showPopup = function () {
 
-                var searchPopup = _obj.find( '.search__popup' );
+                var searchPopup = _obj.find( '#search__popup' );
 
                 searchPopup.addClass( 'show' );
 
@@ -1843,7 +2084,7 @@
             },
             _hidePopup = function () {
 
-                var searchPopup = _obj.find( '.search__popup' );
+                var searchPopup = _obj.find( '#search__popup' );
 
                 searchPopup.remove( );
 
@@ -1852,8 +2093,8 @@
             },
             _searchMoreLink = function () {
 
-                var searchPopup = _obj.find( '.search__popup' ),
-                    searchLinksResults =  searchPopup.find( '.search__popup-links' );
+                var searchPopup = _obj.find( '#search__popup' ),
+                    searchLinksResults =  searchPopup.find( '#search__popup-links' );
 
                 if ( _searchInput.val().length > 0 ) {
                     searchLinksResults.find( 'span' ).html( _searchInput.val() );
@@ -1884,11 +2125,11 @@
 
                 if ( _loadNewContent ){
 
-                    _obj.append( '<div class="search__popup load"><div class="search__preload"><div class="search__preload-element"></div></div></div>' )
+                    _obj.append( '<div id="search__popup" class="load"><div id="search__preload"><div id="search__preload-element"></div></div></div>' )
 
                 }
 
-                var searchPopup = _obj.find( '.search__popup' ),
+                var searchPopup = _obj.find( '#search__popup' ),
                     arr = data;
 
                 if ( _loadNewContent ){
@@ -1899,12 +2140,12 @@
                 } else {
 
                     searchPopup.empty();
-                    searchPopup.append( '<div class="search__preload"><div class="search__preload-element"></div></div>' );
+                    searchPopup.append( '<div id="search__preload"><div id="search__preload-element"></div></div>' );
                     searchPopup.prepend( data );
 
                 }
 
-                var searchUpdate = searchPopup.find( '.search__popup-update' );
+                var searchUpdate = searchPopup.find( '#search__popup-update' );
 
                 _illumination();
                 _searchMoreLink();

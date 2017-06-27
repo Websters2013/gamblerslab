@@ -1,4 +1,4 @@
-.logo {
+#logo {
   position: relative;
   top: 1px;
   width: 162px;
@@ -19,7 +19,7 @@
 
 @media (min-width: $tablet-portrait) {
 
-  .logo{
+  #logo{
     top: 3px;
     width: 324px;
   }
@@ -28,7 +28,7 @@
 
 @media (min-width: $desktop) {
 
-  .logo{
+  #logo{
     top: 1px;
     width: 249px;
     margin-left: 45px;

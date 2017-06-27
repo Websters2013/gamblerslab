@@ -1,4 +1,4 @@
-.mobile {
+#mobile {
 
   &-btn{
     position: relative;
@@ -72,7 +72,7 @@
 }
 
 @media (min-width: $tablet-portrait) {
-  .mobile {
+  #mobile {
 
     &-btn{
       width: 74px;
@@ -98,7 +98,7 @@
 }
 
 @media (min-width: $desktop) {
-  .mobile {
+  #mobile {
 
     &-btn{
       display: none;

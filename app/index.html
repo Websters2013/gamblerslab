@@ -12,24 +12,24 @@
     <link rel="stylesheet" href="css/preloader.css">
 
     <link rel="stylesheet" href="css/swiper.min.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
 
-    <div class="preload">
-        <div class="preload__element"></div>
+    <div id="preload">
+        <div id="preload__element"></div>
     </div>
 
-    <div class="site">
+    <div id="site">
 
-        <header class="site__header">
+        <header id="site__header">
 
-            <button class="mobile-btn">
+            <button id="mobile-btn">
                 <span></span>
             </button>
 
-            <h1 class="logo">
+            <h1 id="logo">
                 <svg viewBox="0 0 594.61 41.51">
                     <title>Gamblers lab</title>
                     <g>
@@ -50,45 +50,45 @@
                 </svg>
             </h1>
 
-            <div class="search" data-link="php/header-search.php">
+            <div id="search">
 
-                <a href="#" type="submit" class="search__btn-open">
+                <a href="#" id="search__btn-open">
                     <svg viewBox="156 113 17.49 17.49">
                         <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"/>
                     </svg>
                 </a>
 
-                <form class="search__form">
+                <form id="search__form">
 
                     <input type="search" placeholder="Search"/>
-                    <button type="submit" class="search__btn-find">
+                    <button type="submit" id="search__btn-find">
                         <svg viewBox="156 113 17.49 17.49">
                             <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"/>
                         </svg>
                     </button>
 
-                    <button type="submit" class="search__btn-cancel"></button>
+                    <button type="submit" id="search__btn-cancel"></button>
 
                 </form>
 
             </div>
 
-            <div class="info">
+            <div id="info">
 
-                <a href="#" class="info__btn-open">
+                <a href="#" id="info__btn-open">
                     <svg viewBox="78 111 20 20"><path d="M11,17h2V11H11ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.011,8.011,0,0,1,12,20ZM11,9h2V7H11Z" transform="translate(76 109)"/></svg>
                 </a>
 
-                <div class="info__frame">
+                <div id="info__frame">
 
                     <a href="#" class="info__item info__item_contact">contact us</a>
 
-                    <div class="info__sub-frame">
+                    <div id="info__sub-frame">
 
                         <a href="#" class="info__item">Terms and Conditions</a>
                         <a href="#" class="info__item">Privacy Policy</a>
 
-                        <div class="social">
+                        <div id="social">
                             <a href="#" class="social__item social__item_fb">
                                 <svg viewBox="0 0 24 24"><path d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" /></svg>
                             </a>
@@ -100,7 +100,7 @@
                             </a>
                         </div>
 
-                        <p class="copyright">© 2017 GamblersLab</p>
+                        <p id="copyright">© 2017 GamblersLab</p>
 
                     </div>
 
@@ -110,9 +110,9 @@
 
         </header>
 
-        <div class="site__wrap">
+        <div id="site__wrap">
 
-            <aside class="site__aside" data-link="php/links.php">
+            <aside id="site__aside">
 
                 <div class="links">
 
@@ -179,7 +179,7 @@
                         </a>
                     </div>
 
-                    <a href="#" class="links__show-all">
+                    <a href="#" id="links__show-all">
                         <i>show all casinos</i>
                         <span>
                             <svg viewBox="156 113 17.49 17.49">
@@ -342,7 +342,7 @@
 
                 <div class="links links_casinos-search">
 
-                    <a href="#" class="links__back">
+                    <a href="#" id="links__back">
                         <svg viewBox="266 75 16 16">
                             <path d="M20,11H7.83l5.59-5.59L12,4,4,12l8,8,1.41-1.41L7.83,13H20Z" transform="translate(262 71)"/>
                         </svg>
@@ -353,70 +353,71 @@
                         <h2>Bonus by Casino</h2>
                     </div>
 
-                    <form class="links__search">
-                        <button class="links__search-btn">
+                    <form id="links__search">
+                        <button id="links__search-btn">
                             <svg viewBox="156 113 17.49 17.49">
                                 <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"></path>
                             </svg>
                         </button>
-                        <input type="text" name="" class="links__search-input" placeholder="Search bonus by casino"/>
-                        <button type="submit" class="links__search-cancel"></button>
+                        <input type="text" name="links__search-input" id="links__search-input" placeholder="Search bonus by casino"/>
+                        <button type="submit" id="links__search-cancel"></button>
                     </form>
 
-                    <p class="links__no-results">Sorry, no results</p>
+                    <p id="links__no-results">Sorry, no results</p>
 
                     <div class="links__wrap"></div>
 
-                    <div class="links__preload">
-                        <div class="links__preload-element"></div>
+                    <div id="links__preload">
+                        <div id="links__preload-element"></div>
                     </div>
 
                 </div>
 
             </aside>
 
-            <div class="site__content">
+            <div id="site__content">
 
-                <section class="casino-info">
+                <section id="casino-info">
 
                     <h1>BetOnSoft Bonuses</h1>
 
-                    <div class="casino-info__img">
+                    <div id="casino-info__img">
                         <img src="pic/img-001.jpg" alt="img"/>
                     </div>
 
-                    <div class="casino-info__content">
+                    <div id="casino-info__content">
 
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
 
-                        <div class="casino-info__hide-text">
+                        <div id="casino-info__hide-text">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
                         </div>
 
                         <p><a href="#">Read More</a></p>
+
                     </div>
 
                 </section>
 
-                <section class="filter">
+                <section id="filter">
 
-                    <div class="filter__title">
+                    <div id="filter__title">
                         <h2>All BetOnSoft Bonuses</h2>
                         <p><span>235</span> Bonuses</p>
                     </div>
 
-                    <div class="filter__wrap">
+                    <div id="filter__wrap">
 
-                        <span class="filter__name">Filter bonuses:</span>
+                        <span id="filter__name">Filter bonuses:</span>
 
-                        <div class="filter__frame">
+                        <div id="filter__frame">
 
-                            <button class="filter__frame-btn">
+                            <button id="filter__frame-btn">
                                 filter by
                             </button>
 
-                            <div class="filter__popup">
+                            <div id="filter__popup">
 
                                 <label class="nice-checkbox">
                                     <input type="checkbox" name="accepted" checked />
@@ -435,29 +436,29 @@
 
                             </div>
 
-                            <span class="filter__frame-selected">
+                            <span id="filter__frame-selected">
                                 <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
                             </span>
 
                         </div>
 
-                        <div class="filter__sort">
-                            <span class="filter__sort-select">Sort by</span>
+                        <div id="filter__sort">
+                            <span id="filter__sort-select">Sort by</span>
 
-                            <div class="filter__sort-popup">
+                            <div id="filter__sort-popup">
                                 <label><input type="radio" value="sort-001" name="sort" checked/>Newest</label>
                                 <label><input type="radio" value="sort-002" name="sort"/>Newest1</label>
                             </div>
 
                         </div>
 
-                        <div class="filter__display">
+                        <div id="filter__display">
 
-                            <a href="#" class="active">
+                            <a href="#" id="filter__display-cell" class="active">
                                 <svg viewBox="0 0 40 40"><g id="card_icn"><rect width="40" height="18"/><rect y="22" width="40" height="18"/></g></svg>
                             </a>
 
-                            <a href="#">
+                            <a href="#" id="filter__display-minimize">
                                 <svg viewBox="0 0 40 40"><g id="row_icn"><rect width="40" height="7"/><rect y="11" width="40" height="7"/><rect y="22" width="40" height="7"/><rect y="33" width="40" height="7"/></g></svg>
                             </a>
 
@@ -467,14 +468,14 @@
 
                 </section>
 
-                <div class="bonus bonus_auto-load" data-link="php/bonuses.php">
+                <div class="bonus bonus_auto-load">
 
-                    <div class="bonus__insert"></div>
+                    <div id="bonus__insert"></div>
 
-                    <p class="bonus__not-result">Sorry, no result</p>
+                    <p id="bonus__not-result">Sorry, no result</p>
 
-                    <div class="bonus__preload">
-                        <div class="bonus__preload-element"></div>
+                    <div id="bonus__preload">
+                        <div id="bonus__preload-element"></div>
                     </div>
 
                 </div>
@@ -483,7 +484,7 @@
 
         </div>
 
-        <a href="#" class="back-to-top">
+        <a href="#" id="back-to-top">
             <span>back to top</span>
         </a>
 
@@ -492,6 +493,6 @@
     <script src="js/vendors/jquery-3.2.1.min.js"></script>
     <script src="js/vendors/swiper.jquery.min.js"></script>
     <script src="js/vendors/jquery.nicescroll.min.js"></script>
-    <script src="js/index.min.js"></script>
+    <script src="js/main.min.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-.info {
+#info {
   position: absolute;
   top: 0;
   right: 5px;
@@ -73,6 +73,10 @@
 
   }
 
+}
+
+.info {
+
   &__item{
     display: block;
     padding: 11px 10px 12px;
@@ -91,7 +95,7 @@
 }
 
 @media (min-width: $tablet-portrait) {
-  .info {
+  #info {
 
     &__btn-open{
       width: 60px;
@@ -108,10 +112,14 @@
     }
 
   }
+
+  .info {
+
+  }
 }
 
 @media (min-width: $desktop) {
-  .info {
+  #info {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -220,6 +228,10 @@
       }
 
     }
+
+  }
+
+  .info {
 
     &__item{
 

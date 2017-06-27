@@ -1,3 +1,245 @@
+#popup {
+
+  &__info{
+
+    .btn{
+      width: 100%;
+      height: 40px;
+      margin-bottom: 15px;
+    }
+
+  }
+
+  &__casino-img{
+    margin: 40px auto 32px;
+
+    img{
+      display: block;
+      margin: 0 auto;
+    }
+
+  }
+
+  &__content{
+
+  }
+
+  &__img{
+    width: 100%;
+    margin-bottom: 15px;
+
+    img{
+      display: block;
+      width: 100%;
+    }
+
+  }
+
+  &__tabs{
+
+    &-links{
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-align: center;
+
+      a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 25px;
+        border-bottom: 1px solid #dce0db;
+        color: #abb1b9;
+
+        &.active{
+          border-bottom: 2px solid #45d1de;
+          color: #283746;
+        }
+
+      }
+
+    }
+
+    &-content{
+      position: relative;
+      -webkit-transition: height .3s ease;
+      transition: height .3s ease;
+
+      > div{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        font-size: 13px;
+        line-height: 20px;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: opacity .3s ease, visibility .3s ease;
+        transition: opacity .3s ease, visibility .3s ease;
+
+        &.active{
+          opacity: 1;
+          visibility: visible;
+        }
+
+      }
+
+    }
+
+  }
+
+  &__swiper{
+    width: 237px;
+    margin: 0 auto;
+  }
+
+  &__warning{
+
+    &-content{
+      color: #83868a;
+      font-size: 14px;
+      line-height: 20px;
+
+      p{
+        margin-bottom: 20px;
+      }
+
+      .btn{
+        width: 193px;
+        height: 40px;
+      }
+
+      .bonus__country{
+        vertical-align: middle;
+      }
+
+    }
+
+    &-img{
+      margin: 0 auto 20px;
+
+      img{
+        display: block;
+      }
+
+    }
+
+  }
+
+  &__game{
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+
+    img{
+      display: block;
+      width: 100%;
+    }
+
+  }
+
+  &__game-note{
+    margin-bottom: 10px;
+    color: #d40000;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  &__button-next,
+  &__button-prev{
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: -8px;
+    border-radius: 50px;
+    background-color: #45d1de;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    &:before{
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid #fff;
+      border-bottom: 1.5px solid #fff;
+      transform: translateY(-50%) rotate(45deg);
+      transform-origin: center;
+    }
+
+    &.swiper-button-disabled{
+      background-color: #abb1b9;
+    }
+
+  }
+
+  &__button-next{
+    right: -10px;
+
+    &:before{
+      left: 49%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+  }
+
+  &__button-prev{
+    left: -10px;
+
+    &:before{
+      left: 56%;
+      transform: translate(-50%, -50%) rotate(135deg);
+    }
+
+  }
+
+  &__overview{
+
+    dl{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    dt{
+      width: 88px;
+      color: #323232;
+    }
+
+    dd{
+      width: calc( 100% - 88px );
+      color: #83868a;
+    }
+
+  }
+
+  &__back{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+    z-index: 6;
+  }
+
+  &__reset{
+    display: none;
+  }
+
+}
+
 .popup {
   position: fixed;
   top: 0;
@@ -69,100 +311,6 @@
     margin-bottom: 40px;
   }
 
-  &__img{
-    width: 100%;
-    margin-bottom: 15px;
-
-    img{
-      display: block;
-      width: 100%;
-    }
-
-  }
-
-  &__info{
-
-    .btn{
-      width: 100%;
-      height: 40px;
-      margin-bottom: 15px;
-    }
-
-  }
-
-  &__content{
-
-  }
-
-  &__casino-img{
-    margin: 40px auto 32px;
-
-    img{
-      display: block;
-      margin: 0 auto;
-    }
-
-  }
-
-  &__tabs{
-
-    &-links{
-      display: flex;
-      align-items: stretch;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      text-align: center;
-
-      a{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50%;
-        height: 25px;
-        border-bottom: 1px solid #dce0db;
-        color: #abb1b9;
-
-        &.active{
-          border-bottom: 2px solid #45d1de;
-          color: #283746;
-        }
-
-      }
-
-    }
-
-    &-content{
-      position: relative;
-      -webkit-transition: height .3s ease;
-      transition: height .3s ease;
-
-      > div{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: #fff;
-        font-size: 13px;
-        line-height: 20px;
-        opacity: 0;
-        visibility: hidden;
-        -webkit-transition: opacity .3s ease, visibility .3s ease;
-        transition: opacity .3s ease, visibility .3s ease;
-
-        &.active{
-          opacity: 1;
-          visibility: visible;
-        }
-
-      }
-
-    }
-
-  }
-
   &__country {
     display: inline-block;
     position: relative;
@@ -218,32 +366,6 @@
 
   }
 
-  &__overview{
-
-    dl{
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 15px;
-    }
-
-    dt{
-      width: 88px;
-      color: #323232;
-    }
-
-    dd{
-      width: calc( 100% - 88px );
-      color: #83868a;
-    }
-
-  }
-
-  &__swiper{
-    width: 237px;
-    margin: 0 auto;
-  }
-
   &__welcome{
 
     &-slide {
@@ -272,10 +394,6 @@
 
     }
 
-    &-more{
-      color: #0fc2c8;
-    }
-
     &-code{
       display: flex;
       justify-content: center;
@@ -291,7 +409,15 @@
       font-weight: 600;
     }
 
-    &-more-popup{
+  }
+
+  &__more{
+
+    &-btn{
+      color: #0fc2c8;
+    }
+
+    &-popup{
       position: absolute;
       max-width: 140px;
       padding: 7px 10px;
@@ -340,126 +466,19 @@
 
   }
 
-  &__button-next,
-  &__button-prev{
-    display: block;
-    position: absolute;
-    top: 50%;
-    width: 30px;
-    height: 30px;
-    margin-top: -8px;
-    border-radius: 50px;
-    background-color: #45d1de;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-
-    &:before{
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 7px;
-      height: 7px;
-      border-right: 1.5px solid #fff;
-      border-bottom: 1.5px solid #fff;
-      transform: translateY(-50%) rotate(45deg);
-      transform-origin: center;
-    }
-
-    &.swiper-button-disabled{
-      background-color: #abb1b9;
-    }
-
-  }
-
-  &__button-next{
-    right: -10px;
-
-    &:before{
-      left: 49%;
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
-
-  }
-
-  &__button-prev{
-    left: -10px;
-
-    &:before{
-      left: 56%;
-      transform: translate(-50%, -50%) rotate(135deg);
-    }
-
-  }
-
-  &__game{
-    width: 100%;
-    margin: 0 auto;
-
-    img{
-      display: block;
-      width: 100%;
-    }
-
-  }
-
-  &__game-note{
-    margin-bottom: 10px;
-    color: #d40000;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 20px;
-  }
-
-  &__reset{
-    display: none;
-  }
-
-  &__warning{
-
-    &-content{
-      color: #83868a;
-      font-size: 14px;
-      line-height: 20px;
-
-      p{
-        margin-bottom: 20px;
-      }
-
-      .btn{
-        width: 193px;
-        height: 40px;
-      }
-
-      .bonus__country{
-        vertical-align: middle;
-      }
-
-    }
-
-    &-img{
-      margin: 0 auto 20px;
-
-      img{
-        display: block;
-      }
-
-    }
-
-  }
-
-  .comments{
+  #comments{
     margin-bottom: 0;
   }
 
-  .contact-us__form{
+  #contact-us__form{
     margin-bottom: 0;
   }
 
-  .contact-us__send{
+  #contact-us__send{
     margin-bottom: 0;
   }
 
-  .single-bonus__note-title{
+  #single-bonus__note-title{
     padding: 13px 12px 8px;
     font-size: 19px;
     line-height: 24px;
@@ -472,11 +491,11 @@
 
   }
 
-  .comments__info{
+  #comments__info{
     margin: 0 0 9px;
   }
 
-  .comments__content{
+  #comments__content{
     font-size: 14px;
   }
 
@@ -487,6 +506,104 @@
 }
 
 @media (min-width: $tablet-portrait) {
+
+  #popup {
+
+    &__content{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    &__info{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 35px;
+
+      .btn{
+        width: 205px;
+      }
+
+    }
+
+    &__casino-img{
+      width: 237px;
+      margin: 0;
+    }
+
+    &__img{
+      width: 237px;
+    }
+
+    &__tabs{
+      width: 432px;
+
+      &-links{
+
+        a{
+          align-items: flex-start;
+          height: 27px;
+        }
+
+      }
+
+    }
+
+    &__swiper{
+      width: 363px;
+    }
+
+    &__warning{
+
+      &-content{
+        width: calc( 100% - 213px );
+      }
+
+      &-img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 160px;
+        margin: 0 45px 0 0;
+
+        img{
+          display: block;
+        }
+
+      }
+
+    }
+
+    &__game{
+      max-width: 860px;
+    }
+
+    &__wrap{
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+
+    &__reset{
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+
+      svg{
+        position: static;
+        width: 13px;
+        height: 13px;
+        margin-right: 0;
+        fill: #83868a
+      }
+
+    }
+
+  }
 
   .popup {
     position: absolute;
@@ -527,57 +644,6 @@
       display: none;
     }
 
-    &__title{
-      position: relative;
-      margin: 0 -20px 24px;
-      border-radius: 5px 5px 0 0;
-    }
-
-    &__casino-img{
-      width: 237px;
-      margin: 0;
-    }
-
-    &__info{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 35px;
-
-      .btn{
-        width: 205px;
-      }
-
-    }
-
-    &__img{
-      width: 237px;
-    }
-
-    &__content{
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    &__tabs{
-      width: 432px;
-
-      &-links{
-
-        a{
-          align-items: flex-start;
-          height: 27px;
-        }
-
-      }
-
-    }
-
-    &__swiper{
-      width: 363px;
-    }
-
     &__welcome{
 
       &-slide{
@@ -596,29 +662,10 @@
 
     }
 
-    &__reset{
-      display: block;
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%);
-
-      svg{
-        width: 13px;
-        fill: #83868a
-      }
-
-    }
-
-    &__back{
-      position: fixed;
-      top:0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0,0,0,.5);
-      z-index: 6;
+    &__title{
+      position: relative;
+      margin: 0 -20px 24px;
+      border-radius: 5px 5px 0 0;
     }
 
     &[data-type="warning"]{
@@ -640,6 +687,11 @@
     }
 
     &[data-type="comments"]{
+      padding: 0 5px 29px 20px;
+
+      .popup__title{
+        margin: 0 -5px 24px -20px;
+      }
 
       &:after{
         left: 156px;
@@ -647,55 +699,32 @@
 
     }
 
-    &__game{
-      max-width: 860px;
-    }
-
-    &__wrap{
-      display: flex;
-      justify-content: space-between;
-      align-items: stretch;
-    }
-
-    &__warning{
-
-      &-content{
-        width: calc( 100% - 213px );
-      }
-
-      &-img{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 160px;
-        margin: 0 45px 0 0;
-
-        img{
-          display: block;
-        }
-
-      }
-
-    }
-
-    .comments__write{
+    #comments__write{
       display: block;
+      margin: 0 9px 0 -7px;
       padding-bottom: 0;
-      margin-bottom: 0;
       border-bottom: none;
+
+      a{
+        height: 39px;
+        padding: 0 19px 4px;
+        font-size: 14px;
+        letter-spacing: -0.3px;
+      }
+
     }
 
-    .contact-us.hidden{
+    #contact-us.hidden{
       opacity: 0;
       visibility: hidden;
       height: 0;
     }
 
-    .contact-us > div:first-of-type {
+    #contact-us > div:first-of-type {
       width: 600px;
     }
 
-    .contact-us > div:first-of-type form{
+    #contact-us > div:first-of-type form{
       display: flex;
       flex-flow: row wrap;
       justify-content: space-between;
@@ -723,8 +752,7 @@
 
 @media (min-width: $desktop) {
 
-  .popup {
-    left: 0;
+  #popup {
 
     &__button-next,
     &__button-prev{
@@ -734,6 +762,15 @@
         cursor: default;
       }
 
+    }
+
+  }
+
+  .popup {
+    left: 0;
+
+    &__open-mobile{
+      cursor: default;
     }
 
   }

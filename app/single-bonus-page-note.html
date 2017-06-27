@@ -11,24 +11,25 @@
 
     <link rel="stylesheet" href="css/preloader.css">
     <link rel="stylesheet" href="css/swiper.min.css">
-    <link rel="stylesheet" href="css/single-bonus-page.css">
+    <link rel="stylesheet" href="css/casino-page.css">
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
 
-    <div class="preload">
-        <div class="preload__element"></div>
+    <div id="preload">
+        <div id="preload__element"></div>
     </div>
 
-    <div class="site">
+    <div id="site">
 
-        <header class="site__header">
+        <header id="site__header">
 
-            <button class="mobile-btn">
+            <button id="mobile-btn">
                 <span></span>
             </button>
 
-            <h1 class="logo">
+            <a href="#" id="logo">
                 <svg viewBox="0 0 594.61 41.51">
                     <title>Gamblers lab</title>
                     <g>
@@ -47,47 +48,47 @@
                         </g>
                     </g>
                 </svg>
-            </h1>
+            </a>
 
-            <div class="search" data-link="php/header-search.php">
+            <div id="search">
 
-                <a href="#" type="submit" class="search__btn-open">
+                <a href="#" type="submit" id="search__btn-open">
                     <svg viewBox="156 113 17.49 17.49">
                         <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"/>
                     </svg>
                 </a>
 
-                <form class="search__form">
+                <form id="search__form">
 
                     <input type="search" placeholder="Search"/>
-                    <button type="submit" class="search__btn-find">
+                    <button type="submit" id="search__btn-find">
                         <svg viewBox="156 113 17.49 17.49">
                             <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"/>
                         </svg>
                     </button>
 
-                    <button type="submit" class="search__btn-cancel"></button>
+                    <button type="submit" id="search__btn-cancel"></button>
 
                 </form>
 
             </div>
 
-            <div class="info">
+            <div id="info">
 
-                <a href="#" class="info__btn-open">
+                <a href="#" id="info__btn-open">
                     <svg viewBox="78 111 20 20"><path d="M11,17h2V11H11ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.011,8.011,0,0,1,12,20ZM11,9h2V7H11Z" transform="translate(76 109)"/></svg>
                 </a>
 
-                <div class="info__frame">
+                <div id="info__frame">
 
                     <a href="#" class="info__item info__item_contact">contact us</a>
 
-                    <div class="info__sub-frame">
+                    <div id="info__sub-frame">
 
                         <a href="#" class="info__item">Terms and Conditions</a>
                         <a href="#" class="info__item">Privacy Policy</a>
 
-                        <div class="social">
+                        <div id="social">
                             <a href="#" class="social__item social__item_fb">
                                 <svg viewBox="0 0 24 24"><path d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" /></svg>
                             </a>
@@ -99,7 +100,7 @@
                             </a>
                         </div>
 
-                        <p class="copyright">© 2017 GamblersLab</p>
+                        <p id="copyright">© 2017 GamblersLab</p>
 
                     </div>
 
@@ -109,9 +110,9 @@
 
         </header>
 
-        <div class="site__wrap">
+        <div id="site__wrap">
 
-            <aside class="site__aside" data-link="php/links.php">
+            <aside id="site__aside">
 
                 <div class="links">
 
@@ -178,7 +179,7 @@
                         </a>
                     </div>
 
-                    <a href="#" class="links__show-all">
+                    <a href="#" id="links__show-all">
                         <i>show all casinos</i>
                         <span>
                             <svg viewBox="156 113 17.49 17.49">
@@ -341,7 +342,7 @@
 
                 <div class="links links_casinos-search">
 
-                    <a href="#" class="links__back">
+                    <a href="#" id="links__back">
                         <svg viewBox="266 75 16 16">
                             <path d="M20,11H7.83l5.59-5.59L12,4,4,12l8,8,1.41-1.41L7.83,13H20Z" transform="translate(262 71)"/>
                         </svg>
@@ -352,45 +353,45 @@
                         <h2>Bonus by Casino</h2>
                     </div>
 
-                    <form class="links__search">
-                        <button class="links__search-btn">
+                    <form id="links__search">
+                        <button id="links__search-btn">
                             <svg viewBox="156 113 17.49 17.49">
                                 <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"></path>
                             </svg>
                         </button>
-                        <input type="text" name="" class="links__search-input" placeholder="Search bonus by casino"/>
-                        <button type="submit" class="links__search-cancel"></button>
+                        <input type="text" name="links__search-input" id="links__search-input" placeholder="Search bonus by casino"/>
+                        <button type="submit" id="links__search-cancel"></button>
                     </form>
 
-                    <p class="links__no-results">Sorry, no results</p>
+                    <p id="links__no-results">Sorry, no results</p>
 
                     <div class="links__wrap"></div>
 
-                    <div class="links__preload">
-                        <div class="links__preload-element"></div>
+                    <div id="links__preload">
+                        <div id="links__preload-element"></div>
                     </div>
 
                 </div>
 
             </aside>
 
-            <div class="site__content">
+            <div id="site__content">
 
-                <div class="single-bonus">
+                <div id="single-bonus">
 
-                    <a href="#" class="btn btn_2 single-bonus__back">
+                    <a href="#" id="single-bonus__back" class="btn btn_2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="266 75 16 16"><path d="M20,11H7.83l5.59-5.59L12,4,4,12l8,8,1.41-1.41L7.83,13H20Z" transform="translate(262 71)"/></svg>
                         back to bonus list
                     </a>
 
-                    <div class="single-bonus__note">
+                    <div id="single-bonus__note">
 
-                        <h2 class="single-bonus__note-title">
+                        <h2 id="single-bonus__note-title">
                             <i><img src="img/note-icon.png" /></i>
                             Note
                         </h2>
 
-                        <div class="single-bonus__note-content">
+                        <div id="single-bonus__note-content">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
                         </div>
 
@@ -400,177 +401,177 @@
 
                         <div class="bonus__item">
 
-                            <div class="bonus__header">
+                        <div class="bonus__header">
 
-                                <h3>15 - 100 Free Spins at Casino Extra & Lucky31 Casino</h3>
+                            <h2>15 - 100 Free Spins at Casino Extra & Lucky31 Casino</h2>
 
-                                <div class="bonus__header-info">
+                            <div class="bonus__header-info">
 
-                                    <div class="bonus__country negative">
-                                        <img src="img/flag-001.jpg" alt="flag"/>
+                                <div class="bonus__country">
+                                    <img src="img/flag-001.jpg" alt="flag"/>
 
-                                        <span class="bonus__status">
-                                        <svg viewBox="123 76 14 14"><path d="M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z" transform="translate(118 71)"/></svg>
-                                    </span>
-
-                                    </div>
-
-                                    <time class="bonus__count" datetime="T0:2:0">
-                                        <svg viewBox="118 111 18 20"><path d="M9,11H7v2H9Zm4,0H11v2h2Zm4,0H15v2h2Zm2-7H18V2H16V4H8V2H6V4H5A1.991,1.991,0,0,0,3.01,6L3,20a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,19,4Zm0,16H5V9H19Z" transform="translate(115 109)"/></svg>
-                                        2 Minutes Ago
-                                    </time>
-
-                                    <span class="bonus__expires">Expires in 360 days</span>
+                                    <span class="bonus__status">
+                                <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
+                            </span>
 
                                 </div>
 
+                                <time class="bonus__count" datetime="T0:2:0">
+                                    <svg viewBox="118 111 18 20"><path d="M9,11H7v2H9Zm4,0H11v2h2Zm4,0H15v2h2Zm2-7H18V2H16V4H8V2H6V4H5A1.991,1.991,0,0,0,3.01,6L3,20a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,19,4Zm0,16H5V9H19Z" transform="translate(115 109)"/></svg>
+                                    2 Minutes Ago
+                                </time>
+
+                                <span class="bonus__expires">Expires in 360 days</span>
+
                             </div>
 
-                            <div class="bonus__body">
+                        </div>
 
-                                <div class="bonus__wrap">
+                        <div class="bonus__body">
 
-                                    <div class="bonus__frame">
+                            <div class="bonus__wrap">
 
-                                        <div class="bonus__code">
-                                            MARSPEL28TBFCL
-                                        </div>
+                                <div class="bonus__frame">
 
-                                        <div class="bonus__marks">
+                                    <div class="bonus__code">
+                                        MARSPEL28TBFCL
+                                    </div>
 
-                                            <a href="#">
+                                    <div class="bonus__marks">
+
+                                        <a href="#">
 
                                         <span class="bonus__marks-icons">
                                             <svg viewBox="0 0 24 24"><path d="M14,20H10V11L6.5,14.5L4.08,12.08L12,4.16L19.92,12.08L17.5,14.5L14,11V20Z" /></svg>
                                         </span>
 
-                                                <span class="bonus__marks-num">121</span>
-                                            </a>
+                                            <span class="bonus__marks-num">121</span>
+                                        </a>
 
-                                            <a href="#">
+                                        <a href="#">
 
                                         <span class="bonus__marks-icons">
                                             <svg viewBox="0 0 24 24"><path d="M10,4H14V13L17.5,9.5L19.92,11.92L12,19.84L4.08,11.92L6.5,9.5L10,13V4Z" /></svg>
                                         </span>
 
-                                                <span class="bonus__marks-num">16</span>
+                                            <span class="bonus__marks-num">16</span>
 
-                                            </a>
-
-                                        </div>
-
-                                        <a href="#comments" class="bonus__comments-add anchor">
-                                            <svg viewBox="0 0 24 24"><path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" /></svg>
-                                            5 comments
                                         </a>
 
-                                        <div class="bonus__casinos">
+                                    </div>
 
-                                            <div class="bonus__casinos-item">
+                                    <button class="bonus__comments-add popup__open" data-type="comments" data-link="002">
+                    <span>
+                        <svg viewBox="0 0 24 24"><path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" /></svg>
+                        5 comments
+                    </span>
+                                    </button>
 
-                                                <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
-                                                    <img src="pic/img-002.jpg" alt="img"/>
-                                                </button>
+                                    <div class="bonus__casinos">
 
-                                                <a class="btn btn_1">visit</a>
+                                        <div class="bonus__casinos-item">
 
-                                            </div>
+                                            <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
+                                                <img src="pic/img-002.jpg" alt="img"/>
+                                            </button>
 
-                                            <div class="bonus__casinos-item">
+                                            <a class="btn btn_1"><span>visit</span></a>
 
-                                                <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="002">
-                                                    <img src="pic/img-003.jpg" alt="img"/>
-                                                </button>
+                                        </div>
 
-                                                <a class="btn btn_1">visit</a>
+                                        <div class="bonus__casinos-item">
 
-                                            </div>
+                                            <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
+                                                <img src="pic/img-003.jpg" alt="img"/>
+                                            </button>
+
+                                            <a class="btn btn_1"><span>visit</span></a>
 
                                         </div>
 
                                     </div>
 
-                                    <div class="bonus__content">
+                                </div>
 
-                                        <div class="bonus__characteristic">
+                                <div class="bonus__content">
 
-                                            <dl>
-                                                <dt>Wagering</dt>
-                                                <dd>70 x B</dd>
-                                            </dl>
+                                    <div class="bonus__characteristic">
 
-                                            <dl>
-                                                <dt>Max cash out</dt>
-                                                <dd>$/€/£50</dd>
-                                            </dl>
+                                        <dl>
+                                            <dt>Wagering</dt>
+                                            <dd>70 x B</dd>
+                                        </dl>
 
-                                            <dl>
-                                                <dt>Min deposit</dt>
-                                                <dd>$10</dd>
-                                            </dl>
+                                        <dl>
+                                            <dt>Max cash out</dt>
+                                            <dd>$/€/£50</dd>
+                                        </dl>
 
-                                            <dl>
-                                                <dt>Availability</dt>
-                                                <dd>
-                                                    <p>New players</p>
-                                                    <p>Existing players</p>
-                                                </dd>
-                                            </dl>
+                                        <dl>
+                                            <dt>Min deposit</dt>
+                                            <dd>$10</dd>
+                                        </dl>
 
-                                        </div>
+                                        <dl>
+                                            <dt>Availability</dt>
+                                            <dd>
+                                                <p>New players</p>
+                                                <p>Existing players</p>
+                                            </dd>
+                                        </dl>
 
-                                        <h3>Bonus notes</h3>
-                                        <p>The free spins can be played on Warlords Crystals of Power</p>
-                                        <p>Bonus is valid for players from: Australia, Austria, Finland, Germany, New Zealand, Norway, Sweden, Switzerland</p>
-                                        <p>Several free spins bonuses in a row are prohibited, as well as several multiple accounts. Hence, if your recent transaction included a free bonus, you must make a deposit before using this free spins offer.</p>
-                                        <p>Best of luck!</p>
                                     </div>
 
-                                    <div class="bonus__slider">
+                                    <h3>Bonus notes</h3>
+                                    <p>The free spins can be played on Warlords Crystals of Power</p>
+                                    <p>Bonus is valid for players from: Australia, Austria, Finland, Germany, New Zealand, Norway, Sweden, Switzerland</p>
+                                    <p>Several free spins bonuses in a row are prohibited, as well as several multiple accounts. Hence, if your recent transaction included a free bonus, you must make a deposit before using this free spins offer.</p>
+                                    <p>Best of luck!</p>
+                                </div>
 
-                                        <div class="bonus__swiper swiper-container">
+                                <div class="bonus__slider new">
 
-                                            <div class="swiper-wrapper">
+                                    <div class="bonus__swiper swiper-container">
 
-                                                <div class="bonus__slide swiper-slide">
+                                        <div class="swiper-wrapper">
 
-                                                    <div class="bonus__slide-content">
+                                            <div class="bonus__slide swiper-slide">
 
-                                                        <p class="bonus__slide-title">Play this bonus on</p>
+                                                <div class="bonus__slide-content">
 
-                                                        <p class="bonus__slide-name">Alladins Lot</p>
+                                                    <p class="bonus__slide-title">Play this bonus on</p>
 
-                                                        <p><span>Powered by</span> NYX Interactive</p>
+                                                    <p class="bonus__slide-name">Alladins Lot</p>
 
-                                                        <button class="btn btn_4 popup__open" data-type="game" data-link="001">Play for fun</button>
+                                                    <p><span>Powered by</span> NYX Interactive</p>
 
-                                                    </div>
+                                                    <button class="btn btn_4 popup__open" data-type="game" data-link="001"><span>Play for fun</span></button>
 
-                                                    <button class="bonus__slide-img popup__open" data-type="game" data-link="001">
-                                                        <img src="pic/game.jpg" alt="img"/>
-                                                    </button>
+                                                </div>
+
+                                                <button class="popup__open-mobile bonus__slide-img" data-type="game" data-link="001">
+                                                    <img src="pic/game.jpg" alt="img"/>
+                                                </button>
+
+                                            </div>
+
+                                            <div class="bonus__slide swiper-slide">
+
+                                                <div class="bonus__slide-content">
+
+                                                    <p class="bonus__slide-title">Play this bonus on</p>
+
+                                                    <p class="bonus__slide-name">Alladins Lot</p>
+
+                                                    <p><span>Powered by</span> NYX Interactive</p>
+
+                                                    <button class="btn btn_4 popup__open" data-type="game" data-link="002"><span>View Screenshot</span></button>
 
                                                 </div>
 
-                                                <div class="bonus__slide swiper-slide">
-
-                                                    <div class="bonus__slide-content">
-
-                                                        <p class="bonus__slide-title">Play this bonus on</p>
-
-                                                        <p class="bonus__slide-name">Alladins Lot</p>
-
-                                                        <p><span>Powered by</span> NYX Interactive</p>
-
-                                                        <button class="btn btn_4 popup__open" data-type="game" data-link="001">Play for fun</button>
-
-                                                    </div>
-
-                                                    <button class="bonus__slide-img popup__open" data-type="game" data-link="001">
-                                                        <img src="pic/game.jpg" alt="img"/>
-                                                    </button>
-
-                                                </div>
+                                                <button class="popup__open-mobile bonus__slide-img" data-type="game" data-link="002">
+                                                    <img src="pic/game.jpg" alt="img"/>
+                                                </button>
 
                                             </div>
 
@@ -582,24 +583,24 @@
 
                             </div>
 
-                            <a href="#" class="bonus__item-minimize">
-                                <svg viewBox="164 79 12 7.41"><path d="M7.41,7.84,12,12.42l4.59-4.58L18,9.25l-6,6-6-6Z" transform="translate(158 71.16)"/></svg>
-                            </a>
-
                         </div>
+
+                        <a href="#" class="bonus__item-minimize">
+                            <svg viewBox="164 79 12 7.41"><path d="M7.41,7.84,12,12.42l4.59-4.58L18,9.25l-6,6-6-6Z" transform="translate(158 71.16)"/></svg>
+                        </a>
 
                     </div>
 
-                    <div id="comments" class="comments">
+                    </div>
 
-                        <div class="comments__head">
+                    <div id="comments">
+
+                        <div id="comments__head">
                             <div>
-                                <h2 class="comments__title">
-
-                                    44 Comments</h2>
+                                <h2 id="comments__title">44 Comments</h2>
                             </div>
                             <div>
-                                <a href="#" class="btn btn_2 comments__add">
+                                <a href="#" id="comments__add" class="btn btn_2">
                                     add comment
                                 </a>
                             </div>
@@ -662,15 +663,15 @@
 
                         </div>
 
-                        <div class="comments__write">
+                        <div id="comments__write">
                             <a href="#">Write your comment</a>
                         </div>
 
-                        <div class="contact-us hidden">
+                        <div id="contact-us" class="hidden">
 
-                            <h2 class="contact-us__caption">Write a comment</h2>
+                            <h2 id="contact-us__caption">Write a comment</h2>
 
-                            <div class="contact-us__form site__form validation-form">
+                            <div id="contact-us__form" class="site__form validation-form">
 
                                 <form action="#">
                                     <div>
@@ -686,13 +687,13 @@
                                         <span class="contact-us__error">
                                     Please enter a valid email address</span>
                                     </div>
-                                    <div class="contact-us__textarea">
+                                    <div id="contact-us__textarea">
                                         <textarea name="message" id="message" cols="30" rows="10" data-required="required"></textarea>
                                         <label for="message">Write your message</label>
                                         <span class="contact-us__error">
                                     Minimum 80 characters for messages.</span>
                                     </div>
-                                    <div class="contact-us__send">
+                                    <div v="contact-us__send">
                                         <button type="submit" class="btn"><span>post comment</span></button>
                                     </div>
 
@@ -706,7 +707,7 @@
 
                         <h2 class="casino-bonuses__title casino-bonuses__title_2">Explore related pages</h2>
 
-                        <div class="casino-bonuses__items">
+                        <div id="casino-bonuses__items">
                             <div>
                                 <a href="#" class="casino-bonuses__item">
                                     <h2 class="casino-bonuses__item-title">All Very Vegas Mobile Casino Free Spins Bonuses</h2>
@@ -745,15 +746,9 @@
 
                         <h2 class="casino-bonuses__title casino-bonuses__title_2">Explore related bonuses</h2>
 
-                        <div class="bonus bonus_minimize" data-link="php/bonuses.php">
+                        <div class="bonus bonus_minimize">
 
-                            <div class="bonus__insert"></div>
-
-                            <div class="bonus__preload">
-                                <div class="bonus__preload-element"></div>
-                            </div>
-
-                            <p class="bonus__not-result">Sorry, no result</p>
+                            <div id="bonus__insert"></div>
 
                         </div>
 
@@ -765,7 +760,7 @@
 
         </div>
 
-        <a href="#" class="back-to-top">
+        <a href="#" id="back-to-top">
             <span>back to top</span>
         </a>
 
@@ -774,6 +769,6 @@
     <script src="js/vendors/jquery-3.2.1.min.js"></script>
     <script src="js/vendors/swiper.jquery.min.js"></script>
     <script src="js/vendors/jquery.nicescroll.min.js"></script>
-    <script src="js/single-bonus.min.js"></script>
+    <script src="js/main.min.js"></script>
 </body>
 </html>

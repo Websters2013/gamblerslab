@@ -12,23 +12,24 @@
     <link rel="stylesheet" href="css/preloader.css">
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/search-page.css">
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
 
-    <div class="preload">
-        <div class="preload__element"></div>
+    <div id="preload">
+        <div id="preload__element"></div>
     </div>
 
-    <div class="site">
+    <div id="site">
 
-        <header class="site__header">
+        <header id="site__header">
 
-            <button class="mobile-btn">
+            <button id="mobile-btn">
                 <span></span>
             </button>
 
-            <h1 class="logo">
+            <a href="#" id="logo">
                 <svg viewBox="0 0 594.61 41.51">
                     <title>Gamblers lab</title>
                     <g>
@@ -47,47 +48,47 @@
                         </g>
                     </g>
                 </svg>
-            </h1>
+            </a>
 
-            <div class="search" data-link="php/header-search.php">
+            <div id="search">
 
-                <a href="#" type="submit" class="search__btn-open">
+                <a href="#" type="submit" id="search__btn-open">
                     <svg viewBox="156 113 17.49 17.49">
                         <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"/>
                     </svg>
                 </a>
 
-                <form class="search__form">
+                <form id="search__form">
 
                     <input type="search" placeholder="Search"/>
-                    <button type="submit" class="search__btn-find">
+                    <button type="submit" id="search__btn-find">
                         <svg viewBox="156 113 17.49 17.49">
                             <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"/>
                         </svg>
                     </button>
 
-                    <button type="submit" class="search__btn-cancel"></button>
+                    <button type="submit" id="search__btn-cancel"></button>
 
                 </form>
 
             </div>
 
-            <div class="info">
+            <div id="info">
 
-                <a href="#" class="info__btn-open">
+                <a href="#" id="info__btn-open">
                     <svg viewBox="78 111 20 20"><path d="M11,17h2V11H11ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.011,8.011,0,0,1,12,20ZM11,9h2V7H11Z" transform="translate(76 109)"/></svg>
                 </a>
 
-                <div class="info__frame">
+                <div id="info__frame">
 
                     <a href="#" class="info__item info__item_contact">contact us</a>
 
-                    <div class="info__sub-frame">
+                    <div id="info__sub-frame">
 
                         <a href="#" class="info__item">Terms and Conditions</a>
                         <a href="#" class="info__item">Privacy Policy</a>
 
-                        <div class="social">
+                        <div id="social">
                             <a href="#" class="social__item social__item_fb">
                                 <svg viewBox="0 0 24 24"><path d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" /></svg>
                             </a>
@@ -99,7 +100,7 @@
                             </a>
                         </div>
 
-                        <p class="copyright">© 2017 GamblersLab</p>
+                        <p id="copyright">© 2017 GamblersLab</p>
 
                     </div>
 
@@ -109,9 +110,9 @@
 
         </header>
 
-        <div class="site__wrap">
+        <div id="site__wrap">
 
-            <aside class="site__aside" data-link="php/links.php">
+            <aside id="site__aside">
 
                 <div class="links">
 
@@ -178,7 +179,7 @@
                         </a>
                     </div>
 
-                    <a href="#" class="links__show-all">
+                    <a href="#" id="links__show-all">
                         <i>show all casinos</i>
                         <span>
                             <svg viewBox="156 113 17.49 17.49">
@@ -341,7 +342,7 @@
 
                 <div class="links links_casinos-search">
 
-                    <a href="#" class="links__back">
+                    <a href="#" id="links__back">
                         <svg viewBox="266 75 16 16">
                             <path d="M20,11H7.83l5.59-5.59L12,4,4,12l8,8,1.41-1.41L7.83,13H20Z" transform="translate(262 71)"/>
                         </svg>
@@ -352,44 +353,44 @@
                         <h2>Bonus by Casino</h2>
                     </div>
 
-                    <form class="links__search">
-                        <button class="links__search-btn">
+                    <form id="links__search">
+                        <button id="links__search-btn">
                             <svg viewBox="156 113 17.49 17.49">
                                 <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"></path>
                             </svg>
                         </button>
-                        <input type="text" name="" class="links__search-input" placeholder="Search bonus by casino"/>
-                        <button type="submit" class="links__search-cancel"></button>
+                        <input type="text" name="links__search-input" id="links__search-input" placeholder="Search bonus by casino"/>
+                        <button type="submit" id="links__search-cancel"></button>
                     </form>
 
-                    <p class="links__no-results">Sorry, no results</p>
+                    <p id="links__no-results">Sorry, no results</p>
 
                     <div class="links__wrap"></div>
 
-                    <div class="links__preload">
-                        <div class="links__preload-element"></div>
+                    <div id="links__preload">
+                        <div id="links__preload-element"></div>
                     </div>
 
                 </div>
 
             </aside>
 
-            <div class="site__content">
+            <div id="site__content">
 
                 <div class="search-results">
 
-                    <a href="#" class="btn btn_2 search-results__back">
+                    <a href="#" id="search-results__back" class="btn btn_2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="266 75 16 16"><path d="M20,11H7.83l5.59-5.59L12,4,4,12l8,8,1.41-1.41L7.83,13H20Z" transform="translate(262 71)"/></svg>
                         back
                     </a>
 
-                    <h2 class="search-results__title">Search Results for “<span>Bonus</span>”</h2>
+                    <h2 id="search-results__title">Search Results for “<span>Bonus</span>”</h2>
 
-                    <div class="casino-bonuses" data-path="php/search-results.php">
+                    <div id="casino-bonuses">
 
                         <span class="casino-bonuses__title">Bonus lists (15 results)</span>
 
-                        <div class="casino-bonuses__items">
+                        <div id="casino-bonuses__items">
                             <div>
                                 <a href="#" class="casino-bonuses__item">
                                     <h2 class="casino-bonuses__item-title">All Bonuses</h2>
@@ -442,24 +443,22 @@
                             </div>
                         </div>
 
-                        <a href="#" class="btn casino-bonuses__more">load more</a>
+                        <a href="#" id="casino-bonuses__more" class="btn">load more</a>
 
                     </div>
 
-                    <div class="casino-offers" data-path="">
+                    <div id="casino-offers">
 
-                        <span class="casino-offers__title">Bonus offers (15 results)</span>
+                        <span id="casino-offers__title">Bonus offers (15 results)</span>
 
-                        <div class="bonus bonus_minimize" data-link="php/bonuses.php">
+                        <div class="bonus bonus_minimize">
 
-                            <div class="bonus__insert"></div>
+                            <div id="bonus__insert"></div>
 
-                            <p class="bonus__not-result">Sorry, no result</p>
+                            <a href="#" id="casino-offers__more" class="btn">load more</a>
 
-                            <a href="#" class="btn casino-offers__more">load more</a>
-
-                            <div class="bonus__preload">
-                                <div class="bonus__preload-element"></div>
+                            <div id="bonus__preload">
+                                <div id="bonus__preload-element"></div>
                             </div>
 
                         </div>
@@ -472,7 +471,7 @@
 
         </div>
 
-        <a href="#" class="back-to-top">
+        <a href="#" id="back-to-top">
             <span>back to top</span>
         </a>
 
@@ -481,6 +480,6 @@
     <script src="js/vendors/jquery-3.2.1.min.js"></script>
     <script src="js/vendors/swiper.jquery.min.js"></script>
     <script src="js/vendors/jquery.nicescroll.min.js"></script>
-    <script src="js/search-results.min.js"></script>
+    <script src="js/main.min.js"></script>
 </body>
 </html>

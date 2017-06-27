@@ -1,4 +1,4 @@
-.back-to-top {
+#back-to-top {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,7 +51,7 @@
 
 @media (min-width: $tablet-portrait) {
 
-  .back-to-top{
+  #back-to-top{
     left: 50%;
     width: 200px;
     border-radius: 2px;
@@ -69,8 +69,9 @@
 
 @media (min-width: $desktop) {
 
-  .back-to-top{
+  #back-to-top{
     margin-left: 169px;
+    z-index: 12;
     -webkit-transition: background-color .3s ease, opacity .3s ease, transform .3s ease;
     transition: background-color .3s ease, opacity .3s ease, transform .3s ease;
 

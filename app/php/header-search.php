@@ -7,10 +7,10 @@ if ( $loadedCount == 0 ){
 echo " 
     <div class=\"search__popup-title\">
         <h2>Bonus lists (<span class=\"search__lists-results\">25</span> results)</h2>
-        <button class=\"search__popup-update\">Updated</button>
+        <button id=\"search__popup-update\">Updated</button>
     </div>
 
-    <div class=\"search__popup-wrap search__popup_lists\" style=\"\">
+    <div class=\"search__popup-wrap search__popup_lists\">
         <a href=\"#\" class=\"search__popup-item\">
             <i>All Bonuses</i>
             <span>3m</span>
@@ -33,11 +33,11 @@ echo "
         </a>
     </div>
 
-    <div class=\"search__popup-title\" style=\"\">
+    <div class=\"search__popup-title\">
         <h2>Bonus offers (<span class=\"search__offers-results\">15</span> results)</h2>
     </div>
 
-    <div class=\"search__popup-wrap search__popup_offers\" style=\"\">
+    <div class=\"search__popup-wrap search__popup_offers\">
         <a href=\"#\" class=\"search__popup-item\">
             <i>15- 100 Free Spins at Casino Extra &amp;amp; Lucky 31 Casino</i>
             <span>3m</span>
@@ -67,7 +67,7 @@ echo "
 echo " 
     <div class=\"search__popup-title\">
         <h2>Bonus lists (<span class=\"search__lists-results\">15</span> results)</h2>
-        <button class=\"search__popup-update\">Updated</button>
+        <button id=\"search__popup-update\">Updated</button>
     </div>
 
     <div class=\"search__popup-wrap search__popup_lists\" style=\"\">
@@ -85,11 +85,11 @@ echo "
         </a>
     </div>
 
-    <div class=\"search__popup-title\" style=\"\">
+    <div class=\"search__popup-title\">
         <h2>Bonus offers (<span class=\"search__offers-results\">5</span> results)</h2>
     </div>
 
-    <div class=\"search__popup-wrap search__popup_offers\" style=\"\">
+    <div class=\"search__popup-wrap search__popup_offers\">
         <a href=\"#\" class=\"search__popup-item\">
             <i>30 Free Spins at VIP Stakes Casino</i>
             <span>2h</span>
@@ -112,14 +112,14 @@ echo "
         </a>
     </div>
 
-    <a href=\"#\" class=\"search__popup-links\">Show all results for \"<span></span>\"</a>          
+    <a href=\"#\" id=\"search__popup-links\">Show all results for \"<span></span>\"</a>          
 ";
 
 } else if ( $loadedCount >= 5 ) {
 
     echo "
-        <p class=\"search__popup-no-results\" style=\"\">Sorry, there are no results for your query.</p>
-        <a href=\"#\" class=\"search__popup-links\">Show all results for \"<span></span>\"</a>  
+        <p id=\"search__popup-no-results\">Sorry, there are no results for your query.</p>
+        <a href=\"#\" id=\"search__popup-links\">Show all results for \"<span></span>\"</a>  
     ";
 
 };

@@ -204,6 +204,7 @@
         top: 2px;
         left: -1px;
         width: 13px;
+        height: 13px;
         margin-right: 3px;
         fill: #0fc2c8;
       }
@@ -453,6 +454,20 @@
     display: none;
   }
 
+  &.load{
+    padding-bottom: 82px;
+
+    #bonus__preload{
+      opacity: 1;
+      visibility: visible;
+    }
+
+  }
+
+}
+
+#bonus {
+
   &__preload {
     display: flex;
     justify-content: center;
@@ -499,21 +514,12 @@
     text-align: left;
   }
 
-  &.load{
-    padding-bottom: 82px;
-
-    .bonus__preload{
-      opacity: 1;
-      visibility: visible;
-    }
-
-  }
-
 }
 
 @media (min-width: $tablet-portrait) {
 
   .bonus{
+    margin-bottom: 40px;
 
     &__item{
       margin: 0 auto 20px;
@@ -655,6 +661,11 @@
         .btn{
           display: flex;
           padding: 0;
+
+          span{
+            color: #0fc2c8;
+          }
+
         }
 
       }
@@ -767,6 +778,7 @@
 @media (min-width: $desktop) {
 
   .bonus{
+    margin-bottom: 40px;
     text-align: left;
 
     &__frame{
@@ -776,6 +788,8 @@
     &__marks{
 
       a{
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
         -webkit-transition: box-shadow .3s ease, transform .3s ease;
         transition: box-shadow .3s ease, transform .3s ease;
 

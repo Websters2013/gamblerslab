@@ -106,6 +106,8 @@
   .btn {
     padding: 0 21px;
     cursor: pointer;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
     -webkit-transition: box-shadow .3s ease, transform .3s ease;
     transition: box-shadow .3s ease, transform .3s ease;
 

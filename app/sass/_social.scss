@@ -1,15 +1,13 @@
-.social {
+#social {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 162px;
   margin-bottom: 21px;
   padding-top: 12px;
+}
 
-  svg{
-    width: 18px;
-    height: 24px;
-  }
+.social {
 
   &__item{
     display: flex;
@@ -20,6 +18,11 @@
     margin: 0 5px;
     border: 1px solid transparent;
     border-radius: 50px;
+
+    svg{
+      width: 18px;
+      height: 24px;
+    }
 
     &_fb{
       border-color: #4061a6;
@@ -41,14 +44,17 @@
 }
 
 @media (min-width: $tablet-portrait) {
-  .social {
+  #social {
     margin-bottom: 22px;
   }
 }
 
 @media (min-width: $desktop) {
-  .social {
+  #social {
     padding-top: 14px;
+  }
+
+  .social {
 
     &__item{
       -webkit-transition: background-color .3s ease;

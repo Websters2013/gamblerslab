@@ -1,4 +1,4 @@
-.site {
+#site {
   position: relative;
   min-height: 100%;
   overflow: hidden;
@@ -43,6 +43,13 @@
   &__content{
     width: 100%;
     padding: 17px 13px 17px 15px;
+  }
+
+}
+
+.site {
+
+  &__content{
 
     &_404 {
       @include inline-flex();
@@ -58,7 +65,7 @@
 }
 
 @media (min-width: $tablet-portrait) {
-  .site {
+  #site {
 
     &__header{
       height: 75px;
@@ -75,18 +82,26 @@
 
     &__content{
       padding: 37px 20px 12px;
-
-      &_404 {
-        min-height: calc(100vh - 75px);
-      }
-
     }
 
   }
+
+}
+
+.site {
+
+  &__content{
+
+    &_404 {
+      min-height: calc(100vh - 75px);
+    }
+
+  }
+
 }
 
 @media (min-width: $desktop) {
-  .site {
+  #site {
 
     &__wrap{
       display: flex;
@@ -114,6 +129,16 @@
       &.fixed{
         position: fixed;
         top: 0;
+      }
+
+      &:after{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 10px;
+        background-color: #445669;
+        content: '';
       }
 
     }

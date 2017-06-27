@@ -1,11 +1,7 @@
-.casino-bonuses {
+#casino-bonuses {
   padding-bottom: 30px;
   margin-bottom: 30px;
   border-bottom: 1px solid #dce0db;
-
-  .btn {
-    width: 100%;
-  }
 
   &__title {
     display: block;
@@ -14,19 +10,20 @@
     font-size: 13px;
     line-height: 18px;
     color: #83868a;
-
-    &_2 {
-      margin-bottom: 15px;
-      font-size: 18px;
-      line-height: 22px;
-      color: #283746;
-      letter-spacing: -0.5px;
-    }
-
   }
+
   &__items {
     margin: 0 0 20px;
   }
+
+  .btn {
+    width: 100%;
+  }
+
+}
+
+.casino-bonuses {
+
   &__item {
     overflow: hidden;
     display: block;
@@ -54,6 +51,7 @@
     }
 
   }
+
   &__footer {
     @include flexbox();
     @include justify-content();
@@ -77,6 +75,19 @@
     }
 
   }
+
+  &__title {
+
+    &_2 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      line-height: 22px;
+      color: #283746;
+      letter-spacing: -0.5px;
+    }
+
+  }
+
   &_2 {
     padding-bottom: 0;
     margin-bottom: 36px;
@@ -87,29 +98,15 @@
 
 @media (min-width: $tablet-portrait) {
 
-  .casino-bonuses {
-    padding-bottom: 40px;
-    margin-bottom: 37px;
-    text-align: center;
-
-    .btn {
-      max-width: 290px;
-    }
+  #casino-bonuses {
 
     &__title {
       margin: 0 0 18px;
       font-size: 16px;
       line-height: 21px;
       text-align: left;
-
-      &_2 {
-        margin-bottom: 19px;
-        font-size: 26px;
-        line-height: 30px;
-        letter-spacing: -0.6px;
-      }
-
     }
+
     &__items {
 
       @include flexbox();
@@ -127,6 +124,29 @@
       }
 
     }
+
+    .btn {
+      max-width: 290px;
+    }
+
+  }
+
+  .casino-bonuses {
+    padding-bottom: 40px;
+    margin-bottom: 37px;
+    text-align: center;
+
+    &__title {
+
+      &_2 {
+        margin-bottom: 19px;
+        font-size: 26px;
+        line-height: 30px;
+        letter-spacing: -0.6px;
+      }
+
+    }
+
     &__item {
       @include flexbox();
       @include flex-direction(column);
@@ -142,6 +162,7 @@
       }
 
     }
+
     &__footer {
       padding: 13px 15px 13px 15px;
     }
@@ -150,10 +171,20 @@
       padding-bottom: 0;
       margin-bottom: 40px;
     }
+
   }
 
 }
+
 @media (min-width: $desktop) {
+
+  .casino-bonuses {
+
+    &_2 {
+      padding-bottom: 0;
+    }
+
+  }
 
   .casino-bonuses {
 
@@ -164,12 +195,9 @@
       }
 
     }
+
     &__footer {
       padding: 13px 23px 13px 23px;
-    }
-
-    &_2 {
-      padding-bottom: 0;
     }
 
   }

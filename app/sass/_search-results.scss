@@ -1,4 +1,4 @@
-.search-results {
+#search-results {
   padding-bottom: 50px;
 
   &__back {
@@ -16,7 +16,7 @@
       color: #02bfc5;
     }
 
-    > .search-results__title-note {
+    > #search-results__title-note {
       display: block;
       margin: 6px 0 26px;
       color: #283746;
@@ -29,23 +29,25 @@
   }
   &_none {
 
-    .casino-bonuses__items {
+    #casino-bonuses__items {
       margin-bottom: 0;
     }
-    .casino-bonuses__wrap {
+    #casino-bonuses__wrap {
       padding-bottom: 18px;
     }
 
   }
-  .bonus {
+
+  #bonus {
     margin-bottom: 28px;
+    padding-bottom: 0;
   }
 
 }
 
 @media (min-width: $tablet-portrait) {
 
-  .search-results {
+  #search-results {
     padding-bottom: 70px;
 
     &__back {
@@ -57,7 +59,7 @@
       line-height: 38px;
       letter-spacing: -0.8px;
 
-      > .search-results__title-note {
+      > #search-results__title-note {
         margin: 10px 0 37px 0;
         font-size: 16px;
         line-height: 20px;
@@ -67,24 +69,28 @@
     }
     &_none {
 
-      .search-results__wrap {
+      #search-results__wrap {
         padding-bottom: 25px;
       }
 
     }
 
-    .bonus {
+    #bonus {
       margin-bottom: 48px;
+      padding-bottom: 0;
     }
 
   }
 
 }
+
 @media (min-width: $desktop) {
 
-  .search-results {
-    .bonus {
+  #search-results {
+
+    #bonus {
       margin-bottom: 39px;
+      padding-bottom: 0;
     }
 
     &__title {

@@ -2,37 +2,6 @@
   margin: 0 0 16px;
   color: #283746;
 
-  &__head {
-    @include flexbox();
-    @include flex-direction();
-    @include align-items(center);
-    @include justify-content(space-between);
-    margin: 0 0 21px;
-    text-align: left;
-
-    >div {
-      width: 48%;
-      text-align: right;
-
-      &:first-child {
-        text-align: left;
-      }
-
-    }
-
-  }
-  &__title {
-    position: relative;
-    padding: 0 0 0 23px;
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgIGZpbGw9IiMwZmMyYzgiIHZlcnNpb249IjEuMSIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGQ9Ik0xMiwyM0ExLDEgMCAwLDEgMTEsMjJWMTlIN0EyLDIgMCAwLDEgNSwxN1Y3QzUsNS44OSA1LjksNSA3LDVIMjFBMiwyIDAgMCwxIDIzLDdWMTdBMiwyIDAgMCwxIDIxLDE5SDE2LjlMMTMuMiwyMi43MUMxMywyMi45IDEyLjc1LDIzIDEyLjUsMjNWMjNIMTJNMTMsMTdWMjAuMDhMMTYuMDgsMTdIMjFWN0g3VjE3SDEzTTMsMTVIMVYzQTIsMiAwIDAsMSAzLDFIMTlWM0gzVjE1WiIgLz48L3N2Zz4=);
-    background-position: left 2px;
-    background-repeat: no-repeat;
-    background-size: 17px 17px;
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: 400;
-
-  }
   &__item {
     padding-bottom: 12px;
     margin-bottom: 20px;
@@ -91,6 +60,44 @@
   &__info {
     margin: 0 0 17px;
   }
+
+}
+
+#comments {
+
+  &__head {
+    @include flexbox();
+    @include flex-direction();
+    @include align-items(center);
+    @include justify-content(space-between);
+    margin: 0 0 21px;
+    text-align: left;
+
+    >div {
+      width: 48%;
+      text-align: right;
+
+      &:first-child {
+        text-align: left;
+      }
+
+    }
+
+  }
+
+  &__title {
+    position: relative;
+    padding: 0 0 0 23px;
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgIGZpbGw9IiMwZmMyYzgiIHZlcnNpb249IjEuMSIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGQ9Ik0xMiwyM0ExLDEgMCAwLDEgMTEsMjJWMTlIN0EyLDIgMCAwLDEgNSwxN1Y3QzUsNS44OSA1LjksNSA3LDVIMjFBMiwyIDAgMCwxIDIzLDdWMTdBMiwyIDAgMCwxIDIxLDE5SDE2LjlMMTMuMiwyMi43MUMxMywyMi45IDEyLjc1LDIzIDEyLjUsMjNWMjNIMTJNMTMsMTdWMjAuMDhMMTYuMDgsMTdIMjFWN0g3VjE3SDEzTTMsMTVIMVYzQTIsMiAwIDAsMSAzLDFIMTlWM0gzVjE1WiIgLz48L3N2Zz4=);
+    background-position: left 2px;
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+
+  }
+
   &__write {
     padding-bottom: 20px;
     margin-bottom: 20px;
@@ -134,17 +141,22 @@
 
   .comments {
 
-    &__title {
-      padding: 0 0 0 32px;
-      background-position: left 4px;
-      background-size: 24px 24px;
-      font-size: 26px;
-      line-height: 30px;
-    }
     &__item {
       padding-bottom: 7px;
       margin-bottom: 20px;
     }
+    &__content {
+
+      p {
+        margin: 0 0 10px;
+      }
+
+    }
+
+  }
+
+  #comments {
+
     &__head {
       @include align-items(flex-start);
       margin: 0 0 30px;
@@ -162,22 +174,25 @@
       }
 
     }
-    &__content {
 
-      p {
-        margin: 0 0 10px;
-      }
-
+    &__title {
+      padding: 0 0 0 32px;
+      background-position: left 4px;
+      background-size: 24px 24px;
+      font-size: 26px;
+      line-height: 30px;
     }
+
     &__write {
       display: none;
     }
-    &__add {
-      padding: 0 30px;
-    }
 
     &__wrap{
-      padding-right: 15px;
+      padding-right: 27px;
+    }
+
+    &__add {
+      padding: 0 30px;
     }
 
   }
@@ -187,11 +202,16 @@
 
   .comments {
 
-    &__head {
-      margin: 0 0 21px;
-    }
     &__info {
       margin: 0 0 14px;
+    }
+
+  }
+
+  #comments {
+
+    &__head {
+      margin: 0 0 21px;
     }
 
   }

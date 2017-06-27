@@ -1,4 +1,4 @@
-.casino-offers {
+#casino-offers {
 
   &__more{
     display: flex;
@@ -28,9 +28,9 @@
 
 }
 
-@media (min-width: $tablet-portrait) {
+@media (min-width: 768px) {
 
-  .casino-offers {
+  #casino-offers {
     text-align: center;
 
     .btn {
@@ -51,13 +51,14 @@
       }
 
     }
+
   }
 
 }
 
-@media (min-width: $desktop) {
+@media (min-width: 1200px) {
 
-  .casino-offers {
+  #casino-offers {
 
     &__item {
 

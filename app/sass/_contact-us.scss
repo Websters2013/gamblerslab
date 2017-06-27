@@ -1,4 +1,26 @@
 .contact-us {
+
+  &__error {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    padding: 1px 0 0 17px;
+    letter-spacing: -0.3px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZDQwMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ijc4IDExMSAyMCAyMCI+PHBhdGggZD0iTTExLDE3aDJWMTFIMTFaTTEyLDJBMTAsMTAsMCwxLDAsMjIsMTIsMTAsMTAsMCwwLDAsMTIsMlptMCwxOGE4LDgsMCwxLDEsOC04QTguMDExLDguMDExLDAsMCwxLDEyLDIwWk0xMSw5aDJWN0gxMVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDc2IDEwOSkiLz48L3N2Zz4=);
+    background-size: 12px;
+    background-repeat: no-repeat;
+    color: #d40000;
+    font-size: 12px;
+    line-height: 12px;
+    -webkit-transition: opacity 0.3s, visibility 0.3s;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+
+}
+
+#contact-us {
   @include noto-sans();
   color: #283746;
   font-size: 14px;
@@ -121,7 +143,7 @@
       position: relative;
       margin: 0 0 28px;
 
-      &.contact-us__textarea {
+      &#contact-us__textarea {
         padding-top: 12px;
         margin: 0 0 36px;
 
@@ -143,7 +165,7 @@
           border-color: #0fc2c8;
         }
 
-        &.contact-us__textarea {
+        &#contact-us__textarea {
 
           label {
             top: 26px;
@@ -264,23 +286,6 @@
     }
 
   }
-  &__error {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    left: 0;
-    bottom: -20px;
-    padding: 1px 0 0 17px;
-    letter-spacing: -0.3px;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZDQwMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ijc4IDExMSAyMCAyMCI+PHBhdGggZD0iTTExLDE3aDJWMTFIMTFaTTEyLDJBMTAsMTAsMCwxLDAsMjIsMTIsMTAsMTAsMCwwLDAsMTIsMlptMCwxOGE4LDgsMCwxLDEsOC04QTguMDExLDguMDExLDAsMCwxLDEyLDIwWk0xMSw5aDJWN0gxMVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDc2IDEwOSkiLz48L3N2Zz4=);
-    background-size: 12px;
-    background-repeat: no-repeat;
-    color: #d40000;
-    font-size: 12px;
-    line-height: 12px;
-    -webkit-transition: opacity 0.3s, visibility 0.3s;
-    transition: opacity 0.3s, visibility 0.3s;
-  }
 
   &__textarea{
     position: relative;
@@ -301,7 +306,7 @@
 
 @media (min-width: $tablet-portrait) {
 
-  .contact-us {
+  #contact-us {
     font-size: 19px;
     line-height: 21px;
 
@@ -374,7 +379,7 @@
         position: relative;
         margin: 0 34px 27px 0;
 
-        &.contact-us__textarea {
+        &#contact-us__textarea {
           width: 82.2%;
           margin: 0 0 37px;
 
@@ -402,7 +407,7 @@
             top: -9px;
           }
 
-          &.contact-us__textarea {
+          &#contact-us__textarea {
 
             textarea {
               padding: 26px 14px;
@@ -461,7 +466,7 @@
 
 @media (min-width: $desktop) {
 
-  .contact-us {
+  #contact-us {
     @include flexbox();
     @include flex-direction();
     @include justify-content(space-between);
@@ -523,7 +528,7 @@
         width: 47%;
         margin: 0 0 27px 0;
 
-        &.contact-us__textarea {
+        &#contact-us__textarea {
           width: 100%;
 
           label {
@@ -536,7 +541,7 @@
         }
         &.field_fill {
 
-          &.contact-us__textarea {
+          &#contact-us__textarea {
 
             label {
               top: 28px;

@@ -10,24 +10,24 @@
     <title>Title</title>
 
     <link rel="stylesheet" href="css/preloader.css">
-    <link rel="stylesheet" href="css/contact-us-page.css">
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
 
-<div class="preload">
-    <div class="preload__element"></div>
-</div>
+    <div id="preload">
+        <div id="preload__element"></div>
+    </div>
 
-    <div class="site">
+    <div id="site">
 
-        <header class="site__header">
+        <header id="site__header">
 
-            <button class="mobile-btn">
+            <button id="mobile-btn">
                 <span></span>
             </button>
 
-            <h1 class="logo">
+            <a href="#" id="logo">
                 <svg viewBox="0 0 594.61 41.51">
                     <title>Gamblers lab</title>
                     <g>
@@ -46,47 +46,47 @@
                         </g>
                     </g>
                 </svg>
-            </h1>
+            </a>
 
-            <div class="search" data-link="php/header-search.php">
+            <div id="search">
 
-                <button type="submit" class="search__btn-open">
+                <a href="#" type="submit" id="search__btn-open">
                     <svg viewBox="156 113 17.49 17.49">
                         <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"/>
                     </svg>
-                </button>
+                </a>
 
-                <form class="search__form">
+                <form id="search__form">
 
                     <input type="search" placeholder="Search"/>
-                    <button type="submit" class="search__btn-find">
+                    <button type="submit" id="search__btn-find">
                         <svg viewBox="156 113 17.49 17.49">
                             <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"/>
                         </svg>
                     </button>
 
-                    <button type="submit" class="search__btn-cancel"></button>
+                    <button type="submit" id="search__btn-cancel"></button>
 
                 </form>
 
             </div>
 
-            <div class="info">
+            <div id="info">
 
-                <button class="info__btn-open">
+                <a href="#" id="info__btn-open">
                     <svg viewBox="78 111 20 20"><path d="M11,17h2V11H11ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.011,8.011,0,0,1,12,20ZM11,9h2V7H11Z" transform="translate(76 109)"/></svg>
-                </button>
+                </a>
 
-                <div class="info__frame">
+                <div id="info__frame">
 
                     <a href="#" class="info__item info__item_contact">contact us</a>
 
-                    <div class="info__sub-frame">
+                    <div id="info__sub-frame">
 
                         <a href="#" class="info__item">Terms and Conditions</a>
                         <a href="#" class="info__item">Privacy Policy</a>
 
-                        <div class="social">
+                        <div id="social">
                             <a href="#" class="social__item social__item_fb">
                                 <svg viewBox="0 0 24 24"><path d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" /></svg>
                             </a>
@@ -98,7 +98,7 @@
                             </a>
                         </div>
 
-                        <p class="copyright">© 2017 GamblersLab</p>
+                        <p id="copyright">© 2017 GamblersLab</p>
 
                     </div>
 
@@ -108,9 +108,9 @@
 
         </header>
 
-        <div class="site__wrap">
+        <div id="site__wrap">
 
-            <aside class="site__aside" data-link="php/links.php">
+            <aside id="site__aside">
 
                 <div class="links">
 
@@ -177,7 +177,7 @@
                         </a>
                     </div>
 
-                    <a href="#" class="links__show-all">
+                    <a href="#" id="links__show-all">
                         <i>show all casinos</i>
                         <span>
                             <svg viewBox="156 113 17.49 17.49">
@@ -340,7 +340,7 @@
 
                 <div class="links links_casinos-search">
 
-                    <a href="#" class="links__back">
+                    <a href="#" id="links__back">
                         <svg viewBox="266 75 16 16">
                             <path d="M20,11H7.83l5.59-5.59L12,4,4,12l8,8,1.41-1.41L7.83,13H20Z" transform="translate(262 71)"/>
                         </svg>
@@ -351,61 +351,70 @@
                         <h2>Bonus by Casino</h2>
                     </div>
 
-                    <form class="links__search">
-                        <button class="links__search-btn">
+                    <form id="links__search">
+                        <button id="links__search-btn">
                             <svg viewBox="156 113 17.49 17.49">
                                 <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"></path>
                             </svg>
                         </button>
-                        <input type="text" name="" class="links__search-input" placeholder="Search bonus by casino"/>
-                        <button type="submit" class="links__search-cancel"></button>
+                        <input type="text" name="links__search-input" id="links__search-input" placeholder="Search bonus by casino"/>
+                        <button type="submit" id="links__search-cancel"></button>
                     </form>
 
-                    <p class="links__no-results">Sorry, no results</p>
+                    <p id="links__no-results">Sorry, no results</p>
 
                     <div class="links__wrap"></div>
 
-                    <div class="links__preload">
-                        <div class="links__preload-element"></div>
+                    <div id="links__preload">
+                        <div id="links__preload-element"></div>
                     </div>
 
                 </div>
 
             </aside>
 
-            <div class="site__content">
-                <div class="contact-us">
-                    <h1 class="contact-us__title">Contact Us</h1>
-                    <div class="contact-us__form site__form validation-form">
+            <div id="site__content">
+                <div id="contact-us">
+                    <h1 id="contact-us__title">Contact Us</h1>
+                    <div id="contact-us__form" class="site__form validation-form">
                         <p>Leave us a message</p>
 
                         <form action="#">
                             <div>
+
                                 <input type="text" name="name" id="name">
                                 <label for="name">Name</label>
-
                                 <span class="contact-us__error">Please enter a valid email address</span>
 
                             </div>
                             <div>
+
                                 <input type="email" name="email" id="email" data-required="required">
                                 <label for="email">Email</label>
                                 <span class="contact-us__error">
                                     Please enter a valid email address</span>
+
                             </div>
-                            <div class="contact-us__textarea">
+
+                            <div id="contact-us__textarea">
+
                                 <textarea name="message" id="message" cols="30" rows="10" data-required="required"></textarea>
                                 <label for="message">Write your message</label>
                                 <span class="contact-us__error">
                                     Minimum 80 characters for messages.</span>
+
                             </div>
-                            <div class="contact-us__send">
+
+                            <div id="contact-us__send">
+
                                 <button type="submit" class="btn"><span>send message</span></button>
+
                             </div>
 
                         </form>
                     </div>
-                    <div class="contact-us__social">
+
+                    <div id="contact-us__social">
                         <p>Get in touch with us!</p>
 
                         <div>
@@ -442,13 +451,20 @@
                         </div>
 
                     </div>
+
                 </div>
             </div>
+
         </div>
+
+        <a href="#" id="back-to-top">
+            <span>back to top</span>
+        </a>
+
     </div>
 
     <script src="js/vendors/jquery-3.2.1.min.js"></script>
-<script src="js/vendors/jquery.nicescroll.min.js"></script>
-    <script src="js/contact-us.min.js"></script>
+    <script src="js/vendors/jquery.nicescroll.min.js"></script>
+    <script src="js/main.min.js"></script>
 </body>
 </html>
