@@ -4,7 +4,7 @@ var gulp            = require('gulp');
 var run             = require('run-sequence');
 var sourcemaps      = require('gulp-sourcemaps');
 var babel           = require('gulp-babel');
-var sass            = require('gulp-sass');
+//var sass            = require('gulp-sass');
 var imagemin        = require('gulp-imagemin');
 var concat          = require('gulp-concat');
 var uglify          = require('gulp-uglify');
@@ -14,7 +14,6 @@ var del             = require('del');
 
 var paths = {
     views: 'app/**/*.html',
-    styles: 'app/sass/**/*.scss',
     vendorStyles: 'app/css/*.css',
     scripts: [
         {
@@ -75,16 +74,6 @@ gulp.task('php', function () {
     }).pipe(gulp.dest('dist/php'));
 });
 
-gulp.task('styles', function () {
-    return gulp.src(paths.styles)
-        //.pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
-        //.pipe(sourcemaps.write())
-        .pipe(gulp.dest('dist/css'))
-        .pipe(browserSync.stream());
-});
-
 gulp.task( 'scripts', function () {
     for ( var i = 0; i < paths.scripts.length; i++ ){
         gulp.src( paths.scripts[ i ].contains )
@@ -115,13 +104,12 @@ gulp.task('watch', function() {
     gulp.watch(paths.pictures,    ['pictures',  browserSync.reload]);
     gulp.watch(paths.fonts,    ['fonts']);
     gulp.watch(paths.php,    ['php']);
-    gulp.watch(paths.styles,    ['styles', browserSync.reload]);
     gulp.watch(paths.vendorStyles,    [ 'vendorStyles' ]);
     gulp.watch(paths.views,     ['views',   browserSync.reload]);
 });
 
 function serve() {
-    return run('styles', 'scripts', 'vendorScripts', 'vendorStyles', 'php', 'fonts',  'images', 'pictures', 'views', 'serve');
+    return run( 'scripts', 'vendorScripts', 'vendorStyles', 'php', 'fonts',  'images', 'pictures', 'views', 'serve');
 }
 
 gulp.task('default', ['clean'], serve());

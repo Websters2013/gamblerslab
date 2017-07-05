@@ -400,6 +400,7 @@
       align-items: center;
       height: 75px;
       margin-bottom: 20px;
+      padding: 0 10px;
       text-align: center;
       border: 1px solid #dce0db;
       background-color: #fff;
@@ -407,6 +408,7 @@
       font-size: 16px;
       line-height: 22px;
       font-weight: 600;
+      word-break: break-word;
     }
 
   }
@@ -419,7 +421,7 @@
 
     &-popup{
       position: absolute;
-      max-width: 140px;
+      width: 140px;
       padding: 7px 10px;
       border: 1px solid #43d2e3;
       border-radius: 5px;

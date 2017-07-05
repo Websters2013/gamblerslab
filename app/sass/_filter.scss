@@ -1,4 +1,4 @@
-#filter {
+#filter-bonus {
   @include noto-sans;
 
   &__title{
@@ -117,7 +117,7 @@
 
     &.active{
 
-      #filter__frame-btn{
+      #filter-bonus__frame-btn{
         border-color: #45d1de;
         color: #fff;
         background-color: #45d1de;
@@ -129,7 +129,7 @@
 
       }
 
-      #filter__frame-selected{
+      #filter-bonus__frame-selected{
         opacity: 1;
         visibility: visible;
       }
@@ -282,7 +282,7 @@
         transform: rotate(-135deg);
       }
 
-      #filter__sort-popup{
+      #filter-bonus__sort-popup{
         opacity: 1;
         visibility: visible;
       }
@@ -392,7 +392,7 @@
 
 @media (min-width: $tablet-portrait) {
 
-  #filter{
+  #filter-bonus{
 
     &__title{
       margin-bottom: 16px;
@@ -499,7 +499,7 @@
 
 @media (min-width: $desktop) {
 
-  #filter{
+  #filter-bonus{
 
     &__title{
       margin-bottom: 14px;

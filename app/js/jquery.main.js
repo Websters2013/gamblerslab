@@ -1,4 +1,5 @@
 ( function(){
+
     "use strict";
 
     $( function(){
@@ -17,8 +18,16 @@
             new Anchor( $( '#anchor' ) );
         };
 
-        if ( $( '#filter' ).length == 1 ){
-            new Filter( $( '#filter' ) );
+        if ( $( '.bonus' ).length == 1 ){
+            new BonusLoad( $( '.bonus' ) );
+        };
+
+        if ( $( '#bonus__single' ).length == 1 ){
+            new BonusInitFunctions( $( '#bonus__single' ) );
+        };
+
+        if ( $( '#filter-bonus' ).length == 1 ){
+            new Filter( $( '#filter-bonus' ) );
         };
 
         if ( $( '.validation-form' ).length == 1 ){
@@ -41,13 +50,9 @@
             new AjaxLoadContent( $( '#casino-bonuses' ) );
         };
 
-        if ( $( '#bonus_minimize' ).length == 1 ){
-            new BonusMinimize( $( '.bonus_minimize' ) );
+        if ( $( '.bonus' ).length == 1 ){
+            new BonusMinimize( $( '.bonus' ) );
         };
-
-        $( '.bonus' ).each( function () {
-            new Bonus( $( this ) );
-        } );
 
     } );
 
@@ -80,14 +85,14 @@
                 $.each( msg.items, function() {
 
                     var newBlock = $( '<div>\
-                                        <a href="'+ this.href +'" class="casino-bonuses__item hidden">\
-                                            <h2 class="casino-bonuses__item-title">'+ this.title +'</h2>\
-                                            <div class="casino-bonuses__footer">\
-                                                <div>'+ this.countBonuses +'</div>\
-                                                <div>'+ this.countToday +'</div>\
-                                            </div>\
-                                        </a>\
-                                    </div>' );
+                                            <a href="'+ this.href +'" class="casino-bonuses__item hidden">\
+                                                <h2 class="casino-bonuses__item-title">'+ this.title +'</h2>\
+                                                <div class="casino-bonuses__footer">\
+                                                    <div>'+ this.countBonuses +'</div>\
+                                                    <div>'+ this.countToday +'</div>\
+                                                </div>\
+                                            </a>\
+                                        </div>' );
 
                     _wrapper.append( newBlock );
 
@@ -202,23 +207,23 @@
 
         //private properties
         var _obj = obj,
-            _bonusShowAll = _obj.find( '#links__show-all' ),
-            _linkWrapBonus = _obj.find( '.links_casinos-search' ),
-            _curLinksWrap = _linkWrapBonus.find( '.links__wrap' ),
-            _linksNoResults = _linkWrapBonus.find( '#links__no-results' ),
-            _hideSearch = _linkWrapBonus.find( '#links__back' ),
-            _formSearch = _linkWrapBonus.find( '#links__search' ),
-            _btnCancel = _linkWrapBonus.find( '#links__search-cancel' ),
-            _searchInput = _obj.find( '#links__search-input' ),
+            _bonusShowAll = _obj.find( '#aside-links__show-all' ),
+            _linkWrapBonus = _obj.find( '.aside-links_casinos-search' ),
+            _curLinksScroll = _linkWrapBonus.find( '.aside-links__wrap' ),
+            _curLinksWrap = _linkWrapBonus.find( '.aside-links__wrap > div' ),
+            _linksNoResults = _linkWrapBonus.find( '#aside-links__no-results' ),
+            _hideSearch = _linkWrapBonus.find( '#aside-links__back' ),
+            _formSearch = _linkWrapBonus.find( '#aside-links__search' ),
+            _btnCancel = _linkWrapBonus.find( '#aside-links__search-cancel' ),
+            _searchInput = _obj.find( '#aside-links__search-input' ),
             _siteHeader = $( '#site__header' ),
             _mobileBtnOpen = $( '#mobile-btn' ),
-            _lessLinksBox = _obj.find( '.links_less' ),
-            _moreLinksBtn = _lessLinksBox.find( '.links__show-more' ),
+            _lessLinksBox = _obj.find( '.aside-links_less' ),
+            _moreLinksBtn = _lessLinksBox.find( '.aside-links__show-more' ),
             _body = $( 'body' ),
             _html = $( 'html' ),
             _site = $( '#site' ),
             _window = $( window ),
-            _fixedFlag = true,
             _objTopPosition = _obj.offset().top,
             _request = new XMLHttpRequest();
 
@@ -243,7 +248,6 @@
                             _unfixedDesktopAside();
                         } else if ( _linkWrapBonus.hasClass( 'active' ) && _window.width() < 1200 ) {
                             _uploadAsideHeight();
-                            _curLinksWrap.getNiceScroll().resize();
                         } else if ( _obj.hasClass( 'show' ) && _window.width() < 1200 ) {
                             _hideMobileAside();
                         }
@@ -319,6 +323,12 @@
                     }
                 );
 
+                _formSearch.on(
+                    'submit', function( e ) {
+                        e.preventDefault();
+                    }
+                );
+
                 _searchInput.on(
                     'keyup', function( e ) {
                         if( e.keyCode == 27 ){
@@ -328,9 +338,16 @@
                         } else if( e.keyCode == 38 ){
 
                         } else if ( e.keyCode == 13 ) {
-
+                            return false;
                         } else {
                             _ajaxRequest( 1 );
+
+                            if ( $( this ).val() == '' ){
+                                _btnCancel.removeClass( 'visible' )
+                            } else {
+                                _btnCancel.addClass( 'visible' )
+                            }
+
                         }
                     }
                 );
@@ -339,12 +356,9 @@
                     'click', function() {
 
                         _formSearch[0].reset();
+                        _btnCancel.removeClass( 'visible' );
 
                         _ajaxRequest();
-
-                        setTimeout( function () {
-                            _curLinksWrap.getNiceScroll().resize();
-                        }, 300 )
 
                         return false;
 
@@ -380,8 +394,8 @@
             _showMoreLinks = function ( o ) {
 
                 var curElement = o,
-                    curLinksWrap = curElement.prev( '.links__wrap' ),
-                    curBoxLinks = curLinksWrap.find( '.links__item' ),
+                    curLinksWrap = curElement.prev( '.aside-links__wrap' ),
+                    curBoxLinks = curLinksWrap.find( '.aside-links__item' ),
                     sumHeight = 0;
 
                 curElement.addClass( 'hide-links' );
@@ -395,10 +409,6 @@
 
                 curLinksWrap.css( 'height', sumHeight );
 
-                setTimeout( function () {
-                    _obj.getNiceScroll().resize();
-                }, 500 );
-
             },
             _showLessLinks = function ( o ) {
 
@@ -406,7 +416,7 @@
 
                     var curElement = o;
 
-                    _lessLinksBox = o.parents( '.links_less' );
+                    _lessLinksBox = o.parents( '.aside-links_less' );
 
                     curElement.removeClass( 'hide-links' );
                     curElement.html( 'Show More' );
@@ -416,17 +426,13 @@
                 _lessLinksBox.each( function () {
 
                     var curBox = $( this ),
-                        curWrap = curBox.find( '.links__wrap' ),
+                        curWrap = curBox.find( '.aside-links__wrap' ),
                         viewNum = curWrap.data( 'show' ),
-                        curBoxLinks = curBox.find( '.links__item' );
+                        curBoxLinks = curBox.find( '.aside-links__item' );
 
                     curWrap.css( 'height', curBoxLinks.outerHeight() * viewNum );
 
                 } );
-
-                setTimeout( function () {
-                    _obj.getNiceScroll().resize();
-                }, 500 );
 
             },
             _showBonusSearch = function () {
@@ -437,44 +443,19 @@
                     _obj.css( 'height', _body.height() - _siteHeader.height() );
                 }
 
-                _obj.animate( { scrollTop: 0 }, 200);
-                _obj.getNiceScroll().remove();
+                _obj.mCustomScrollbar( 'destroy' );
+                _curLinksWrap.mCustomScrollbar();
 
-                _linkWrapBonus.addClass( 'active' );
-
-                if ( _window.width() >= 768 ){
-
-                    _curLinksWrap.niceScroll( {
-                        cursorcolor: "#45b8c7",
-                        cursorwidth: "10",
-                        cursorborder: "none",
-                        cursorborderradius: "0",
-                        autohidemode: false,
-                        background: "#445669"
-                    } );
-
-                } else {
-
-                    _curLinksWrap.niceScroll( {
-                        cursorcolor: "#45b8c7",
-                        cursorwidth: "5",
-                        cursorborder: "none",
-                        cursorborderradius: "0",
-                        autohidemode: false,
-                        background: "#445669"
-                    } );
-
-                }
+                setTimeout( function () {
+                    _linkWrapBonus.addClass( 'active' );
+                }, 100 )
 
                 _ajaxRequest();
 
             },
             _hideBonusSearch = function () {
 
-                $( '#links__search' )[0].reset();
-
-                _curLinksWrap.getNiceScroll().remove();
-                _linkWrapBonus.removeClass( 'active' );
+                $( '#aside-links__search' )[0].reset();
 
                 if ( _obj.hasClass( 'fixed' ) ){
                     _obj.css( 'height', _body.height() );
@@ -482,30 +463,33 @@
                     _obj.css( 'height', _body.height() - _siteHeader.height() );
                 }
 
-                _initScroll();
-
-            },
-            _fixedDesktopAside = function () {
-                _obj.addClass( 'fixed' );
-                _obj.css( 'height', _body.height() );
-                _obj.getNiceScroll().resize();
-            },
-            _unfixedDesktopAside = function () {
-                _obj.removeClass( 'fixed' );
-                _obj.css( 'height', _body.height() - _siteHeader.height() );
-                _obj.getNiceScroll().resize();
-            },
-            _showMobileAside = function() {
-
-                _mobileBtnOpen.addClass( 'close' );
-                _obj.addClass( 'show' );
-                _html.css( 'overflow-y', 'hidden' );
+                _linkWrapBonus.removeClass( 'active' );
+                _btnCancel.removeClass( 'visible' );
 
                 setTimeout( function () {
                     _initScroll();
                 }, 300 )
 
+            },
+            _fixedDesktopAside = function () {
+                _obj.addClass( 'fixed' );
+                _obj.css( 'height', _body.height() );
+            },
+            _unfixedDesktopAside = function () {
+                _obj.removeClass( 'fixed' );
+                _obj.css( 'height', _body.height() - _siteHeader.height() );
+            },
+            _showMobileAside = function() {
+
+                _mobileBtnOpen.addClass( 'close' );
+                _obj.addClass( 'show' );
+
+                if ( _window.width() < 1024 ){
+                    _html.css( 'overflow-y', 'hidden' );
+                }
+
                 _uploadAsideHeight();
+                _initScroll();
 
             },
             _hideMobileAside = function() {
@@ -514,11 +498,11 @@
 
                 _obj.removeClass( 'show' );
 
-                _html.css( 'overflow-y', 'auto' );
+                if ( _window.width() < 1024 ){
+                    _html.css( 'overflow-y', 'auto' );
+                }
 
                 _hideBonusSearch();
-
-                _obj.getNiceScroll().remove();
 
             },
             _uploadAsideHeight = function () {
@@ -535,29 +519,7 @@
             },
             _initScroll = function () {
 
-                if ( _window.width() >= 768 ){
-
-                    _obj.niceScroll( {
-                        cursorcolor: "#45b8c7",
-                        cursorwidth: "10",
-                        cursorborder: "none",
-                        cursorborderradius: "0",
-                        autohidemode: false,
-                        background: "#445669"
-                    } );
-
-                } else {
-
-                    _obj.niceScroll( {
-                        cursorcolor: "#45b8c7",
-                        cursorwidth: "5",
-                        cursorborder: "none",
-                        cursorborderradius: "0",
-                        autohidemode: false,
-                        background: "#445669"
-                    } );
-
-                }
+                _obj.mCustomScrollbar();
 
             },
             _loadData = function ( data, num ) {
@@ -570,9 +532,9 @@
                 for ( var i = 0; i < number; i++ ){
 
                     if ( i == 0 ){
-                        _curLinksWrap.html( '<a href="'+ arr[i].href +'" class="links__item"><i>'+ arr[i].title +'</i><span>'+ arr[i].countBonuses +'</span></a>' );
+                        _curLinksWrap.html( '<a href="'+ arr[i].href +'" class="aside-links__item"><i>'+ arr[i].title +'</i><span>'+ arr[i].countBonuses +'</span></a>' );
                     } else {
-                        _curLinksWrap.append( '<a href="'+ arr[i].href +'" class="links__item"><i>'+ arr[i].title +'</i><span>'+ arr[i].countBonuses +'</span></a>' );
+                        _curLinksWrap.append( '<a href="'+ arr[i].href +'" class="aside-links__item"><i>'+ arr[i].title +'</i><span>'+ arr[i].countBonuses +'</span></a>' );
                     }
 
                 }
@@ -590,6 +552,8 @@
                 };
 
                 _linkWrapBonus.removeClass( 'load' );
+
+                _curLinksScroll.mCustomScrollbar();
 
             },
             _init = function() {
@@ -684,9 +648,6 @@
                 );
 
                 _window.on ( {
-                    'scroll': function () {
-                        _checkScroll();
-                    },
                     'DOMMouseScroll': function ( e ) {
                         var delta = e.originalEvent.detail;
                         if ( delta ) {
@@ -779,19 +740,19 @@
         _init();
     };
 
-    var Bonus = function( obj ) {
+    var BonusLoad = function( obj ) {
 
         //private properties
         var _obj = obj,
+            _filter = $( '#filter-bonus' ),
+            _filterInput = _filter.find( 'input:checked' ),
             _bonusInsert = _obj.find( '#bonus__insert' ),
             _bonusNotResult = _obj.find( '#bonus__not-result' ),
             _btnLoadMore = _obj.find( '#casino-offers__more' ),
-            _positionMobileWindow = 0,
-            _body = $( 'body' ),
-            _html = $( 'html' ),
-            _site = $( '#site' ),
             _window = $( window ),
+            _body = $( 'body' ),
             _loadFlag = true,
+            _arr = {},
             _request = new XMLHttpRequest();
 
         //private methods
@@ -800,7 +761,7 @@
                 _window.on( {
                     scroll: function() {
 
-                        if ( _obj.hasClass( 'bonus_auto-load' ) && _window.scrollTop() + _window.height() >= _obj.offset().top + _obj.height() - 10 ) {
+                        if ( _obj.hasClass( 'bonus_auto-load' ) && _window.scrollTop() + _window.height() >= _obj.offset().top + _obj.height() - 100 ) {
 
                             if ( _loadFlag ){
                                 _ajaxRequest();
@@ -810,6 +771,106 @@
 
                     }
                 } );
+
+                _btnLoadMore.on(
+                    'click', function ( e ) {
+
+                        _ajaxRequest();
+                        return false;
+
+                    }
+                );
+
+            },
+            _collectData = function () {
+
+                _filterInput.each( function () {
+
+                    var curElem = $( this ),
+                        curElemName = curElem.attr( 'name' ),
+                        curElemVal = curElem.val();
+
+                    _arr[curElemName] = curElemVal;
+
+                } );
+
+                _ajaxRequest();
+
+            },
+            _ajaxRequest = function(){
+
+                _obj.addClass( 'load' );
+                _loadFlag = false;
+
+                _request = $.ajax( {
+                    url: 'php/bonuses.php',
+                    data: {
+                        loadedCount: 5,
+                        filterCriterias: _arr
+                    },
+                    dataType: 'html',
+                    type: 'GET',
+                    success: function ( data ) {
+
+                        _loadData( data );
+
+                    },
+                    error: function ( XMLHttpRequest ) {
+                        if ( XMLHttpRequest.statusText != "abort" ) {
+                            console.log( 'err' );
+                        }
+                    }
+                } );
+
+            },
+            _loadData = function ( data ) {
+
+                var arr = data;
+
+                _bonusInsert.append( arr );
+                _obj.removeClass( 'load' );
+
+                if ( arr == 0 || arr == null ){
+                    _bonusNotResult.show( 300 );
+                    return false;
+                }
+
+                if ( _obj.hasClass( 'bonus_minimize' ) ){
+                    $( '.bonus_minimize' )[0].obj.minimize();
+                };
+
+                new BonusInitFunctions( $( '.bonus' ) );
+
+                _loadFlag = true;
+
+            },
+            _init = function() {
+                _collectData();
+                _onEvent();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+
+    };
+
+    var BonusInitFunctions = function( obj ) {
+
+        //private properties
+        var _obj = obj,
+            _positionMobileWindow = 0,
+            _body = $( 'body' ),
+            _html = $( 'html' ),
+            _site = $( '#site' ),
+            _casinoList = $( '.bonus__casinos' ).filter( '.new' ),
+            _window = $( window ),
+            _request = new XMLHttpRequest();
+
+        //private methods
+        var _onEvent = function() {
 
                 _site.on(
                     'click', function ( e ) {
@@ -834,40 +895,6 @@
 
                     }
                 );
-
-                _btnLoadMore.on(
-                    'click', function ( e ) {
-
-                        _ajaxRequest();
-                        return false;
-
-                    }
-                );
-
-            },
-            _ajaxRequest = function(){
-
-                _obj.addClass( 'load' );
-                _loadFlag = false;
-
-                _request = $.ajax( {
-                    url: 'php/bonuses.php',
-                    data: {
-                        loadedCount: 5
-                    },
-                    dataType: 'html',
-                    type: 'GET',
-                    success: function ( data ) {
-
-                        _loadData( data );
-
-                    },
-                    error: function ( XMLHttpRequest ) {
-                        if ( XMLHttpRequest.statusText != "abort" ) {
-                            console.log( 'err' );
-                        }
-                    }
-                } );
 
             },
             _ajaxPopupRequest = function( element, inner ){
@@ -1001,6 +1028,34 @@
 
                 if ( curPopup.attr( 'data-type' ) == 'bonus' ){
 
+                    var contentRow = curPopup.find( '.popup__content-line' ),
+                        popupTabsContent = curPopup.find( '#popup__tabs-content' ),
+                        rowId = 0;
+
+                    contentRow.each( function () {
+
+                        var curRow = $( this ),
+                            arrRow = curRow.text().split(',');
+
+                        rowId = rowId + 1;
+
+                        if ( arrRow.length > 6 ){
+
+                            curRow.html( arrRow[0] +', ' );
+
+                            for ( var i = 1; i <= 5; i++ ){
+                                curRow.append( arrRow[i] +', ' );
+                            }
+
+                            console.log( arrRow.slice( rowId ) );
+
+                            curRow.append( '<a href="#" data-id="'+ rowId +'" class="popup__more-btn">More</a>' );
+                            popupTabsContent.append( '<span class="popup__more-popup" data-id="'+ rowId +'">'+ arrRow.slice( 6, arrRow.length ) +'</span>' );
+
+                        }
+
+                    } );
+
                     var bonusSwiper = curPopup.find( '#popup__swiper' ),
                         swiperNextButton = curPopup.find( '#popup__button-next' ),
                         swiperPrevButton = curPopup.find( '#popup__button-prev' ),
@@ -1026,9 +1081,7 @@
                     _positionPopup( curPopup, curBtn );
 
                     var popupTabsLink = curPopup.find( '#popup__tabs-links a' ),
-                        popupTabsContent = curPopup.find( '#popup__tabs-content' ),
                         popupTabsContentItem = curPopup.find( '#popup__tabs-content > div' ),
-                        popupMoreInfoBtn = curPopup.find( '.popup__more-btn' ),
                         arrHeight = [];
 
                     popupTabsLink.removeClass( 'active' );
@@ -1037,49 +1090,62 @@
                     popupTabsLink.eq( 0 ).addClass( 'active' );
                     popupTabsContentItem.eq( 0 ).addClass( 'active' );
 
-                    popupTabsContentItem.each( function () {
+                    popupTabsContent.css( 'height', popupTabsContentItem.eq( 0 ).outerHeight() );
+
+                    /*popupTabsContentItem.each( function () {
 
                         var curTab = $( this );
 
                         arrHeight.push( curTab.outerHeight() );
 
-                    } );
+                    } );*/
 
-                    popupTabsContent.css( 'height', Math.max.apply( Math, arrHeight ) );
+                    //popupTabsContent.css( 'height', Math.max.apply( Math, arrHeight ) );
 
                     popupTabsLink.on( 'click', function () {
 
-                            var curTab = $( this ),
-                                tabs = curTab.parents( '#popup__tabs' ),
-                                tabsLinks = tabs.find( '#popup__tabs-links a' ),
-                                tabsContent = tabs.find( '#popup__tabs-content > div' );
+                        var curTab = $( this ),
+                            tabs = curTab.parents( '#popup__tabs' ),
+                            tabsLinks = tabs.find( '#popup__tabs-links a' ),
+                            tabsContent = tabs.find( '#popup__tabs-content > div' ),
+                            popupMoreInfoPopup = curPopup.find( '.popup__more-popup' );
 
-                            tabsContent.removeClass( 'active' );
-                            tabsLinks.removeClass( 'active' );
+                        tabsContent.removeClass( 'active' );
+                        tabsLinks.removeClass( 'active' );
 
-                            curTab.addClass( 'active' );
-                            tabsContent.eq( curTab.index() ).addClass( 'active' );
+                        curTab.addClass( 'active' );
 
-                            return false;
+                        tabsContent.eq( curTab.index() ).addClass( 'active' );
+                        popupTabsContent.css( 'height', tabsContent.eq( curTab.index() ).outerHeight() );
 
-                        } );
+                        _positionPopup( curPopup, curBtn );
+
+                        if ( popupMoreInfoPopup.hasClass( 'show' ) ){
+                            popupMoreInfoPopup.removeClass( 'show' );
+                        }
+
+                        return false;
+
+                    } );
+
+                    var popupMoreInfoBtn = curPopup.find( '.popup__more-btn' );
 
                     popupMoreInfoBtn.on( 'click', function () {
 
                         var curBtn = $( this ),
                             curBtnId = curBtn.data( 'id' ),
                             curParent = curBtn.parents( '#popup__tabs-content > div' ),
-                            popupMoreInfoPopup = curParent.find( '.popup__more-popup' ),
+                            popupMoreInfoPopup = popupTabsContent.find( '.popup__more-popup' ),
                             curPopupMoreInfoPopup = popupMoreInfoPopup.filter( '[data-id='+ curBtnId +']' );
 
                         if ( !curPopupMoreInfoPopup.hasClass( 'show' ) ) {
 
-                            popupMoreInfoPopup.removeClass( 'show' )
+                            popupMoreInfoPopup.removeClass( 'show' );
                             curPopupMoreInfoPopup.addClass( 'show' );
 
                             curPopupMoreInfoPopup.css( {
-                                top: curBtn.offset().top - curParent.offset().top - popupMoreInfoPopup.outerHeight() - 8,
-                                left: curBtn.offset().left + curBtn.outerWidth() / 2 - curParent.offset().left - popupMoreInfoPopup.outerWidth() / 2
+                                top: curBtn.offset().top - popupTabsContent.offset().top - curPopupMoreInfoPopup.outerHeight() - 8,
+                                left: curBtn.offset().left + curBtn.outerWidth() / 2 - popupTabsContent.offset().left - curPopupMoreInfoPopup.outerWidth() / 2
                             } );
 
                         } else {
@@ -1123,14 +1189,7 @@
 
                         commentsWrap.css( 'height', commentsItem.eq( 0 ).outerHeight() + commentsItem.eq( 2 ).outerHeight() + 21 )
 
-                        commentsWrap.niceScroll( {
-                            cursorcolor: "#abb1b9",
-                            cursorwidth: "6",
-                            cursorborder: "none",
-                            cursorborderradius: "0",
-                            autohidemode: false,
-                            background: "#f2f2f2"
-                        } );
+                        commentsWrap.mCustomScrollbar();
 
                     }
 
@@ -1249,50 +1308,101 @@
                 }, 300 );
 
             },
-            _loadData = function ( data ) {
+            _minimizeCasinoList = function () {
 
-                var arr = data;
+                _casinoList.each( function () {
 
-                _bonusInsert.append( data );
-                _obj.removeClass( 'load' );
+                    var curElem = $( this ),
+                        casinoListItem = curElem.find( '.bonus__casinos-item' ),
+                        itemNumber = casinoListItem.length;
 
-                if ( arr == 0 || arr == null ){
-                    _bonusNotResult.show( 300 );
+                    curElem.removeClass( 'new' );
+
+                    if ( itemNumber >= 3 ){
+
+                        curElem.append( '<a href="#" class="bonus__casinos-show"><span><i>Show '+ ( itemNumber - 3 ) +' More</i></span></a>' );
+
+                        for ( var i = 3; i <= itemNumber; i++ ) {
+
+                            casinoListItem.eq( i ).css( 'height', 0 );
+                            casinoListItem.eq( i ).addClass( 'hidden' );
+
+                        }
+
+                    }
+
+                } );
+
+                var casinoShowMore = _casinoList.find( '.bonus__casinos-show' );
+
+                casinoShowMore.on( 'click', function () {
+
+                    var curElem = $( this ),
+                        parentCasinoList = curElem.parents( '.bonus__casinos' ),
+                        parentItemFrame = curElem.parents( '.bonus__frame' ),
+                        parentItemBody = curElem.parents( '.bonus__body' ),
+                        casinoListItem = parentCasinoList.find( '.hidden' );
+
+                    if ( !curElem.hasClass( 'less' ) ){
+
+                        curElem.html( '<span><i>Show Less</i></span>' );
+                        curElem.addClass( 'less' );
+                        casinoListItem.removeClass( 'hidden' );
+                        casinoListItem.css( 'height', 29 );
+
+                        setTimeout( function () {
+                            parentItemBody.attr( 'data-height', parentItemFrame.outerHeight() )
+                            parentItemBody.css( 'height', parentItemFrame.outerHeight() );
+                        }, 300 )
+
+                    } else {
+
+                        curElem.html( '<span><i>Show '+ ( parentCasinoList.find( '.bonus__casinos-item' ).length - 3 ) +' More</i></span>' );
+                        curElem.removeClass( 'less' );
+
+                        for ( var i = 3; i <= parentCasinoList.find( '.bonus__casinos-item' ).length; i++ ) {
+
+                            parentCasinoList.find( '.bonus__casinos-item' ).eq( i ).css( 'height', 0 );
+                            parentCasinoList.find( '.bonus__casinos-item' ).eq( i ).addClass( 'hidden' );
+
+                        }
+
+                        setTimeout( function () {
+                            parentItemBody.attr( 'data-height', parentItemFrame.outerHeight() )
+                            parentItemBody.css( 'height', parentItemFrame.outerHeight() );
+                        }, 300 )
+
+                    }
+
                     return false;
-                }
 
-                if ( _obj.hasClass( 'bonus_minimize' ) ){
-                    new BonusMinimize( $( '.bonus_minimize' ) );
-                };
-
-                _initSlider();
-                _initPopups();
-
-                _loadFlag = true;
+                } );
 
             },
             _init = function() {
-                _ajaxRequest();
+                _initSlider();
+                _initPopups();
+                _minimizeCasinoList();
                 _onEvent();
             };
-
         //public properties
 
         //public methods
 
         _init();
+
     };
 
     var BonusMinimize = function( obj ) {
 
         //private properties
         var _obj = obj,
+            _self = this,
             _body = $( 'body' ),
             _window = $( window );
 
         //private methods
         var _onEvent = function() {
-
 
             },
             _minimizeAllItems = function () {
@@ -1303,6 +1413,7 @@
                 }
 
                 var bonusItem = _obj.find( '.bonus__item' ).filter( '.new' ),
+                    bonusOldItem = _obj.find( '.bonus__item' ).filter( '.show' ),
                     bonusMinimizeItem = bonusItem.find( '.bonus__item-minimize' );
 
                 bonusItem.each( function () {
@@ -1316,6 +1427,25 @@
                         bonusItemBody.attr( 'data-height', bonusItemBody.outerHeight() );
 
                         curElem.removeClass( 'new' );
+                        curElem.addClass( 'hide' );
+
+                        bonusItemBody.css( 'height', 0 );
+
+                    }, 300 );
+
+                } );
+
+                bonusOldItem.each( function () {
+
+                    var curElem = $( this ),
+                        bonusItemBody = curElem.find( '.bonus__body' ),
+                        curHead = curElem.find( '.bonus__header' );
+
+                    setTimeout( function () {
+
+                        bonusItemBody.attr( 'data-height', bonusItemBody.outerHeight() );
+
+                        curElem.removeClass( 'show' );
                         curElem.addClass( 'hide' );
 
                         bonusItemBody.css( 'height', 0 );
@@ -1338,12 +1468,18 @@
             },
             _unMinimizeAllItems = function () {
 
-                var bonusItem = _obj.find( '.bonus__item' ),
-                    bonusItemBody = bonusItem.find( '.bonus__body' );
+                var bonusItem = _obj.find( '.bonus__item' ).filter( '.hide' );
 
-                bonusItem.addClass( 'new' );
-                bonusItem.removeClass( 'hide' );
-                bonusItemBody.css( 'height', bonusItemBody.attr( 'data-height' ) );
+                bonusItem.each( function () {
+
+                    var curElem = $( this ),
+                        bonusItemBody = curElem.find( '.bonus__body' );
+
+                    curElem.addClass( 'show' );
+                    curElem.removeClass( 'hide' );
+                    bonusItemBody.css( 'height', bonusItemBody.attr( 'data-height' ) );
+
+                } );
 
             },
             _minimizeEvent = function ( e ) {
@@ -1358,6 +1494,10 @@
                     curParent.removeClass( 'show' );
                     bonusItemBody.css( 'height', 0 );
 
+                    var curParentTop = curParent.offset().top;
+
+                    _body.animate( { scrollTop :curParentTop }, 500, 'swing' )
+
                 } else {
 
                     curParent.removeClass( 'hide' );
@@ -1366,10 +1506,20 @@
 
                     setTimeout( function () {
 
-                        var centerCurParent = curParent.offset().top + curParent.outerHeight() / 2,
-                            centerBody = _window.height() / 2;
+                        if ( curParent.outerHeight() > _window.outerHeight() ) {
 
-                        _body.animate( { scrollTop : centerCurParent - centerBody }, 500, 'swing' )
+                                var curParentTop = curParent.offset().top;
+
+                                _body.animate( { scrollTop :curParentTop }, 500, 'swing' )
+
+                        } else if ( curParent.outerHeight() < _window.outerHeight() ){
+
+                            var centerCurParent = curParent.offset().top + curParent.outerHeight() / 2,
+                                centerBody = _window.height() / 2;
+
+                            _body.animate( { scrollTop : centerCurParent - centerBody }, 500, 'swing' )
+
+                        }
 
                     }, 300 )
 
@@ -1379,11 +1529,16 @@
             _init = function() {
                 _minimizeAllItems();
                 _onEvent();
+                _obj[ 0 ].obj = _self;
             };
 
         //public properties
 
         //public methods
+        _self.minimize = function () {
+            _onEvent();
+            _minimizeAllItems();
+        };
 
         _init();
     };
@@ -1439,28 +1594,28 @@
         //private properties
         var _obj = obj,
             _filterInput = _obj.find( 'input' ),
-            _filterFrame = _obj.find( '#filter__frame' ),
-            _filterBtn = _obj.find( '#filter__frame-btn' ),
-            _filterPopup = _obj.find( '#filter__popup' ),
+            _filterFrame = _obj.find( '#filter-bonus__frame' ),
+            _filterBtn = _obj.find( '#filter-bonus__frame-btn' ),
+            _filterPopup = _obj.find( '#filter-bonus__popup' ),
             _filterItem = _filterPopup.find( 'label' ),
             _filterCheckbox = _filterItem.find( 'input' ),
-            _filterSort = _obj.find( '#filter__sort' ),
-            _filterSortBtn = _filterSort.find( '#filter__sort-select' ),
-            _filterSortPopup = _filterSort.find( '#filter__sort-popup' ),
-            _filterSortItem = _filterSort.find( 'label' ),
-            _filterSortRadio = _filterSortItem.find( 'input' ),
+            _filterSort = _obj.find( '#filter-bonus__sort' ),
+            _filterSortBtn = _filterSort.find( '#filter-bonus__sort-select' ),
+            _filterSortPopup = _filterSort.find( '#filter-bonus__sort-popup' ),
+            _filterSortItem = _filterSortPopup.find( 'label' ),
+            _filterSortRadio = _filterSortPopup.find( 'input' ),
             _bonusWrap = $( '.bonus' ),
-            _displayBonusCell = _obj.find( '#filter__display-cell' ),
-            _displayBonusMinimize = _obj.find( '#filter__display-minimize' ),
-            _body = $( 'html, body' ),
+            _displayBonusCell = _obj.find( '#filter-bonus__display-cell' ),
+            _displayBonusMinimize = _obj.find( '#filter-bonus__display-minimize' ),
             _site = $( '#site' ),
-            _window = $( window );
+            _window = $( window ),
+            _bonusInsert = _bonusWrap.find( '#bonus__insert' );
 
         //private methods
         var _onEvent = function() {
 
                 _window.on(
-                    'resize', function ( e ) {
+                    'resize', function () {
 
                         if ( _filterPopup.hasClass( 'show' ) ){
                             _hideFilterPopup();
@@ -1490,6 +1645,8 @@
                 _filterInput.on(
                     'change', function ( ) {
 
+                        _bonusInsert.empty();
+                        new BonusLoad( $( '.bonus' ) );
 
                     }
                 );
@@ -1522,16 +1679,23 @@
 
                 } );
 
+                _filterSortRadio.on( 'click', function () {
+
+                    _illuminationRadio();
+
+                } );
+
                 _displayBonusCell.on( 'click', function () {
 
                     _unMinimizeBonus();
+                    return false;
 
                 } );
 
                 _displayBonusMinimize.on( 'click', function () {
 
                     _minimizeBonus();
-
+                    return false;
                 } );
 
             },
@@ -1540,7 +1704,10 @@
                 _displayBonusMinimize.addClass( 'active' );
                 _displayBonusCell.removeClass( 'active' );
                 _bonusWrap.addClass( 'bonus_minimize' );
-                new BonusMinimize( $( '.bonus_minimize' ) );
+
+                if ( _bonusWrap.hasClass( 'bonus_minimize' ) ){
+                    $( '.bonus' )[0].obj.minimize();
+                };
 
             },
             _unMinimizeBonus = function () {
@@ -1548,7 +1715,8 @@
                 _displayBonusCell.addClass( 'active' );
                 _displayBonusMinimize.removeClass( 'active' );
                 _bonusWrap.removeClass( 'bonus_minimize' );
-                new BonusMinimize( $( '.bonus' ) );
+
+                $( '.bonus' )[0].obj.minimize();
 
             },
             _showSortPopup = function() {
@@ -1603,8 +1771,25 @@
                 };
 
             },
+            _illuminationRadio = function() {
+
+                _filterSortItem.each( function () {
+
+                    var curElem = $( this ),
+                        curCheckbox = curElem.find( 'input' );
+
+                    if ( curCheckbox.is(" :checked ") ){
+                        curElem.addClass( 'illumination' );
+                    } else {
+                        curElem.removeClass( 'illumination' );
+                    }
+
+                } );
+
+            },
             _init = function() {
                 _illuminationItem();
+                _illuminationRadio();
                 _onEvent();
             };
 
@@ -2134,14 +2319,14 @@
 
                 if ( _loadNewContent ){
 
-                    searchPopup.prepend( data );
+                    searchPopup.prepend( arr );
                     _loadNewContent = false;
 
                 } else {
 
                     searchPopup.empty();
                     searchPopup.append( '<div id="search__preload"><div id="search__preload-element"></div></div>' );
-                    searchPopup.prepend( data );
+                    searchPopup.prepend( arr );
 
                 }
 

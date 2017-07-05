@@ -6,11 +6,13 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
     <title>Title</title>
 
     <link rel="stylesheet" href="css/preloader.css">
 
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/main.css">
 
@@ -29,7 +31,7 @@
                 <span></span>
             </button>
 
-            <h1 id="logo">
+            <a href="/" id="logo">
                 <svg viewBox="0 0 594.61 41.51">
                     <title>Gamblers lab</title>
                     <g>
@@ -48,7 +50,7 @@
                         </g>
                     </g>
                 </svg>
-            </h1>
+            </a>
 
             <div id="search">
 
@@ -60,7 +62,7 @@
 
                 <form id="search__form">
 
-                    <input type="search" placeholder="Search"/>
+                    <input type="input" placeholder="Search"/>
                     <button type="submit" id="search__btn-find">
                         <svg viewBox="156 113 17.49 17.49">
                             <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"/>
@@ -114,35 +116,35 @@
 
             <aside id="site__aside">
 
-                <div class="links">
+                <div class="aside-links">
 
-                    <div class="links__title links__title_1">
+                    <div class="aside-links__title aside-links__title_1">
                         <h2>Bonus Lists</h2>
-                        <a href="#" class="links__update">Updated</a>
+                        <a href="#" class="aside-links__update">Updated</a>
                     </div>
 
-                    <div class="links__wrap">
-                        <a href="#" class="links__item active">
+                    <div class="aside-links__wrap">
+                        <a href="#" class="aside-links__item active">
                             <i>All Bonuses</i>
                             <span>2m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>No Deposit</i>
                             <span>10m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Free Spins</i>
                             <span>30m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>First Deposit</i>
                             <span>h</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Tournaments</i>
                             <span>2d</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Match Bonus</i>
                             <span>Mar 27, 2017</span>
                         </a>
@@ -150,225 +152,225 @@
 
                 </div>
 
-                <div class="links links_casinos">
+                <div class="aside-links aside-links_casinos">
 
-                    <div class="links__title">
+                    <div class="aside-links__title">
                         <h2>Bonus by Casino</h2>
                     </div>
 
-                    <div class="links__wrap">
-                        <a href="#" class="links__item">
+                    <div class="aside-links__wrap">
+                        <a href="#" class="aside-links__item">
                             <i>10Bet Casino</i>
                             <span>3m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>188Bet Casino</i>
                             <span>5m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>21 Casino</i>
                             <span>1h</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>21 Dukes Casino</i>
                             <span>1h</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Very Vegas Mobile Casino</i>
                             <span>1d</span>
                         </a>
                     </div>
 
-                    <a href="#" id="links__show-all">
+                    <a href="#" id="aside-links__show-all">
                         <i>show all casinos</i>
                         <span>
-                            <svg viewBox="156 113 17.49 17.49">
-                                <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"/>
-                            </svg>
-                        </span>
+                                    <svg viewBox="156 113 17.49 17.49">
+                                        <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"/>
+                                    </svg>
+                                </span>
                     </a>
 
                 </div>
 
-                <div class="links links_less">
+                <div class="aside-links aside-links_less">
 
-                    <div class="links__title">
+                    <div class="aside-links__title">
                         <h2>Bonus by Software</h2>
                     </div>
 
-                    <div class="links__wrap" data-show="5">
-                        <a href="#" class="links__item">
+                    <div class="aside-links__wrap" data-show="5">
+                        <a href="#" class="aside-links__item">
                             <i>MicroGaming</i>
                             <span>2m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Cryptologic</i>
                             <span>30m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>BetOnSoft</i>
                             <span>1h</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Play’n’GO</i>
                             <span>1d</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>TopGame</i>
                             <span>Mar 27, 2017</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>MicroGaming</i>
                             <span>2m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Cryptologic</i>
                             <span>30m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>BetOnSoft</i>
                             <span>1h</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Play’n’GO</i>
                             <span>1d</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>TopGame</i>
                             <span>Mar 27, 2017</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>MicroGaming</i>
                             <span>2m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Cryptologic</i>
                             <span>30m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>BetOnSoft</i>
                             <span>1h</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Play’n’GO</i>
                             <span>1d</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>TopGame</i>
                             <span>Mar 27, 2017</span>
                         </a>
                     </div>
 
-                    <a href="#" class="links__show-more">
+                    <a href="#" class="aside-links__show-more">
                         <span>Show More</span>
                     </a>
 
                 </div>
 
-                <div class="links links_less">
+                <div class="aside-links aside-links_less">
 
-                    <div class="links__title">
+                    <div class="aside-links__title">
                         <h2>Bonus by Game Type</h2>
                     </div>
 
-                    <div class="links__wrap" data-show="5">
-                        <a href="#" class="links__item">
+                    <div class="aside-links__wrap" data-show="5">
+                        <a href="#" class="aside-links__item">
                             <i>Video Slots</i>
                             <span>2m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Blackjack</i>
                             <span>30m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Video Poker</i>
                             <span>1h</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Bingo</i>
                             <span>1d</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Roulette</i>
                             <span>Mar 27, 2017</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Video Slots</i>
                             <span>2m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Blackjack</i>
                             <span>30m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Video Poker</i>
                             <span>1h</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Bingo</i>
                             <span>1d</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Roulette</i>
                             <span>Mar 27, 2017</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Video Slots</i>
                             <span>2m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Blackjack</i>
                             <span>30m</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Video Poker</i>
                             <span>1h</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Bingo</i>
                             <span>1d</span>
                         </a>
-                        <a href="#" class="links__item">
+                        <a href="#" class="aside-links__item">
                             <i>Roulette</i>
                             <span>Mar 27, 2017</span>
                         </a>
                     </div>
 
-                    <a href="#" class="links__show-more">
+                    <a href="#" class="aside-links__show-more">
                         <span>Show More</span>
                     </a>
 
                 </div>
 
-                <div class="links links_casinos-search">
+                <div class="aside-links aside-links_casinos-search">
 
-                    <a href="#" id="links__back">
+                    <a href="#" id="aside-links__back">
                         <svg viewBox="266 75 16 16">
                             <path d="M20,11H7.83l5.59-5.59L12,4,4,12l8,8,1.41-1.41L7.83,13H20Z" transform="translate(262 71)"/>
                         </svg>
                         Back
                     </a>
 
-                    <div class="links__title">
+                    <div class="aside-links__title">
                         <h2>Bonus by Casino</h2>
                     </div>
 
-                    <form id="links__search">
-                        <button id="links__search-btn">
+                    <form id="aside-links__search">
+                        <button id="aside-links__search-btn">
                             <svg viewBox="156 113 17.49 17.49">
                                 <path d="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(153 110)"></path>
                             </svg>
                         </button>
-                        <input type="text" name="links__search-input" id="links__search-input" placeholder="Search bonus by casino"/>
-                        <button type="submit" id="links__search-cancel"></button>
+                        <input type="text" name="aside-links__search-input" id="aside-links__search-input" placeholder="Search bonus by casino"/>
+                        <button type="submit" id="aside-links__search-cancel"></button>
                     </form>
 
-                    <p id="links__no-results">Sorry, no results</p>
+                    <p id="aside-links__no-results">Sorry, no results</p>
 
-                    <div class="links__wrap"></div>
+                    <div class="aside-links__wrap"><div></div></div>
 
-                    <div id="links__preload">
-                        <div id="links__preload-element"></div>
+                    <div id="aside-links__preload">
+                        <div id="aside-links__preload-element"></div>
                     </div>
 
                 </div>
@@ -400,65 +402,69 @@
 
                 </section>
 
-                <section id="filter">
+                <section id="filter-bonus">
 
-                    <div id="filter__title">
+                    <div id="filter-bonus__title">
                         <h2>All BetOnSoft Bonuses</h2>
                         <p><span>235</span> Bonuses</p>
                     </div>
 
-                    <div id="filter__wrap">
+                    <div id="filter-bonus__wrap">
 
-                        <span id="filter__name">Filter bonuses:</span>
+                        <span id="filter-bonus__name">Filter bonuses:</span>
 
-                        <div id="filter__frame">
+                        <div id="filter-bonus__frame">
 
-                            <button id="filter__frame-btn">
+                            <button id="filter-bonus__frame-btn">
                                 filter by
+                                <svg viewBox="164 79 12 7.41"><path d="M7.41,7.84,12,12.42l4.59-4.58L18,9.25l-6,6-6-6Z" transform="translate(158 71.16)"/></svg>
                             </button>
 
-                            <div id="filter__popup">
+                            <div id="filter-bonus__popup">
 
                                 <label class="nice-checkbox">
-                                    <input type="checkbox" name="accepted" checked />
+                                    <input type="checkbox" name="accepted" value="Accepted" checked />
                                     <span> <img src="img/flag-001.jpg" alt="be" /> Accepted (235)</span>
                                 </label>
 
                                 <label class="nice-checkbox">
-                                    <input type="checkbox" name="active" />
+                                    <input type="checkbox" name="active" value="Active" />
                                     <span>Active (184)</span>
                                 </label>
 
                                 <label class="nice-checkbox">
-                                    <input type="checkbox" name="active" />
+                                    <input type="checkbox" name="active" value="Free Bonus" />
                                     <span>Free Bonus (93)</span>
                                 </label>
 
                             </div>
 
-                            <span id="filter__frame-selected">
+                            <span id="filter-bonus__frame-selected">
                                 <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
                             </span>
 
                         </div>
 
-                        <div id="filter__sort">
-                            <span id="filter__sort-select">Sort by</span>
+                        <div id="filter-bonus__sort">
+                            <span id="filter-bonus__sort-select">
+                                Sort by
+                                <svg viewBox="164 79 12 7.41"><path d="M7.41,7.84,12,12.42l4.59-4.58L18,9.25l-6,6-6-6Z" transform="translate(158 71.16)"/></svg>
+                            </span>
 
-                            <div id="filter__sort-popup">
-                                <label><input type="radio" value="sort-001" name="sort" checked/>Newest</label>
-                                <label><input type="radio" value="sort-002" name="sort"/>Newest1</label>
+                            <div id="filter-bonus__sort-popup">
+                                <label><input type="radio" value="Newest" name="sort" checked/>Newest</label>
+                                <label><input type="radio" value="Newest1" name="sort"/>Newest1</label>
                             </div>
 
                         </div>
 
-                        <div id="filter__display">
+                        <div id="filter-bonus__display">
 
-                            <a href="#" id="filter__display-cell" class="active">
+                            <a href="#" id="filter-bonus__display-cell" class="active">
                                 <svg viewBox="0 0 40 40"><g id="card_icn"><rect width="40" height="18"/><rect y="22" width="40" height="18"/></g></svg>
                             </a>
 
-                            <a href="#" id="filter__display-minimize">
+                            <a href="#" id="filter-bonus__display-minimize">
                                 <svg viewBox="0 0 40 40"><g id="row_icn"><rect width="40" height="7"/><rect y="11" width="40" height="7"/><rect y="22" width="40" height="7"/><rect y="33" width="40" height="7"/></g></svg>
                             </a>
 
@@ -492,7 +498,7 @@
 
     <script src="js/vendors/jquery-3.2.1.min.js"></script>
     <script src="js/vendors/swiper.jquery.min.js"></script>
-    <script src="js/vendors/jquery.nicescroll.min.js"></script>
+    <script src="js/vendors/jquery.mCustomScrollbar.js"></script>
     <script src="js/main.min.js"></script>
 </body>
 </html>

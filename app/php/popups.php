@@ -8,9 +8,10 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     echo "
     <div class=\"popup\" data-type=\"bonus\" data-link=\"001\">
 
-    <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
-
-        <div class=\"popup__title\">About Casino Room</div>
+        <div class=\"popup__title\">
+            <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
+            About Casino Room
+        </div>
 
         <div id=\"popup__info\">
 
@@ -76,15 +77,13 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                         <dl>
                             <dt>Software:</dt>
-                            <dd>NetEnt, Aristocrat, BetSoft, ELK Studios, Evolution Gaming, MicroGaming, NextGen Gaming, <a href=\"#\" data-id=\"001\" class=\"popup__more-btn\">More</a></dd>
+                            <dd class=\"popup__content-line\">NetEnt BetSoft, Aristocrat Studios, ELK BetSoft, ELK Studios, Evolution Gaming, MicroGaming Studios, NextGen Gaming, Blackjack, Video, Slots, Bingo, Craps, Baccarat</dd>
                         </dl>
 
                         <dl>
                             <dt>Established:</dt>
                             <dd>May 23, 2005</dd>
                         </dl>
-
-                        <div class=\"popup__more-popup\" data-id=\"001\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
                         
                     </div>
 
@@ -108,9 +107,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"001\" class=\"popup__more-btn\">More</a>
-                                    </p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                     
                                 </div>
 
@@ -128,9 +125,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"002\" class=\"popup__more-btn\">More</a>
-                                    </p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                     
                                 </div>
 
@@ -148,9 +143,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"003\" class=\"popup__more-btn\">More</a>
-                                    </p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                    
                                 </div>
 
@@ -168,9 +161,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"004\" class=\"popup__more-btn\">More</a>
-                                    </p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
 
                                 </div>
 
@@ -181,10 +172,6 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
                         <div id=\"popup__button-next\"></div>
                         <div id=\"popup__button-prev\"></div>
 
-                        <div class=\"popup__more-popup\" data-id=\"001\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"002\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"003\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"004\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
                     </div>
 
                 </div>
@@ -201,9 +188,10 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     echo "
     <div class=\"popup\" data-type=\"bonus\" data-link=\"002\">
 
-        <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
-
-        <div class=\"popup__title\">About Casino Room</div>
+        <div class=\"popup__title\">
+            <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
+            About Casino Room
+        </div>
 
         <div id=\"single-bonus__note\">
         
@@ -289,15 +277,13 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                         <dl>
                             <dt>Software:</dt>
-                            <dd>NetEnt, Aristocrat, BetSoft, ELK Studios, Evolution Gaming, MicroGaming, NextGen Gaming, <a href=\"#\" data-id=\"001\" class=\"popup__more-btn\">More</a></dd>
+                            <dd class=\"popup__content-line\">NetEnt BetSoft, Aristocrat Studios, ELK BetSoft, ELK Studios, Evolution Gaming, MicroGaming Studios, NextGen Gaming, Blackjack, Video, Slots, Bingo, Craps, Baccarat</dd>
                         </dl>
 
                         <dl>
                             <dt>Established:</dt>
                             <dd>May 23, 2005</dd>
                         </dl>
-
-                        <div class=\"popup__more-popup\" data-id=\"001\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
                         
                     </div>
 
@@ -321,9 +307,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"001\" class=\"popup__more-btn\">More</a>
-                                    </p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                     
                                 </div>
 
@@ -341,9 +325,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"002\" class=\"popup__more-btn\">More</a>
-                                    </p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                     
                                 </div>
 
@@ -361,10 +343,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"003\" class=\"popup__more-btn\">More</a>
-                                    </p>
-                                   
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+                                    
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -381,10 +361,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"004\" class=\"popup__more-btn\">More</a>
-                                    </p>
-
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+                                    
                                 </div>
 
                             </div>
@@ -394,10 +372,6 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
                         <div id=\"popup__button-next\"></div>
                         <div id=\"popup__button-prev\"></div>
 
-                        <div class=\"popup__more-popup\" data-id=\"001\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"002\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"003\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"004\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
                     </div>
 
                 </div>
@@ -412,9 +386,10 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     echo "
     <div class=\"popup\" data-type=\"bonus\" data-link=\"003\">
 
-        <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
-
-        <div class=\"popup__title\">About Casino Room</div>
+        <div class=\"popup__title\">
+            <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
+            About Casino Room
+        </div>
 
         <div id=\"single-bonus__note\">
 
@@ -492,15 +467,13 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                         <dl>
                             <dt>Software:</dt>
-                            <dd>NetEnt, Aristocrat, BetSoft, ELK Studios, Evolution Gaming, MicroGaming, NextGen Gaming, <a href=\"#\" data-id=\"001\" class=\"popup__more-btn\">More</a></dd>
+                            <dd class=\"popup__content-line\">NetEnt BetSoft, Aristocrat Studios, ELK BetSoft, ELK Studios, Evolution Gaming, MicroGaming Studios, NextGen Gaming, Blackjack, Video, Slots, Bingo, Craps, Baccarat</dd>
                         </dl>
 
                         <dl>
                             <dt>Established:</dt>
                             <dd>May 23, 2005</dd>
                         </dl>
-
-                        <div class=\"popup__more-popup\" data-id=\"001\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
                         
                     </div>
 
@@ -524,9 +497,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"001\" class=\"popup__more-btn\">More</a>
-                                    </p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                     
                                 </div>
 
@@ -544,9 +515,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"002\" class=\"popup__more-btn\">More</a>
-                                    </p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                     
                                 </div>
 
@@ -564,10 +533,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"003\" class=\"popup__more-btn\">More</a>
-                                    </p>
-                                   
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+                                    
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -584,10 +551,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"004\" class=\"popup__more-btn\">More</a>
-                                    </p>
-
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+                                    
                                 </div>
 
                             </div>
@@ -596,11 +561,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                         <div id=\"popup__button-next\"></div>
                         <div id=\"popup__button-prev\"></div>
-
-                        <div class=\"popup__more-popup\" data-id=\"001\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"002\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"003\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"004\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
+                        
                     </div>
 
                 </div>
@@ -615,9 +576,10 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     echo "
     <div class=\"popup\" data-type=\"bonus\" data-link=\"004\">
 
-        <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
-
-        <div class=\"popup__title\">About Casino Room</div>
+        <div class=\"popup__title\">
+            <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
+            About Casino Room
+        </div>
 
         <div id=\"single-bonus__note\">
 
@@ -695,15 +657,13 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                         <dl>
                             <dt>Software:</dt>
-                            <dd>NetEnt, Aristocrat, BetSoft, ELK Studios, Evolution Gaming, MicroGaming, NextGen Gaming, <a href=\"#\" data-id=\"001\" class=\"popup__more-btn\">More</a></dd>
+                            <dd class=\"popup__content-line\">NetEnt BetSoft, Aristocrat Studios, ELK BetSoft, ELK Studios, Evolution Gaming, MicroGaming Studios, NextGen Gaming, Blackjack, Video, Slots, Bingo, Craps, Baccarat</dd>
                         </dl>
 
                         <dl>
                             <dt>Established:</dt>
                             <dd>May 23, 2005</dd>
                         </dl>
-
-                        <div class=\"popup__more-popup\" data-id=\"001\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
                         
                     </div>
 
@@ -727,9 +687,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"001\" class=\"popup__more-btn\">More</a>
-                                    </p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                     
                                 </div>
 
@@ -747,9 +705,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"002\" class=\"popup__more-btn\">More</a>
-                                    </p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                     
                                 </div>
 
@@ -767,10 +723,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"003\" class=\"popup__more-btn\">More</a>
-                                    </p>
-                                   
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+                                    
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -787,10 +741,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b> Slots, Keno, Video Poker & Roulette... 
-                                        <a href=\"#\" data-id=\"004\" class=\"popup__more-btn\">More</a>
-                                    </p>
-
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+                                    
                                 </div>
 
                             </div>
@@ -800,10 +752,6 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
                         <div id=\"popup__button-next\"></div>
                         <div id=\"popup__button-prev\"></div>
 
-                        <div class=\"popup__more-popup\" data-id=\"001\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"002\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"003\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
-                        <div class=\"popup__more-popup\" data-id=\"004\">Blackjack, Video, Slots, Bingo, Craps, Baccarat</div>
                     </div>
 
                 </div>
@@ -818,9 +766,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     echo "
     <div class=\"popup\" data-type=\"game\" data-link=\"001\">
 
-        <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
-
         <div class=\"popup__title\">
+            <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
             Secrets Of Atlantis
             <a href=\"#\" id=\"popup__reset\">
                 <svg viewBox=\"374 75 15.99 16\"><path d=\"M17.65,6.35A8,8,0,1,0,19.73,14H17.65A6,6,0,1,1,12,6a5.915,5.915,0,0,1,4.22,1.78L13,11h7V4Z\" transform=\"translate(369.99 71)\"/></svg>
@@ -839,9 +786,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     echo "
     <div class=\"popup\" data-type=\"game\" data-link=\"002\">
 
-        <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
-
         <div class=\"popup__title\">
+            <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
             Secrets Of Atlantis
         </div>
 
@@ -861,9 +807,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     echo "
     <div class=\"popup\" data-type=\"comments\" data-link=\"001\">
 
-        <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
-
         <div class=\"popup__title\">
+            <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
             <svg viewBox=\"0 0 24 24\"><path d=\"M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z\"></path></svg>
             Be the first to comment
         </div>
@@ -913,9 +858,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     echo "
     <div class=\"popup\" data-type=\"comments\" data-link=\"002\">
 
-        <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
-
         <div class=\"popup__title\">
+            <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
             <svg viewBox=\"0 0 24 24\"><path d=\"M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z\"></path></svg>
             5 Comments
         </div>
@@ -1047,9 +991,10 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     echo "
     <div class=\"popup\" data-type=\"warning\" data-link=\"001\">
 
-        <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
-
-        <div class=\"popup__title\">VIP Stakes Casino - Restricted</div>
+        <div class=\"popup__title\">
+            <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
+            VIP Stakes Casino - Restricted
+        </div>
 
         <div id=\"popup__wrap\">
 
@@ -1086,9 +1031,10 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     echo "
     <div class=\"popup\" data-type=\"warning\" data-link=\"002\">
 
-        <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
-
-        <div class=\"popup__title\">VIP Stakes Casino - Warning</div>
+        <div class=\"popup__title\">
+            <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
+            VIP Stakes Casino - Warning
+        </div>
 
         <div id=\"popup__wrap\">
 
@@ -1113,9 +1059,10 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
     echo "
     <div class=\"popup\" data-type=\"warning\" data-link=\"003\">
 
-        <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
-
-        <div class=\"popup__title\">VIP Stakes Casino - Blacklisted</div>
+        <div class=\"popup__title\">
+            <a href=\"#\" class=\"popup__close\"><svg viewBox=\"123 76 14 14\"><path d=\"M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z\" transform=\"translate(118 71)\"/></svg></a>
+            VIP Stakes Casino - Blacklisted
+        </div>
 
         <div id=\"popup__wrap\">
 

@@ -1,0 +1,43 @@
+#preload {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 99;
+  transition: opacity .3s ease, visibility .3s ease; }
+  #preload__element {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    pointer-events: none;
+    border: 1px solid #283746;
+    border-radius: 50%;
+    animation: 1s loader linear infinite;
+    position: relative; }
+    #preload__element:before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: -.30em;
+      left: 50%;
+      border: .30em solid #45d1de;
+      border-radius: 50%; }
+  #preload.hide {
+    opacity: 0;
+    visibility: hidden; }
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }

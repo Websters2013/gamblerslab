@@ -1,4 +1,4 @@
-#links{
+#aside-links{
 
   &__back{
     display: inline-block;
@@ -183,7 +183,7 @@
 
 }
 
-.links {
+.aside-links {
   position: relative;
   padding: 28px 0 14px;
   @include noto-sans;
@@ -332,7 +332,7 @@
     -webkit-transition: all .3s ease;
     transition: all .3s ease;
 
-    .links__wrap{
+    .aside-links__wrap{
       position: relative;
       max-height: 320px;
     }
@@ -356,16 +356,16 @@
       right: 0;
     }
 
-    .links__wrap{
+    .aside-links__wrap{
       height: calc( 100% - 120px );
       max-height: none;
     }
 
-    .links__item{
+    .aside-links__item{
       padding: 9px 14px;
     }
 
-    &.load .links__preload{
+    &.load .aside-links__preload{
       opacity: 1;
       visibility: visible;
     }
@@ -376,7 +376,7 @@
 
 @media (min-width: $tablet-portrait) {
 
-  #links{
+  #aside-links{
 
     &__show-more{
       margin-top: 11px;
@@ -431,7 +431,7 @@
 
   }
 
-  .links{
+  .aside-links{
     padding: 26px 0 11px;
     font-size: 15px;
 
@@ -466,12 +466,12 @@
 
     &_casinos{
 
-      .links__item{
+      .aside-links__item{
         font-size: 14px;
         padding: 5px 44px;
       }
 
-      .links__title {
+      .aside-links__title {
         margin-bottom: 6px;
       }
 
@@ -480,11 +480,11 @@
     &_casinos-search{
       margin-top: -22px;
 
-      .links__wrap{
+      .aside-links__wrap{
         height: calc( 100% - 150px );
       }
 
-      .links__item{
+      .aside-links__item{
         padding: 9px 43px;
       }
 
@@ -502,7 +502,7 @@
 
 @media (min-width: $desktop) {
 
-  #links{
+  #aside-links{
 
     &__show-all{
       -webkit-transition: color .3s ease;
@@ -526,7 +526,7 @@
 
   }
 
-  .links{
+  .aside-links{
 
     &__item{
 

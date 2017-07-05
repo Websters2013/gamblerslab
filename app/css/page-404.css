@@ -1,0 +1,49 @@
+#not-found {
+  width: 100%;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center; }
+
+#not-found__page {
+  width: 241px;
+  height: 69px;
+  margin: 0 auto 16px; }
+  #not-found__page img {
+    width: 100%;
+    height: auto; }
+
+#not-found__sorry {
+  display: block;
+  margin: 0 0 61px;
+  font-size: 25px;
+  line-height: 25px;
+  color: #283746;
+  letter-spacing: -0.6px; }
+
+#not-found__text {
+  font-size: 14px;
+  line-height: 21px;
+  color: #323232; }
+  #not-found__text span {
+    display: block; }
+  #not-found__text a {
+    color: #0fc2c8; }
+
+@media (min-width: 768px) {
+  #not-found__page {
+    width: 483px;
+    height: 138px;
+    margin: 0 auto 31px; }
+  #not-found__sorry {
+    margin: 0 0 11px;
+    font-size: 50px;
+    line-height: 50px;
+    letter-spacing: -1.2px; }
+  #not-found__text {
+    font-size: 21px;
+    line-height: 30px; }
+    #not-found__text span {
+      display: inline-block;
+      vertical-align: top; } }

@@ -66,7 +66,7 @@
                 </span>
                 </button>
 
-                <div class="bonus__casinos">
+                <div class="bonus__casinos new">
 
                     <div class="bonus__casinos-item">
 
@@ -192,7 +192,7 @@
                     </span>
                 </button>
 
-                <div class="bonus__casinos">
+                <div class="bonus__casinos new">
 
                     <div class="bonus__casinos-item">
 
@@ -268,14 +268,14 @@
 
                                 <p class="bonus__slide-name">Alladins Lot</p>
 
-                                <p><span>Powered by</span> NYX Interactive</p>
+                                <p><span>Powered by</span> <strong>NYX Interactive</strong></p>
 
                                 <button class="btn btn_4 popup__open" data-type="game" data-link="001"><span>Play for fun</span></button>
 
                             </div>
 
                             <button class="popup__open-mobile bonus__slide-img" data-type="game" data-link="001">
-                                <img src="pic/game.jpg" alt="img"/>
+                                <img src="pic/game-002.jpg" alt="img"/>
                             </button>
 
                         </div>
@@ -288,14 +288,14 @@
 
                                 <p class="bonus__slide-name">Alladins Lot</p>
 
-                                <p><span>Powered by</span> NYX Interactive</p>
+                                <p><span>Powered by</span> <strong>NYX Interactive</strong></p>
 
                                 <button class="btn btn_4 popup__open" data-type="game" data-link="002"><span>View Screenshot</span></button>
 
                             </div>
 
                             <button class="popup__open-mobile bonus__slide-img" data-type="game" data-link="002">
-                                <img src="pic/game.jpg" alt="img"/>
+                                <img src="pic/game-002.jpg" alt="img"/>
                             </button>
 
                         </div>
@@ -384,7 +384,7 @@
                 </span>
             </button>
 
-            <div class="bonus__casinos">
+            <div class="bonus__casinos new">
 
                 <div class="bonus__casinos-item">
 
@@ -510,7 +510,7 @@
                     </span>
                 </button>
 
-                <div class="bonus__casinos">
+                <div class="bonus__casinos new">
 
                     <div class="bonus__casinos-item">
 
@@ -575,14 +575,14 @@
 
                         <p class="bonus__slide-name">Alladins Lot</p>
 
-                        <p><span>Powered by</span> NYX Interactive</p>
+                        <p><span>Powered by</span> <strong>NYX Interactive</strong></p>
 
                         <button class="btn btn_4 popup__open" data-type="game" data-link="001"><span>Play for fun</span></button>
 
                     </div>
 
                     <button class="popup__open-mobile bonus__slide-img" data-type="game" data-link="001">
-                        <img src="pic/game.jpg" alt="img"/>
+                        <img src="pic/game-002.jpg" alt="img"/>
                     </button>
 
                 </div>
@@ -669,7 +669,7 @@
                 </span>
             </button>
 
-            <div class="bonus__casinos">
+            <div class="bonus__casinos new">
 
                 <div class="bonus__casinos-item">
 
@@ -826,7 +826,7 @@
                 </span>
             </button>
 
-            <div class="bonus__casinos">
+            <div class="bonus__casinos new">
 
                 <div class="bonus__casinos-item">
 
