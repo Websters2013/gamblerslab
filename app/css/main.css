@@ -161,7 +161,7 @@ input::-webkit-inner-spin-button {
     height: 50px;
     background-color: #45d1de;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14), 0 4px 8px 0 rgba(0, 0, 0, 0.28);
-    z-index: 3; }
+    z-index: 4; }
   #site__aside {
     position: absolute;
     top: 50px;
@@ -790,7 +790,7 @@ input::-webkit-inner-spin-button {
         text-transform: uppercase; }
 .aside-links__wrap {
     position: relative;
-    transition: height .5s ease;
+    /*transition: height .1s ease;*/
     overflow: hidden; }
   .aside-links__item {
     display: -ms-flexbox;
@@ -802,7 +802,10 @@ input::-webkit-inner-spin-button {
     padding: 11px 14px;
     color: #fff;
     line-height: 18px;
-    transition: background-color .3s ease, color .3s ease; }
+    transition: background-color .3s ease, color .3s ease }
+.aside-links__item.hide {
+  opacity: 0;
+}
     .aside-links__item i {
       width: calc( 100% - 65px);
       font-style: normal; }
@@ -1017,6 +1020,7 @@ input::-webkit-inner-spin-button {
       border: 1px solid #dce0db;
       border-radius: 3px;
       color: #83868a;
+      font-family: 'Noto Sans', sans-serif;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: -.3px;
@@ -1024,7 +1028,7 @@ input::-webkit-inner-spin-button {
       text-align: left;
       white-space: nowrap;
       text-transform: uppercase;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
       transition: transform .3s ease, background-color .3s ease, color .3s ease, border-color .3s ease; }
       #filter-bonus__frame-btn svg {
         position: absolute;
@@ -1060,6 +1064,8 @@ input::-webkit-inner-spin-button {
       left: 1px;
       width: 16px;
       height: 16px;
+      font-family: 'Noto Sans', sans-serif;
+      font-weight: 600;
       border: 1px #dee2dd solid;
       border-radius: 50%;
       background-color: #fff;
@@ -1090,7 +1096,7 @@ input::-webkit-inner-spin-button {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     opacity: 0;
     visibility: hidden;
-    z-index: 1;
+    z-index: 3;
     transition: opacity .3s ease, visibility .3s ease; }
     #filter-bonus__popup.show {
       opacity: 1;
@@ -1171,7 +1177,7 @@ input::-webkit-inner-spin-button {
     height: 30px;
     border: 1px solid #dce0db;
     color: #83868a;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); }
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15) }
     #filter-bonus__sort svg {
       position: absolute;
       top: 10px;
@@ -2135,7 +2141,7 @@ input::-webkit-inner-spin-button {
         justify-content: center;
     -ms-flex-align: center;
         align-items: center;
-    man-height: 75px;
+    min-height: 56px;
     margin-bottom: 20px;
     padding: 10px;
     text-align: center;
@@ -2996,7 +3002,9 @@ input::-webkit-inner-spin-button {
     display: none; }
   #filter-bonus__sort {
     width: 164px;
-    height: 40px; }
+    height: 40px;
+    box-shadow: none
+  }
   #filter-bonus__sort:after {
     top: 47%;
     right: 11px; }
@@ -3004,17 +3012,21 @@ input::-webkit-inner-spin-button {
     padding: 0 25px 1px 8px;
     font-size: 14px;
     font-weight: 400;
-    text-transform: none; }
+    text-transform: none;
+    color: #283746; }
   #filter-bonus__sort-select svg{
     top: 15px;
     right: 11px;
+    fill: #283746;
   }
   #filter-bonus__sort.show svg {
     top: 14px;
   }
   #filter-bonus__sort-popup:after, #filter-bonus__sort-popup:before {
     left: 92%; }
-
+  #filter-bonus__popup label img{
+    margin-right: 6px;
+  }
   .bonus {
     margin-bottom: 40px; }
   .bonus__item {
@@ -3323,12 +3335,16 @@ input::-webkit-inner-spin-button {
   .popup__close {
     display: none; }
   .popup__welcome-slide {
+    padding: 16px 9px 1px;
     line-height: 17px; }
   .popup__welcome-slide h2 {
+    margin-bottom: 18px;
     font-size: 14px; }
   .popup__welcome-code {
+    margin-bottom: 20px;
+    padding: 7px 10px 6px;
     font-size: 12px;
-    line-height: 18px; }
+    line-height: 15px; }
   .popup__title {
     position: relative;
     top: 0;
@@ -3352,6 +3368,25 @@ input::-webkit-inner-spin-button {
     margin: 0 -5px 24px -20px; }
   .popup[data-type="comments"]:after {
     left: 156px; }
+  .popup__welcome-slide p:last-child{
+    margin: 16px 0 13px 10px;
+  }
+  #popup__welcome{
+    margin: -13px 0;
+  }
+  #popup__tabs-content{
+    margin-bottom: -10px;
+  }
+  #popup__button-next,
+  #popup__button-prev{
+    margin-top: 0;
+  }
+  #popup__button-prev{
+    left: 0;
+  }
+  #popup__button-next{
+    right: 0;
+  }
   .popup #comments__write {
     display: block;
     margin: 0 9px 0 -7px;

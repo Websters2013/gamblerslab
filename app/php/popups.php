@@ -107,7 +107,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                     
                                 </div>
 
@@ -125,7 +125,7 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                     
                                 </div>
 
@@ -142,8 +142,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
                                     <p><b>Min Deposit:</b> <span class=\"positive\">Free</span></p>
 
                                     <p><b>Wagering:</b> 45xB</p>
-
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+                                    
+<p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
                                    
                                 </div>
 
@@ -160,8 +160,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
                                     <p><b>Min Deposit:</b> <span class=\"positive\">Free</span></p>
 
                                     <p><b>Wagering:</b> 45xB</p>
-
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
 
                                 </div>
 
@@ -307,8 +307,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -325,8 +325,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -343,8 +343,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -361,8 +361,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                             </div>
@@ -497,8 +497,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -515,8 +515,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -533,8 +533,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -551,8 +551,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                             </div>
@@ -687,8 +687,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -705,8 +705,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -723,8 +723,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                                 <div class=\"popup__welcome-slide swiper-slide\">
@@ -741,8 +741,8 @@ if ( $loadedType == "bonus" && $loadedLink == "001" ){
 
                                     <p><b>Wagering:</b> 45xB</p>
 
-                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, Craps, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
-                                    
+                                    <p><b>Games:</b><span class=\"popup__content-line\">Slots, Keno, Bingo, LP, CS, BJ, Video, Slots, Video Poker, Roulette, Blackjack, Baccarat</span></p>
+
                                 </div>
 
                             </div>

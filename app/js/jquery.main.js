@@ -239,6 +239,10 @@
                             _unfixedDesktopAside();
                         }
 
+                        if ( _window.width() >= 768 && _window.width() <= 1200 ) {
+                            _hideMobileAside();
+                        }
+
                     },
                     'resize': function () {
 
@@ -430,7 +434,17 @@
                         viewNum = curWrap.data( 'show' ),
                         curBoxLinks = curBox.find( '.aside-links__item' );
 
+                    for ( var i = 5; i < curBoxLinks.length; i++ ){
+
+                        curBoxLinks.eq( i ).addClass( 'hide' );
+
+                    }
+
                     curWrap.css( 'height', curBoxLinks.outerHeight() * viewNum );
+
+                    setTimeout( function () {
+                        curBoxLinks.removeClass( 'hide' );
+                    }, 300 )
 
                 } );
 
@@ -484,8 +498,8 @@
                 _mobileBtnOpen.addClass( 'close' );
                 _obj.addClass( 'show' );
 
-                if ( _window.width() < 1024 ){
-                    _html.css( 'overflow-y', 'hidden' );
+                if ( _window.width() < 768 ){
+                    _body.css( 'overflow-y', 'hidden' );
                 }
 
                 _uploadAsideHeight();
@@ -498,8 +512,8 @@
 
                 _obj.removeClass( 'show' );
 
-                if ( _window.width() < 1024 ){
-                    _html.css( 'overflow-y', 'auto' );
+                if ( _window.width() < 768 ){
+                    _body.css( 'overflow-y', 'auto' );
                 }
 
                 _hideBonusSearch();
@@ -1092,15 +1106,17 @@
 
                     popupTabsContent.css( 'height', popupTabsContentItem.eq( 0 ).outerHeight() );
 
-                    /*popupTabsContentItem.each( function () {
+                    popupTabsContentItem.each( function () {
 
                         var curTab = $( this );
 
                         arrHeight.push( curTab.outerHeight() );
 
-                    } );*/
+                    } );
 
-                    //popupTabsContent.css( 'height', Math.max.apply( Math, arrHeight ) );
+                    popupTabsContent.css( 'height', Math.max.apply( Math, arrHeight ) );
+
+                    popupTabsContent.css( 'height', popupTabsContent );
 
                     popupTabsLink.on( 'click', function () {
 
@@ -1116,7 +1132,6 @@
                         curTab.addClass( 'active' );
 
                         tabsContent.eq( curTab.index() ).addClass( 'active' );
-                        popupTabsContent.css( 'height', tabsContent.eq( curTab.index() ).outerHeight() );
 
                         _positionPopup( curPopup, curBtn );
 
@@ -1199,7 +1214,10 @@
                     if ( _window.width() < 768 ){
 
                         _positionMobileWindow = _window.scrollTop();
-                        _html.css( 'overflow-y', 'hidden' );
+
+                        if ( _window.width() < 768 ) {
+                            _body.css('overflow-y', 'hidden');
+                        }
 
                         curBox.append( '<div id="popup__back"></div>' );
                         curPopup.addClass( 'show' );
@@ -1208,7 +1226,9 @@
 
                         setTimeout( function () {
 
-                            _html.css( 'overflow-y', 'hidden' );
+                            if ( _window.width() < 768 ) {
+                                _body.css('overflow-y', 'hidden');
+                            }
 
                             curPopup.css ( {
                                 'top' : _window.scrollTop() + _window.outerHeight() / 2 - curPopup.outerHeight() / 2,
@@ -1248,7 +1268,10 @@
                 if ( _window.width() < 768 ){
 
                     _positionMobileWindow = _window.scrollTop();
-                    _html.css( 'overflow-y', 'hidden' );
+
+                    if ( _window.width() < 768 ) {
+                        _body.css('overflow-y', 'hidden');
+                    }
 
                     curPopup.addClass( 'show' );
 
@@ -1293,10 +1316,12 @@
                     return false;
                 }
 
-                _html.css( 'overflow-y', 'auto' );
+                if ( _window.width() < 768 ) {
+                    _body.css('overflow-y', 'auto');
+                }
 
                 if ( _window.width() < 768 ){
-                    _html.css( 'overflow-y', 'auto' );
+                    _body.css( 'overflow-y', 'auto' );
                     _html.scrollTop( _positionMobileWindow );
                 }
 
