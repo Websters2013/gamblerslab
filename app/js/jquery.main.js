@@ -982,7 +982,7 @@
             },
             _initPopups = function() {
 
-                var items = _obj.find( '.bonus__item' ),
+                var items = _obj.find( '.bonus__item.new' ),
                     popupBtn = items.find( '.popup__open' ),
                     popupMobileBtn =  items.find( '.popup__open-mobile' );
 
@@ -1003,6 +1003,7 @@
 
                         var curBtn = $( this );
                         _ajaxPopupRequest( curBtn, 0 );
+
                     }
 
                 } );
@@ -1060,8 +1061,6 @@
                             for ( var i = 1; i <= 5; i++ ){
                                 curRow.append( arrRow[i] +', ' );
                             }
-
-                            console.log( arrRow.slice( rowId ) );
 
                             curRow.append( '<a href="#" data-id="'+ rowId +'" class="popup__more-btn">More</a>' );
                             popupTabsContent.append( '<span class="popup__more-popup" data-id="'+ rowId +'">'+ arrRow.slice( 6, arrRow.length ) +'</span>' );
@@ -1314,10 +1313,6 @@
 
                 if ( bonusPopup.length < 1 ){
                     return false;
-                }
-
-                if ( _window.width() < 768 ) {
-                    _body.css('overflow-y', 'auto');
                 }
 
                 if ( _window.width() < 768 ){

@@ -206,7 +206,7 @@
 
                     <div class="bonus__casinos-item">
 
-                        <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
+                        <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="005">
                             <img src="pic/img-003.jpg" alt="img"/>
                         </button>
 
@@ -398,7 +398,7 @@
 
                 <div class="bonus__casinos-item">
 
-                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
+                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="005">
                         <img src="pic/img-003.jpg" alt="img"/>
                     </button>
 
@@ -840,7 +840,7 @@
 
                 <div class="bonus__casinos-item">
 
-                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="001">
+                    <button class="bonus__casinos-img popup__open" data-type="bonus" data-link="005">
                         <img src="pic/img-003.jpg" alt="img"/>
                     </button>
 

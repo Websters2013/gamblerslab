@@ -311,7 +311,7 @@ input::-webkit-inner-spin-button {
     #search__form input {
       width: calc( 100% - 40px);
       height: 35px;
-      padding: 0 10px 1px 32px;
+      padding: 0 10px 1px 30px;
       color: #fff;
       font-family: 'Noto Sans', sans-serif;
       font-weight: 400;
@@ -332,10 +332,12 @@ input::-webkit-inner-spin-button {
     -ms-flex-align: center;
         align-items: center;
     position: absolute;
-    left: 8px;
-    top: 8px;
-    height: 35px;
-    width: 35px;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 11px;
+    width: 11px;
+    padding: 0;
     border: none;
     background-color: transparent;
     cursor: default; }
@@ -1181,7 +1183,7 @@ input::-webkit-inner-spin-button {
     #filter-bonus__sort svg {
       position: absolute;
       top: 10px;
-      right: 18px;
+      right: 13px;
       width: 9px;
       height: 9px;
       fill: #83868a;
@@ -2810,10 +2812,8 @@ input::-webkit-inner-spin-button {
     padding-left: 51px;
     font-size: 15px; }
   #search__btn-find {
-    left: 24px;
-    top: 18px;
-    height: 40px;
-    width: 40px; }
+    left: 39px;
+  }
   #search__btn-cancel:before, #search__btn-cancel:after {
     left: 20px;
     width: 23px;
@@ -2823,7 +2823,7 @@ input::-webkit-inner-spin-button {
   #search__btn-cancel:after {
     bottom: 17px; }
   #search__popup {
-    padding: 29px 29px 19px 33px; }
+    padding: 29px 29px 19px 31px; }
   #search__popup-links {
     border-top: 0;
     padding: 11px 19px 10px; }
@@ -3075,8 +3075,8 @@ input::-webkit-inner-spin-button {
     margin-right: 23px; }
   .bonus__count svg {
     top: -2px;
-    width: 13px;
-    height: 13px;
+    width: 14px;
+    height: 14px;
     margin-right: 3px; }
   .bonus__code {
     margin-bottom: 17px; }
@@ -3904,9 +3904,6 @@ input::-webkit-inner-spin-button {
     right: 210px; }
   #search__btn-open {
     display: none; }
-  #search__btn-find {
-    top: 0;
-    left: 0; }
   #search__btn-cancel {
     position: absolute;
     top: 3px;
@@ -3932,12 +3929,15 @@ input::-webkit-inner-spin-button {
     height: 2px; }
   #search__form.increase #search__btn-cancel:before {
     top: 16px; }
+  #search__btn-find{
+    left: 15px;
+  }
   #search__form.increase #search__btn-find {
-    width: 53px; }
+    left: 20px; }
   #search__form.increase #search__btn-find svg {
     width: 11px; }
   #search__form.increase input {
-    padding-left: 54px; }
+    padding-left: 51px; }
   #search__form input {
     width: 100% !important;
     padding: 1px 40px 0 33px; }
