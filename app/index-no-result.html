@@ -6,15 +6,22 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
     <title>Title</title>
 
+    <link rel="stylesheet" href="css/preloader.css">
+
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/page-404.css">
 
 </head>
 <body>
+
+    <div id="preload">
+        <div id="preload__element"></div>
+    </div>
 
     <div id="site">
 
@@ -370,20 +377,106 @@
 
             </aside>
 
-            <div id="site__content" class="site__content_404">
+            <div id="site__content">
 
-                <div id="not-found">
+                <section id="casino-info">
 
-                    <div id="not-found__page">
-                        <img src="pic/404.png" width="966" height="276" alt="">
+                    <h1>BetOnSoft Bonuses</h1>
+
+                    <div id="casino-info__img">
+                        <img src="pic/img-001.jpg" alt="img"/>
                     </div>
 
-                    <span id="not-found__sorry">Sorry... Page not found</span>
+                    <div id="casino-info__content">
 
-                    <div id="not-found__text">
-                        <span><a href="#">Go back to homepage</a></span>
-                        or you will be redirected in 10 seconds
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+
+                        <div id="casino-info__hide-text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+                        </div>
+
+                        <p><a href="#">Read More</a></p>
+
                     </div>
+
+                </section>
+
+                <section id="filter-bonus">
+
+                    <div id="filter-bonus__title">
+                        <h2>All BetOnSoft Bonuses</h2>
+                        <p><span>235</span> Bonuses</p>
+                    </div>
+
+                    <div id="filter-bonus__wrap">
+
+                        <span id="filter-bonus__name">Filter bonuses:</span>
+
+                        <div id="filter-bonus__frame">
+
+                            <button id="filter-bonus__frame-btn">
+                                filter by
+                                <svg viewBox="164 79 12 7.41"><path d="M7.41,7.84,12,12.42l4.59-4.58L18,9.25l-6,6-6-6Z" transform="translate(158 71.16)"/></svg>
+                            </button>
+
+                            <div id="filter-bonus__popup">
+
+                                <label class="nice-checkbox">
+                                    <input type="checkbox" name="accepted" value="Accepted" checked />
+                                    <span> <img src="img/flag-001.jpg" alt="be" /> Accepted (235)</span>
+                                </label>
+
+                                <label class="nice-checkbox">
+                                    <input type="checkbox" name="active" value="Active" />
+                                    <span>Active (184)</span>
+                                </label>
+
+                                <label class="nice-checkbox">
+                                    <input type="checkbox" name="active" value="Free Bonus" />
+                                    <span>Free Bonus (93)</span>
+                                </label>
+
+                            </div>
+
+                            <span id="filter-bonus__frame-selected">
+                                <svg viewBox="80 76 17.6 13.4"><path d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" transform="translate(76.6 70.4)"/></svg>
+                            </span>
+
+                        </div>
+
+                        <div id="filter-bonus__sort">
+                            <span id="filter-bonus__sort-select">
+                                Sort by
+                                <svg viewBox="164 79 12 7.41"><path d="M7.41,7.84,12,12.42l4.59-4.58L18,9.25l-6,6-6-6Z" transform="translate(158 71.16)"/></svg>
+                            </span>
+
+                            <div id="filter-bonus__sort-popup">
+                                <label><input type="radio" value="Newest" name="sort" checked/>Newest</label>
+                                <label><input type="radio" value="Newest1" name="sort"/>Newest1</label>
+                            </div>
+
+                        </div>
+
+                        <div id="filter-bonus__display">
+
+                            <a href="#" id="filter-bonus__display-cell" class="active">
+                                <svg viewBox="0 0 40 40"><g id="card_icn"><rect width="40" height="18"/><rect y="22" width="40" height="18"/></g></svg>
+                            </a>
+
+                            <a href="#" id="filter-bonus__display-minimize">
+                                <svg viewBox="0 0 40 40"><g id="row_icn"><rect width="40" height="7"/><rect y="11" width="40" height="7"/><rect y="22" width="40" height="7"/><rect y="33" width="40" height="7"/></g></svg>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <div class="bonus">
+
+                    <p id="bonus__not-result">Sorry, no result</p>
 
                 </div>
 
@@ -462,6 +555,7 @@
     </div>
 
     <script src="js/vendors/jquery-3.2.1.min.js"></script>
+    <script src="js/vendors/swiper.jquery.min.js"></script>
     <script src="js/vendors/jquery.mCustomScrollbar.js"></script>
     <script src="js/main.min.js"></script>
 </body>

@@ -772,20 +772,6 @@
         //private methods
         var _onEvent = function() {
 
-                _window.on( {
-                    scroll: function() {
-
-                        if ( _obj.hasClass( 'bonus_auto-load' ) && _window.scrollTop() + _window.height() >= _obj.offset().top + _obj.height() - 100 ) {
-
-                            if ( _loadFlag ){
-                                _ajaxRequest();
-                            }
-
-                        }
-
-                    }
-                } );
-
                 _btnLoadMore.on(
                     'click', function ( e ) {
 
