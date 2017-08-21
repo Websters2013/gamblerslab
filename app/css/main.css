@@ -1670,6 +1670,7 @@ input::-webkit-inner-spin-button {
   .bonus.load {
     padding-bottom: 82px; }
     .bonus.load #bonus__preload {
+      margin-top: 0;
       opacity: 1;
       visibility: visible; }
 
@@ -1681,12 +1682,13 @@ input::-webkit-inner-spin-button {
   -ms-flex-align: center;
       align-items: center;
   width: 100%;
-  margin-bottom: -82px;
+  margin-top: -102px;
   padding: 25px 0;
   opacity: 0;
   visibility: hidden;
   z-index: 99;
-  transition: opacity .3s ease, visibility .3s ease; }
+  -webkit-transition: opacity .3s ease, visibility .3s ease, margin-top .3s ease;
+  transition: opacity .3s ease, visibility .3s ease, margin-top .3s ease; }
   #bonus__preload-element {
     display: inline-block;
     width: 2em;

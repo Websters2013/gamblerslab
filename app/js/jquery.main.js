@@ -108,7 +108,7 @@
             _heightAnimation = function( hasItems, newItems ){
 
                 newItems.each( function( i ){
-                    _showNewItems( $( this ),i );
+                    _showNewItems( $( this ), i );
                 } );
 
                 if ( hasItems == 0 ){
