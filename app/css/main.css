@@ -1687,8 +1687,8 @@ input::-webkit-inner-spin-button {
   opacity: 0;
   visibility: hidden;
   z-index: 99;
-  -webkit-transition: opacity .3s ease, visibility .3s ease, margin-top .3s ease;
-  transition: opacity .3s ease, visibility .3s ease, margin-top .3s ease; }
+  -webkit-transition: opacity .3s ease, visibility .3s ease;
+  transition: opacity .3s ease, visibility .3s ease; }
   #bonus__preload-element {
     display: inline-block;
     width: 2em;
@@ -2845,6 +2845,10 @@ input::-webkit-inner-spin-button {
   margin: 25px auto 0;
   box-shadow: 0 -1px 1px rgba(0,0,0,.06);
 }
+#pagination.pagination_2{
+  width: 292px;
+  margin-bottom: 23px;
+}
 #pagination ul{
   display: flex;
   justify-content: space-between;
@@ -2885,6 +2889,14 @@ span.pagination__item{
 }
 
 @media (min-width: 768px) {
+  #site{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #site__wrap{
+    min-height: calc( 100vh - 324px );
+  }
   #site__header {
     height: 75px; }
   #site__aside {
@@ -2898,6 +2910,7 @@ span.pagination__item{
   }
   #site__content {
     max-width: 940px;
+    min-height: inherit;
     margin: 0 auto;
     padding: 37px 20px 12px; }
 
@@ -3161,6 +3174,7 @@ span.pagination__item{
     margin-right: 6px;
   }
   .bonus {
+    min-height: calc( 100vh - 685px );
     margin-bottom: 49px; }
   .bonus__item {
     margin: 0 auto 20px; }
@@ -3788,11 +3802,18 @@ span.pagination__item{
     width: 100%;
     margin-top: 30px;
     border-radius: 2px;
+    margin-bottom: 49px;
+  }
+  #pagination.pagination_2{
+    width: 100%;
   }
   #pagination ul{
     width: 198px;
     margin: 0;
     order: 2
+  }
+  #pagination.pagination_2 ul{
+    width: 276.5px;
   }
   .pagination__item_prev{
     justify-content: flex-start;
@@ -3809,6 +3830,10 @@ span.pagination__item{
     border-radius: 0 2px 2px 0;
     text-align: right;
     order: 3;
+  }
+  .pagination_2 .pagination__item_prev,
+  .pagination_2 .pagination__item_next{
+    width: calc( 50% - 138.25px );
   }
 
   #site__footer{
@@ -3852,6 +3877,7 @@ span.pagination__item{
   }
 
 }
+
 @media (min-width: 1200px) {
 
   .casino-bonuses_2 {
@@ -3977,6 +4003,7 @@ span.pagination__item{
     padding: 0 27px; }
 
   .bonus {
+    min-height: calc( 100vh - 532px );
     margin-bottom: 28px;
     text-align: left; }
   .bonus__frame {
@@ -4281,7 +4308,7 @@ span.pagination__item{
     text-decoration: underline; }
 
   #pagination{
-    margin-top: 34px;
+    margin: 34px auto 28px;
   }
   .pagination__item{
     -webkit-transition: background-color .3s ease, color .3s ease;
@@ -4298,7 +4325,6 @@ span.pagination__item{
   }
 
   #site__footer{
-    flex-wrap: nowrap;
     padding: 20px 77px 13px 372px;
   }
 
@@ -4307,6 +4333,7 @@ span.pagination__item{
 @media (min-width: 1600px) {
 
   .social_footer{
+    flex-wrap: nowrap;
     position: relative;
     left: 3px;
     width: 25%;

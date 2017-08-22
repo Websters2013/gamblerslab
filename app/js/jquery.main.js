@@ -782,6 +782,13 @@
                 );
 
             },
+            _setHeight = function () {
+
+                var height = _obj.offset().top + $( '#pagination' ).outerHeight() - parseInt( _obj.css(  'margin-bottom' ) );
+
+                _obj.css( 'min-height', $( '#site__content' ).outerHeight() - height )
+
+            },
             _collectData = function () {
 
                 _filterInput.each( function () {
@@ -845,6 +852,7 @@
 
             },
             _init = function() {
+                _setHeight();
                 _collectData();
                 _onEvent();
             };
